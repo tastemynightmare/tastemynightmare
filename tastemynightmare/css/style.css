@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, sans-serif;
+    background: black;
+    color: white;
+    line-height: 1.7;
+}
+
+.hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: black;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 80px;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .4);
+    z-index: -2;
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    background-image:
+        url("../images/moon.jpg"),
+        url("../images/fog.jpg.avif"),
+        url("../images/castle.png.webp"),
+        linear-gradient(#090909, #000);
+    background-position:
+        center top,
+        center bottom,
+        center bottom,
+        center;
+    background-repeat:
+        no-repeat,
+        no-repeat,
+        no-repeat,
+        no-repeat;
+    background-size:
+        600px,
+        cover,
+        cover,
+        cover;
+    z-index: -3;
+}
+
+
+ 
