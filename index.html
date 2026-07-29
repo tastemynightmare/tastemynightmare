@@ -1,39 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Landing page</title>
-        <link rel="stylesheet" href="vault/css/style.css">   
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taste My Nightmare</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+    <body class="vault-page">
 
-        <header>
+        <div class="vault-container">
+            <h1>The Rose Crypt</h1>
+            <p>Only my chosen Nightshades may enter</p>
 
-            <div class="vault">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="checkPassword()">ENTER</button>
+        </div>
 
-                <h1>The Rose Crypt</h1>
+        <script>
+            function checkPassword() {
+                const pass = document.getElementById('password').value;
 
-                <p>
-                The forbidden chamber of
-                <br>
-                Nightmares.
-                <br><br>
-                Only my chosen Nightshades may enter.
-                </p>
-
-                <button onclick="enterVault()">ENTER</button>
-
-            </div>
-
-            <script>
-                function enterVault() {
-                window.location.href = "vault.html";
+                if (pass === 'asheliclovesyou') {
+                    window.location.href = 'home.html';
+                } else {
+                    alert('Incorrect password');
                 }
-
-            </script>
-
-        </header>
+            }
+        </script>
 
     </body>
+
 </html>
