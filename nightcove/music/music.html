@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Shadow Stage | Taste My Nightmare</title>
+
+        <link rel="stylesheet" href="css/style.css">
+
+    </head>
+
+    <body>
+
+        <!-- ATMOSPHERE -->
+
+        <div class="stars"></div>
+        <div class="fog"></div>
+        <div class="moon"></div>
+
+        <!-- NAVIGATION -->
+
+        <header>
+
+            <nav class="navbar">
+
+                <a href="index.html" class="nav-logo">
+                    <img src="images/logo-2.png" alt="Taste My Nightmare Logo">
+                </a>
+
+                <ul class="nav-links">
+
+                    <li><a href="music.html" class="active">Shadow Stage</a></li>
+                    <li><a href="videos.html">Night Screen</a></li>
+                    <li><a href="lore.html">Cautionary Tales</a></li>
+                    <li><a href="games.html">Midnight Arcade</a></li>
+                    <li><a href="merch.html">Blood Market</a></li>
+                    <li><a href="social.html">Nightshade Grimoires</a></li>
+                    <li><a href="links.html">Fiery Directory</a></li>
+                    <li><a href="diary.html">NecroSHEEmicon</a></li>
+
+                </ul>
+
+            </nav>
+
+        </header>
+
+        <!-- HERO -->
+
+        <section class="stage-hero">
+
+            <div class="stage-overlay">
+
+                <h1>SHADOW STAGE</h1>
+
+                <h2>The Sounds That Haunt The Night Cove</h2>
+
+                <p>
+                    Every song is another nightmare waiting to consume you.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- PLAYER -->
+
+        <section class="player-section">
+
+            <div class="player-container">
+
+                <!-- Album -->
+
+                <div class="album-side">
+
+                    <div class="record-wrapper">
+
+                        <div class="vinyl-record"></div>
+
+                        <img
+                            src="images/cover.jpg"
+                            alt="Album Cover"
+                            id="album-cover"
+                            class="album-cover">
+
+                    </div>
+
+                </div>
+
+                <!-- Player -->
+
+                <div class="player-side">
+
+                    <h2 id="song-title">
+                        Another Shattered Heart Set Ablaze
+                    </h2>
+
+                    <h3 id="artist-name">
+                        Ashelic Rose
+                    </h3>
+
+                    <audio id="audio">
+
+                        <source src="music/song.mp3" type="audio/mpeg">
+
+                        Your browser does not support audio.
+
+                    </audio>
+
+                    <div class="controls">
+
+                        <button id="previous-btn">
+                            ⏮
+                        </button>
+
+                        <button id="play-btn">
+                            ▶
+                        </button>
+
+                        <button id="next-btn">
+                            ⏭
+                        </button>
+
+                    </div>
+
+                    <div class="progress-container">
+
+                        <div class="progress-bar">
+
+                            <div class="progress"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="time">
+
+                        <span id="current-time">0:00</span>
+
+                        <span id="duration">0:00</span>
+
+                    </div>
+
+                    <div class="volume">
+
+                        <label for="volume-slider">
+                            Volume
+                        </label>
+
+                        <input
+                            type="range"
+                            id="volume-slider"
+                            min="0"
+                            max="100"
+                            value="100">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- TRACK LIST -->
+
+        <section class="track-list">
+
+            <h2>THE HAUNTED RECORDS</h2>
+
+            <div class="tracks">
+
+                <div class="song active-song">
+
+                    <span>01</span>
+
+                    <div>
+
+                        <h3>Another Shattered Heart Set Ablaze</h3>
+
+                        <p>Ashelic Rose</p>
+
+                    </div>
+
+                </div>
+
+                <div class="song">
+
+                    <span>02</span>
+
+                    <div>
+
+                        <h3>Coming Soon...</h3>
+
+                        <p>Ashelic Rose</p>
+
+                    </div>
+
+                </div>
+
+                <div class="song">
+
+                    <span>03</span>
+
+                    <div>
+
+                        <h3>Coming Soon...</h3>
+
+                        <p>Ashelic Rose</p>
+
+                    </div>
+
+                </div>
+
+                <div class="song">
+
+                    <span>04</span>
+
+                    <div>
+
+                        <h3>Coming Soon...</h3>
+
+                        <p>Ashelic Rose</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- FEATURED RELEASE -->
+
+        <section class="featured-release">
+
+            <div class="release-card">
+
+                <img
+                    src="images/cover.jpg"
+                    alt="Featured Album">
+
+                <div class="release-info">
+
+                    <h2>Latest Nightmare</h2>
+
+                    <h3>Another Shattered Heart Set Ablaze</h3>
+
+                    <p>
+
+                        Descend into a sonic nightmare where grief, rage,
+                        temptation, and rebirth collide beneath the moonlight.
+                        Every lyric is another step deeper into the Night Cove.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- QUOTE -->
+
+        <section class="quote-section">
+
+            <blockquote>
+
+                "Every nightmare deserves a soundtrack."
+
+            </blockquote>
+
+        </section>
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <p>
+
+                © Ashelic Rose • Taste My Nightmare
+
+            </p>
+
+        </footer>
+
+        <script src="js/player.js"></script>
+
+    </body>
+
+</html>
