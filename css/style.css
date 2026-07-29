@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Amarante&family=Tangerine:wght@400;700&display=swap');
+
+/* ==========================
+    RESET
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================
+    BODY
+========================== */
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+    font-family: "Amarante", serif;
+    background:
+        radial-gradient(circle at top,
+            #3b0013 0%,
+            #18000b 35%,
+            #080005 70%,
+        #000 100%);
+    animation: fadeIn 2s ease;
+}
+
+/* Vignette */
+
+body::after {
+    content:"";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle,
+            transparent 45%,
+        rgba(0, 0, 0, .7) 100%);
+}
+
+/* ==========================
+    VAULT
+========================== */
+
+.vault {
+    width: 550px;
+    padding: 60px;
+    text-align: center;
+    background: rgba(0, 0, 0, .65);
+    border: 1px solid rgba(255, 0, 60, .3);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    box-shadow:
+        0 0 50px rgba(255, 0, 60, .2),
+        inset 0 0 30px black;
+    animation: breathe 6s ease-in-out infinite;
+}
+
+/* ==========================
+    TITLE
+========================== */
+
+h1 {
+
+    font-family: "Tangerine", cursive;
+    font-size: 82px;
+    color: #ff174f;
+    margin-bottom: 16px;
+    text-shadow:
+        0 0 12px crimson,
+        0 0 30px crimson;
+}
+
+p {
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #bbbbbb;
+    margin-bottom: 35px;
+}
+
+/* ==========================
+    INPUT
+========================== */
+
+input {
+    width: 100%;
+    padding: 18px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 1px solid #550016;
+    background: #080808;
+    color: white;
+    font-size: 18px;
+    font-family: "Amarante", serif;
+    text-align: center;
+    outline: none;
+    transition: .3s;
+}
+
+input::placeholder {
+    color:#666;
+    letter-spacing: 2px;
+}
+
+input:focus {
+    border-color: #ff003c;
+    box-shadow:
+        0 0 20px crimson;
+}
+
+/* ==========================
+    BUTTON
+========================== */
+
+button {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: white;
+    font-family: "Amarante", serif;
+    background:
+        linear-gradient(
+            #870020,
+        #4d0012);
+    transition: .35s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    background:
+        linear-gradient(
+            #ff003c,
+        #780019);
+    box-shadow:
+        0 0 30px crimson;
+}
+
+/* ==========================
+    ANIMATIONS
+========================== */
+
+@keyframes breathe {
+
+    0% {
+
+        box-shadow:
+            0 0 35px rgba(255, 0, 60, .15),
+            inset 0 0 30px black;
+    }
+
+    50% {
+        box-shadow:
+            0 0 65px rgba(255, 0, 60, .4),
+            inset 0 0 45px black;
+    }
+
+    100% {
+        box-shadow:
+            0 0 35px rgba(255, 0, 60, .15),
+            inset 0 0 30px black;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

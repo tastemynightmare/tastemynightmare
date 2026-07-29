@@ -1,31 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taste My Nightmare</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-    <body class="vault-page">
 
-        <div class="vault-container">
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Taste My Nightmare - landing page</title>
+
+        <link rel="stylesheet" href="css/style.css">
+
+    </head>
+
+    <body>
+
+        <div class="vault">
+
             <h1>The Rose Crypt</h1>
-            <p>Only my chosen Nightshades may enter</p>
 
-            <input type="password" id="password" placeholder="Password">
+            <p>
+                Only my chosen Nightshades may enter.
+            </p>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter Password"
+                onkeydown="if(event.key==='Enter') checkPassword()">
+
             <button onclick="checkPassword()">ENTER</button>
+
         </div>
 
         <script>
-            function checkPassword() {
-                const pass = document.getElementById('password').value;
 
-                if (pass === 'asheliclovesyou') {
-                    window.location.href = 'home.html';
-                } else {
-                    alert('Incorrect password');
-                }
+            function checkPassword(){
+
+            let pass = document.getElementById("password").value;
+
+            if(pass === "asheliclovesyou"){
+
+                window.location.href = "home.html";
+
             }
+
+            else{
+
+                alert("The crypt rejects you.");
+
+            }
+            }
+
         </script>
 
     </body>
