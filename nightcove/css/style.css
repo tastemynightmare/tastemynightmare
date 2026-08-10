@@ -1,247 +1,667 @@
 @import url('https://fonts.googleapis.com/css2?family=Amarante&family=Tangerine:wght@400;700&display=swap');
 
+
+
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
 }
+
+
 
 html {
-scroll-behavior: smooth;
+
+scroll-behavior:smooth;
+
 }
+
+
 
 body {
-background: #050505;
-color: white;
-font-family: 'Amarante', serif;
-overflow-x: hidden;
+
+background:#050505;
+
+color:white;
+
+font-family:'Amarante', serif;
+
+overflow-x:hidden;
+
 }
 
-/* =====================
-NAVBAR
-===================== */
 
-.navbar {
-position: fixed;
-width: 100%;
-height: 100px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 15px 40px;
-background: rgba(0, 0, 0, .8);
-backdrop-filter: blur(10px);
-z-index: 1000;
-border-bottom: 1px solid #550000;
-font-size: 20px;
-}
 
-.nav-logo img {
-width: 120px;
-filter: drop-shadow(0 0 20px crimson);
-width: 100px;
-}
+/* ATMOSPHERE */
 
-.nav-links {
-display: flex;
-gap: 25px;
-list-style: none;
-}
 
-.nav-links a {
-color: white;
-text-decoration: none;
-transition: .3s;
-}
+.fog {
 
-.nav-links a:hover {
-color: red;
-text-shadow: 0 0 15px crimson;
-}
+position:fixed;
 
-/* =====================
-HERO
-===================== */
+bottom:0;
+left:0;
 
-.hero {
-height: 100vh;
-display: flex;
-align-items: center;
-justify-content: center;
-text-align: center;
+width:200%;
+height:250px;
+
+
 background:
 linear-gradient(
-rgba(0, 0, 0, .5),
-rgba(0, 0, 0, .9)
-),
-url("../images/night-bg.jpg");
-background-size: cover;
-background-position: center;
+transparent,
+rgba(255,255,255,.08)
+);
+
+
+filter:blur(20px);
+
+animation:fogMove 20s infinite linear;
+
+z-index:-2;
+
 }
+
+
+
+.stars {
+
+
+position:fixed;
+
+inset:0;
+
+
+background-image:
+radial-gradient(white 1px, transparent 1px);
+
+
+background-size:80px 80px;
+
+opacity:.2;
+
+z-index:-3;
+
+
+}
+
+
+
+.moon {
+
+
+position:fixed;
+
+top:120px;
+
+right:150px;
+
+
+width:180px;
+
+height:180px;
+
+
+background:white;
+
+border-radius:50%;
+
+
+opacity:.25;
+
+
+box-shadow:
+
+0 0 50px white,
+
+0 0 100px crimson;
+
+
+animation:moonFloat 8s infinite;
+
+
+z-index:-1;
+
+
+}
+
+
+
+
+@keyframes moonFloat {
+
+50% {
+
+transform:translateY(30px);
+
+}
+
+}
+
+
+
+@keyframes fogMove {
+
+from {
+
+transform:translateX(-20%);
+
+}
+
+
+to {
+
+transform:translateX(0);
+
+}
+
+}
+
+
+
+
+
+/* NAVBAR */
+
+
+.navbar {
+
+
+position:fixed;
+
+top:0;
+
+width:100%;
+
+height:100px;
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+
+padding:15px 40px;
+
+
+background:
+
+rgba(0,0,0,.85);
+
+
+backdrop-filter:blur(10px);
+
+
+border-bottom:1px solid #550000;
+
+
+z-index:1000;
+
+
+}
+
+
+
+.nav-logo img {
+
+
+width:120px;
+
+
+filter:
+
+drop-shadow(0 0 20px crimson);
+
+
+}
+
+
+
+.nav-links {
+
+
+display:flex;
+
+gap:25px;
+
+list-style:none;
+
+
+}
+
+
+
+.nav-links a {
+
+
+color:white;
+
+text-decoration:none;
+
+font-size:18px;
+
+transition:.3s;
+
+
+}
+
+
+
+.nav-links a:hover {
+
+
+color:red;
+
+
+text-shadow:
+
+0 0 15px crimson;
+
+
+}
+
+
+
+
+
+/* HERO */
+
+
+.hero {
+
+
+height:100vh;
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+text-align:center;
+
+
+background:
+
+linear-gradient(
+
+rgba(0,0,0,.5),
+
+rgba(0,0,0,.9)
+
+),
+
+url("../images/night-bg.jpg");
+
+
+background-size:cover;
+
+background-position:center;
+
+
+}
+
+
 
 .hero-content {
-margin-top: 50px;
+
+
+margin-top:80px;
+
+
 }
+
+
 
 .hero-logo {
-width: 350px;
+
+
+width:350px;
+
+
 filter:
+
 drop-shadow(0 0 30px crimson);
+
+
 }
+
+
 
 .hero h1 {
-font-size: 5rem;
-letter-spacing: 10px;
-margin: 6px auto;
+
+
+font-size:5rem;
+
+letter-spacing:10px;
+
+
 }
+
+
 
 .hero h2 {
-font-family: 'Tangerine', cursive;
-font-size: 6rem;
-color: #b30000;
-margin: 6px auto;
+
+
+font-family:'Tangerine',cursive;
+
+
+font-size:6rem;
+
+
+color:#b30000;
+
+
 }
+
+
 
 .hero p {
-font-size: 1.5rem;
-margin-bottom: 30px;
+
+
+font-size:1.5rem;
+
+margin:20px;
+
+
 }
+
+
+
 
 .enter-btn {
-padding: 15px 40px;
-border: 1px solid crimson;
-color: white;
-text-decoration: none;
-transition: .4s;
+
+
+display:inline-block;
+
+padding:15px 40px;
+
+
+border:1px solid crimson;
+
+
+color:white;
+
+
+text-decoration:none;
+
+
+transition:.4s;
+
+
 }
+
+
 
 .enter-btn:hover {
-background: red;
-box-shadow: 0 0 40px crimson;
+
+
+background:red;
+
+
+box-shadow:0 0 40px crimson;
+
+
 }
 
-/* =====================
-LORE
-===================== */
+
+
+
+
+/* LORE */
+
 
 .lore {
-padding: 120px 15%;
-text-align: center;
+
+
+padding:120px 15%;
+
+
+text-align:center;
+
+
 background:
+
 radial-gradient(circle,#300000,#050505);
+
+
 }
+
+
 
 .lore h2 {
-font-size: 4rem;
-color: #8b0000;
-letter-spacing: 8px;
-margin: 14px;
+
+
+font-size:4rem;
+
+color:#8b0000;
+
+letter-spacing:8px;
+
+
 }
+
+
 
 .lore-text {
-max-width: 900px;
-margin: auto;
-font-size: 1.4rem;
-line-height: 2;
+
+
+max-width:900px;
+
+margin:auto;
+
+
+font-size:1.4rem;
+
+line-height:2;
+
+
 }
+
+
 
 .lore-text span {
-color: red;
+
+
+color:red;
+
+
 }
+
+
 
 .lore h3 {
-margin: 50px;
-color: #b30000;
-font-size: 2rem;
+
+
+margin:50px;
+
+
+color:#b30000;
+
+
+font-size:2rem;
+
+
 }
+
+
 
 .final-line {
-font-size: 2rem;
-font-style: italic;
+
+
+font-size:2rem;
+
+font-style:italic;
+
+
 }
+
+
 
 .she {
-font-family: 'Amarante', serif;
-font-size: 8rem;
-color: red;
+
+
+font-size:8rem;
+
+color:red;
+
+text-shadow:
+
+0 0 20px crimson;
+
+
 }
 
-/* =====================
-MUSIC
-===================== */
 
-.player {
-padding: 100px;
-text-align: center;
+
+
+
+
+/* MUSIC */
+
+
+.music-section {
+
+
+padding:100px;
+
+
 }
 
-.player h2,
-.gallery h2 {
-font-size: 3rem;
-color: #8b0000;
-font-size: 40px;
-}
+
 
 .music-card {
-display: flex;
-gap: 30px;
-align-items: center;
-justify-content: center;
-background: #111;
-padding: 30px;
-max-width: 650px;
-margin: 50px auto;
-border: 1px solid crimson;
-color: #550000;
-font-size: 20px;
+
+
+display:flex;
+
+gap:30px;
+
+align-items:center;
+
+justify-content:center;
+
+
+background:#111;
+
+
+padding:30px;
+
+
+max-width:700px;
+
+
+margin:auto;
+
+
+border:1px solid crimson;
+
+
 }
+
+
 
 .music-card img {
-width: 150px;
-height: 150px;
-object-fit: cover;
+
+
+width:200px;
+
+height:200px;
+
+
+object-fit:cover;
+
+
 }
 
-.music-card h2, 
-.music-card p {
-    font-size: 24px;
-    text-align: center;
+
+
+.track-info {
+
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+
 }
 
-.track-info { 
-display: flex;
-flex-direction: column;
-gap: 15px;
+
+
+.track-info h3 {
+
+
+color:red;
+
+font-size:2rem;
+
+
 }
 
-/* =====================
-CARDS
-===================== */
+
+
+
+
+/* CARDS */
+
 
 .gallery {
-padding: 100px;
-text-align: center;
+
+
+padding:100px;
+
+text-align:center;
+
+
 }
+
+
 
 .gallery h2 {
-    margin: 50px auto;
+
+
+font-size:3rem;
+
+color:#8b0000;
+
+
 }
 
+
+
 .cards {
-display: flex;
-justify-content: center;
-gap: 30px;
+
+
+display:flex;
+
+justify-content:center;
+
+gap:30px;
+
+margin-top:50px;
+
+
 }
+
+
 
 .card {
 height: 250px;
 width: 250px;
 background:
-linear-gradient(
+linear-gradient (
 145deg,
 #111,
 #300000
 );
+
 border: 1px solid crimson;
 display: flex;
 align-items: center;
@@ -249,71 +669,15 @@ justify-content: center;
 color: white;
 text-decoration: none;
 transition: .5s;
-position: relative;
-overflow: hidden;
 }
 
 .card:hover {
 transform:
 translateY(-20px)
 scale(1.05);
+
 box-shadow:
 0 0 50px crimson;
-}
-
-/* =====================
-MOON + FOG
-===================== */
-
-.moon {
-position: absolute;
-top: 120px;
-right: 150px;
-width: 180px;
-height: 180px;
-background: white;
-border-radius: 50%;
-box-shadow:
-0 0 50px white,
-0 0 100px crimson;
-animation:
-moonFloat 8s infinite;
-}
-
-@keyframes moonFloat {
-
-50% {
-transform: translateY(30px);
-}
-
-}
-
-.fog {
-position: absolute;
-bottom: 0;
-left: 0;
-width: 200%;
-height: 250px;
-background:
-linear-gradient(
-transparent,
-rgba(255, 255, 255, .08)
-);
-filter: blur(20px);
-animation:
-fogMove 20s linear infinite;
-}
-
-@keyframes fogMove {
-
-from {
-transform: translateX(-20%);
-}
-
-to {
-transform: translateX(0);
-}
-
 }
 
 footer {
@@ -322,12 +686,10 @@ text-align: center;
 background: black;
 }
 
-/* MOBILE */
-
-@media(max-width:900px){
+@media(max-width:900px) {
 
 .nav-links {
-display :none;
+display: none;
 }
 
 .hero-logo {
@@ -361,10 +723,4 @@ right: 30px;
 font-size: 5rem;
 }
 
-}
-
-.track-info {
-display: flex;
-flex-direction: column;
-gap: 15px;
 }
