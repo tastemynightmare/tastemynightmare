@@ -1,0 +1,335 @@
+/* ==========================
+   GOOGLE FONTS
+========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Amarante&family=Bevan&display=swap');
+
+/* ==========================
+   RESET
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Amarante", serif;
+    background: #050505;
+    color: #f5f5f5;
+    line-height: 1.7;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ==========================
+   HERO
+========================== */
+
+.hero {
+    min-height: 100vh;
+    background:
+        linear-gradient (rgba (0, 0, 0, .65), rgba (0, 0, 0, .85)),
+        url("../images/tmn.PNG"); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================
+   NAVBAR
+========================== */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 70px;
+    color: white;
+}
+
+.logo {
+    width: 170px;
+    height: 90px;
+    background-image: url("../images/logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.nav-bar {
+    display: flex;
+    gap: 40px; 
+}
+
+.nav-bar a {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transition: .3s;
+}
+
+.nav-bar a:hover {
+    color: #b30000;
+}
+
+/* ==========================
+   HERO CONTENT
+========================== */
+
+.hero {
+    height: 100vh;
+    background-image: url("../images/ashelic-hero.PNG");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-content {
+    max-width: 700px;
+    margin: auto 0;
+    padding: 0 70px 100px;
+}
+
+.hero-content h1 {
+    font-family: "Bevan", serif;
+    font-size: 5.5rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.hero-content h3 {
+    color: #b30000;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    background-color: white;
+    padding: 6px 0px;
+    margin: 6px;
+}
+
+.hero-content p {
+    max-width: 600px;
+    margin-bottom: 35px;
+}
+
+.hero-content span {
+    color: #b30000;
+}
+
+/* ==========================
+   BUTTON
+========================== */
+
+.button {
+    display: inline-block;
+    padding: 15px 35px;
+    background: #8b0000;
+    border-radius: 5px;
+    transition: .3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.button:hover {
+    background: #d00000;
+    transform: translateY (-5px);
+}
+
+/* ==========================
+   PROJECTS
+========================== */
+
+#projects {
+    padding: 90px 70px;
+}
+
+#projects h2,
+#about h2,
+#contact h2 {
+    font-family: "Bevan", serif;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.project-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.project-card {
+    background: #111;
+    border: 1px solid #2a0000;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: .3s;
+}
+
+.project-card:hover {
+    transform: translateY (-8px);
+    border-color: #b30000;
+}
+
+.project-card h3 {
+    padding: 10px;
+    color: #b30000;
+    font-family: "Bevan", serif;
+    letter-spacing: 2px;
+}
+
+.project-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 25px;
+}
+
+.card-content p {
+    margin-bottom: 25px;
+}
+
+.project-card span {
+    color: #b30000;
+}
+
+.project-card .button {
+    margin: 0 25px 25px;
+    align-self: flex-start;
+}
+
+/* ==========================
+   BLENDER GALLERY
+========================== */
+
+.blender-images {
+    display: flex;
+    gap: 15px;
+}
+
+.blender-images img {
+    width: 50px;
+    height: 200px;
+    object-fit: contain;
+}
+
+/* ==========================
+   ABOUT
+========================== */
+
+#about {
+    background: #0d0d0d;
+    padding: 90px 70px;
+}
+
+.about-container {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.about-container h4 {
+    color: #b30000;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.about-container p {
+    margin-bottom: 25px;
+}
+
+/* ==========================
+   CONTACT
+========================== */
+
+#contact {
+    padding: 90px 20px;
+    text-align: center;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.contact-links a {
+    color: #b30000;
+    transition: .3s;
+}
+
+.contact-links a:hover {
+    color: white;
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+footer {
+    background: black;
+    text-align: center;
+    padding: 25px;
+    font-size: .9rem;
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width:900px){
+
+    .hero-content h1 {
+        font-size: 4.2rem;
+    }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .navbar {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .nav-bar {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .hero-content {
+        padding: 40px;
+        text-align: center;
+    }
