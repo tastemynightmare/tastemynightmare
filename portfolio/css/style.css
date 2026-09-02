@@ -1,12 +1,13 @@
-/* ==========================
+/* =========================================================
    GOOGLE FONTS
-========================== */
+========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Amarante&family=Bevan&display=swap');
 
-/* ==========================
+
+/* =========================================================
    RESET
-========================== */
+========================================================= */
 
 * {
     margin: 0;
@@ -23,11 +24,12 @@ body {
     background: #050505;
     color: #f5f5f5;
     line-height: 1.7;
+    overflow-x: hidden;
 }
 
 img {
     display: block;
-    width: 100%;
+    max-width: 100%;
 }
 
 a {
@@ -39,297 +41,935 @@ ul {
     list-style: none;
 }
 
-/* ==========================
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+::selection {
+    background: #8b0000;
+    color: white;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+span {
+    color: #b30000;
+}
+
+
+/* =========================================================
    HERO
-========================== */
+========================================================= */
 
 .hero {
     min-height: 100vh;
+    position: relative;
+
     background:
-        linear-gradient (rgba (0, 0, 0, .65), rgba (0, 0, 0, .85)),
-        url("../images/tmn.PNG"); 
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.88) 0%,
+            rgba(0, 0, 0, 0.65) 45%,
+            rgba(0, 0, 0, 0.25) 100%
+        ),
+        url("../images/ashelic-hero.PNG");
+
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+
     display: flex;
     flex-direction: column;
 }
 
-/* ==========================
-   NAVBAR
-========================== */
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px 70px;
-    color: white;
+/* subtle red glow at bottom of hero */
+
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 180px;
+
+    background: linear-gradient(
+        to top,
+        #050505,
+        transparent
+    );
+
+    pointer-events: none;
 }
 
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    padding: 20px 60px;
+
+    border-bottom: 1px solid rgba(139, 0, 0, 0.5);
+
+    background: rgba(0, 0, 0, 0.65);
+
+    backdrop-filter: blur(10px);
+
+    z-index: 10;
+}
+
+
+/* LOGO */
+
 .logo {
-    width: 170px;
-    height: 90px;
+    width: 150px;
+    height: 70px;
+
     background-image: url("../images/logo.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+
+    flex-shrink: 0;
+
+    transition: 0.4s ease;
 }
+
+.logo:hover {
+    transform: scale(1.05);
+
+    filter:
+        drop-shadow(0 0 8px rgba(139, 0, 0, 0.8))
+        drop-shadow(0 0 20px rgba(139, 0, 0, 0.5));
+}
+
+
+/* NAV LINKS */
 
 .nav-bar {
     display: flex;
-    gap: 40px; 
+    justify-content: center;
+    align-items: center;
+
+    gap: 45px;
+
+    width: 100%;
 }
 
 .nav-bar a {
+    position: relative;
+
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-    transition: .3s;
+
+    color: #f5f5f5;
+
+    padding: 8px 0;
+
+    transition: 0.3s ease;
+}
+
+
+/* underline animation */
+
+.nav-bar a::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+    left: 50%;
+
+    width: 0;
+    height: 2px;
+
+    background: #b30000;
+
+    transform: translateX(-50%);
+
+    transition: 0.3s ease;
 }
 
 .nav-bar a:hover {
     color: #b30000;
+
+    text-shadow:
+        0 0 8px rgba(179, 0, 0, 0.8);
 }
 
-/* ==========================
+.nav-bar a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
    HERO CONTENT
-========================== */
-
-.hero {
-    height: 100vh;
-    background-image: url("../images/ashelic-hero.PNG");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+========================================================= */
 
 .hero-content {
-    max-width: 700px;
+    position: relative;
+    z-index: 2;
+
+    max-width: 850px;
+
     margin: auto 0;
-    padding: 0 70px 100px;
+
+    padding: 150px 70px 120px;
 }
+
+
+/* NAME */
 
 .hero-content h1 {
     font-family: "Bevan", serif;
-    font-size: 5.5rem;
+
+    font-size: clamp(4rem, 8vw, 7rem);
+
     text-transform: uppercase;
-    margin-bottom: 10px;
+
+    letter-spacing: 3px;
+
     color: white;
+
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.8);
 }
+
+
+/* TITLE */
 
 .hero-content h3 {
+    display: inline-block;
+
     color: #b30000;
+
+    font-size: 1rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    border-left: 4px solid #8b0000;
+
+    padding: 12px 20px;
+
     margin-bottom: 25px;
-    letter-spacing: 2px;
-    background-color: white;
-    padding: 6px 0px;
-    margin: 6px;
 }
 
+
+/* DESCRIPTION */
+
 .hero-content p {
-    max-width: 600px;
+    max-width: 650px;
+
+    font-size: 1.05rem;
+
+    color: #d5d5d5;
+
     margin-bottom: 35px;
 }
 
-.hero-content span {
-    color: #b30000;
-}
 
-/* ==========================
+/* =========================================================
    BUTTON
-========================== */
+========================================================= */
 
 .button {
     display: inline-block;
-    padding: 15px 35px;
+
+    padding: 14px 32px;
+
     background: #8b0000;
-    border-radius: 5px;
-    transition: .3s;
+
+    border: 1px solid #b30000;
+
+    border-radius: 3px;
+
     text-transform: uppercase;
+
     letter-spacing: 2px;
+
+    font-size: 0.85rem;
+
+    color: white;
+
+    box-shadow:
+        0 0 0 rgba(179, 0, 0, 0);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .button:hover {
-    background: #d00000;
-    transform: translateY (-5px);
+    background: #b30000;
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 10px 30px rgba(179, 0, 0, 0.35),
+        0 0 20px rgba(179, 0, 0, 0.25);
 }
 
-/* ==========================
+
+/* =========================================================
    PROJECTS
-========================== */
+========================================================= */
 
 #projects {
-    padding: 90px 70px;
+    position: relative;
+
+    padding: 120px 70px;
+
+    background:
+        radial-gradient(
+            circle at top center,
+            rgba(100, 0, 0, 0.12),
+            transparent 55%
+        ),
+        #050505;
 }
+
+
+/* SECTION TITLE */
 
 #projects h2,
 #about h2,
 #contact h2 {
     font-family: "Bevan", serif;
-    font-size: 3rem;
+
+    font-size: clamp(2.5rem, 5vw, 4rem);
+
     text-align: center;
-    margin-bottom: 50px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 60px;
+
+    position: relative;
 }
+
+
+/* decorative line */
+
+#projects h2::after,
+#about h2::after,
+#contact h2::after {
+    content: "";
+
+    display: block;
+
+    width: 80px;
+    height: 3px;
+
+    background: #8b0000;
+
+    margin: 20px auto 0;
+}
+
+
+/* =========================================================
+   PROJECT GRID
+========================================================= */
 
 .project-container {
+    max-width: 1400px;
+
+    margin: 0 auto;
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 35px;
 }
 
+
+/* =========================================================
+   PROJECT CARD
+========================================================= */
+
 .project-card {
-    background: #111;
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            #151515,
+            #090909
+        );
+
     border: 1px solid #2a0000;
-    border-radius: 12px;
+
+    border-radius: 8px;
+
     overflow: hidden;
+
     display: flex;
     flex-direction: column;
-    transition: .3s;
+
+    min-height: 100%;
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+/* red glow on hover */
+
+.project-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: #8b0000;
+
+    transform: scaleX(0);
+
+    transform-origin: left;
+
+    transition: 0.4s ease;
+
+    z-index: 2;
 }
 
 .project-card:hover {
-    transform: translateY (-8px);
-    border-color: #b30000;
+    transform: translateY(-10px);
+
+    border-color: #8b0000;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.6),
+        0 0 25px rgba(139, 0, 0, 0.12);
 }
+
+.project-card:hover::before {
+    transform: scaleX(1);
+}
+
+
+/* =========================================================
+   PROJECT IMAGE
+========================================================= */
+
+.project-card > img {
+    width: 100%;
+
+    height: 280px;
+
+    object-fit: cover;
+
+    border-bottom: 1px solid #2a0000;
+
+    transition: 0.5s ease;
+}
+
+.project-card:hover > img {
+    transform: scale(1.04);
+
+    filter:
+        brightness(0.8)
+        contrast(1.05);
+}
+
+
+/* =========================================================
+   PROJECT TITLE
+========================================================= */
 
 .project-card h3 {
-    padding: 10px;
-    color: #b30000;
     font-family: "Bevan", serif;
-    letter-spacing: 2px;
+
+    color: white;
+
+    font-size: 1.15rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+
+    padding: 25px 25px 5px;
 }
 
-.project-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
 
 .card-content {
     display: flex;
+
     flex-direction: column;
+
     flex: 1;
-    padding: 25px;
+
+    padding: 10px 25px 25px;
 }
 
 .card-content p {
+    color: #c9c9c9;
+
+    font-size: 0.95rem;
+
     margin-bottom: 25px;
 }
 
 .project-card span {
     color: #b30000;
+
+    font-weight: bold;
 }
 
-.project-card .button {
+
+/* =========================================================
+   CARD BUTTON
+========================================================= */
+
+.project-card > .button {
     margin: 0 25px 25px;
+
     align-self: flex-start;
 }
 
-/* ==========================
+
+/* =========================================================
    BLENDER GALLERY
-========================== */
+========================================================= */
 
-.blender-images {
-    display: flex;
-    gap: 15px;
+.blender-gallery {
+    width: 100%;
+
+    height: 280px;
+
+    overflow: hidden;
+
+    background: #080808;
+
+    border-bottom: 1px solid #2a0000;
 }
 
-.blender-images img {
-    width: 50px;
-    height: 200px;
-    object-fit: contain;
+.blender-gallery img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: 0.5s ease;
 }
 
-/* ==========================
+.project-card:hover .blender-gallery img {
+    transform: scale(1.05);
+
+    filter:
+        brightness(0.8)
+        contrast(1.1);
+}
+
+
+/* =========================================================
    ABOUT
-========================== */
+========================================================= */
 
 #about {
-    background: #0d0d0d;
-    padding: 90px 70px;
+    position: relative;
+
+    padding: 120px 70px;
+
+    background:
+        linear-gradient(
+            rgba(13, 13, 13, 0.95),
+            rgba(8, 8, 8, 0.98)
+        );
 }
+
+
+/* subtle side decoration */
+
+#about::before {
+    content: "✦";
+
+    position: absolute;
+
+    top: 70px;
+    left: 8%;
+
+    color: #8b0000;
+
+    font-size: 2rem;
+
+    opacity: 0.5;
+}
+
+#about::after {
+    content: "✦";
+
+    position: absolute;
+
+    bottom: 70px;
+    right: 8%;
+
+    color: #8b0000;
+
+    font-size: 2rem;
+
+    opacity: 0.5;
+}
+
 
 .about-container {
     max-width: 900px;
+
     margin: auto;
+
     text-align: center;
 }
+
 
 .about-container h4 {
     color: #b30000;
+
+    font-family: "Bevan", serif;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
     margin-bottom: 30px;
-    font-size: 20px;
+
+    font-size: 1.15rem;
 }
+
 
 .about-container p {
-    margin-bottom: 25px;
+    color: #cfcfcf;
+
+    font-size: 1.05rem;
+
+    margin-bottom: 30px;
 }
 
-/* ==========================
+
+/* =========================================================
    CONTACT
-========================== */
+========================================================= */
 
 #contact {
-    padding: 90px 20px;
+    padding: 120px 20px;
+
     text-align: center;
+
+    background: #050505;
 }
+
+
+#contact > p {
+    color: #cfcfcf;
+
+    margin-bottom: 5px;
+}
+
 
 .contact-links {
     display: flex;
+
     justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
+
+    align-items: center;
+
+    gap: 40px;
+
+    margin-top: 35px;
+
     flex-wrap: wrap;
 }
 
+
 .contact-links a {
+    position: relative;
+
     color: #b30000;
-    transition: .3s;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    font-size: 0.9rem;
+
+    padding: 10px 5px;
+
+    transition: 0.3s ease;
 }
+
+
+.contact-links a::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 0;
+    height: 1px;
+
+    background: white;
+
+    transition: 0.3s ease;
+}
+
 
 .contact-links a:hover {
     color: white;
+
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-/* ==========================
+
+.contact-links a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
    FOOTER
-========================== */
+========================================================= */
 
 footer {
-    background: black;
+    background: #000;
+
+    border-top: 1px solid #2a0000;
+
     text-align: center;
-    padding: 25px;
-    font-size: .9rem;
+
+    padding: 30px 20px;
+
+    color: #777;
+
+    font-size: 0.8rem;
+
+    letter-spacing: 1px;
 }
 
-/* ==========================
+
+/* =========================================================
    TABLET
-========================== */
+========================================================= */
 
-@media (max-width:900px){
-
-    .hero-content h1 {
-        font-size: 4.2rem;
-    }
-}
-
-/* ==========================
-   MOBILE
-========================== */
-
-@media (max-width:768px){
+@media (max-width: 1000px) {
 
     .navbar {
-        flex-direction: column;
-        gap: 25px;
+        padding: 20px 35px;
     }
 
     .nav-bar {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
+        gap: 25px;
     }
 
     .hero-content {
-        padding: 40px;
+        padding-left: 45px;
+    }
+
+    #projects,
+    #about {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .project-container {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    /* NAV */
+
+    .navbar {
+        position: absolute;
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 15px 20px;
+    }
+
+    .logo {
+        width: 130px;
+        height: 55px;
+    }
+
+    .nav-bar {
+        width: auto;
+
+        gap: 18px;
+
+        flex-wrap: wrap;
+    }
+
+    .nav-bar a {
+        font-size: 0.7rem;
+
+        letter-spacing: 2px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: 100vh;
+
+        background-position:
+            65% center;
+    }
+
+    .hero-content {
+        padding:
+            190px 25px 80px;
+
+        text-align: center;
+
+        margin: auto 0;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(3rem, 15vw, 5rem);
+
+        letter-spacing: 1px;
+    }
+
+    .hero-content h3 {
+        font-size: 0.75rem;
+
+        line-height: 1.5;
+
+        padding: 10px 15px;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+
+    /* PROJECTS */
+
+    #projects,
+    #about {
+        padding:
+            80px 20px;
+    }
+
+    #projects h2,
+    #about h2,
+    #contact h2 {
+        font-size: 2.2rem;
+
+        margin-bottom: 45px;
+    }
+
+    .project-container {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    .project-card > img,
+    .blender-gallery {
+        height: 250px;
+    }
+
+
+    /* ABOUT */
+
+    .about-container p {
+        font-size: 0.95rem;
+    }
+
+
+    /* CONTACT */
+
+    #contact {
+        padding:
+            80px 20px;
+    }
+
+    .contact-links {
+        flex-direction: column;
+
+        gap: 15px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 450px) {
+
+    .nav-bar {
+        gap: 12px;
+    }
+
+    .nav-bar a {
+        font-size: 0.62rem;
+    }
+
+    .hero-content {
+        padding-top: 180px;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content h3 {
+        font-size: 0.65rem;
+    }
+
+    .button {
+        width: 100%;
+
         text-align: center;
     }
+}

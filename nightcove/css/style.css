@@ -1,345 +1,957 @@
+```css
+/* =========================================================
+   GOOGLE FONTS
+========================================================= */
+
 @import url('https://fonts.googleapis.com/css2?family=Amarante&family=Tangerine:wght@400;700&display=swap');
 
+
+/* =========================================================
+   RESET
+========================================================= */
+
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-background: #050505;
-color: white;
-font-family:'Amarante', serif;
-overflow-x: hidden;
+    background: #050505;
+    color: white;
+    font-family: 'Amarante', serif;
+    overflow-x: hidden;
 }
 
-/* ATMOSPHERE */
+
+/* =========================================================
+   ATMOSPHERE
+========================================================= */
+
+/* ---------- FOG ---------- */
+
 .fog {
-position: fixed;
-bottom: 0;
-left: 0;
-width: 200%;
-height: 250px;
-background:
-linear-gradient(
-transparent,
-rgba(255, 255, 255, .08)
-);
-filter: blur(20px);
-animation: fogMove 20s infinite linear;
-z-index: -2;
-}
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 250px;
+    background:
+        linear-gradient(
+            to top,
+            rgba(255, 255, 255, 0.10),
+            transparent
+        );
 
-.stars {
-position: fixed;
-inset: 0;
-background-image:
-radial-gradient(white 1px, transparent 1px);
-background-size: 80px 80px;
-opacity: .2;
-z-index: -3;
-}
-
-.moon {
-position: fixed;
-top: 120px;
-right: 150px;
-width: 180px;
-height: 180px;
-background: white;
-border-radius: 50%;
-opacity: .25;
-box-shadow:
-0 0 50px white,
-0 0 100px crimson;
-animation: moon Float 8s infinite;
-z-index: -1;
-}
-
-@keyframes moonFloat {
-50% {
-transform: translateY (30px);
-}
+    filter: blur(20px);
+    animation: fogMove 20s linear infinite;
+    z-index: -2;
+    pointer-events: none;
 }
 
 @keyframes fogMove {
-from {
-transform: translateX (-20%);
-}
-to {
-transform: translateX (0);
-}
+
+    from {
+        transform: translateX(-20%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+
 }
 
-/* NAVBAR */
+/* =========================================================
+   STARS — LESS UNIFORM / MORE NATURAL
+========================================================= */
+
+.stars {
+    position: fixed;
+    inset: 0;
+    background-image:
+
+        /* tiny distant stars */
+        radial-gradient(
+            circle at 12% 18%,
+            rgba(255,255,255,.7) 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 73% 12%,
+            rgba(255,255,255,.5) 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 35% 67%,
+            rgba(255,255,255,.6) 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 88% 72%,
+            rgba(255,255,255,.5) 0 1px,
+            transparent 1.5px
+        ),
+
+        /* medium stars */
+        radial-gradient(
+            circle at 24% 44%,
+            rgba(255,255,255,.8) 0 1.5px,
+            transparent 2px
+        ),
+
+        radial-gradient(
+            circle at 62% 38%,
+            rgba(255,255,255,.7) 0 1.5px,
+            transparent 2px
+        ),
+
+        radial-gradient(
+            circle at 91% 25%,
+            rgba(255,255,255,.6) 0 1.5px,
+            transparent 2px
+        ),
+
+        /* brighter stars */
+        radial-gradient(
+            circle at 48% 20%,
+            white 0 2px,
+            transparent 3px
+        ),
+
+        radial-gradient(
+            circle at 15% 82%,
+            rgba(255,255,255,.9) 0 2px,
+            transparent 3px
+        );
+
+    background-size:
+        280px 240px,
+        350px 300px,
+        420px 360px,
+        500px 400px,
+        320px 280px,
+        450px 350px,
+        600px 450px,
+        700px 500px,
+        550px 450px;
+
+    background-position:
+        0 0,
+        40px 80px,
+        120px 30px,
+        200px 100px,
+        60px 180px,
+        180px 40px,
+        300px 150px,
+        100px 250px,
+        250px 50px;
+
+    opacity: .35;
+
+    animation: starDrift 60s linear infinite;
+
+    z-index: -3;
+    pointer-events: none;
+}
+
+@keyframes starDrift {
+
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-40px, 25px, 0);
+    }
+
+}
+
+/* ---------- MOON ---------- */
+
+.moon {
+    position: fixed;
+
+    top: 120px;
+    right: 150px;
+
+    width: 180px;
+    height: 180px;
+
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            #ffffff,
+            #d8d8d8 45%,
+            #999999 100%
+        );
+
+    border-radius: 50%;
+
+    opacity: 0.22;
+
+    box-shadow:
+        0 0 30px rgba(255, 255, 255, 0.5),
+        0 0 80px rgba(179, 0, 0, 0.6),
+        0 0 140px rgba(139, 0, 0, 0.3);
+
+    animation: moonFloat 8s ease-in-out infinite;
+
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes moonFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(30px);
+    }
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
 .navbar {
-position: fixed;
-top: 0;
-width: 100%;
-height: 100px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 15px 40px;
-background:
-rgba(0, 0, 0, .85);
-backdrop-filter: blur(10px);
-border-bottom: 1px solid #550000;
-z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #550000;
+    box-shadow:
+        0 5px 30px rgba(100, 0, 0, 0.15);
+
+    z-index: 1000;
+}
+
+/* ---------- LOGO ---------- */
+
+.nav-logo {
+    display: flex;
+    align-items: center;
 }
 
 .nav-logo img {
-width: 120px;
-filter:
-drop-shadow (0 0 20px crimson);
+    width: 120px;
+    filter:
+        drop-shadow(0 0 20px crimson);
+
+    transition: 0.4s ease;
 }
 
+.nav-logo:hover img {
+    transform: scale(1.05);
+    filter:
+        drop-shadow(0 0 10px crimson)
+        drop-shadow(0 0 25px red);
+}
+
+/* ---------- NAV LINKS ---------- */
+
 .nav-links {
-display: flex;
-gap: 25px;
-list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    list-style: none;
+    margin-left: px;
+}
+
+.nav-links li {
+    position: relative; 
 }
 
 .nav-links a {
-color: white;
-text-decoration: none;
-font-size: 18px;
-transition: .3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
 }
 
 .nav-links a:hover {
-color: red;
-text-shadow:
-0 0 15px crimson;
+    color: #ff1a1a;
+
+    text-shadow:
+        0 0 10px crimson,
+        0 0 20px rgba(220, 20, 60, 0.5);
+
+    transform: translateY(-2px);
 }
 
-/* HERO */
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* =========================================================
+   NAV ICONS
+   Add images to:
+   images/icons/
+========================================================= */
+
+.nav-links a img {
+    width: 24px;
+    height: 24px;
+
+    object-fit: contain;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+.nav-links a:hover img {
+    transform: translateY(-3px) scale(1.1);
+
+    filter:
+        drop-shadow(0 0 6px crimson)
+        drop-shadow(0 0 12px red);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
 .hero {
-height: 100vh;
-display: flex;
-align-items: center;
-justify-content: center;
-text-align: center;
-background:
-linear-gradient(
-rgba(0, 0, 0, .5),
-rgba(0, 0, 0, .9)
-),
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.92)
+        ),
 
-url("../images/.jpg");
-background-size: cover;
-background-position: center;
+        url("../images/night-cove.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
+
+/* ---------- HERO CONTENT ---------- */
 
 .hero-content {
-margin-top: 80px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+
+    animation:
+        heroReveal 1.5s ease forwards;
 }
+
+@keyframes heroReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* ---------- HERO LOGO ---------- */
 
 .hero-logo {
-width: 350px;
-filter:
-drop-shadow (0 0 30px crimson);
+    width: 350px;
+    filter:
+        drop-shadow(0 0 20px crimson)
+        drop-shadow(0 0 40px rgba(220, 20, 60, 0.4));
+
+    animation: logoPulse 5s ease-in-out infinite;
 }
 
+@keyframes logoPulse {
+
+    0%,
+    100% {
+        filter:
+            drop-shadow(0 0 20px crimson)
+            drop-shadow(0 0 40px rgba(220, 20, 60, 0.4));
+    }
+
+    50% {
+        filter:
+            drop-shadow(0 0 30px crimson)
+            drop-shadow(0 0 65px rgba(220, 20, 60, 0.65));
+    }
+
+}
+
+/* ---------- HERO TITLE ---------- */
+
 .hero h1 {
-font-size: 5rem;
-letter-spacing: 10px;
+    margin: 10px;
+    font-size: 5rem;
+    letter-spacing: 10px;
+    text-shadow:
+        0 0 10px black,
+        0 0 25px rgba(139, 0, 0, 0.4);
 }
 
 .hero h2 {
-font-family: 'Tangerine', cursive;
-font-size: 6rem;
-color: #b30000;
+    font-family: 'Tangerine', cursive;
+    font-size: 6rem;
+    color: #b30000;
+    text-shadow:
+        0 0 10px crimson,
+        0 0 30px rgba(179, 0, 0, 0.6);
+        margin: 10px;
 }
 
 .hero p {
-font-size: 1.5rem;
-margin: 20px;
+    font-size: 1.5rem;
+    margin: 10px;
+    letter-spacing: 2px;
+    opacity: 0.9;
 }
 
+/* =========================================================
+   ENTER BUTTON
+========================================================= */
+
 .enter-btn {
-display: inline-block;
-padding: 15px 40px;
-border: 1px solid crimson;
-color: white;
-text-decoration: none;
-transition: .4s;
+    display: inline-block;
+    padding: 15px 45px;
+    margin-top: 15px;
+    margin-bottom: 40px;
+    border: 1px solid crimson;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 3px;
+    background: rgba(80, 0, 0, 0.15);
+    box-shadow:
+        0 0 10px rgba(220, 20, 60, 0.2);
+
+    transition:
+        background 0.4s ease,
+        box-shadow 0.4s ease,
+        transform 0.4s ease;
 }
 
 .enter-btn:hover {
-background: red;
-box-shadow 0 0 40px crimson;
+    background: crimson;
+    box-shadow:
+        0 0 20px crimson,
+        0 0 50px rgba(220, 20, 60, 0.5);
+
+    transform: translateY(-3px);
 }
 
-/* LORE */
+/* =========================================================
+   LORE
+========================================================= */
+
 .lore {
-padding: 120px 15%;
-text-align: center;
-background:
-radial-gradient (circle, #300000, #050505);
+    padding: 140px 15%;
+    text-align: center;
+    background:
+        radial-gradient(
+            circle at center,
+            #300000,
+            #050505 70%
+        );
 }
 
 .lore h2 {
-font-size: 4rem;
-color: #8b0000;
-letter-spacing: 8px;
+    font-size: 4rem;
+    color: #8b0000;
+    letter-spacing: 8px;
+    text-shadow:
+        0 0 15px rgba(139, 0, 0, 0.5);
+
+    margin-bottom: 60px;
 }
 
 .lore-text {
-max-width: 900px;
-margin: auto;
-font-size: 1.4rem;
-line-height: 2;
+    max-width: 900px;
+    margin: auto;
+    font-size: 1.4rem;
+    line-height: 2;
+}
+
+.lore-text p {
+    margin-bottom: 30px;
 }
 
 .lore-text span {
-color: red;
+    color: #ff1a1a;
+    text-shadow:
+        0 0 8px rgba(220, 20, 60, 0.5);
 }
 
 .lore h3 {
-margin: 50px;
-color: #b30000;
-font-size: 2rem;
+    margin: 60px 0;
+    color: #b30000;
+    font-size: 2rem;
+    line-height: 1.8;
+    text-shadow:
+        0 0 15px rgba(179, 0, 0, 0.5);
 }
 
 .final-line {
-font-size: 2rem;
-font-style: italic;
+    font-size: 2rem;
+    font-style: italic;
+    margin-top: 50px;
 }
+
+
+/* ---------- SHE ---------- */
 
 .she {
-font-size: 8rem;
-color: red;
-text-shadow:
-0 0 20px crimson;
+    margin: auto;
+    padding: 20px;
+    font-size: 8rem;
+    color: red;
+    line-height: 0.8;
+    text-shadow:
+        0 0 20px crimson,
+        0 0 50px rgba(220, 20, 60, 0.5);
+
+    animation: sheGlow 4s ease-in-out infinite;
 }
 
-/* MUSIC */
-.music-section {
-padding: 100px;
+@keyframes sheGlow {
+
+    0%,
+    100% {
+        opacity: 0.85;
+    }
+
+    50% {
+        opacity: 1;
+
+        text-shadow:
+            0 0 30px crimson,
+            0 0 70px rgba(220, 20, 60, 0.7);
+    }
+
 }
+
+
+/* =========================================================
+   MUSIC SECTION
+========================================================= */
+
+.music-section {
+    padding: 170px 20px;
+    background:
+        linear-gradient(
+            to bottom,
+            #050505,
+            #100000,
+            #050505
+        );
+}
+
+/* ---------- MUSIC CARD ---------- */
 
 .music-card {
-display: flex;
-gap: 30px;
-align-items: center;
-justify-content: center;
-background: #111;
-padding: 30px;
-max-width: 700px;
-margin: auto;
-border: 1px solid crimson;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(
+            145deg,
+            #151515,
+            #080808
+        );
+    padding: 20px;
+    max-width: 750px;
+    margin: auto;
+    border: 1px solid #660000;
+    box-shadow:
+        0 0 30px rgba(139, 0, 0, 0.15);
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
 }
+
+.music-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 15px 50px rgba(139, 0, 0, 0.25);
+}
+
+/* ---------- ALBUM ART ---------- */
 
 .music-card img {
-width: 200px;
-height: 200px;
-object-fit: contain;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border: 1px solid #550000;
+    box-shadow:
+        0 0 20px rgba(139, 0, 0, 0.4);
 }
 
+/* ---------- TRACK INFO ---------- */
+
 .track-info {
-display: flex;
-flex-direction: column;
-gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
 }
 
 .track-info h3 {
-color: red;
-font-size: 2rem;
+    color: red;
+    font-size: 2rem;
+    text-shadow:
+        0 0 10px rgba(220, 20, 60, 0.5);
 }
 
-/* CARDS */
+.track-info p {
+    opacity: 0.7;
+    letter-spacing: 2px;
+}
+
+/* ---------- NATIVE AUDIO PLAYER ---------- */
+
+audio {
+    width: 100%;
+    accent-color: crimson;
+}
+
+/* =========================================================
+   GALLERY
+========================================================= */
 
 .gallery {
-padding: 100px;
-text-align: center;
+    padding: 120px 40px;
+    text-align: center;
+    background:
+        radial-gradient(
+            circle at center,
+            #180000,
+            #050505 70%
+        );
 }
 
 .gallery h2 {
-font-size: 3rem;
-color: #8b0000;
+    font-size: 3rem;
+    color: #8b0000;
+    letter-spacing: 6px;
+    margin-bottom: 50px;
+    text-shadow:
+        0 0 15px rgba(139, 0, 0, 0.5);
 }
 
+
+/* =========================================================
+   GALLERY CARDS
+========================================================= */
+
 .cards {
-display: flex;
-justify-content: center;
-gap: 30px;
-margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+    flex-wrap: wrap;
 }
 
 .card {
-height: 250px;
-width: 250px;
-background:
-linear-gradient (
-145deg,
-#111,
-#300000
-);
+    position: relative;
+    height: 250px;
+    width: 250px;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            145deg,
+            #111,
+            #300000
+        );
 
-border: 1px solid crimson;
-display: flex;
-align-items: center;
-justify-content: center;
-color: white;
-text-decoration: none;
-transition: .5s;
+    border: 1px solid #660000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease,
+        border-color 0.5s ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            circle,
+            rgba(220, 20, 60, 0.2),
+            transparent 65%
+        );
+
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.card h3 {
+    position: relative;
+    z-index: 2;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    padding: 10px; 
+    text-shadow:
+        0 0 10px black;
 }
 
 .card:hover {
-transform:
-translateY(-20px)
-scale(1.05);
-
-box-shadow:
-0 0 50px crimson;
+    transform:
+        translateY(-15px)
+        scale(1.04);
+    border-color: crimson;
+    box-shadow:
+        0 0 25px rgba(220, 20, 60, 0.5),
+        0 0 60px rgba(139, 0, 0, 0.25);
 }
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.card-content h3 {
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-family: 'Tangerine', cursive;
+    font-size: 1.8rem;
+    color: #b30000;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.4s ease;
+}
+
+.card:hover .card-content p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer {
-padding: 40px;
-text-align: center;
-background: black;
+    padding: 40px;
+    text-align: center;
+    background: black;
+    border-top: 1px solid #300000;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 1px;
 }
 
-@media(max-width:900px) {
 
-.nav-links {
-display: none;
-}
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
 
-.hero-logo {
-width: 220px;
-}
+@media (max-width: 1100px) {
 
-.hero h1 {
-font-size: 3rem;
-}
+    .nav-links {
+        gap: 15px;
+    }
 
-.hero h2 {
-font-size: 4rem;
-}
+    .nav-links a {
+        font-size: 15px;
+    }
 
-.music-card {
-flex-direction: column;
-}
+    .hero h1 {
+        font-size: 4rem;
+    }
 
-.cards {
-flex-direction: column;
-align-items: center;
-}
-
-.moon {
-width: 100px;
-height: 100px;
-right: 30px;
-}
-
-.she {
-font-size: 5rem;
-}
+    .hero h2 {
+        font-size: 5rem;
+    }
 
 }
+
+
+@media (max-width: 900px) {
+
+    .navbar {
+        height: 80px;
+
+        padding: 10px 20px;
+    }
+
+    .nav-logo img {
+        width: 100px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        background-attachment: scroll;
+    }
+
+    .hero-logo {
+        width: 220px;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+
+        letter-spacing: 5px;
+    }
+
+    .hero h2 {
+        font-size: 4rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .lore {
+        padding: 100px 8%;
+    }
+
+    .lore h2 {
+        font-size: 2.8rem;
+
+        letter-spacing: 4px;
+    }
+
+    .lore-text {
+        font-size: 1.1rem;
+    }
+
+    .music-card {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .music-card img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .track-info {
+        width: 100%;
+    }
+
+    .cards {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .moon {
+        width: 100px;
+        height: 100px;
+
+        top: 100px;
+        right: 30px;
+    }
+
+    .she {
+        font-size: 5rem;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .hero h1 {
+        font-size: 2.2rem;
+
+        letter-spacing: 3px;
+    }
+
+    .hero h2 {
+        font-size: 3.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero-logo {
+        width: 180px;
+    }
+
+    .enter-btn {
+        padding: 13px 25px;
+
+        font-size: 0.85rem;
+    }
+
+    .lore {
+        padding: 80px 6%;
+    }
+
+    .lore h2 {
+        font-size: 2rem;
+
+        letter-spacing: 2px;
+    }
+
+    .lore-text {
+        font-size: 1rem;
+
+        line-height: 1.8;
+    }
+
+    .she {
+        font-size: 4rem;
+    }
+
+    .gallery {
+        padding: 80px 20px;
+    }
+
+    .gallery h2 {
+        font-size: 2rem;
+
+        letter-spacing: 3px;
+    }
+
+    .card {
+        width: 90%;
+        max-width: 300px;
+    }
+
+}
+```
