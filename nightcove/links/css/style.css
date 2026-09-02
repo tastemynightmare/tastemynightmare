@@ -65,45 +65,109 @@ body::before {
    STARS
 ========================================================= */
 
+/* ---------- STARS ---------- */
+
 .stars {
     position: fixed;
-
     inset: 0;
 
     background-image:
-        radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px),
-        radial-gradient(circle, rgba(179,0,0,.6) 1px, transparent 1px);
+
+        radial-gradient(
+            circle at 12% 18%,
+            rgba(255,255,255,.7) 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 73% 12%,
+            rgba(255,255,255,.5) 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 35% 67%,
+            rgba(255,255,255,.6) 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 88% 72%,
+            rgba(255,255,255,.5) 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle at 24% 44%,
+            rgba(255,255,255,.8) 0 1.5px,
+            transparent 2px
+        ),
+
+        radial-gradient(
+            circle at 62% 38%,
+            rgba(255,255,255,.7) 0 1.5px,
+            transparent 2px
+        ),
+
+        radial-gradient(
+            circle at 91% 25%,
+            rgba(255,255,255,.6) 0 1.5px,
+            transparent 2px
+        ),
+
+        radial-gradient(
+            circle at 48% 20%,
+            white 0 2px,
+            transparent 3px
+        ),
+
+        radial-gradient(
+            circle at 15% 82%,
+            rgba(255,255,255,.9) 0 2px,
+            transparent 3px
+        );
 
     background-size:
-        90px 90px,
-        140px 140px,
-        190px 190px;
+        280px 240px,
+        350px 300px,
+        420px 360px,
+        500px 400px,
+        320px 280px,
+        450px 350px,
+        600px 450px,
+        700px 500px,
+        550px 450px;
 
     background-position:
-        10px 20px,
-        50px 80px,
-        100px 30px;
+        0 0,
+        40px 80px,
+        120px 30px,
+        200px 100px,
+        60px 180px,
+        180px 40px,
+        300px 150px,
+        100px 250px,
+        250px 50px;
 
-    opacity: .2;
+    opacity: .35;
 
-    z-index: -4;
+    animation: starDrift 60s linear infinite;
 
-    animation: starMove 50s linear infinite;
+    z-index: -3;
+    pointer-events: none;
 }
 
-@keyframes starMove {
+@keyframes starDrift {
 
     from {
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
     }
 
     to {
-        transform: translateY(80px);
+        transform: translate3d(-40px, 25px, 0);
     }
 
 }
-
 
 /* =========================================================
    MOON
@@ -256,53 +320,42 @@ body::before {
 /* LOGO */
 
 .profile-logo {
-
     width: 145px;
     height: 145px;
 
     margin: 0 auto 25px;
 
     display: flex;
-
     justify-content: center;
     align-items: center;
 
-    border: 1px solid rgba(139,0,0,.5);
-
+    border: 2px solid #8b0000;
     border-radius: 50%;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(80,0,0,.25),
-            rgba(0,0,0,.8)
-        );
+    background: #050505;
+
+    overflow: hidden;
 
     box-shadow:
-        0 0 30px rgba(139,0,0,.2);
+        0 0 20px rgba(139, 0, 0, .35),
+        0 0 45px rgba(139, 0, 0, .15);
 
     transition: .4s ease;
 }
 
+
 .profile-logo img {
+    width: 100%;
+    height: 100%;
 
-    width: 90%;
+    object-fit: cover;
 
-    height: 90%;
+    object-position: center;
 
-    object-fit: contain;
+    border-radius: 50%;
+
+    display: block;
 }
-
-.profile-logo:hover {
-
-    transform: scale(1.05);
-
-    border-color: #b30000;
-
-    box-shadow:
-        0 0 35px rgba(179,0,0,.35);
-}
-
 
 /* NAME */
 
@@ -330,7 +383,7 @@ body::before {
 
     letter-spacing: 5px;
 
-    font-size: .85rem;
+    font-size: 24px;
 
 }
 
@@ -631,87 +684,307 @@ footer span {
     letter-spacing: 1px;
 }
 
-
 /* =========================================================
-   MOBILE
+   RESPONSIVE DESIGN
 ========================================================= */
+
+/* ---------- LARGE DESKTOP ---------- */
+
+@media (min-width: 1200px) {
+
+    .directory {
+        max-width: 700px;
+        padding-top: 110px;
+    }
+
+    .profile-logo {
+        width: 155px;
+        height: 155px;
+    }
+
+    .link-card {
+        min-height: 82px;
+    }
+
+}
+
+
+/* ---------- TABLETS / SMALL LAPTOPS ---------- */
+
+@media (min-width: 601px) and (max-width: 1199px) {
+
+    .directory {
+        width: 90%;
+        max-width: 680px;
+        padding: 100px 20px 50px;
+    }
+
+    .profile-logo {
+        width: 140px;
+        height: 140px;
+    }
+
+}
+
+
+/* ---------- PHONES ---------- */
 
 @media (max-width: 600px) {
 
     .directory {
-
-        padding:
-            90px 18px 40px;
+        width: 100%;
+        max-width: 100%;
+        padding: 85px 16px 40px;
     }
+
+
+    /* BACK HOME */
 
     .back-home {
-
         top: 15px;
-        left: 18px;
+        left: 16px;
 
         font-size: .65rem;
+        letter-spacing: 1.5px;
     }
 
-    .moon {
 
+    /* MOON */
+
+    .moon {
         width: 100px;
         height: 100px;
 
-        right: 3%;
+        top: 65px;
+        right: -10px;
 
-        opacity: .1;
+        opacity: .08;
+    }
+
+
+    /* PROFILE */
+
+    .profile {
+        margin-bottom: 40px;
     }
 
     .profile-logo {
-
         width: 120px;
         height: 120px;
+
+        margin-bottom: 20px;
     }
 
     .profile h1 {
-
-        font-size: 2.3rem;
-
+        font-size: clamp(2rem, 10vw, 2.5rem);
         letter-spacing: 2px;
+
+        line-height: 1.1;
     }
 
     .artist-name {
-
-        font-size: .7rem;
-
+        font-size: clamp(.65rem, 3vw, .8rem);
         letter-spacing: 3px;
+
+        margin-top: 6px;
+    }
+
+    .bio {
+        font-size: 1.5rem;
+    }
+
+
+    /* DIRECTORY HEADING */
+
+    .directory-heading {
+        gap: 10px;
+        margin-bottom: 20px;
     }
 
     .directory-heading h2 {
-
-        font-size: .7rem;
-
-        letter-spacing: 2px;
+        font-size: .65rem;
+        letter-spacing: 1.5px;
     }
+
+
+    /* LINK LIST */
+
+    .links {
+        gap: 12px;
+    }
+
+
+    /* LINK CARDS */
 
     .link-card {
+        min-height: 72px;
 
-        min-height: 75px;
+        padding: 11px 13px;
 
-        padding: 12px 15px;
+        border-radius: 6px;
     }
 
+
+    /* ICON */
+
     .link-icon {
+        width: 38px;
+        height: 38px;
 
-        width: 40px;
-        height: 40px;
+        margin-right: 12px;
 
-        margin-right: 13px;
+        font-size: 1.15rem;
+    }
+
+
+    /* LINK TEXT */
+
+    .link-text {
+        min-width: 0;
     }
 
     .link-text h3 {
+        font-size: .7rem;
+        letter-spacing: 1.5px;
 
-        font-size: .75rem;
+        white-space: nowrap;
     }
 
     .link-text p {
+        font-size: 1.25rem;
 
+        line-height: 1.05;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+
+    /* ARROW */
+
+    .arrow {
+        flex-shrink: 0;
+
+        margin-left: 8px;
+
+        font-size: 1rem;
+    }
+
+
+    /* MOBILE HOVER */
+
+    .link-card:hover {
+        transform: none;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        margin-top: 45px;
+        padding-top: 25px;
+
+        font-size: .6rem;
+        letter-spacing: 1.5px;
+    }
+
+    footer span {
+        font-size: .55rem;
+        letter-spacing: .8px;
+    }
+
+}
+
+
+/* ---------- VERY SMALL PHONES ---------- */
+
+@media (max-width: 375px) {
+
+    .directory {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .back-home {
+        left: 12px;
+    }
+
+    .profile-logo {
+        width: 105px;
+        height: 105px;
+    }
+
+    .profile h1 {
+        font-size: 2rem;
+        letter-spacing: 1.5px;
+    }
+
+    .artist-name {
+        letter-spacing: 2px;
+    }
+
+    .bio {
         font-size: 1.35rem;
+    }
+
+    .directory-heading {
+        gap: 7px;
+    }
+
+    .directory-heading h2 {
+        font-size: .6rem;
+        letter-spacing: 1px;
+    }
+
+    .link-card {
+        min-height: 68px;
+        padding: 10px 11px;
+    }
+
+    .link-icon {
+        width: 35px;
+        height: 35px;
+
+        margin-right: 10px;
+
+        font-size: 1rem;
+    }
+
+    .link-text h3 {
+        font-size: .65rem;
+        letter-spacing: 1px;
+    }
+
+    .link-text p {
+        font-size: 1.1rem;
+    }
+
+    .arrow {
+        font-size: .9rem;
+        margin-left: 5px;
+    }
+
+}
+
+
+/* ---------- TOUCH DEVICES ---------- */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .link-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .link-card:active {
+        transform: scale(.985);
+        border-color: #8b0000;
+    }
+
+    .link-card:active .link-icon {
+        border-color: #b30000;
+        color: white;
     }
 
 }
