@@ -24,11 +24,9 @@ img {
     display: block;
 }
 
-
 /* =========================================================
    ATMOSPHERE
 ========================================================= */
-
 
 /* ---------- STARS ---------- */
 
@@ -134,7 +132,6 @@ img {
 
 }
 
-
 /* ---------- MOON ---------- */
 
 .moon {
@@ -182,7 +179,6 @@ img {
 
 }
 
-
 /* ---------- FOG ---------- */
 
 .fog {
@@ -221,58 +217,44 @@ img {
 
 }
 
-
 /* =========================================================
    NAVIGATION
 ========================================================= */
 
 .navbar {
     position: fixed;
-
     top: 0;
     left: 0;
-
     width: 100%;
     min-height: 90px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 15px 40px;
-
     background: rgba(0,0,0,.88);
-
     backdrop-filter: blur(10px);
-
     border-bottom: 1px solid #550000;
-
     box-shadow:
         0 5px 30px rgba(100,0,0,.15);
 
     z-index: 1000;
 }
 
-
 /* ---------- LOGO ---------- */
 
 .nav-logo {
     position: absolute;
-
     left: 40px;
     top: 50%;
-
+    padding: 10px;
     transform: translateY(-50%);
-
     display: flex;
     align-items: center;
-
     text-decoration: none;
 }
 
 .nav-logo img {
-    width: 120px;
-
+    width: 100px;
     filter:
         drop-shadow(0 0 20px crimson);
 
