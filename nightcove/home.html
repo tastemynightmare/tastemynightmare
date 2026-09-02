@@ -160,27 +160,91 @@
 
         <!-- MUSIC -->
 
+        <section class="player-section">
 
-        <section class="music-section">
+            <div class="player-container">
 
+                <!-- Album -->
 
-            <div class="music-card">
+                <div class="album-side">
 
-                <img src="images/atc_cover.JPG" alt="Album Cover">
+                    <div class="record-wrapper">
 
-                <div class="track-info">
+                        <div class="vinyl-record"></div>
 
-                    <h3>
-                    After the Club
+                        <img src="images/atc_cover.JPG" alt="Album Cover" 
+                            id="album-cover" class="album-cover">
+
+                    </div>
+
+                </div>
+
+                <!-- Player -->
+
+                <div class="player-side">
+
+                    <h2 id="song-title">
+                        After the Club
+                    </h2>
+
+                    <h3 id="artist-name">
+                        Ashelic Rose
                     </h3>
 
-                    <p>
-                    Ashelic Rose
-                    </p>
+                    <audio id="audio">
 
-                    <audio controls>
                         <source src="music/aftertheclub.mp3" type="audio/mpeg">
+
                     </audio>
+
+                    <div class="controls">
+
+                        <button id="previous-btn">
+                            ⏮
+                        </button>
+
+                        <button id="play-btn">
+                            ▶
+                        </button>
+
+                        <button id="next-btn">
+                            ⏭
+                        </button>
+
+                    </div>
+
+                    <div class="progress-container">
+
+                        <div class="progress-bar">
+
+                            <div class="progress"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="time">
+
+                        <span id="current-time">0:00</span>
+
+                        <span id="duration">1:49</span>
+
+                    </div>
+
+                    <div class="volume">
+
+                        <label for="volume-slider">
+                            Volume
+                        </label>
+
+                        <input
+                            type="range"
+                            id="volume-slider"
+                            min="0"
+                            max="100"
+                            value="100">
+
+                    </div>
 
                 </div>
 

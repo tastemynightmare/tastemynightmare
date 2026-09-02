@@ -1,0 +1,717 @@
+/* =========================================================
+   GOOGLE FONTS
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Amarante&family=Tangerine:wght@400;700&display=swap');
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: "Amarante", serif;
+
+    background: #030303;
+
+    color: white;
+
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(80, 0, 0, 0.18),
+            transparent 55%
+        );
+
+    pointer-events: none;
+
+    z-index: -5;
+}
+
+
+/* =========================================================
+   STARS
+========================================================= */
+
+.stars {
+    position: fixed;
+
+    inset: 0;
+
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px),
+        radial-gradient(circle, rgba(179,0,0,.6) 1px, transparent 1px);
+
+    background-size:
+        90px 90px,
+        140px 140px,
+        190px 190px;
+
+    background-position:
+        10px 20px,
+        50px 80px,
+        100px 30px;
+
+    opacity: .2;
+
+    z-index: -4;
+
+    animation: starMove 50s linear infinite;
+}
+
+@keyframes starMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(80px);
+    }
+
+}
+
+
+/* =========================================================
+   MOON
+========================================================= */
+
+.moon {
+    position: fixed;
+
+    top: 80px;
+    right: 8%;
+
+    width: 150px;
+    height: 150px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            #ffffff,
+            #d6d6d6 45%,
+            #888888 100%
+        );
+
+    opacity: .14;
+
+    box-shadow:
+        0 0 40px rgba(255,255,255,.3),
+        0 0 100px rgba(139,0,0,.35);
+
+    z-index: -3;
+
+    animation: moonFloat 8s ease-in-out infinite;
+}
+
+@keyframes moonFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(25px);
+    }
+
+}
+
+
+/* =========================================================
+   FOG
+========================================================= */
+
+.fog {
+    position: fixed;
+
+    left: -10%;
+    bottom: -100px;
+
+    width: 120%;
+    height: 300px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(120,0,0,.12),
+            transparent 70%
+        );
+
+    filter: blur(30px);
+
+    animation: fogMove 15s ease-in-out infinite alternate;
+
+    z-index: -2;
+
+    pointer-events: none;
+}
+
+@keyframes fogMove {
+
+    from {
+        transform: translateX(-5%);
+    }
+
+    to {
+        transform: translateX(5%);
+    }
+
+}
+
+
+/* =========================================================
+   BACK HOME
+========================================================= */
+
+.back-home {
+    position: fixed;
+
+    top: 25px;
+    left: 30px;
+
+    font-size: .75rem;
+
+    letter-spacing: 2px;
+
+    color: #999;
+
+    transition: .3s ease;
+
+    z-index: 10;
+}
+
+.back-home:hover {
+    color: #b30000;
+
+    text-shadow:
+        0 0 10px rgba(179,0,0,.7);
+}
+
+
+/* =========================================================
+   DIRECTORY
+========================================================= */
+
+.directory {
+
+    width: 100%;
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    padding: 100px 25px 50px;
+
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile {
+
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+
+/* LOGO */
+
+.profile-logo {
+
+    width: 145px;
+    height: 145px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid rgba(139,0,0,.5);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(80,0,0,.25),
+            rgba(0,0,0,.8)
+        );
+
+    box-shadow:
+        0 0 30px rgba(139,0,0,.2);
+
+    transition: .4s ease;
+}
+
+.profile-logo img {
+
+    width: 90%;
+
+    height: 90%;
+
+    object-fit: contain;
+}
+
+.profile-logo:hover {
+
+    transform: scale(1.05);
+
+    border-color: #b30000;
+
+    box-shadow:
+        0 0 35px rgba(179,0,0,.35);
+}
+
+
+/* NAME */
+
+.profile h1 {
+
+    font-family: "Amarante", serif;
+
+    font-size: clamp(2.5rem, 8vw, 4rem);
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 5px;
+}
+
+
+/* ARTIST NAME */
+
+.artist-name {
+
+    color: #b30000;
+
+    text-transform: uppercase;
+
+    letter-spacing: 5px;
+
+    font-size: .85rem;
+
+}
+
+
+/* BIO */
+
+.bio {
+
+    color: #888;
+
+    font-family: "Tangerine", cursive;
+
+    font-size: 1.8rem;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   DIRECTORY HEADING
+========================================================= */
+
+.directory-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.directory-heading h2 {
+
+    white-space: nowrap;
+
+    font-size: .85rem;
+
+    letter-spacing: 3px;
+
+    color: #b30000;
+}
+
+.line {
+
+    height: 1px;
+
+    flex: 1;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            #550000
+        );
+}
+
+.line:last-child {
+
+    background:
+        linear-gradient(
+            to left,
+            transparent,
+            #550000
+        );
+}
+
+
+/* =========================================================
+   LINK CARDS
+========================================================= */
+
+.links {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+
+.link-card {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    min-height: 80px;
+
+    padding: 14px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(25,25,25,.95),
+            rgba(8,8,8,.95)
+        );
+
+    border: 1px solid #2a0000;
+
+    border-radius: 6px;
+
+    overflow: hidden;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* RED LIGHT */
+
+.link-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background: #8b0000;
+
+    transform: scaleY(0);
+
+    transform-origin: bottom;
+
+    transition: .3s ease;
+}
+
+
+/* ICON */
+
+.link-icon {
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    border: 1px solid #3a0000;
+
+    color: #b30000;
+
+    font-size: 1.4rem;
+
+    margin-right: 18px;
+
+    transition: .3s ease;
+}
+
+
+/* TEXT */
+
+.link-text {
+
+    flex: 1;
+}
+
+.link-text h3 {
+
+    font-size: .9rem;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 2px;
+}
+
+.link-text p {
+
+    color: #777;
+
+    font-family: "Tangerine", cursive;
+
+    font-size: 1.5rem;
+
+    line-height: 1;
+}
+
+
+/* ARROW */
+
+.arrow {
+
+    color: #555;
+
+    font-size: 1.2rem;
+
+    transition: .3s ease;
+}
+
+
+/* HOVER */
+
+.link-card:hover {
+
+    transform: translateX(6px);
+
+    border-color: #8b0000;
+
+    box-shadow:
+        0 10px 30px rgba(139,0,0,.12);
+}
+
+.link-card:hover::before {
+
+    transform: scaleY(1);
+}
+
+.link-card:hover .link-icon {
+
+    border-color: #b30000;
+
+    color: white;
+
+    box-shadow:
+        0 0 15px rgba(179,0,0,.25);
+}
+
+.link-card:hover .arrow {
+
+    color: #b30000;
+
+    transform: translate(3px, -3px);
+}
+
+
+/* =========================================================
+   COMING SOON
+========================================================= */
+
+.coming-soon {
+
+    opacity: .55;
+
+    cursor: default;
+}
+
+.coming-soon:hover {
+
+    transform: none;
+
+    border-color: #2a0000;
+
+    box-shadow: none;
+}
+
+.coming-soon:hover::before {
+
+    transform: scaleY(0);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    text-align: center;
+
+    margin-top: 60px;
+
+    padding-top: 30px;
+
+    border-top: 1px solid #1a0000;
+
+    color: #555;
+
+    font-size: .7rem;
+
+    letter-spacing: 2px;
+}
+
+footer span {
+
+    display: block;
+
+    margin-top: 8px;
+
+    color: #333;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .directory {
+
+        padding:
+            90px 18px 40px;
+    }
+
+    .back-home {
+
+        top: 15px;
+        left: 18px;
+
+        font-size: .65rem;
+    }
+
+    .moon {
+
+        width: 100px;
+        height: 100px;
+
+        right: 3%;
+
+        opacity: .1;
+    }
+
+    .profile-logo {
+
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile h1 {
+
+        font-size: 2.3rem;
+
+        letter-spacing: 2px;
+    }
+
+    .artist-name {
+
+        font-size: .7rem;
+
+        letter-spacing: 3px;
+    }
+
+    .directory-heading h2 {
+
+        font-size: .7rem;
+
+        letter-spacing: 2px;
+    }
+
+    .link-card {
+
+        min-height: 75px;
+
+        padding: 12px 15px;
+    }
+
+    .link-icon {
+
+        width: 40px;
+        height: 40px;
+
+        margin-right: 13px;
+    }
+
+    .link-text h3 {
+
+        font-size: .75rem;
+    }
+
+    .link-text p {
+
+        font-size: 1.35rem;
+    }
+
+}
