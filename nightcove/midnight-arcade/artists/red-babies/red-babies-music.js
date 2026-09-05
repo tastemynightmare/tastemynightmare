@@ -280,3 +280,17 @@ audio.addEventListener(
 
     }
 );
+
+
+// RED BABIES — visual playback states for Dead Air palette
+audio.addEventListener("play", () => {
+  document.body.classList.add("dead-air-playing");
+});
+
+audio.addEventListener("pause", () => {
+  document.body.classList.remove("dead-air-playing");
+});
+
+audio.addEventListener("ended", () => {
+  document.body.classList.remove("dead-air-playing");
+});

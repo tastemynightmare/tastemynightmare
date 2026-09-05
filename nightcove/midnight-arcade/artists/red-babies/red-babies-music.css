@@ -5,12 +5,12 @@
 }
 
 :root {
-    --black: #0a090b;
-    --deep: #21191f;
-    --primary: #ff6baf;
-    --secondary: #ffffff;
-    --accent: #b8aeb6;
-    --white: #fffafd;
+    --black: #0B0B0A;
+    --deep: #171614;
+    --primary: #8F241C;
+    --secondary: #D4C39C;
+    --accent: #4E8D91;
+    --white: #EEE9DC;
 }
 
 body {
@@ -18,7 +18,7 @@ body {
     background:
         radial-gradient(
             circle at 18% 20%,
-            rgba(255,107,175, .20),
+            rgba(143,36,28, .20),
             transparent 34%
         ),
         radial-gradient(
@@ -132,7 +132,7 @@ body {
         )
         drop-shadow(
             0 0 18px
-            rgba(255,107,175, .16)
+            rgba(143,36,28, .16)
         );
     animation: float 3s ease-in-out infinite;
 }
@@ -153,7 +153,7 @@ body {
     backdrop-filter: blur(20px);
     box-shadow:
         0 0 50px
-        rgba(255,107,175, .14);
+        rgba(143,36,28, .14);
 }
 
 .transmission-label {
@@ -169,7 +169,7 @@ body {
     margin: 12px 0;
     text-shadow:
         0 0 20px
-        rgba(255,107,175, .28);
+        rgba(143,36,28, .28);
 }
 
 .artist-location {
@@ -387,4 +387,123 @@ footer {
     .artist-actions {
         grid-template-columns: 1fr;
     }
+}
+
+
+/* RED BABIES â€” DEAD AIR REPALETTE */
+:root {
+  --tar-black: #0B0B0A;
+  --deep-charcoal: #171614;
+  --oxide-red: #8F241C;
+  --nicotine-cream: #D4C39C;
+  --dead-tv-cyan: #4E8D91;
+  --concrete-gray: #686762;
+  --off-white: #EEE9DC;
+}
+
+body {
+  background:
+    radial-gradient(circle at 16% 18%, rgba(78, 141, 145, .16), transparent 32%),
+    radial-gradient(circle at 84% 42%, rgba(143, 36, 28, .14), transparent 34%),
+    linear-gradient(135deg, var(--tar-black), var(--deep-charcoal));
+}
+
+.sound-nav {
+  border-bottom-color: rgba(78, 141, 145, .42);
+}
+
+.sound-nav a,
+.song-info p,
+.audio-status {
+  color: var(--dead-tv-cyan);
+}
+
+.sound-nav span,
+.transmission-label {
+  color: var(--nicotine-cream);
+}
+
+.player-card h1 {
+  color: var(--oxide-red);
+  text-shadow: 0 0 18px rgba(143, 36, 28, .32);
+}
+
+.artist-location {
+  color: var(--dead-tv-cyan);
+}
+
+.player-card {
+  border-color: rgba(78, 141, 145, .42);
+  box-shadow: 0 0 50px rgba(78, 141, 145, .10);
+}
+
+.album-frame {
+  border-color: var(--nicotine-cream);
+}
+
+#progressBar {
+  accent-color: var(--dead-tv-cyan);
+}
+
+.controls button:hover {
+  border-color: var(--dead-tv-cyan);
+  color: var(--dead-tv-cyan);
+}
+
+.controls .play-button {
+  background: var(--oxide-red);
+  color: var(--off-white);
+  border-color: var(--oxide-red);
+}
+
+.equalizer span {
+  background: var(--dead-tv-cyan);
+}
+
+.secondary-button {
+  border-color: var(--dead-tv-cyan);
+  color: var(--off-white);
+}
+
+.ticket-button {
+  background: var(--oxide-red);
+  color: var(--off-white);
+}
+
+footer {
+  color: var(--concrete-gray);
+}
+
+.sound-room::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .08;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.05) 0,
+      rgba(255,255,255,.05) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  mix-blend-mode: soft-light;
+}
+
+.artist-sprite {
+  filter:
+    drop-shadow(0 20px 30px rgba(0,0,0,.6))
+    drop-shadow(0 0 14px rgba(78,141,145,.10));
+}
+
+body.dead-air-playing .player-card {
+  border-color: rgba(78,141,145,.72);
+  box-shadow:
+    0 0 60px rgba(78,141,145,.16),
+    0 0 24px rgba(143,36,28,.10);
+}
+
+body.dead-air-playing .album-frame {
+  box-shadow: 0 0 18px rgba(143,36,28,.14);
 }

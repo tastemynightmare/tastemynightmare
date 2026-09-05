@@ -504,6 +504,7 @@ function setSprite(key, effect) {
 
 
 let typewriterTimer = null;
+let renderToken = 0;
 
 
 function typeText(text, onComplete) {
@@ -589,10 +590,20 @@ function renderChoices(choices = []) {
     button.textContent = choice.text;
 
     button.addEventListener("click", () => {
+      // Prevent double-clicks and remove the old choice UI immediately.
+      Array.from(choicesEl.children).forEach(choiceButton => {
+        choiceButton.disabled = true;
+      });
+
+      choicesEl.classList.add("choices--leaving");
 
       playSfx("click");
-      goToScene(choice.next);
 
+      requestAnimationFrame(() => {
+        choicesEl.innerHTML = "";
+        choicesEl.classList.remove("choices--leaving");
+        goToScene(choice.next);
+      });
     });
 
     choicesEl.appendChild(button);
@@ -672,6 +683,23 @@ function renderScene(sceneId) {
 
 
 function goToScene(sceneId) {
+  // Kill anything visually left over from the previous choice immediately.
+  renderToken += 1;
+
+  if (typewriterTimer) {
+    clearTimeout(typewriterTimer);
+    typewriterTimer = null;
+  }
+
+  if (typeof glitchTimer !== "undefined" && glitchTimer) {
+    clearTimeout(glitchTimer);
+    glitchTimer = null;
+  }
+
+  choicesEl.innerHTML = "";
+  glitchMessageEl.hidden = true;
+  document.body.classList.remove("corrupted");
+
   renderScene(sceneId);
 }
 

@@ -32,7 +32,7 @@ const story = {
 
   intro: {
     speaker: "M1H1",
-    text: "YO. THIS SHOW WON'T END.",
+    text: "YO. THIS SHOW WON'T END. I GOTTA MAKE IT TO MY NEXT SET!",
     sprite: "m1h1Rage",
     background: "transmission",
     objective: "Answer M1H1's transmission.",

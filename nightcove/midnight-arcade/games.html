@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#070003">
+        <title>Midnight Arcade | Taste My Nightmare</title>
+        <meta name="description" content="Enter the Midnight Arcade inside Taste My Nightmare's Night Cove.">
+        <link rel="stylesheet" href="arcade.css">
+    </head>
+
+    <body>
+
+        <div class="page-noise" aria-hidden="true"></div>
+        <div class="scanlines" aria-hidden="true"></div>
+
+        <header class="site-header">
+
+            <a class="brand-lockup" href="../home.html">
+                <span class="brand-kicker">TASTE MY NIGHTMARE</span>
+                <span class="brand-name">NIGHT COVE</span>
+            </a>
+
+            <nav class="header-nav" aria-label="Primary">
+                <a href="../home.html">HOME</a>
+                <a href="../home.html#night-cove">NIGHT COVE</a>
+                <button id="soundToggle" class="sound-toggle" type="button">
+                SOUND: OFF
+                </button>
+            </nav>
+
+        </header>
+
+        <main>
+
+            <!-- =========================================================
+                HERO
+            ========================================================== -->
+
+            <section class="arcade-hero" id="top">
+
+                <div class="hero-grid" aria-hidden="true"></div>
+
+                    <div class="hero-copy">
+
+                        <p class="eyebrow">
+                            NIGHT COVE SYSTEM // SECTOR 04
+                        </p>
+
+                        <h1>
+                            <span>MIDNIGHT</span>
+                            <span>ARCADE</span>
+                        </h1>
+
+                        <p class="hero-tagline">
+                            INSERT YOUR SOUL TO PLAY.
+                        </p>
+
+                        <p class="hero-description">
+                            Story cartridges, corrupted files, strange machines,
+                            and whatever else survived after midnight.
+                        </p>
+
+                        <a class="arcade-button arcade-button--primary" href="#now-playing">
+                            ENTER ARCADE
+                            <span aria-hidden="true">&gt;</span>
+                        </a>
+
+                    </div>
+
+                    <div class="hero-machine" aria-hidden="true">
+
+                    <div class="machine-shell">
+
+                        <div class="machine-marquee">
+                        MIDNIGHT ARCADE
+                        </div>
+
+                        <div class="machine-screen">
+
+                            <div class="boot-screen">
+                                <span class="boot-heart">♥</span>
+                                <span>TMN SYSTEM</span>
+                                <span class="boot-status">ONLINE</span>
+                            </div>
+
+                        </div>
+
+                        <div class="machine-controls">
+                            <div class="joystick">
+                                <span></span>
+                            </div>
+
+                            <div class="machine-buttons">
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <a class="scroll-indicator" href="#now-playing">
+                SCROLL TO SELECT
+                <span>↓</span>
+                </a>
+
+            </section>
+
+
+            <!-- =========================================================
+                NOW PLAYING — ONE GAME
+            ========================================================== -->
+
+            <section class="section now-playing" id="now-playing">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="eyebrow">
+                        CURRENTLY LOADED
+                        </p>
+
+                        <h2>
+                        NOW PLAYING
+                        </h2>
+                    </div>
+
+                    <span class="section-code">
+                        CARTRIDGE // 001
+                    </span>
+
+                </div>
+
+                <article class="featured-game">
+
+                    <div class="featured-game__art">
+
+                        <div class="featured-game__image">
+
+                        <img
+                            src="assets/images/and-then-shee-rose.webp"
+                            alt="And Then Shee Rose game artwork"
+                            onerror="this.classList.add('asset-missing')"
+                        />
+
+                        <div class="art-fallback">
+                            <span>AND THEN</span>
+                            <strong>SHEE ROSE</strong>
+                            <small>ADD GAME ARTWORK</small>
+                        </div>
+
+                        </div>
+
+                        <div class="featured-game__badge">
+                        FEATURED STORY GAME
+                        </div>
+
+                    </div>
+
+                    <div class="featured-game__info">
+
+                        <p class="game-series">
+                        MIDNIGHT ARCADE ORIGINAL
+                        </p>
+
+                        <h3>
+                        AND THEN SHEE ROSE
+                        </h3>
+
+                        <p class="game-copy">
+                        Six transmissions are bleeding into the same frequency.
+                        Enter each nightmare, recover what was lost, and find 
+                        out why every signal keeps pointing toward the same 
+                        name.
+                        </p>
+
+                        <div class="game-stats">
+
+                            <div>
+                                <span class="stat-label">ROUTES</span>
+                                <strong>06</strong>
+                            </div>
+
+                            <div>
+                                <span class="stat-label">FRAGMENTS</span>
+                                <strong>06</strong>
+                            </div>
+
+                            <div>
+                                <span class="stat-label">STATUS</span>
+                                <strong>LIVE</strong>
+                            </div>
+
+                        </div>
+
+                        <div class="fragment-strip" aria-label="Game fragments">
+
+                            <span title="Heart">
+                                <b>♥</b>
+                                HEART
+                            </span>
+
+                            <span title="Word">
+                                <b>✦</b>
+                                WORD
+                            </span>
+
+                            <span title="Choice">
+                                <b>◇</b>
+                                CHOICE
+                            </span>
+
+                            <span title="Will">
+                                <b>⚡</b>
+                                WILL
+                            </span>
+
+                            <span title="Memory">
+                                <b>▣</b>
+                                MEMORY
+                            </span>
+
+                            <span title="Self">
+                                <b>♛</b>
+                                SELF
+                            </span>
+
+                        </div>
+
+                        <div class="featured-actions">
+
+                            <!-- This is your existing artist-route selection page. -->
+                            <a class="arcade-button arcade-button--primary" href="games.html">
+                                PLAY GAME
+                                <span aria-hidden="true">&gt;</span>
+                            </a>
+
+                            <button
+                                class="arcade-button arcade-button--secondary"
+                                id="aboutGameButton"
+                                type="button"
+                            >
+                                VIEW FILE
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =========================================================
+                ARCADE FLOOR
+            ========================================================== -->
+
+            <section class="section arcade-floor" id="arcade-floor">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="eyebrow">
+                        MIDNIGHT ARCADE DIRECTORY
+                        </p>
+
+                        <h2>
+                        SELECT A MACHINE
+                        </h2>
+                    </div>
+
+                    <span class="section-code">
+                        04 SYSTEMS DETECTED
+                    </span>
+
+                </div>
+
+                <div class="cabinet-grid">
+
+                    <!-- NIGHT COVE FILES -->
+                    <article class="cabinet cabinet--files">
+
+                        <div class="cabinet-status">
+                            <span class="status-light status-light--online"></span>
+                            ONLINE
+                        </div>
+
+                        <div class="cabinet-icon" aria-hidden="true">
+                            FILE://
+                        </div>
+
+                        <p class="cabinet-number">
+                        MACHINE 02
+                        </p>
+
+                        <h3>
+                        NIGHT COVE FILES
+                        </h3>
+
+                        <p>
+                        Cold cases. Missing persons. Recovered tapes.
+                        Unidentified entities. Open the file and decide
+                        what happened for yourself.
+                        </p>
+
+                        <div class="cabinet-meta">
+                            <span>MYSTERY</span>
+                            <span>INVESTIGATION</span>
+                            <span>CASE FILES</span>
+                        </div>
+
+                        <a
+                        class="cabinet-link"
+                        href="night-cove-files/"
+                        >
+                        ACCESS FILES
+                        <span>&gt;</span>
+                        </a>
+
+                    </article>
+
+
+                    <!-- CHARACTER LAB -->
+                    <article class="cabinet cabinet--lab cabinet--locked">
+
+                        <div class="cabinet-status">
+                            <span class="status-light status-light--warning"></span>
+                            UNDER CONSTRUCTION
+                        </div>
+
+                        <div class="cabinet-icon" aria-hidden="true">
+                            BUILD://
+                        </div>
+
+                        <p class="cabinet-number">
+                        MACHINE 03
+                        </p>
+
+                        <h3>
+                        CHARACTER LAB
+                        </h3>
+
+                        <p>
+                        Assemble your own Nightshade. Hair, eyes, clothing,
+                        species, accessories, and whatever the machine
+                        decides to unlock next.
+                        </p>
+
+                        <div class="builder-preview" aria-hidden="true">
+
+                            <div class="builder-avatar">
+                                ?
+                            </div>
+
+                            <div class="builder-options">
+                                <span>HAIR [???]</span>
+                                <span>EYES [???]</span>
+                                <span>SPECIES [???]</span>
+                            </div>
+
+                        </div>
+
+                        <button class="cabinet-link cabinet-link--disabled" disabled>
+                        MACHINE OFFLINE
+                        </button>
+
+                    </article>
+
+
+                    <!-- CABINET ARCHIVE -->
+                    <article class="cabinet cabinet--archive cabinet--locked">
+
+                        <div class="cabinet-status">
+                            <span class="status-light"></span>
+                            LOCKED
+                        </div>
+
+                        <div class="cabinet-icon" aria-hidden="true">
+                            ARCHIVE://
+                        </div>
+
+                        <p class="cabinet-number">
+                        MACHINE 04
+                        </p>
+
+                        <h3>
+                        CABINET ARCHIVE
+                        </h3>
+
+                        <p>
+                        Small games, cursed distractions, strange prototypes,
+                        and bad decisions that do not need an entire case file.
+                        </p>
+
+                        <div class="archive-slots" aria-hidden="true">
+                            <span>EMPTY</span>
+                            <span>EMPTY</span>
+                            <span>EMPTY</span>
+                        </div>
+
+                        <button class="cabinet-link cabinet-link--disabled" disabled>
+                        NO CARTRIDGES FOUND
+                        </button>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================================
+                SYSTEM MESSAGE
+            ========================================================== -->
+
+            <section class="system-message">
+
+                <p class="system-label">
+                MIDNIGHT ARCADE NOTICE
+                </p>
+
+                <p id="systemMessageText">
+                Some machines are still waking up.
+                </p>
+
+                <span class="system-cursor" aria-hidden="true">_</span>
+
+            </section>
+
+        </main>
+
+
+        <!-- =========================================================
+            GAME INFO MODAL
+        ========================================================== -->
+
+        <div
+        class="modal"
+        id="gameModal"
+        hidden
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="gameModalTitle"
+        >
+
+            <div class="modal-backdrop" data-close-modal></div>
+
+                <div class="modal-window">
+
+                    <div class="modal-bar">
+                        <span>
+                            FILE // CARTRIDGE_001
+                        </span>
+
+                        <button
+                            type="button"
+                            class="modal-close"
+                            data-close-modal
+                            aria-label="Close"
+                        >
+                            ×
+                        </button>
+                    </div>
+
+                <div class="modal-content">
+
+                    <p class="eyebrow">
+                        MIDNIGHT ARCADE STORY FILE
+                    </p>
+
+                    <h2 id="gameModalTitle">
+                        AND THEN SHEE ROSE
+                    </h2>
+
+                    <p>
+                        Six artists have become trapped inside corrupted pocket-realities
+                        shaped by their own fears, desires, memories, and music.
+                    </p>
+
+                    <p>
+                        Every completed transmission releases a fragment.
+                        Every fragment says the same thing:
+                        something is trying to come back together.
+                    </p>
+
+                    <div class="modal-fragments">
+                        HEART // WORD // CHOICE // WILL // MEMORY // SELF
+                    </div>
+
+                    <a class="arcade-button arcade-button--primary" href="games.html">
+                        ENTER GAME
+                        <span>&gt;</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <footer class="site-footer">
+
+            <a href="../home.html">
+                ← RETURN TO NIGHT COVE
+            </a>
+
+            <span>
+                © TASTE MY NIGHTMARE // MIDNIGHT ARCADE
+            </span>
+
+        </footer>
+
+
+        <!-- Optional ambient audio.
+            Add the MP3 to assets/audio/midnight-arcade-loop.mp3.
+        -->
+        <audio
+        id="ambientAudio"
+        src="assets/audio/midnight-arcade-loop.mp3"
+        loop
+        preload="none"
+        >
+        </audio>
+
+        <script src="game-engine.js"></script>
+
+    </body>
+</html>
