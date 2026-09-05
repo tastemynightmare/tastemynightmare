@@ -1,4 +1,3 @@
-alert("CURRENT BUBBLES JS IS LOADING");
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =====================================================

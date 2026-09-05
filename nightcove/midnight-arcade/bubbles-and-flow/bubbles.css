@@ -4,18 +4,15 @@
   --black: #08020d;
   --black-2: #100419;
   --panel: rgba(16, 4, 25, .88);
-
   --pink: #ff4fb8;
   --hot-pink: #ff278d;
   --blue: #58ccff;
   --baby-blue: #9de8ff;
   --purple: #a65cff;
   --yellow: #ffd84a;
-
   --white: #fff8fd;
   --muted: #d7bdd5;
   --border: rgba(255, 79, 184, .35);
-
   --font-display: "Archivo Black", Impact, sans-serif;
   --font-mono: "DM Mono", "Courier New", monospace;
 }
