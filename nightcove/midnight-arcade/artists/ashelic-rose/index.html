@@ -1,162 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Princess Red | Midnight Arcade</title>
-    <link rel="stylesheet" href="princess-red-music.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ASHELIC ROSE | Midnight Arcade</title>
+        <link rel="stylesheet" href="ashelic-rose-music.css">
     </head>
-
 
     <body>
 
         <main class="sound-room">
 
-            <!-- BACKGROUND DECOR -->
-
-            <div class="stars"></div>
-
-
-            <!-- NAVIGATION -->
+            <div class="ambient-orbs" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
 
             <nav class="sound-nav">
 
                 <a href="../../games.html">
-                    ← MIDNIGHT ARCADE
+                ← MIDNIGHT ARCADE
                 </a>
 
                 <span>
-                    TMN // ARTIST TRANSMISSION
+                TMN // ARTIST TRANSMISSION
                 </span>
 
             </nav>
 
-
-            <!-- MAIN CHARACTER AREA -->
-
             <section class="artist-stage">
-
-
-                <!-- PRINCESS RED -->
 
                 <div class="sprite-area">
 
                     <img
-                        src="assets/princess-red-sprite.webp"
-                        alt="Princess Red"
-                        class="artist-sprite"
+                    src="assets/ashelic-rose-sprite.webp"
+                    alt="ASHELIC ROSE"
+                    class="artist-sprite"
                     >
 
                 </div>
 
-
-                <!-- MUSIC PLAYER -->
-
                 <div class="player-card">
 
                     <p class="transmission-label">
-                        NOW TRANSMITTING
+                    NOW TRANSMITTING
                     </p>
-
 
                     <h1>
-                        PRINCESS RED
+                    ASHELIC ROSE
                     </h1>
 
-
                     <p class="artist-location">
-                        CHICAGO // DOLLHOUSE DISTRICT
+                    NIGHT COVE // BLOOD FREQUENCY
                     </p>
-
-
-                    <!-- ALBUM ART -->
 
                     <div class="album-frame">
 
                         <img
-                            src="assets/princess-red-cover.webp"
-                            alt="Princess Red song artwork"
-                            class="album-art"
+                        src="assets/ashelic-rose-cover.webp"
+                        alt="ASHELIC ROSE song artwork"
+                        class="album-art"
                         >
 
                     </div>
-
-
-                    <!-- SONG INFORMATION -->
 
                     <div class="song-info">
 
                         <h2 id="songTitle">
-                            SAVE ME
+                        BEY BLADE
                         </h2>
 
                         <p>
-                            Princess Red
+                        ASHELIC ROSE
                         </p>
 
                     </div>
 
-                    <!-- PROGRESS BAR -->
-
                     <div class="progress-container">
 
                         <span id="currentTime">
-                            0:00
+                        0:00
                         </span>
 
                         <input
-                            id="progressBar"
-                            type="range"
-                            min="0"
-                            max="100"
-                            value="0"
+                        id="progressBar"
+                        type="range"
+                        min="0"
+                        max="100"
+                        value="0"
+                        aria-label="Song progress"
                         >
 
                         <span id="duration">
-                            1:38
+                        0:00
                         </span>
 
                     </div>
-
-
-                    <!-- PLAYER CONTROLS -->
 
                     <div class="controls">
 
                         <button
-                            id="rewindButton"
-                            aria-label="Rewind 10 seconds"
+                        id="rewindButton"
+                        aria-label="Rewind 10 seconds"
                         >
-                            ↶
+                        ←
                         </button>
 
-
                         <button
-                            id="playButton"
-                            class="play-button"
-                            aria-label="Play"
+                        id="playButton"
+                        class="play-button"
+                        aria-label="Play"
                         >
-                            ▶
+                        ▶
                         </button>
 
-
                         <button
-                            id="forwardButton"
-                            aria-label="Forward 10 seconds"
+                        id="rewindButton"
+                        aria-label="Rewind 10 seconds"
                         >
-                            ↷
+                        →
                         </button>
 
                     </div>
-
-
-                    <!-- CUTE FAKE EQUALIZER -->
 
                     <div
                         id="equalizer"
                         class="equalizer"
-                    >
-
+                        aria-hidden="true"
+                        >
                         <span></span>
                         <span></span>
                         <span></span>
@@ -164,34 +136,33 @@
                         <span></span>
                         <span></span>
                         <span></span>
-
                     </div>
 
-                    <!-- AUDIO -->
-                        <audio id="audioPlayer" preload="metadata">
-                            <source
-                                src="assets/princess-red-song.mp3"
-                                type="audio/mpeg"
-                            >
-                        </audio>
+                    <audio id="audioPlayer" preload="metadata">
+                        <source
+                        src="assets/ashelic-song.mp3"
+                        type="audio/mpeg"
+                        >
+                    </audio>
 
-                    <!-- OTHER LINKS -->
+                    <p id="audioStatus" class="audio-status" aria-live="polite"></p>
 
                     <div class="artist-actions">
 
                         <a
-                            href="../../games/princess-red/"
-                            class="secondary-button"
+                        href="../../games/ashelic-rose/"
+                        class="secondary-button"
                         >
-                            ♥ REPLAY SAVE ME!
+                        ♥ REPLAY BLOOD RITE
                         </a>
 
                         <a
-                            href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
-                            class="ticket-button"
-                            target="_blank"
+                        href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
+                        class="ticket-button"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         >
-                            🎟 BUBBLES & FLOW
+                        🎟 BUBBLES & FLOW
                         </a>
 
                     </div>
@@ -201,17 +172,14 @@
             </section>
 
             <footer>
-
                 <p>
-                    TASTE MY NIGHTMARE // MIDNIGHT ARCADE
+                TASTE MY NIGHTMARE // MIDNIGHT ARCADE
                 </p>
-
             </footer>
 
         </main>
 
-        <script src="princess-red-music.js"></script>
+        <script src="ashelic-rose-music.js"></script>
 
     </body>
-
 </html>

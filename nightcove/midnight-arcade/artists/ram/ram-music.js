@@ -1,50 +1,29 @@
 const audio =
-    document.getElementById(
-        "audioPlayer"
-    );
-
+    document.getElementById("audioPlayer");
 
 const playButton =
-    document.getElementById(
-        "playButton"
-    );
-
+    document.getElementById("playButton");
 
 const rewindButton =
-    document.getElementById(
-        "rewindButton"
-    );
-
+    document.getElementById("rewindButton");
 
 const forwardButton =
-    document.getElementById(
-        "forwardButton"
-    );
-
+    document.getElementById("forwardButton");
 
 const progressBar =
-    document.getElementById(
-        "progressBar"
-    );
-
+    document.getElementById("progressBar");
 
 const currentTime =
-    document.getElementById(
-        "currentTime"
-    );
-
+    document.getElementById("currentTime");
 
 const duration =
-    document.getElementById(
-        "duration"
-    );
-
+    document.getElementById("duration");
 
 const equalizer =
-    document.getElementById(
-        "equalizer"
-    );
+    document.getElementById("equalizer");
 
+const audioStatus =
+    document.getElementById("audioStatus");
 
 
 playButton.addEventListener(
@@ -53,18 +32,12 @@ playButton.addEventListener(
 
         try {
 
-            if (
-                audio.paused
-            ) {
-
+            if (audio.paused) {
                 await audio.play();
-
             }
 
             else {
-
                 audio.pause();
-
             }
 
         }
@@ -72,7 +45,7 @@ playButton.addEventListener(
         catch (error) {
 
             console.error(
-                "Audio could not play:",
+                "RAM audio could not play:",
                 error
             );
 
@@ -81,11 +54,13 @@ playButton.addEventListener(
                 audio.currentSrc
             );
 
+            audioStatus.textContent =
+                "AUDIO FILE COULD NOT LOAD";
+
         }
 
     }
 );
-
 
 
 audio.addEventListener(
@@ -95,13 +70,20 @@ audio.addEventListener(
         playButton.textContent =
             "❚❚";
 
+        playButton.setAttribute(
+            "aria-label",
+            "Pause"
+        );
+
         equalizer.classList.add(
             "playing"
         );
 
+        audioStatus.textContent =
+            "";
+
     }
 );
-
 
 
 audio.addEventListener(
@@ -111,6 +93,11 @@ audio.addEventListener(
         playButton.textContent =
             "▶";
 
+        playButton.setAttribute(
+            "aria-label",
+            "Play"
+        );
+
         equalizer.classList.remove(
             "playing"
         );
@@ -118,6 +105,28 @@ audio.addEventListener(
     }
 );
 
+
+audio.addEventListener(
+    "ended",
+    () => {
+
+        playButton.textContent =
+            "▶";
+
+        playButton.setAttribute(
+            "aria-label",
+            "Play"
+        );
+
+        equalizer.classList.remove(
+            "playing"
+        );
+
+        progressBar.value =
+            0;
+
+    }
+);
 
 
 rewindButton.addEventListener(
@@ -134,12 +143,11 @@ rewindButton.addEventListener(
 );
 
 
-
 forwardButton.addEventListener(
     "click",
     () => {
 
-        if (!audio.duration) {
+        if (!Number.isFinite(audio.duration)) {
             return;
         }
 
@@ -153,29 +161,19 @@ forwardButton.addEventListener(
 );
 
 
-
 audio.addEventListener(
     "timeupdate",
     () => {
 
-        if (
-            !audio.duration
-        ) {
-
+        if (!Number.isFinite(audio.duration) || audio.duration <= 0) {
             return;
-
         }
 
-
         progressBar.value =
-
             (
                 audio.currentTime /
                 audio.duration
-            )
-
-            * 100;
-
+            ) * 100;
 
         currentTime.textContent =
             formatTime(
@@ -186,57 +184,51 @@ audio.addEventListener(
 );
 
 
-
 audio.addEventListener(
     "loadedmetadata",
     () => {
 
-        duration.textContent =
-            formatTime(
-                audio.duration
-            );
+        if (Number.isFinite(audio.duration)) {
+
+            duration.textContent =
+                formatTime(
+                    audio.duration
+                );
+
+        }
 
     }
 );
-
 
 
 progressBar.addEventListener(
     "input",
     () => {
 
-        if (
-            !audio.duration
-        ) {
-
+        if (!Number.isFinite(audio.duration) || audio.duration <= 0) {
             return;
-
         }
 
-
         audio.currentTime =
-
             (
                 progressBar.value /
                 100
-            )
-
-            * audio.duration;
+            ) * audio.duration;
 
     }
 );
 
 
+function formatTime(seconds) {
 
-function formatTime(
-    seconds
-) {
+    if (!Number.isFinite(seconds)) {
+        return "0:00";
+    }
 
     const minutes =
         Math.floor(
             seconds / 60
         );
-
 
     const remainingSeconds =
         Math.floor(
@@ -248,13 +240,9 @@ function formatTime(
             "0"
         );
 
-
-    return (
-        `${minutes}:${remainingSeconds}`
-    );
+    return `${minutes}:${remainingSeconds}`;
 
 }
-
 
 
 audio.addEventListener(
@@ -266,9 +254,11 @@ audio.addEventListener(
             audio.currentSrc
         );
 
+        audioStatus.textContent =
+            "";
+
     }
 );
-
 
 
 audio.addEventListener(
@@ -284,6 +274,9 @@ audio.addEventListener(
             "FAILED SOURCE:",
             audio.currentSrc
         );
+
+        audioStatus.textContent =
+            "ADD THE MP3 TO THIS SOUND ROOM'S ASSETS FOLDER";
 
     }
 );

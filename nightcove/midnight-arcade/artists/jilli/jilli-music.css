@@ -1,15 +1,15 @@
-  * {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 :root {
-    --black: #120b16;
-    --deep: #26102d;
-    --primary: #ff6bc5;
-    --secondary: #9b6cff;
-    --accent: #ffc0e6;
+    --black: #06100c;
+    --deep: #0b1a13;
+    --primary: #ff3fba;
+    --secondary: #6df2a7;
+    --accent: #ffb5e7;
     --white: #fff8fd;
 }
 
@@ -18,7 +18,7 @@ body {
     background:
         radial-gradient(
             circle at 18% 20%,
-            rgba(255,107,197, .20),
+            rgba(255,63,186, .20),
             transparent 34%
         ),
         radial-gradient(
@@ -132,7 +132,7 @@ body {
         )
         drop-shadow(
             0 0 18px
-            rgba(255,107,197, .16)
+            rgba(255,63,186, .16)
         );
     animation: float 3s ease-in-out infinite;
 }
@@ -153,7 +153,7 @@ body {
     backdrop-filter: blur(20px);
     box-shadow:
         0 0 50px
-        rgba(255,107,197, .14);
+        rgba(255,63,186, .14);
 }
 
 .transmission-label {
@@ -169,7 +169,7 @@ body {
     margin: 12px 0;
     text-shadow:
         0 0 20px
-        rgba(255,107,197, .28);
+        rgba(255,63,186, .28);
 }
 
 .artist-location {
@@ -387,4 +387,116 @@ footer {
     .artist-actions {
         grid-template-columns: 1fr;
     }
+}
+
+/* ===== JILLI SOUND ROOM: ENCHANTED FOREST REFRESH ===== */
+body {
+  background:
+    radial-gradient(circle at 14% 15%, rgba(255,63,186,.18), transparent 30%),
+    radial-gradient(circle at 84% 30%, rgba(109,242,167,.15), transparent 31%),
+    radial-gradient(circle at 55% 92%, rgba(21,93,58,.20), transparent 34%),
+    linear-gradient(145deg, #07140d, #0b1a13 50%, #030805);
+}
+
+.ambient-orbs span {
+  border-color: rgba(109,242,167,.28);
+  box-shadow:
+    inset 0 0 30px rgba(255,63,186,.05),
+    0 0 30px rgba(109,242,167,.07);
+}
+
+.artist-sprite {
+  filter:
+    drop-shadow(0 20px 30px rgba(0,0,0,.55))
+    drop-shadow(0 0 18px rgba(255,63,186,.20))
+    drop-shadow(0 0 26px rgba(109,242,167,.08));
+}
+
+.player-card {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,63,186,.08),
+      rgba(109,242,167,.035)
+    );
+  box-shadow:
+    0 0 50px rgba(255,63,186,.12),
+    0 0 90px rgba(109,242,167,.04);
+}
+
+.artist-location {
+  color: #6df2a7;
+}
+
+
+/* =====================================================
+   REFINED 10-SECOND SEEK CONTROLS
+   Replaces the old unicode curved arrows with custom
+   media-player icons so they render consistently.
+===================================================== */
+
+#rewindButton,
+#forwardButton {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    overflow: visible;
+}
+
+.seek-icon {
+    width: 31px;
+    height: 31px;
+    display: block;
+    pointer-events: none;
+}
+
+.seek-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+}
+
+.seek-icon .seek-arc {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 3.1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.seek-icon text {
+    fill: currentColor;
+    font-family: "DM Mono", monospace;
+    font-size: 13px;
+    font-weight: 700;
+    dominant-baseline: middle;
+}
+
+#rewindButton:hover .seek-icon,
+#forwardButton:hover .seek-icon,
+#rewindButton:focus-visible .seek-icon,
+#forwardButton:focus-visible .seek-icon {
+    transform: scale(1.08);
+}
+
+.seek-icon {
+    transition:
+        transform .15s ease,
+        filter .15s ease;
+}
+
+#rewindButton:hover .seek-icon,
+#forwardButton:hover .seek-icon {
+    filter: drop-shadow(0 0 6px currentColor);
+}
+
+#rewindButton:active .seek-icon {
+    transform: scale(.96) rotate(-7deg);
+}
+
+#forwardButton:active .seek-icon {
+    transform: scale(.96) rotate(7deg);
 }

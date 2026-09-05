@@ -1,5 +1,125 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  /* =====================================================
+     MOVING STARFIELD
+  ====================================================== */
+
+  const starfield =
+    document.getElementById("starfield");
+
+  if (starfield) {
+
+    const starCount =
+      window.innerWidth < 700
+        ? 42
+        : 72;
+
+    for (
+      let i = 0;
+      i < starCount;
+      i += 1
+    ) {
+
+      const star =
+        document.createElement("span");
+
+      star.className =
+        "star";
+
+      const size =
+        (
+          Math.random() * 2.2 +
+          0.8
+        ).toFixed(2);
+
+      const duration =
+        (
+          Math.random() * 28 +
+          26
+        ).toFixed(2);
+
+      const delay =
+        (
+          Math.random() * -45
+        ).toFixed(2);
+
+      const twinkle =
+        (
+          Math.random() * 2.4 +
+          1.6
+        ).toFixed(2);
+
+      const twinkleDelay =
+        (
+          Math.random() * -4
+        ).toFixed(2);
+
+      const opacity =
+        (
+          Math.random() * 0.55 +
+          0.35
+        ).toFixed(2);
+
+      const driftX =
+        (
+          Math.random() * 90 -
+          45
+        ).toFixed(0);
+
+      star.style.setProperty(
+        "--x",
+        `${Math.random() * 100}%`
+      );
+
+      star.style.setProperty(
+        "--y",
+        `${Math.random() * 120 + 5}%`
+      );
+
+      star.style.setProperty(
+        "--size",
+        `${size}px`
+      );
+
+      star.style.setProperty(
+        "--duration",
+        `${duration}s`
+      );
+
+      star.style.setProperty(
+        "--delay",
+        `${delay}s`
+      );
+
+      star.style.setProperty(
+        "--twinkle",
+        `${twinkle}s`
+      );
+
+      star.style.setProperty(
+        "--twinkle-delay",
+        `${twinkleDelay}s`
+      );
+
+      star.style.setProperty(
+        "--opacity",
+        opacity
+      );
+
+      star.style.setProperty(
+        "--drift-x",
+        `${driftX}px`
+      );
+
+      starfield.appendChild(
+        star
+      );
+
+    }
+
+  }
+
+
   const STORAGE_KEY =
     "tmn_bubbles_flow_fragments";
 
@@ -663,7 +783,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   console.log(
-    "BUBBLES & FLOW CARTRIDGE: ONLINE"
+    "BUBBLES & FLOW GAME: ONLINE"
   );
 
 });

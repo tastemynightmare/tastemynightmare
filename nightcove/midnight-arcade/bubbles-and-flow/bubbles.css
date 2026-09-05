@@ -4,15 +4,18 @@
   --black: #08020d;
   --black-2: #100419;
   --panel: rgba(16, 4, 25, .88);
+
   --pink: #ff4fb8;
   --hot-pink: #ff278d;
   --blue: #58ccff;
   --baby-blue: #9de8ff;
   --purple: #a65cff;
   --yellow: #ffd84a;
+
   --white: #fff8fd;
   --muted: #d7bdd5;
   --border: rgba(255, 79, 184, .35);
+
   --font-display: "Archivo Black", Impact, sans-serif;
   --font-mono: "DM Mono", "Courier New", monospace;
 }
@@ -60,7 +63,7 @@ img {
 ===================================================== */
 
 .scanlines,
-.stars {
+.starfield {
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -82,25 +85,47 @@ img {
   mix-blend-mode: soft-light;
 }
 
-.stars {
+.starfield {
   z-index: -1;
+  overflow: hidden;
 }
 
-.stars--one {
-  opacity: .65;
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,.95) 1px, transparent 1.5px);
-  background-size: 52px 52px;
-  background-position: 8px 10px;
+.star {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+
+  width: var(--size);
+  height: var(--size);
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.95);
+
+  box-shadow:
+    0 0 calc(var(--size) * 3) rgba(255,255,255,.55);
+
+  opacity: var(--opacity);
+
+  animation:
+    starDrift var(--duration) linear infinite,
+    starTwinkle var(--twinkle) ease-in-out infinite alternate;
+
+  animation-delay:
+    var(--delay),
+    var(--twinkle-delay);
 }
 
-.stars--two {
-  opacity: .38;
-  background-image:
-    radial-gradient(circle, var(--baby-blue) 1px, transparent 1.5px),
-    radial-gradient(circle, var(--pink) 1px, transparent 1.5px);
-  background-size: 95px 95px, 125px 125px;
-  background-position: 25px 35px, 70px 10px;
+.star:nth-child(5n) {
+  background: var(--baby-blue);
+  box-shadow:
+    0 0 calc(var(--size) * 4) rgba(88,204,255,.55);
+}
+
+.star:nth-child(9n) {
+  background: #ffd7f2;
+  box-shadow:
+    0 0 calc(var(--size) * 4) rgba(255,79,184,.45);
 }
 
 
@@ -222,7 +247,9 @@ img {
 
 .system-label {
   margin: 0 0 13px;
+
   color: var(--baby-blue);
+
   font-size: 9px;
   letter-spacing: .22em;
 }
@@ -231,11 +258,15 @@ img {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
+
   margin-bottom: 22px;
   padding: 10px 18px;
+
   transform: rotate(-2deg);
+
   background: var(--yellow);
   color: #150b1c;
+
   font-family: var(--font-display);
   font-size: clamp(17px, 2.4vw, 28px);
   line-height: 1;
@@ -243,6 +274,7 @@ img {
 
 .festival-banner span {
   margin-top: 4px;
+
   font-family: var(--font-mono);
   font-size: 8px;
   letter-spacing: .14em;
@@ -256,6 +288,7 @@ img {
 .title-small,
 .title-large {
   display: block;
+
   font-family: var(--font-display);
   letter-spacing: -.055em;
 }
@@ -263,6 +296,7 @@ img {
 .title-small {
   color: var(--blue);
   font-size: clamp(48px, 8vw, 110px);
+
   text-shadow:
     5px 5px 0 #361044,
     0 0 24px rgba(88,204,255,.2);
@@ -271,6 +305,7 @@ img {
 .title-large {
   color: var(--pink);
   font-size: clamp(72px, 12vw, 170px);
+
   text-shadow:
     7px 7px 0 #380623,
     0 0 28px rgba(255,79,184,.3);
@@ -279,7 +314,9 @@ img {
 .hero__intro {
   max-width: 700px;
   margin: 30px 0;
+
   color: var(--muted);
+
   font-size: 14px;
   line-height: 1.8;
 }
@@ -294,15 +331,20 @@ img {
 .secondary-button,
 .ticket-button {
   min-height: 50px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
+
   padding: 0 20px;
+
   border: 1px solid transparent;
+
   text-decoration: none;
   letter-spacing: .09em;
   font-size: 10px;
+
   cursor: pointer;
 }
 
@@ -310,6 +352,7 @@ img {
   background: var(--pink);
   border-color: #ff93d2;
   color: #110714;
+
   font-weight: 700;
 }
 
@@ -329,6 +372,7 @@ img {
   color: var(--baby-blue);
 }
 
+
 /* =====================================================
    COMIC / BUBBLE DETAILS
 ===================================================== */
@@ -336,24 +380,33 @@ img {
 .bubble {
   position: absolute;
   z-index: -1;
+
   border-radius: 50%;
+
   border: 2px solid rgba(255,255,255,.16);
+
   box-shadow:
     inset 10px 10px 18px rgba(255,255,255,.18),
     inset -15px -18px 25px rgba(0,0,0,.25),
     0 0 30px rgba(255,79,184,.12);
+
   animation: floatBubble 7s ease-in-out infinite;
 }
 
 .bubble::after {
   content: "";
   position: absolute;
+
   width: 28%;
   height: 16%;
+
   top: 18%;
   left: 18%;
+
   border-radius: 50%;
+
   background: rgba(255,255,255,.42);
+
   filter: blur(4px);
 }
 
@@ -396,11 +449,15 @@ img {
   position: absolute;
   right: 7%;
   top: 9%;
+
   z-index: 3;
+
   display: grid;
   place-items: center;
+
   width: 120px;
   aspect-ratio: 1;
+
   clip-path:
     polygon(
       50% 0%, 60% 25%, 78% 8%, 80% 30%,
@@ -409,13 +466,17 @@ img {
       8% 90%, 19% 62%, 0% 55%, 24% 44%,
       5% 22%, 30% 27%
     );
+
   background: var(--yellow);
   color: #170a18;
+
   font-family: var(--font-display);
   font-size: 13px;
   text-align: center;
+
   transform: rotate(10deg);
 }
+
 
 /* =====================================================
    FRAGMENT MONITOR
@@ -423,11 +484,15 @@ img {
 
 .fragment-monitor {
   position: relative;
+
   align-self: center;
+
   padding: 22px;
+
   border: 1px solid rgba(88,204,255,.34);
   background:
     linear-gradient(rgba(4,13,18,.88), rgba(4,9,15,.94));
+
   box-shadow:
     0 0 40px rgba(88,204,255,.08),
     inset 0 0 35px rgba(88,204,255,.04);
@@ -437,7 +502,9 @@ img {
   content: "";
   position: absolute;
   inset: 0;
+
   pointer-events: none;
+
   background:
     repeating-linear-gradient(
       to bottom,
@@ -446,6 +513,7 @@ img {
       transparent 1px,
       transparent 3px
     );
+
   opacity: .12;
 }
 
@@ -458,6 +526,7 @@ img {
 .fragment-count {
   display: flex;
   align-items: baseline;
+
   margin: 12px 0 20px;
 }
 
@@ -482,7 +551,9 @@ img {
   display: flex;
   align-items: center;
   gap: 10px;
+
   color: #76828b;
+
   font-size: 10px;
   letter-spacing: .1em;
 }
@@ -490,6 +561,7 @@ img {
 .fragment-dot {
   width: 9px;
   height: 9px;
+
   border: 1px solid #64717a;
   border-radius: 50%;
 }
@@ -507,7 +579,9 @@ img {
 .monitor__status {
   margin: 20px 0 0;
   padding-top: 14px;
+
   border-top: 1px solid rgba(88,204,255,.15);
+
   color: var(--muted);
   font-size: 9px;
 }
@@ -522,7 +596,9 @@ img {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 25px;
+
   padding: 20px clamp(20px, 6vw, 80px);
+
   border-top: 2px solid #281333;
   border-bottom: 2px solid #281333;
 
@@ -563,11 +639,14 @@ img {
 
 .ticket-button {
   min-height: 42px;
+
   background: var(--blue);
   color: #091017;
   border-color: var(--white);
+
   font-weight: 700;
 }
+
 
 /* =====================================================
    TRANSMISSION GRID
@@ -576,6 +655,7 @@ img {
 .transmissions {
   width: min(1320px, 92%);
   margin: 0 auto;
+
   padding:
     clamp(90px, 10vw, 150px)
     0;
@@ -586,13 +666,16 @@ img {
   grid-template-columns: 1fr minmax(250px, 420px);
   align-items: end;
   gap: 30px;
+
   margin-bottom: 38px;
   padding-bottom: 20px;
+
   border-bottom: 1px solid var(--border);
 }
 
 .section-heading h2 {
   margin: 0;
+
   font-family: var(--font-display);
   font-size: clamp(42px, 7vw, 88px);
   line-height: .9;
@@ -601,6 +684,7 @@ img {
 
 .section-heading > p {
   margin: 0;
+
   color: var(--muted);
   line-height: 1.7;
   font-size: 12px;
@@ -616,17 +700,23 @@ img {
   --card-accent: var(--pink);
   --card-secondary: var(--blue);
   --card-bg: #16091d;
+
   position: relative;
   isolation: isolate;
+
   min-height: 650px;
+
   display: flex;
   flex-direction: column;
+
   overflow: hidden;
+
   border: 1px solid color-mix(in srgb, var(--card-accent) 42%, transparent);
   background:
     radial-gradient(circle at 20% 10%, color-mix(in srgb, var(--card-accent) 18%, transparent), transparent 35%),
     radial-gradient(circle at 85% 28%, color-mix(in srgb, var(--card-secondary) 15%, transparent), transparent 35%),
     var(--card-bg);
+
   transition:
     transform .18s ease,
     border-color .18s ease,
@@ -636,6 +726,7 @@ img {
 .character-card:hover {
   transform: translateY(-6px) rotate(-.25deg);
   border-color: var(--card-accent);
+
   box-shadow:
     0 20px 45px rgba(0,0,0,.35),
     0 0 28px color-mix(in srgb, var(--card-accent) 12%, transparent);
@@ -648,9 +739,12 @@ img {
 .card-noise {
   position: absolute;
   inset: 0;
+
   z-index: 4;
+
   pointer-events: none;
   opacity: .08;
+
   background:
     repeating-linear-gradient(
       -7deg,
@@ -662,11 +756,15 @@ img {
 .card-status {
   position: relative;
   z-index: 5;
+
   display: flex;
   justify-content: space-between;
   gap: 15px;
+
   padding: 12px 15px;
+
   color: var(--card-secondary);
+
   font-size: 8px;
   letter-spacing: .13em;
 }
@@ -679,10 +777,14 @@ img {
 
 .portrait-frame {
   position: relative;
+
   min-height: 300px;
+
   overflow: hidden;
+
   border-top: 1px solid color-mix(in srgb, var(--card-accent) 25%, transparent);
   border-bottom: 1px solid color-mix(in srgb, var(--card-accent) 25%, transparent);
+
   background:
     radial-gradient(circle at center, color-mix(in srgb, var(--card-accent) 18%, transparent), transparent 48%),
     #08030d;
@@ -691,9 +793,12 @@ img {
 .portrait-frame img {
   position: absolute;
   inset: 0;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
+
   z-index: 2;
 }
 
@@ -704,11 +809,15 @@ img {
 .portrait-fallback {
   position: absolute;
   inset: 0;
+
   display: grid;
   place-items: center;
+
   color: var(--card-accent);
+
   font-family: var(--font-display);
   font-size: 86px;
+
   text-shadow:
     4px 4px 0 color-mix(in srgb, var(--card-secondary) 45%, #000);
 }
@@ -717,7 +826,9 @@ img {
   content: "ADD ART";
   position: absolute;
   bottom: 18px;
+
   color: var(--muted);
+
   font-family: var(--font-mono);
   font-size: 8px;
   letter-spacing: .18em;
@@ -725,20 +836,25 @@ img {
 
 .character-card__content {
   flex: 1;
+
   display: flex;
   flex-direction: column;
+
   padding: 22px;
 }
 
 .route-label {
   margin: 0 0 7px;
+
   color: var(--card-secondary);
+
   font-size: 8px;
   letter-spacing: .15em;
 }
 
 .character-card h3 {
   margin: 0;
+
   font-family: var(--font-display);
   font-size: clamp(30px, 3vw, 48px);
   line-height: .92;
@@ -747,25 +863,34 @@ img {
 
 .route-title {
   margin: 10px 0 14px;
+
   color: var(--card-accent);
+
   font-family: var(--font-display);
   font-size: 19px;
 }
 
 .route-copy {
   margin: 0 0 18px;
+
   color: var(--muted);
+
   font-size: 12px;
   line-height: 1.7;
 }
 
 .fragment-badge {
   width: fit-content;
+
   margin-top: auto;
   margin-bottom: 17px;
+
   padding: 7px 9px;
+
   border: 1px solid color-mix(in srgb, var(--card-accent) 42%, transparent);
+
   color: var(--card-accent);
+
   font-size: 8px;
   letter-spacing: .1em;
 }
@@ -779,16 +904,23 @@ img {
 .play-link,
 .preview-link {
   min-height: 44px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   padding: 0 12px;
+
   border: 1px solid color-mix(in srgb, var(--card-accent) 38%, transparent);
   background: rgba(255,255,255,.025);
+
   color: var(--white);
+
   text-decoration: none;
+
   font-size: 9px;
   letter-spacing: .08em;
+
   cursor: pointer;
 }
 
@@ -811,9 +943,9 @@ img {
 /* ARTIST COLOR SYSTEMS */
 
 .character-card--princess {
-  --card-accent: #ff69c8;
-  --card-secondary: #8fe7ff;
-  --card-bg: #16091d;
+  --card-accent: #42ddff;
+  --card-secondary: #9b5cff;
+  --card-bg: #090817;
 }
 
 .character-card--ram {
@@ -823,9 +955,9 @@ img {
 }
 
 .character-card--jilli {
-  --card-accent: #ff70d4;
-  --card-secondary: #b275ff;
-  --card-bg: #16091b;
+  --card-accent: #ff3fba;
+  --card-secondary: #6df2a7;
+  --card-bg: #07130f;
 }
 
 .character-card--m1h1 {
@@ -854,11 +986,14 @@ img {
 .signal-footer {
   width: min(1120px, 90%);
   margin: 0 auto 110px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 30px;
+
   padding: 24px;
+
   border-left: 3px solid var(--pink);
   background: rgba(16,4,25,.7);
 }
@@ -866,6 +1001,7 @@ img {
 .signal-footer__copy p:last-of-type {
   display: inline;
   margin: 0;
+
   color: var(--muted);
 }
 
@@ -992,6 +1128,26 @@ img {
 /* =====================================================
    ANIMATION
 ===================================================== */
+
+@keyframes starDrift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(var(--drift-x), -120vh, 0);
+  }
+}
+
+@keyframes starTwinkle {
+  from {
+    opacity: calc(var(--opacity) * .35);
+  }
+
+  to {
+    opacity: var(--opacity);
+  }
+}
 
 @keyframes floatBubble {
   0%,
@@ -1130,4 +1286,45 @@ img {
     justify-content: center;
   }
 
+}
+
+
+/* JILLI: enchanted forest treatment */
+.character-card--jilli {
+  background:
+    radial-gradient(circle at 18% 16%, rgba(255,63,186,.20), transparent 28%),
+    radial-gradient(circle at 78% 30%, rgba(109,242,167,.14), transparent 30%),
+    linear-gradient(180deg, #0b1a13 0%, #06100c 100%);
+}
+
+.character-card--jilli .portrait-frame {
+  background:
+    radial-gradient(circle at 50% 32%, rgba(255,63,186,.18), transparent 27%),
+    radial-gradient(circle at 20% 75%, rgba(109,242,167,.16), transparent 24%),
+    linear-gradient(180deg, #0c1d15, #050b08);
+}
+
+/* PRINCESS RED: neon blue + purple */
+.character-card--princess {
+  background:
+    radial-gradient(circle at 20% 12%, rgba(66,221,255,.20), transparent 30%),
+    radial-gradient(circle at 82% 28%, rgba(155,92,255,.18), transparent 32%),
+    linear-gradient(180deg, #0b0a1f 0%, #060710 100%);
+}
+
+.character-card--princess .portrait-frame {
+  background:
+    radial-gradient(circle at 40% 35%, rgba(66,221,255,.17), transparent 28%),
+    radial-gradient(circle at 70% 65%, rgba(155,92,255,.16), transparent 24%),
+    #050713;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star {
+    animation: none;
+  }
+
+  .bubble {
+    animation: none;
+  }
 }
