@@ -8,10 +8,10 @@ const CONFIG = {
 const ASSETS = {
 
   characters: {
-    jilliNeutral: "assets/characters/jilli-neutral.webp",
-    jilliWorried: "assets/characters/jilli-worried.webp",
-    jilliSiren: "assets/characters/jilli-siren.webp",
-    jilliPerformance: "assets/characters/jilli-performance.webp",
+    jilliNeutral: "assets/characters/jilli-neutral.png",
+    jilliWorried: "assets/characters/jilli-worried.png",
+    jilliSiren: "assets/characters/jilli-siren.png",
+    jilliPerformance: "assets/characters/jilli-performance.png",
     enchantedFan: "assets/characters/enchanted-fan.webp",
     fairyDouble: "assets/characters/fairy-double.webp"
   },

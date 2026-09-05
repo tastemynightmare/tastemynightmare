@@ -8,9 +8,9 @@ const CONFIG = {
 const ASSETS = {
 
   characters: {
-    ramNeutral: "assets/characters/ram-neutral.webp",
-    ramConcerned: "assets/characters/ram-concerned.webp",
-    ramPerformance: "assets/characters/ram-performance.webp",
+    ramNeutral: "assets/characters/ram-neutral.png",
+    ramConcerned: "assets/characters/ram-concerned.png",
+    ramPerformance: "assets/characters/ram-performance.png",
     stanOfRa: "assets/characters/stan-of-ra.webp",
     slabThief: "assets/characters/slab-thief.webp"
   },

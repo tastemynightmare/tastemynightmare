@@ -6,10 +6,10 @@ const CONFIG = {
 
 const ASSETS = {
   characters: {
-    redBabiesNeutral: "assets/characters/red-babies-neutral.webp",
-    redBabiesTired: "assets/characters/red-babies-tired.webp",
-    redBabiesPerformance: "assets/characters/red-babies-performance.webp",
-    underdog: "assets/characters/the-underdog.webp"
+    redBabiesNeutral: "assets/characters/red-babies-neutral.png",
+    redBabiesTired: "assets/characters/red-babies-tired.png",
+    redBabiesPerformance: "assets/characters/red-babies-performance.png",
+    underdog: "assets/characters/red-babies-underdog.png"
   },
 
   backgrounds: {
@@ -29,7 +29,6 @@ const ASSETS = {
 };
 
 const story = {
-
   intro: {
     speaker: "Red Babies",
     text: "You hear that?",
@@ -253,230 +252,299 @@ const gameState = {
   scenesVisited: 0
 };
 
-const backgroundEl = document.getElementById("sceneBackground");
-const spriteEl = document.getElementById("characterSprite");
-const speakerEl = document.getElementById("speakerName");
-const dialogueEl = document.getElementById("dialogueText");
-const choicesEl = document.getElementById("choices");
-const objectiveEl = document.getElementById("objectiveText");
-const sceneCounterEl = document.getElementById("sceneCounter");
-const glitchMessageEl = document.getElementById("glitchMessage");
-const fragmentScreenEl = document.getElementById("fragmentScreen");
-const festivalScreenEl = document.getElementById("festivalScreen");
-const fragmentContinueBtn = document.getElementById("fragmentContinue");
-const soundToggleBtn = document.getElementById("soundToggle");
-const musicPlayer = document.getElementById("musicPlayer");
-const sfxPlayer = document.getElementById("sfxPlayer");
+document.addEventListener("DOMContentLoaded", () => {
+  const backgroundEl = document.getElementById("sceneBackground");
+  const spriteEl = document.getElementById("characterSprite");
+  const speakerEl = document.getElementById("speakerName");
+  const dialogueEl = document.getElementById("dialogueText");
+  const choicesEl = document.getElementById("choices");
+  const objectiveEl = document.getElementById("objectiveText");
+  const sceneCounterEl = document.getElementById("sceneCounter");
+  const glitchMessageEl = document.getElementById("glitchMessage");
+  const fragmentScreenEl = document.getElementById("fragmentScreen");
+  const festivalScreenEl = document.getElementById("festivalScreen");
+  const fragmentContinueBtn = document.getElementById("fragmentContinue");
+  const soundToggleBtn = document.getElementById("soundToggle");
+  const musicPlayer = document.getElementById("musicPlayer");
+  const sfxPlayer = document.getElementById("sfxPlayer");
+  const ticketLink = document.getElementById("ticketLink");
+  const pageLink = document.getElementById("page-link");
 
-document.getElementById("ticketLink").href = CONFIG.ticketUrl;
-document.getElementById("page-link").href = CONFIG.redBabiesPageUrl;
+  const requiredElements = {
+    backgroundEl,
+    spriteEl,
+    speakerEl,
+    dialogueEl,
+    choicesEl,
+    objectiveEl,
+    sceneCounterEl,
+    glitchMessageEl,
+    fragmentScreenEl,
+    festivalScreenEl,
+    fragmentContinueBtn,
+    soundToggleBtn,
+    musicPlayer,
+    sfxPlayer,
+    ticketLink,
+    pageLink
+  };
 
-function asset(group, key) {
-  return ASSETS[group]?.[key] || "";
-}
+  const missingElements = Object.entries(requiredElements)
+    .filter(([, element]) => !element)
+    .map(([name]) => name);
 
-function playSfx(key) {
-  if (!gameState.soundOn) return;
-  const src = asset("audio", key);
-  if (!src) return;
-  sfxPlayer.src = src;
-  sfxPlayer.currentTime = 0;
-  sfxPlayer.play().catch(() => {});
-}
-
-function startAmbient() {
-  if (!gameState.soundOn) return;
-  if (!CONFIG.musicEnabled) return;
-
-  const src = asset("audio", "ambient");
-  if (!src) return;
-
-  if (!musicPlayer.src.endsWith(src)) {
-    musicPlayer.src = src;
-  }
-
-  musicPlayer.volume = 0.35;
-  musicPlayer.play().catch(() => {});
-}
-
-function toggleSound() {
-  gameState.soundOn = !gameState.soundOn;
-
-  if (gameState.soundOn) {
-    soundToggleBtn.textContent = "SOUND: ON";
-    startAmbient();
-  } else {
-    soundToggleBtn.textContent = "SOUND: OFF";
-    musicPlayer.pause();
-    sfxPlayer.pause();
-  }
-}
-
-function setBackground(key) {
-  const src = asset("backgrounds", key);
-
-  if (!src) {
-    backgroundEl.style.backgroundImage = "";
+  if (missingElements.length > 0) {
+    console.error("RED BABIES GAME: missing required elements:", missingElements);
     return;
   }
 
-  backgroundEl.style.backgroundImage =
-    `linear-gradient(rgba(10,9,11,.06), rgba(10,9,11,.34)), url("${src}")`;
-}
+  ticketLink.href = CONFIG.ticketUrl;
+  pageLink.href = CONFIG.redBabiesPageUrl;
 
-function setSprite(key, effect) {
-  spriteEl.className = "character-sprite";
+  let typewriterTimer = null;
+  let glitchTimer = null;
 
-  if (!key) {
-    spriteEl.hidden = true;
-    spriteEl.removeAttribute("src");
-    spriteEl.alt = "";
-    return;
+  function asset(group, key) {
+    return ASSETS[group]?.[key] || "";
   }
 
-  const src = asset("characters", key);
+  function playSfx(key) {
+    if (!gameState.soundOn) return;
 
-  spriteEl.src = src;
-  spriteEl.alt = key.replace(/([A-Z])/g, " $1").trim();
-  spriteEl.hidden = false;
+    const src = asset("audio", key);
+    if (!src) return;
 
-  requestAnimationFrame(() => {
-    spriteEl.classList.add("enter");
-
-    if (effect === "shake") spriteEl.classList.add("shake");
-    if (effect === "glitch") spriteEl.classList.add("glitch");
-  });
-}
-
-let typewriterTimer = null;
-
-function typeText(text, onComplete) {
-  if (typewriterTimer) {
-    clearTimeout(typewriterTimer);
-    typewriterTimer = null;
+    sfxPlayer.src = src;
+    sfxPlayer.currentTime = 0;
+    sfxPlayer.play().catch(() => {});
   }
 
-  dialogueEl.textContent = "";
-  let i = 0;
-  const speed = 12;
+  function startAmbient() {
+    if (!gameState.soundOn || !CONFIG.musicEnabled) return;
 
-  function typeNext() {
-    if (i >= text.length) {
-      typewriterTimer = null;
-      if (onComplete) onComplete();
+    const src = asset("audio", "ambient");
+    if (!src) return;
+
+    if (musicPlayer.getAttribute("src") !== src) {
+      musicPlayer.src = src;
+    }
+
+    musicPlayer.volume = 0.35;
+    musicPlayer.play().catch(() => {});
+  }
+
+  function toggleSound() {
+    gameState.soundOn = !gameState.soundOn;
+
+    if (gameState.soundOn) {
+      soundToggleBtn.textContent = "SOUND: ON";
+      startAmbient();
+    } else {
+      soundToggleBtn.textContent = "SOUND: OFF";
+      musicPlayer.pause();
+      sfxPlayer.pause();
+    }
+  }
+
+  function setBackground(key) {
+    const src = asset("backgrounds", key);
+
+    if (!src) {
+      backgroundEl.style.backgroundImage = "";
       return;
     }
 
-    dialogueEl.textContent += text[i];
-    i += 1;
-    typewriterTimer = setTimeout(typeNext, speed);
+    backgroundEl.style.backgroundImage =
+      `linear-gradient(rgba(10,9,11,.06), rgba(10,9,11,.34)), url("${src}")`;
   }
 
-  typeNext();
-}
+  function setSprite(key, effect) {
+    spriteEl.className = "character-sprite";
 
-let glitchTimer = null;
+    if (!key) {
+      spriteEl.hidden = true;
+      spriteEl.removeAttribute("src");
+      spriteEl.alt = "";
+      return;
+    }
 
-function showGlitchMessage(text) {
-  if (!text) return;
+    const src = asset("characters", key);
 
-  if (glitchTimer) clearTimeout(glitchTimer);
+    if (!src) {
+      spriteEl.hidden = true;
+      spriteEl.removeAttribute("src");
+      spriteEl.alt = "";
+      console.warn(`Missing character asset for "${key}".`);
+      return;
+    }
 
-  glitchMessageEl.textContent = text;
-  glitchMessageEl.hidden = false;
-  document.body.classList.add("corrupted");
-  playSfx("glitch");
+    spriteEl.src = src;
+    spriteEl.alt = key.replace(/([A-Z])/g, " $1").trim();
+    spriteEl.hidden = false;
 
-  glitchTimer = setTimeout(() => {
-    glitchMessageEl.hidden = true;
-    document.body.classList.remove("corrupted");
-    glitchTimer = null;
-  }, 850);
-}
+    requestAnimationFrame(() => {
+      spriteEl.classList.add("enter");
 
-function renderChoices(choices = []) {
-  choicesEl.innerHTML = "";
+      if (effect === "shake") {
+        spriteEl.classList.add("shake");
+      }
 
-  choices.forEach(choice => {
-    const button = document.createElement("button");
+      if (effect === "glitch") {
+        spriteEl.classList.add("glitch");
+      }
+    });
+  }
 
-    button.type = "button";
-    button.className = "choice-button";
-    button.textContent = choice.text;
+  function typeText(text, onComplete) {
+    if (typewriterTimer) {
+      clearTimeout(typewriterTimer);
+      typewriterTimer = null;
+    }
 
-    button.addEventListener("click", () => {
-      playSfx("click");
-      goToScene(choice.next);
+    dialogueEl.textContent = "";
+    let index = 0;
+    const speed = 12;
+
+    function typeNext() {
+      if (index >= text.length) {
+        typewriterTimer = null;
+        onComplete?.();
+        return;
+      }
+
+      dialogueEl.textContent += text[index];
+      index += 1;
+      typewriterTimer = setTimeout(typeNext, speed);
+    }
+
+    typeNext();
+  }
+
+  function showGlitchMessage(text) {
+    if (!text) return;
+
+    if (glitchTimer) {
+      clearTimeout(glitchTimer);
+    }
+
+    glitchMessageEl.textContent = text;
+    glitchMessageEl.hidden = false;
+    document.body.classList.add("corrupted");
+    playSfx("glitch");
+
+    glitchTimer = setTimeout(() => {
+      glitchMessageEl.hidden = true;
+      document.body.classList.remove("corrupted");
+      glitchTimer = null;
+    }, 850);
+  }
+
+  function renderChoices(choices = []) {
+    choicesEl.innerHTML = "";
+
+    choices.forEach((choice) => {
+      const button = document.createElement("button");
+
+      button.type = "button";
+      button.className = "choice-button";
+      button.textContent = choice.text;
+
+      button.addEventListener("click", () => {
+        playSfx("click");
+        goToScene(choice.next);
+      });
+
+      choicesEl.appendChild(button);
+    });
+  }
+
+  function hideOverlays() {
+    fragmentScreenEl.hidden = true;
+    festivalScreenEl.hidden = true;
+  }
+
+  function showFragment() {
+    festivalScreenEl.hidden = true;
+    fragmentScreenEl.hidden = false;
+    fragmentContinueBtn.disabled = false;
+    playSfx("fragment");
+
+    requestAnimationFrame(() => {
+      fragmentContinueBtn.focus();
+    });
+  }
+
+  function showFestival() {
+    fragmentScreenEl.hidden = true;
+    festivalScreenEl.hidden = false;
+    musicPlayer.pause();
+  }
+
+  function renderScene(sceneId) {
+    const scene = story[sceneId];
+
+    if (!scene) {
+      console.error(`Scene "${sceneId}" does not exist.`);
+      return;
+    }
+
+    gameState.currentScene = sceneId;
+    gameState.scenesVisited += 1;
+
+    if (scene.type === "fragment") {
+      showFragment();
+      return;
+    }
+
+    if (scene.type === "festival") {
+      showFestival();
+      return;
+    }
+
+    hideOverlays();
+
+    speakerEl.textContent = scene.speaker || "MIDNIGHT ARCADE";
+    objectiveEl.textContent = scene.objective || "Follow the transmission.";
+    sceneCounterEl.textContent = String(gameState.scenesVisited).padStart(2, "0");
+
+    setBackground(scene.background);
+    setSprite(scene.sprite, scene.effect);
+
+    choicesEl.innerHTML = "";
+
+    typeText(scene.text || "", () => {
+      renderChoices(scene.choices || []);
     });
 
-    choicesEl.appendChild(button);
-  });
-}
+    if (scene.glitchText) {
+      showGlitchMessage(scene.glitchText);
+    }
 
-function showFragment() {
-  fragmentScreenEl.hidden = false;
-  playSfx("fragment");
-}
-
-function showFestival() {
-  festivalScreenEl.hidden = false;
-  musicPlayer.pause();
-}
-
-function renderScene(sceneId) {
-  const scene = story[sceneId];
-
-  if (!scene) {
-    console.error(`Scene "${sceneId}" does not exist.`);
-    return;
+    startAmbient();
   }
 
-  gameState.currentScene = sceneId;
-  gameState.scenesVisited += 1;
-
-  if (scene.type === "fragment") {
-    showFragment();
-    return;
+  function goToScene(sceneId) {
+    renderScene(sceneId);
   }
 
-  if (scene.type === "festival") {
-    showFestival();
-    return;
-  }
+  fragmentContinueBtn.addEventListener("click", () => {
+    fragmentContinueBtn.disabled = true;
+    fragmentScreenEl.hidden = true;
 
-  speakerEl.textContent = scene.speaker || "MIDNIGHT ARCADE";
-  objectiveEl.textContent = scene.objective || "Follow the transmission.";
-  sceneCounterEl.textContent = String(gameState.scenesVisited).padStart(2, "0");
-
-  setBackground(scene.background);
-  setSprite(scene.sprite, scene.effect);
-
-  choicesEl.innerHTML = "";
-
-  typeText(scene.text || "", () => {
-    renderChoices(scene.choices);
+    requestAnimationFrame(() => {
+      goToScene("shee");
+    });
   });
 
-  if (scene.glitchText) {
-    showGlitchMessage(scene.glitchText);
-  }
+  soundToggleBtn.addEventListener("click", toggleSound);
 
-  startAmbient();
-}
+  document.addEventListener(
+    "click",
+    () => {
+      startAmbient();
+    },
+    { once: true }
+  );
 
-function goToScene(sceneId) {
-  renderScene(sceneId);
-}
-
-fragmentContinueBtn.addEventListener("click", () => {
-  fragmentScreenEl.hidden = true;
-  goToScene("shee");
+  renderScene("intro");
 });
-
-soundToggleBtn.addEventListener("click", toggleSound);
-
-document.addEventListener("click", () => {
-  startAmbient();
-}, { once: true });
-
-renderScene("intro");

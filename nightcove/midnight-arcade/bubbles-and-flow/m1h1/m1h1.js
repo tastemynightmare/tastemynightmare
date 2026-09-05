@@ -6,9 +6,9 @@ const CONFIG = {
 
 const ASSETS = {
   characters: {
-    m1h1Neutral: "assets/characters/m1h1-neutral.webp",
-    m1h1Rage: "assets/characters/m1h1-rage.webp",
-    m1h1Performance: "assets/characters/m1h1-performance.webp",
+    m1h1Neutral: "assets/characters/m1h1-neutral.png",
+    m1h1Rage: "assets/characters/m1h1-rage.png",
+    m1h1Performance: "assets/characters/m1h1-performance.png",
     pitZombie: "assets/characters/pit-zombie.webp"
   },
 

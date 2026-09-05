@@ -6,9 +6,9 @@ const CONFIG = {
 
 const ASSETS = {
   characters: {
-    redWorried: "assets/characters/princess-red-worried.webp",
-    redNeutral: "assets/characters/princess-red-neutral.webp",
-    redPerformance: "assets/characters/princess-red-performance.webp",
+    redWorried: "assets/characters/princess-red-sad.png",
+    redNeutral: "assets/characters/princess-red-neutral.png",
+    redPerformance: "assets/characters/princess-red-performance.png",
     judge: "assets/characters/the-judge.webp",
     destroyer: "assets/characters/the-destroyer.webp",
     demon: "assets/characters/the-demon.webp",
