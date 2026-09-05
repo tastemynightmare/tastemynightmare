@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#08020d">
+        <title>And Then Shee Rose | Bubbles & Flow</title>
+        <meta name="description" content="Choose a transmission and enter one of six Bubbles & Flow nightmares inside the Midnight Arcade.">
+        <link rel="stylesheet" href="bubbles.css">
+    </head>
+
+    <body>
+
+        <div class="stars stars--one" aria-hidden="true"></div>
+        <div class="stars stars--two" aria-hidden="true"></div>
+        <div class="scanlines" aria-hidden="true"></div>
+
+        <header class="topbar">
+
+            <a class="tmn-brand" href="../../index.html">
+                <span>TASTE MY NIGHTMARE</span>
+                <strong>MIDNIGHT ARCADE</strong>
+            </a>
+
+            <nav class="topbar__nav" aria-label="Game navigation">
+                <a href="../../index.html">ARCADE</a>
+                <a href="#transmissions">TRANSMISSIONS</a>
+                <a
+                    href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    TICKETS
+                </a>
+                <button id="soundToggle" class="sound-toggle" type="button">
+                    SOUND: OFF
+                </button>
+            </nav>
+
+        </header>
+
+
+        <main>
+
+            <!-- =====================================================
+                HERO
+            ====================================================== -->
+
+            <section class="hero">
+
+                <div class="bubble bubble--1" aria-hidden="true"></div>
+                <div class="bubble bubble--2" aria-hidden="true"></div>
+                <div class="bubble bubble--3" aria-hidden="true"></div>
+                <div class="bubble bubble--4" aria-hidden="true"></div>
+
+                <div class="hero__burst" aria-hidden="true">
+                    LIVE SIGNAL
+                </div>
+
+                <div class="hero__copy">
+
+                    <p class="system-label">
+                    MIDNIGHT ARCADE // CARTRIDGE 001
+                    </p>
+
+                    <div class="festival-banner">
+                        BUBBLES & FLOW
+                        <span>MUSIC FESTIVAL TRANSMISSION</span>
+                    </div>
+
+                    <h1>
+                    <span class="title-small">BUBBLES AND</span>
+                    <span class="title-large">FLOW</span>
+                    </h1>
+
+                    <p class="hero__intro">
+                    Six signals entered Night Cove.
+                    Six nightmares answered back.
+                    Choose whose transmission you want to enter first.
+                    </p>
+
+                    <div class="hero__actions">
+
+                        <a class="primary-button" href="#transmissions">
+                            CHOOSE A TRANSMISSION
+                            <span>&gt;</span>
+                        </a>
+
+                        <button
+                            class="secondary-button"
+                            id="loreButton"
+                            type="button"
+                        >
+                            READ SYSTEM FILE
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <aside class="fragment-monitor" aria-label="Fragment progress">
+
+                    <div class="monitor__header">
+                        FRAGMENTS RECOVERED
+                    </div>
+
+                    <div class="fragment-count">
+                        <strong id="fragmentCount">0</strong>
+                        <span>/ 6</span>
+                    </div>
+
+                    <div class="fragment-list">
+
+                        <div data-fragment="princess-red">
+                            <span class="fragment-dot"></span>
+                            HEART
+                        </div>
+
+                        <div data-fragment="ram">
+                            <span class="fragment-dot"></span>
+                            WORD
+                        </div>
+
+                        <div data-fragment="jilli">
+                            <span class="fragment-dot"></span>
+                            CHOICE
+                        </div>
+
+                        <div data-fragment="m1h1">
+                            <span class="fragment-dot"></span>
+                            WILL
+                        </div>
+
+                        <div data-fragment="red-babies">
+                            <span class="fragment-dot"></span>
+                            MEMORY
+                        </div>
+
+                        <div data-fragment="ashelic-rose">
+                            <span class="fragment-dot"></span>
+                            SELF
+                        </div>
+
+                    </div>
+
+                        <p class="monitor__status" id="fragmentStatus">
+                        SIGNAL INCOMPLETE.
+                        </p>
+
+                </aside>
+
+            </section>
+
+            <!-- =====================================================
+                FESTIVAL STRIP
+            ====================================================== -->
+
+            <section class="festival-strip">
+
+                <div>
+                    <span class="strip-label">SPECIAL EVENT TRANSMISSION</span>
+                    <strong>SUNDAY // SEPT 13 // 6PM</strong>
+                </div>
+
+                <div class="festival-strip__center">
+                    BUBBLES + HORROR + MUSIC + BAD DECISIONS
+                </div>
+
+                <a
+                    class="ticket-button"
+                    href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GET FESTIVAL TICKETS
+                    <span>&gt;</span>
+                </a>
+
+            </section>
+
+            <!-- =====================================================
+                TRANSMISSION SELECT
+            ====================================================== -->
+
+            <section class="transmissions" id="transmissions">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="system-label">
+                            SELECT PLAYER // ANSWER SIGNAL
+                        </p>
+
+                        <h2>
+                            CHOOSE YOUR NIGHTMARE
+                        </h2>
+                    </div>
+
+                    <p>
+                    Every route can be played on its own.
+                    Every route leaves something behind.
+                    </p>
+
+                </div>
+
+
+                <div class="character-grid">
+
+                    <!-- PRINCESS RED -->
+                    <article
+                        class="character-card character-card--princess"
+                        data-character="princess-red"
+                        >
+
+                        <div class="card-noise" aria-hidden="true"></div>
+
+                        <div class="card-status">
+                            <span>01</span>
+                            SIGNAL FOUND
+                        </div>
+
+                        <div class="portrait-frame">
+
+                            <img
+                            src="assets/artists/princess-red.webp"
+                            alt="Princess Red"
+                            onerror="this.classList.add('missing')"
+                            />
+
+                            <div class="portrait-fallback">
+                            PR
+                        </div>
+
+                    </div>
+
+                    <div class="character-card__content">
+
+                        <p class="route-label">
+                        THE DOLLHOUSE DISTRICT
+                        </p>
+
+                        <h3>
+                        PRINCESS RED
+                        </h3>
+
+                        <p class="route-title">
+                        SAVE ME!
+                        </p>
+
+                        <p class="route-copy">
+                        Four versions of Red are loose.
+                        Everybody has an opinion about which one is real.
+                        </p>
+
+                        <div class="fragment-badge">
+                            FRAGMENT // HEART
+                        </div>
+
+                        <div class="card-actions">
+
+                            <a class="play-link" href="../princess-red/">
+                                ANSWER SIGNAL
+                                <span>&gt;</span>
+                            </a>
+
+                            <button
+                                class="preview-link"
+                                type="button"
+                                data-preview="princess-red"
+                            >
+                                PREVIEW
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- RAM -->
+                    <article
+                        class="character-card character-card--ram"
+                        data-character="ram"
+                        >
+
+                        <div class="card-noise" aria-hidden="true"></div>
+
+                        <div class="card-status">
+                            <span>02</span>
+                            SIGNAL FOUND
+                        </div>
+
+                        <div class="portrait-frame">
+
+                            <img
+                            src="assets/artists/ram.webp"
+                            alt="Ram the Pharaoh"
+                            onerror="this.classList.add('missing')"
+                            />
+
+                            <div class="portrait-fallback">
+                                RP
+                            </div>
+
+                        </div>
+
+                        <div class="character-card__content">
+
+                            <p class="route-label">
+                            NEW JERSEY // 3000 B.C.
+                            </p>
+
+                            <h3>
+                            RAM THE PHARAOH
+                            </h3>
+
+                            <p class="route-title">
+                            THE MISSING SLAB
+                            </p>
+
+                            <p class="route-copy">
+                            Somebody stole the slab.
+                            The sky turned green.
+                            Jersey now has pyramids.
+                            </p>
+
+                            <div class="fragment-badge">
+                            FRAGMENT // WORD
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a class="play-link" href="../ram/">
+                                    ANSWER SIGNAL
+                                    <span>&gt;</span>
+                                </a>
+
+                                <button
+                                    class="preview-link"
+                                    type="button"
+                                    data-preview="ram"
+                                >
+                                    PREVIEW
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- JILLI -->
+                    <article class="character-card character-card--jilli"
+                        data-character="jilli">
+
+                        <div class="card-noise" aria-hidden="true"></div>
+
+                        <div class="card-status">
+                            <span>03</span>
+                            SIGNAL FOUND
+                        </div>
+
+                        <div class="portrait-frame">
+
+                            <img
+                            src="assets/artists/jilli.webp"
+                            alt="Jilli"
+                            onerror="this.classList.add('missing')"
+                            />
+
+                            <div class="portrait-fallback">
+                            JI
+                            </div>
+
+                        </div>
+
+                        <div class="character-card__content">
+
+                            <p class="route-label">
+                            HEARTBREAK FAIRYLAND
+                            </p>
+
+                            <h3>
+                            JILLI
+                            </h3>
+
+                            <p class="route-title">
+                            SLAY OR BE SLAYED
+                            </p>
+
+                            <p class="route-copy">
+                            The crowd loves her.
+                            Unfortunately, they no longer have a choice.
+                            </p>
+
+                            <div class="fragment-badge">
+                                FRAGMENT // CHOICE
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a class="play-link" href="../jilli/">
+                                    ANSWER SIGNAL
+                                    <span>&gt;</span>
+                                </a>
+
+                                <button
+                                    class="preview-link"
+                                    type="button"
+                                    data-preview="jilli"
+                                >
+                                    PREVIEW
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- M1H1 -->
+                    <article
+                        class="character-card character-card--m1h1"
+                        data-character="m1h1"
+                        >
+
+                        <div class="card-noise" aria-hidden="true"></div>
+
+                        <div class="card-status">
+                            <span>04</span>
+                            SIGNAL FOUND
+                        </div>
+
+                        <div class="portrait-frame">
+
+                            <img
+                            src="assets/artists/m1h1.webp"
+                            alt="M1H1"
+                            onerror="this.classList.add('missing')"
+                            />
+
+                            <div class="portrait-fallback">
+                            M1
+                            </div>
+
+                        </div>
+
+                        <div class="character-card__content">
+
+                            <p class="route-label">
+                            THE NEVERENDING MOSHPIT
+                            </p>
+
+                            <h3>
+                            M1H1
+                            </h3>
+
+                            <p class="route-title">
+                            RAGE FOREVER
+                            </p>
+
+                            <p class="route-copy">
+                            The show keeps restarting.
+                            Every exit leads back to the pit.
+                            </p>
+
+                            <div class="fragment-badge">
+                                FRAGMENT // WILL
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a class="play-link" href="../m1h1/">
+                                    ANSWER SIGNAL
+                                    <span>&gt;</span>
+                                </a>
+
+                                <button
+                                    class="preview-link"
+                                    type="button"
+                                    data-preview="m1h1"
+                                >
+                                    PREVIEW
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- RED BABIES -->
+                    <article
+                    class="character-card character-card--redbabies"
+                    data-character="red-babies"
+                    >
+
+                        <div class="card-noise" aria-hidden="true"></div>
+
+                        <div class="card-status">
+                            <span>05</span>
+                            SIGNAL FOUND
+                        </div>
+
+                        <div class="portrait-frame">
+
+                            <img
+                            src="assets/artists/red-babies.webp"
+                            alt="Red Babies"
+                            onerror="this.classList.add('missing')"
+                            />
+
+                            <div class="portrait-fallback">
+                            RB
+                            </div>
+
+                        </div>
+
+                        <div class="character-card__content">
+
+                            <p class="route-label">
+                            DEAD AIR
+                            </p>
+
+                            <h3>
+                            RED BABIES
+                            </h3>
+
+                            <p class="route-title">
+                            THE BOY BENEATH THE STATIC
+                            </p>
+
+                            <p class="route-copy">
+                            Every unfinished idea still remembers where he left it.
+                            </p>
+
+                            <div class="fragment-badge">
+                                FRAGMENT // MEMORY
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a class="play-link" href="../red-babies/">
+                                    ANSWER SIGNAL
+                                    <span>&gt;</span>
+                                </a>
+
+                                <button
+                                    class="preview-link"
+                                    type="button"
+                                    data-preview="red-babies"
+                                >
+                                    PREVIEW
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ASHELIC -->
+                    <article
+                    class="character-card character-card--ashelic"
+                    data-character="ashelic-rose"
+                    >
+
+                        <div class="card-noise" aria-hidden="true"></div>
+
+                        <div class="card-status">
+                            <span>06</span>
+                            FINAL SIGNAL
+                        </div>
+
+                        <div class="portrait-frame">
+
+                            <img
+                            src="assets/artists/ashelic-rose.webp"
+                            alt="Ashelic Rose"
+                            onerror="this.classList.add('missing')"
+                            />
+
+                            <div class="portrait-fallback">
+                                AR
+                            </div>
+
+                        </div>
+
+                        <div class="character-card__content">
+
+                            <p class="route-label">
+                            BLOOD GARDEN
+                            </p>
+
+                            <h3>
+                            ASHELIC ROSE
+                            </h3>
+
+                            <p class="route-title">
+                            BLOOD RITE
+                            </p>
+
+                            <p class="route-copy">
+                            If pain made her powerful,
+                            what happens when she stops feeding on it?
+                            </p>
+
+                            <div class="fragment-badge">
+                                FRAGMENT // SELF
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a class="play-link" href="../ashelic-rose/">
+                                    ANSWER SIGNAL
+                                    <span>&gt;</span>
+                                </a>
+
+                                <button
+                                    class="preview-link"
+                                    type="button"
+                                    data-preview="ashelic-rose"
+                                >
+                                    PREVIEW
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+                SYSTEM FOOTER
+            ====================================================== -->
+
+            <section class="signal-footer">
+
+                <div class="signal-footer__copy">
+
+                    <p class="system-label">
+                    NIGHT COVE SYSTEM MESSAGE
+                    </p>
+
+                    <p id="signalMessage">
+                    Six nightmares are currently broadcasting.
+                    </p>
+
+                    <span class="cursor">_</span>
+
+                </div>
+
+                <a class="secondary-button" href="../../index.html">
+                    RETURN TO MIDNIGHT ARCADE
+                </a>
+
+            </section>
+
+        </main>
+
+
+        <!-- =====================================================
+            PREVIEW MODAL
+        ====================================================== -->
+
+        <div
+            class="modal"
+            id="previewModal"
+            hidden
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="previewTitle"
+        >
+
+            <div class="modal__backdrop" data-close-preview></div>
+
+            <div class="modal__window">
+
+                <div class="modal__bar">
+
+                    <span>
+                    TRANSMISSION PREVIEW
+                    </span>
+
+                    <button
+                    type="button"
+                    class="modal__close"
+                    data-close-preview
+                    aria-label="Close preview"
+                    >
+                    X
+                    </button>
+
+                </div>
+
+                <div class="modal__content">
+
+                    <p class="system-label" id="previewZone">
+                    SIGNAL
+                    </p>
+
+                    <h2 id="previewTitle">
+                    ARTIST
+                    </h2>
+
+                    <h3 id="previewRoute">
+                    ROUTE
+                    </h3>
+
+                    <p id="previewCopy">
+                    Preview text.
+                    </p>
+
+                    <div class="modal__warning">
+                    WARNING:
+                    TRANSMISSION CONTENT MAY INCLUDE STATIC,
+                    BAD DECISIONS, AND PERSONAL GROWTH.
+                    </div>
+
+                    <a
+                    class="primary-button"
+                    id="previewPlayLink"
+                    href="#"
+                    >
+                    ENTER TRANSMISSION
+                    <span>&gt;</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+            LORE MODAL
+        ====================================================== -->
+
+        <div
+            class="modal"
+            id="loreModal"
+            hidden
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="loreTitle"
+        >
+
+            <div class="modal__backdrop" data-close-lore></div>
+
+            <div class="modal__window">
+
+                <div class="modal__bar">
+
+                    <span>
+                    SYSTEM FILE // CARTRIDGE 001
+                    </span>
+
+                    <button
+                    type="button"
+                    class="modal__close"
+                    data-close-lore
+                    aria-label="Close system file"
+                    >
+                    X
+                    </button>
+
+                </div>
+
+                <div class="modal__content">
+
+                    <p class="system-label">
+                    RECOVERED MIDNIGHT ARCADE FILE
+                    </p>
+
+                    <h2 id="loreTitle">
+                    AND THEN SHEE ROSE
+                    </h2>
+
+                    <p>
+                    Six performers were separated into corrupted pocket-realities
+                    shaped by their own music, fears, instincts, and memories.
+                    </p>
+
+                    <p>
+                    Each successful route releases a fragment.
+                    The fragments do not appear to belong to the artists.
+                    Every recovered piece points toward the same unknown signal.
+                    </p>
+
+                    <div class="modal__warning">
+                    HEART // WORD // CHOICE // WILL // MEMORY // SELF
+                    </div>
+
+                    <a class="primary-button" href="#transmissions" data-close-lore>
+                    CHOOSE A SIGNAL
+                    <span>&gt;</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <audio
+            id="ambientAudio"
+            src="assets/audio/bubbles-flow-loop.mp3"
+            loop
+            preload="none"
+        >
+        </audio>
+
+        <script src="bubbles-flow.js"></script>
+
+    </body>
+</html>
