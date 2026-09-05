@@ -1,146 +1,61 @@
+alert("CURRENT BUBBLES JS IS LOADING");
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =====================================================
-     MOVING STARFIELD
+     CUTESY FLOATING STARFIELD
   ====================================================== */
 
-  const starfield =
-    document.getElementById("starfield");
+  const starfield = document.getElementById("starfield");
 
   if (starfield) {
+    const starCount = window.innerWidth < 700 ? 45 : 80;
 
-    const starCount =
-      window.innerWidth < 700
-        ? 42
-        : 72;
+    for (let i = 0; i < starCount; i += 1) {
+      const star = document.createElement("span");
 
-    for (
-      let i = 0;
-      i < starCount;
-      i += 1
-    ) {
-
-      const star =
-        document.createElement("span");
-
-      star.className =
-        "star";
+      if (i % 8 === 0) {
+        star.className = "star star--sparkle";
+      } else if (i % 5 === 0) {
+        star.className = "star star--pink";
+      } else if (i % 3 === 0) {
+        star.className = "star star--blue";
+      } else {
+        star.className = "star";
+      }
 
       const size =
-        (
-          Math.random() * 2.2 +
-          0.8
-        ).toFixed(2);
+        i % 8 === 0
+          ? Math.random() * 5 + 5
+          : Math.random() * 2.4 + 1.2;
 
-      const duration =
-        (
-          Math.random() * 28 +
-          26
-        ).toFixed(2);
+      star.style.setProperty("--x", `${Math.random() * 100}%`);
+      star.style.setProperty("--y", `${Math.random() * 120}%`);
+      star.style.setProperty("--size", `${size.toFixed(2)}px`);
+      star.style.setProperty("--duration", `${(Math.random() * 24 + 24).toFixed(2)}s`);
+      star.style.setProperty("--delay", `${(Math.random() * -40).toFixed(2)}s`);
+      star.style.setProperty("--twinkle", `${(Math.random() * 2 + 1.3).toFixed(2)}s`);
+      star.style.setProperty("--twinkle-delay", `${(Math.random() * -3).toFixed(2)}s`);
+      star.style.setProperty("--opacity", `${(Math.random() * .45 + .5).toFixed(2)}`);
+      star.style.setProperty("--drift-x", `${(Math.random() * 110 - 55).toFixed(0)}px`);
 
-      const delay =
-        (
-          Math.random() * -45
-        ).toFixed(2);
-
-      const twinkle =
-        (
-          Math.random() * 2.4 +
-          1.6
-        ).toFixed(2);
-
-      const twinkleDelay =
-        (
-          Math.random() * -4
-        ).toFixed(2);
-
-      const opacity =
-        (
-          Math.random() * 0.55 +
-          0.35
-        ).toFixed(2);
-
-      const driftX =
-        (
-          Math.random() * 90 -
-          45
-        ).toFixed(0);
-
-      star.style.setProperty(
-        "--x",
-        `${Math.random() * 100}%`
-      );
-
-      star.style.setProperty(
-        "--y",
-        `${Math.random() * 120 + 5}%`
-      );
-
-      star.style.setProperty(
-        "--size",
-        `${size}px`
-      );
-
-      star.style.setProperty(
-        "--duration",
-        `${duration}s`
-      );
-
-      star.style.setProperty(
-        "--delay",
-        `${delay}s`
-      );
-
-      star.style.setProperty(
-        "--twinkle",
-        `${twinkle}s`
-      );
-
-      star.style.setProperty(
-        "--twinkle-delay",
-        `${twinkleDelay}s`
-      );
-
-      star.style.setProperty(
-        "--opacity",
-        opacity
-      );
-
-      star.style.setProperty(
-        "--drift-x",
-        `${driftX}px`
-      );
-
-      starfield.appendChild(
-        star
-      );
-
+      starfield.appendChild(star);
     }
-
   }
 
 
-  const STORAGE_KEY =
-    "tmn_bubbles_flow_fragments";
-
-  const fragmentIds = [
-    "princess-red",
-    "ram",
-    "jilli",
-    "m1h1",
-    "red-babies",
-    "ashelic-rose"
-  ];
+  /* =====================================================
+     TRANSMISSION PREVIEW DATA
+  ====================================================== */
 
   const previews = {
-
     "princess-red": {
       title: "PRINCESS RED",
       route: "SAVE ME!",
       zone: "THE DOLLHOUSE DISTRICT",
       copy:
-        "Four false Reds are wandering a pastel nightmare made from judgment, self-doubt, corruption, and exhaustion. Find the real one before the wrong version takes the stage.",
-      href: "../princess-red/"
+        "Four false Reds are wandering a nightmare made from judgment, self-doubt, corruption, and exhaustion. Find the real one before the wrong version takes the stage.",
+      href: "princess-red/index.html",
+      locked: false
     },
 
     "ram": {
@@ -149,7 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
       zone: "NEW JERSEY // 3000 B.C.",
       copy:
         "Somebody stole Ram's slab and reality responded by turning Jersey into a cursed Egypt-coded fever dream. Get the slab back without giving away the thing that made him Pharaoh.",
-      href: "../ram/"
+      href: "ram/index.html",
+      locked: false
     },
 
     "jilli": {
@@ -158,7 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
       zone: "HEARTBREAK FAIRYLAND",
       copy:
         "Jilli sang one song and accidentally enchanted the entire crowd into permanent devotion. Break the spell without killing the connection.",
-      href: "../jilli/"
+      href: "jilli/index.html",
+      locked: false
     },
 
     "m1h1": {
@@ -167,7 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
       zone: "THE NEVERENDING MOSHPIT",
       copy:
         "The show will not end. Every exit loops back to the pit. The only way out may be to push the venue harder than it can contain.",
-      href: "../m1h1/"
+      href: "m1h1/index.html",
+      locked: false
     },
 
     "red-babies": {
@@ -176,7 +94,8 @@ document.addEventListener("DOMContentLoaded", () => {
       zone: "DEAD AIR",
       copy:
         "Old recordings, discarded lyrics, unfinished ideas, and a shadow dog made of TV static are waiting in the rooms he thought he left behind.",
-      href: "../red-babies/"
+      href: "red-babies/index.html",
+      locked: false
     },
 
     "ashelic-rose": {
@@ -184,606 +103,303 @@ document.addEventListener("DOMContentLoaded", () => {
       route: "BLOOD RITE",
       zone: "THE BLOOD GARDEN",
       copy:
-        "The wounds are still alive. The hunger still knows their names. Ashelic has to decide whether pain is the source of her power or merely the thing she learned to feed on.",
-      href: "../ashelic-rose/"
+        "The final transmission has been detected inside Night Cove, but access has not been authorized yet.",
+      href: "",
+      locked: true
     }
-
   };
 
 
   /* =====================================================
-     PROGRESS
-  ====================================================== */
-
-  function readProgress() {
-
-    try {
-
-      const stored =
-        JSON.parse(
-          localStorage.getItem(
-            STORAGE_KEY
-          )
-        );
-
-      if (!Array.isArray(stored)) {
-        return [];
-      }
-
-      return stored.filter(
-        id =>
-          fragmentIds.includes(id)
-      );
-
-    } catch (error) {
-
-      console.warn(
-        "Could not read fragment progress.",
-        error
-      );
-
-      return [];
-
-    }
-
-  }
-
-
-  function writeProgress(progress) {
-
-    try {
-
-      localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(progress)
-      );
-
-    } catch (error) {
-
-      console.warn(
-        "Could not save fragment progress.",
-        error
-      );
-
-    }
-
-  }
-
-
-  function markCompletedFromQuery() {
-
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
-
-    const completed =
-      params.get("completed");
-
-    if (
-      !completed ||
-      !fragmentIds.includes(completed)
-    ) {
-      return;
-    }
-
-    const progress =
-      readProgress();
-
-    if (
-      !progress.includes(completed)
-    ) {
-
-      progress.push(completed);
-      writeProgress(progress);
-
-    }
-
-    params.delete("completed");
-
-    const cleanQuery =
-      params.toString();
-
-    const cleanUrl =
-      window.location.pathname +
-      (cleanQuery ? `?${cleanQuery}` : "") +
-      window.location.hash;
-
-    window.history.replaceState(
-      {},
-      "",
-      cleanUrl
-    );
-
-  }
-
-
-  function renderProgress() {
-
-    const progress =
-      readProgress();
-
-    const fragmentCount =
-      document.getElementById(
-        "fragmentCount"
-      );
-
-    const fragmentStatus =
-      document.getElementById(
-        "fragmentStatus"
-      );
-
-
-    if (fragmentCount) {
-
-      fragmentCount.textContent =
-        String(progress.length);
-
-    }
-
-
-    document
-      .querySelectorAll(
-        "[data-fragment]"
-      )
-      .forEach(item => {
-
-        const id =
-          item.dataset.fragment;
-
-        item.classList.toggle(
-          "is-recovered",
-          progress.includes(id)
-        );
-
-      });
-
-
-    document
-      .querySelectorAll(
-        "[data-character]"
-      )
-      .forEach(card => {
-
-        const id =
-          card.dataset.character;
-
-        if (
-          progress.includes(id)
-        ) {
-
-          const status =
-            card.querySelector(
-              ".card-status"
-            );
-
-          if (status) {
-
-            const number =
-              status.querySelector(
-                "span"
-              );
-
-            const numberText =
-              number
-                ? number.outerHTML
-                : "";
-
-            status.innerHTML =
-              `${numberText} FRAGMENT RECOVERED`;
-
-          }
-
-        }
-
-      });
-
-
-    if (fragmentStatus) {
-
-      if (progress.length === 0) {
-
-        fragmentStatus.textContent =
-          "SIGNAL INCOMPLETE.";
-
-      } else if (
-        progress.length < 6
-      ) {
-
-        fragmentStatus.textContent =
-          `${6 - progress.length} FRAGMENT${
-            6 - progress.length === 1
-              ? ""
-              : "S"
-          } STILL MISSING.`;
-
-      } else {
-
-        fragmentStatus.textContent =
-          "ALL FRAGMENTS RECOVERED. SOMETHING IS WAKING UP.";
-
-      }
-
-    }
-
-  }
-
-
-  markCompletedFromQuery();
-  renderProgress();
-
-
-  /* =====================================================
      PREVIEW MODAL
+     One modal. Every PREVIEW button targets it.
   ====================================================== */
 
-  const previewModal =
-    document.getElementById(
-      "previewModal"
-    );
+  const previewModal = document.getElementById("previewModal");
+  const previewTitle = document.getElementById("previewTitle");
+  const previewRoute = document.getElementById("previewRoute");
+  const previewZone = document.getElementById("previewZone");
+  const previewCopy = document.getElementById("previewCopy");
+  const previewPlayLink = document.getElementById("previewPlayLink");
+  const previewButtons = document.querySelectorAll(".preview-link");
+  const previewCloseButtons = document.querySelectorAll("[data-close-preview]");
 
-  const previewTitle =
-    document.getElementById(
-      "previewTitle"
-    );
+  previewButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const artistId = button.dataset.preview;
+      const data = previews[artistId];
 
-  const previewRoute =
-    document.getElementById(
-      "previewRoute"
-    );
+      if (
+        !data ||
+        !previewModal ||
+        !previewTitle ||
+        !previewRoute ||
+        !previewZone ||
+        !previewCopy ||
+        !previewPlayLink
+      ) {
+        return;
+      }
 
-  const previewZone =
-    document.getElementById(
-      "previewZone"
-    );
+      previewTitle.textContent = data.title;
+      previewRoute.textContent = data.route;
+      previewZone.textContent = data.zone;
+      previewCopy.textContent = data.copy;
 
-  const previewCopy =
-    document.getElementById(
-      "previewCopy"
-    );
+      if (data.locked) {
+        previewPlayLink.removeAttribute("href");
+        previewPlayLink.setAttribute("aria-disabled", "true");
+        previewPlayLink.classList.add("is-disabled");
+        previewPlayLink.innerHTML =
+          'TRANSMISSION LOCKED <span>X</span>';
+      } else {
+        previewPlayLink.href = data.href;
+        previewPlayLink.removeAttribute("aria-disabled");
+        previewPlayLink.classList.remove("is-disabled");
+        previewPlayLink.innerHTML =
+          'ENTER TRANSMISSION <span>&gt;</span>';
+      }
 
-  const previewPlayLink =
-    document.getElementById(
-      "previewPlayLink"
-    );
-
-
-  function openPreview(id) {
-
-    const data =
-      previews[id];
-
-    if (
-      !previewModal ||
-      !data
-    ) {
-      return;
-    }
-
-    previewTitle.textContent =
-      data.title;
-
-    previewRoute.textContent =
-      data.route;
-
-    previewZone.textContent =
-      data.zone;
-
-    previewCopy.textContent =
-      data.copy;
-
-    previewPlayLink.href =
-      data.href;
-
-    previewModal.hidden =
-      false;
-
-    document.body.style.overflow =
-      "hidden";
-
-  }
-
-
-  function closePreview() {
-
-    if (!previewModal) {
-      return;
-    }
-
-    previewModal.hidden =
-      true;
-
-    document.body.style.overflow =
-      "";
-
-  }
-
-
-  document
-    .querySelectorAll(
-      "[data-preview]"
-    )
-    .forEach(button => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          openPreview(
-            button.dataset.preview
-          );
-
-        }
-      );
-
+      previewModal.hidden = false;
+      document.body.classList.add("modal-open");
     });
+  });
 
+  previewCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!previewModal) {
+        return;
+      }
 
-  document
-    .querySelectorAll(
-      "[data-close-preview]"
-    )
-    .forEach(button => {
-
-      button.addEventListener(
-        "click",
-        closePreview
-      );
-
+      previewModal.hidden = true;
+      document.body.classList.remove("modal-open");
     });
+  });
 
 
   /* =====================================================
      LORE MODAL
   ====================================================== */
 
-  const loreButton =
-    document.getElementById(
-      "loreButton"
-    );
+  const loreButton = document.getElementById("loreButton");
+  const loreModal = document.getElementById("loreModal");
+  const loreCloseButtons = document.querySelectorAll("[data-close-lore]");
 
-  const loreModal =
-    document.getElementById(
-      "loreModal"
-    );
-
-
-  function openLore() {
-
-    if (!loreModal) {
-      return;
-    }
-
-    loreModal.hidden =
-      false;
-
-    document.body.style.overflow =
-      "hidden";
-
-  }
-
-
-  function closeLore() {
-
-    if (!loreModal) {
-      return;
-    }
-
-    loreModal.hidden =
-      true;
-
-    document.body.style.overflow =
-      "";
-
-  }
-
-
-  if (loreButton) {
-
-    loreButton.addEventListener(
-      "click",
-      openLore
-    );
-
-  }
-
-
-  document
-    .querySelectorAll(
-      "[data-close-lore]"
-    )
-    .forEach(button => {
-
-      button.addEventListener(
-        "click",
-        closeLore
-      );
-
+  if (loreButton && loreModal) {
+    loreButton.addEventListener("click", () => {
+      loreModal.hidden = false;
+      document.body.classList.add("modal-open");
     });
+  }
 
-
-  document.addEventListener(
-    "keydown",
-    event => {
-
-      if (event.key !== "Escape") {
+  loreCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!loreModal) {
         return;
       }
 
-      closePreview();
-      closeLore();
+      loreModal.hidden = true;
+      document.body.classList.remove("modal-open");
+    });
+  });
 
+
+  /* =====================================================
+     ESCAPE TO CLOSE MODALS
+  ====================================================== */
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") {
+      return;
     }
-  );
+
+    if (previewModal) {
+      previewModal.hidden = true;
+    }
+
+    if (loreModal) {
+      loreModal.hidden = true;
+    }
+
+    document.body.classList.remove("modal-open");
+  });
+
+
+  /* =====================================================
+     FRAGMENT PROGRESS
+  ====================================================== */
+
+  const STORAGE_KEY = "tmn_bubbles_flow_fragments";
+
+  const fragmentIds = [
+    "princess-red",
+    "ram",
+    "jilli",
+    "m1h1",
+    "red-babies"
+  ];
+
+  function readProgress() {
+    try {
+      const stored = JSON.parse(localStorage.getItem(STORAGE_KEY));
+
+      if (!Array.isArray(stored)) {
+        return [];
+      }
+
+      return stored.filter((id) => fragmentIds.includes(id));
+    } catch (error) {
+      console.warn("Could not read fragment progress.", error);
+      return [];
+    }
+  }
+
+  function writeProgress(progress) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    } catch (error) {
+      console.warn("Could not save fragment progress.", error);
+    }
+  }
+
+  function markCompletedFromQuery() {
+    const params = new URLSearchParams(window.location.search);
+    const completed = params.get("completed");
+
+    if (!completed || !fragmentIds.includes(completed)) {
+      return;
+    }
+
+    const progress = readProgress();
+
+    if (!progress.includes(completed)) {
+      progress.push(completed);
+      writeProgress(progress);
+    }
+
+    params.delete("completed");
+
+    const cleanQuery = params.toString();
+    const cleanUrl =
+      window.location.pathname +
+      (cleanQuery ? `?${cleanQuery}` : "") +
+      window.location.hash;
+
+    window.history.replaceState({}, "", cleanUrl);
+  }
+
+  function renderProgress() {
+    const progress = readProgress();
+    const fragmentCount = document.getElementById("fragmentCount");
+    const fragmentStatus = document.getElementById("fragmentStatus");
+
+    if (fragmentCount) {
+      fragmentCount.textContent = String(progress.length);
+    }
+
+    document.querySelectorAll("[data-fragment]").forEach((item) => {
+      const id = item.dataset.fragment;
+
+      item.classList.toggle(
+        "is-recovered",
+        progress.includes(id)
+      );
+    });
+
+    document.querySelectorAll("[data-character]").forEach((card) => {
+      const id = card.dataset.character;
+
+      if (!progress.includes(id)) {
+        return;
+      }
+
+      const status = card.querySelector(".card-status");
+
+      if (!status) {
+        return;
+      }
+
+      const number = status.querySelector("span");
+      const numberText = number ? number.outerHTML : "";
+
+      status.innerHTML =
+        `${numberText} FRAGMENT RECOVERED`;
+    });
+
+    if (fragmentStatus) {
+      const missing = 5 - progress.length;
+
+      if (progress.length === 0) {
+        fragmentStatus.textContent = "SIGNAL INCOMPLETE.";
+      } else if (missing > 0) {
+        fragmentStatus.textContent =
+          `${missing} FRAGMENT${missing === 1 ? "" : "S"} STILL MISSING.`;
+      } else {
+        fragmentStatus.textContent =
+          "FIVE FRAGMENTS RECOVERED. FINAL SIGNAL REMAINS LOCKED.";
+      }
+    }
+  }
+
+  markCompletedFromQuery();
+  renderProgress();
 
 
   /* =====================================================
      AMBIENT AUDIO
   ====================================================== */
 
-  const soundToggle =
-    document.getElementById(
-      "soundToggle"
-    );
-
-  const ambientAudio =
-    document.getElementById(
-      "ambientAudio"
-    );
-
+  const soundToggle = document.getElementById("soundToggle");
+  const ambientAudio = document.getElementById("ambientAudio");
   let soundOn = false;
 
+  if (soundToggle && ambientAudio) {
+    soundToggle.addEventListener("click", async () => {
+      if (!soundOn) {
+        ambientAudio.volume = .24;
 
-  if (
-    soundToggle &&
-    ambientAudio
-  ) {
-
-    soundToggle.addEventListener(
-      "click",
-      async () => {
-
-        soundOn =
-          !soundOn;
-
-        if (soundOn) {
-
-          ambientAudio.volume =
-            .24;
-
-          try {
-
-            await ambientAudio.play();
-
-            soundToggle.textContent =
-              "SOUND: ON";
-
-          } catch (error) {
-
-            console.warn(
-              "Ambient audio did not play. Add assets/audio/bubbles-flow-loop.mp3 if it is missing.",
-              error
-            );
-
-            soundOn =
-              false;
-
-            soundToggle.textContent =
-              "SOUND: OFF";
-
-          }
-
-        } else {
-
-          ambientAudio.pause();
-
-          soundToggle.textContent =
-            "SOUND: OFF";
-
+        try {
+          await ambientAudio.play();
+          soundOn = true;
+          soundToggle.textContent = "SOUND: ON";
+        } catch (error) {
+          console.warn(
+            "Ambient audio could not play. Check assets/audio/bubbles-flow-loop.mp3",
+            error
+          );
         }
-
+      } else {
+        ambientAudio.pause();
+        soundOn = false;
+        soundToggle.textContent = "SOUND: OFF";
       }
-    );
-
+    });
   }
 
 
   /* =====================================================
-     SIGNAL MESSAGE
+     ROTATING SYSTEM MESSAGE
   ====================================================== */
 
-  const signalMessage =
-    document.getElementById(
-      "signalMessage"
-    );
+  const signalMessage = document.getElementById("signalMessage");
 
   const messages = [
-    "Six nightmares are currently broadcasting.",
-    "Do not answer a transmission you are not prepared to finish.",
+    "Five nightmares are currently broadcasting.",
+    "The final transmission remains locked.",
     "Bubbles & Flow signal detected inside Night Cove.",
     "Fragments may persist between sessions.",
-    "Unknown signal repeats: SAY A PRAYER TO SHEE.",
-    "The final cartridge is already listening."
+    "Unknown signal repeats: SAY A PRAYER TO SHEE."
   ];
 
   let messageIndex = 0;
-  let messageTimer = null;
-
-
-  function typeMessage(text) {
-
-    if (!signalMessage) {
-      return;
-    }
-
-    if (messageTimer) {
-      clearTimeout(messageTimer);
-    }
-
-    signalMessage.textContent =
-      "";
-
-    let index =
-      0;
-
-
-    function nextCharacter() {
-
-      if (
-        index >= text.length
-      ) {
-
-        messageTimer =
-          null;
-
-        return;
-
-      }
-
-      signalMessage.textContent +=
-        text[index];
-
-      index +=
-        1;
-
-      messageTimer =
-        setTimeout(
-          nextCharacter,
-          24
-        );
-
-    }
-
-
-    nextCharacter();
-
-  }
-
 
   if (signalMessage) {
-
-    setInterval(
-      () => {
-
-        messageIndex =
-          (
-            messageIndex + 1
-          ) %
-          messages.length;
-
-        typeMessage(
-          messages[messageIndex]
-        );
-
-      },
-      5200
-    );
-
+    setInterval(() => {
+      messageIndex = (messageIndex + 1) % messages.length;
+      signalMessage.textContent = messages[messageIndex];
+    }, 5200);
   }
 
-
-  console.log(
-    "BUBBLES & FLOW GAME: ONLINE"
-  );
+  console.log("BUBBLES & FLOW: ONLINE");
 
 });

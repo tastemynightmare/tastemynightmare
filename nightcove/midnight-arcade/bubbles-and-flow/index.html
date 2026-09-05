@@ -4,15 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#08020d">
-        <title>And Then Shee Rose | Bubbles & Flow</title>
+        <title>Bubbles & Flow | Midnight Arcade</title>
         <meta name="description" content="Choose a transmission and enter one of six Bubbles & Flow nightmares inside the Midnight Arcade.">
         <link rel="stylesheet" href="bubbles.css">
     </head>
 
     <body>
 
-        <div class="stars stars--one" aria-hidden="true"></div>
-        <div class="stars stars--two" aria-hidden="true"></div>
+        <div class="starfield" id="starfield" aria-hidden="true"></div>
         <div class="scanlines" aria-hidden="true"></div>
 
         <header class="topbar">
@@ -38,7 +37,6 @@
             </nav>
 
         </header>
-
 
         <main>
 
@@ -74,9 +72,9 @@
                     </h1>
 
                     <p class="hero__intro">
-                    Six signals entered Night Cove.
-                    Six nightmares answered back.
-                    Choose whose transmission you want to enter first.
+                        Six signals entered Night Cove.
+                        Six nightmares answered back.
+                        Choose whose transmission you want to enter first.
                     </p>
 
                     <div class="hero__actions">
@@ -197,22 +195,21 @@
                     </div>
 
                     <p>
-                    Every route can be played on its own.
-                    Every route leaves something behind.
+                        Every route can be played on its own.
+                        Every route leaves something behind.
                     </p>
 
                 </div>
-
 
                 <div class="character-grid">
 
                     <!-- PRINCESS RED -->
                     <article
-                        class="character-card character-card--princess"
-                        data-character="princess-red"
-                        >
+                    class="character-card character-card--princess"
+                    data-character="princess-red"
+                    >
 
-                        <div class="card-noise" aria-hidden="true"></div>
+                    <div class="card-noise" aria-hidden="true"></div>
 
                         <div class="card-status">
                             <span>01</span>
@@ -258,7 +255,7 @@
 
                         <div class="card-actions">
 
-                            <a class="play-link" href="../princess-red/">
+                            <a class="play-link" href="princess-red/index.html">
                                 ANSWER SIGNAL
                                 <span>&gt;</span>
                             </a>
@@ -274,7 +271,6 @@
                         </div>
 
                     </article>
-
 
                     <!-- RAM -->
                     <article
@@ -329,7 +325,7 @@
 
                             <div class="card-actions">
 
-                                <a class="play-link" href="../ram/">
+                                <a class="play-link" href="ram/index.html">
                                     ANSWER SIGNAL
                                     <span>&gt;</span>
                                 </a>
@@ -347,7 +343,6 @@
                         </div>
 
                     </article>
-
 
                     <!-- JILLI -->
                     <article class="character-card character-card--jilli"
@@ -399,7 +394,7 @@
 
                             <div class="card-actions">
 
-                                <a class="play-link" href="../jilli/">
+                                <a class="play-link" href="jilli/index.html">
                                     ANSWER SIGNAL
                                     <span>&gt;</span>
                                 </a>
@@ -417,7 +412,6 @@
                         </div>
 
                     </article>
-
 
                     <!-- M1H1 -->
                     <article
@@ -471,7 +465,7 @@
 
                             <div class="card-actions">
 
-                                <a class="play-link" href="../m1h1/">
+                                <a class="play-link" href="m1h1/index.html">
                                     ANSWER SIGNAL
                                     <span>&gt;</span>
                                 </a>
@@ -489,7 +483,6 @@
                         </div>
 
                     </article>
-
 
                     <!-- RED BABIES -->
                     <article
@@ -520,20 +513,17 @@
 
                         <div class="character-card__content">
 
-                            <p class="route-label">
-                            DEAD AIR
-                            </p>
+                            <p class="route-label">DEAD AIR</p>
 
-                            <h3>
-                            RED BABIES
-                            </h3>
+                            <h3>RED BABIES</h3>
 
                             <p class="route-title">
-                            THE BOY BENEATH THE STATIC
+                                THE BOY BENEATH THE STATIC
                             </p>
 
                             <p class="route-copy">
-                            Every unfinished idea still remembers where he left it.
+                                Every unfinished idea still remembers where 
+                                he left it.
                             </p>
 
                             <div class="fragment-badge">
@@ -542,7 +532,7 @@
 
                             <div class="card-actions">
 
-                                <a class="play-link" href="../red-babies/">
+                                <a class="play-link" href="red-babies/index.html">
                                     ANSWER SIGNAL
                                     <span>&gt;</span>
                                 </a>
@@ -561,18 +551,17 @@
 
                     </article>
 
-
                     <!-- ASHELIC -->
                     <article
-                    class="character-card character-card--ashelic"
+                    class="character-card character-card--ashelic is-locked"
                     data-character="ashelic-rose"
                     >
 
                         <div class="card-noise" aria-hidden="true"></div>
 
-                        <div class="card-status">
+                        <div class="card-status card-status--locked">
                             <span>06</span>
-                            FINAL SIGNAL
+                            SIGNAL LOCKED
                         </div>
 
                         <div class="portrait-frame">
@@ -614,10 +603,15 @@
 
                             <div class="card-actions">
 
-                                <a class="play-link" href="../ashelic-rose/">
-                                    ANSWER SIGNAL
-                                    <span>&gt;</span>
-                                </a>
+                                <button
+                                    class="play-link play-link--locked"
+                                    type="button"
+                                    disabled
+                                    aria-disabled="true"
+                                >
+                                    LOCKED
+                                    <span>X</span>
+                                </button>
 
                                 <button
                                     class="preview-link"
@@ -637,7 +631,6 @@
 
             </section>
 
-
             <!-- =====================================================
                 SYSTEM FOOTER
             ====================================================== -->
@@ -647,11 +640,11 @@
                 <div class="signal-footer__copy">
 
                     <p class="system-label">
-                    NIGHT COVE SYSTEM MESSAGE
+                        NIGHT COVE SYSTEM MESSAGE
                     </p>
 
                     <p id="signalMessage">
-                    Six nightmares are currently broadcasting.
+                        Six nightmares are currently broadcasting.
                     </p>
 
                     <span class="cursor">_</span>
@@ -665,7 +658,6 @@
             </section>
 
         </main>
-
 
         <!-- =====================================================
             PREVIEW MODAL
@@ -687,7 +679,7 @@
                 <div class="modal__bar">
 
                     <span>
-                    TRANSMISSION PREVIEW
+                        TRANSMISSION PREVIEW
                     </span>
 
                     <button
@@ -704,7 +696,7 @@
                 <div class="modal__content">
 
                     <p class="system-label" id="previewZone">
-                    SIGNAL
+                        SIGNAL
                     </p>
 
                     <h2 id="previewTitle">
@@ -716,13 +708,13 @@
                     </h3>
 
                     <p id="previewCopy">
-                    Preview text.
+                        Preview text.
                     </p>
 
                     <div class="modal__warning">
-                    WARNING:
-                    TRANSMISSION CONTENT MAY INCLUDE STATIC,
-                    BAD DECISIONS, AND PERSONAL GROWTH.
+                        WARNING:
+                        TRANSMISSION CONTENT MAY INCLUDE STATIC,
+                        BAD DECISIONS, AND PERSONAL GROWTH.
                     </div>
 
                     <a
@@ -739,7 +731,6 @@
             </div>
 
         </div>
-
 
         <!-- =====================================================
             LORE MODAL
@@ -761,7 +752,7 @@
                 <div class="modal__bar">
 
                     <span>
-                    SYSTEM FILE // CARTRIDGE 001
+                        SYSTEM FILE // CARTRIDGE 001
                     </span>
 
                     <button
@@ -778,31 +769,31 @@
                 <div class="modal__content">
 
                     <p class="system-label">
-                    RECOVERED MIDNIGHT ARCADE FILE
+                        RECOVERED MIDNIGHT ARCADE FILE
                     </p>
 
                     <h2 id="loreTitle">
-                    AND THEN SHEE ROSE
+                        BUBBLES &amp; FLOW
                     </h2>
 
                     <p>
-                    Six performers were separated into corrupted pocket-realities
-                    shaped by their own music, fears, instincts, and memories.
+                        Six performers were separated into corrupted pocket-realities
+                        shaped by their own music, fears, instincts, and memories.
                     </p>
 
                     <p>
-                    Each successful route releases a fragment.
-                    The fragments do not appear to belong to the artists.
-                    Every recovered piece points toward the same unknown signal.
+                        Each successful route releases a fragment.
+                        The fragments do not appear to belong to the artists.
+                        Every recovered piece points toward the same unknown signal.
                     </p>
 
                     <div class="modal__warning">
-                    HEART // WORD // CHOICE // WILL // MEMORY // SELF
+                        HEART // WORD // CHOICE // WILL // MEMORY // SELF
                     </div>
 
                     <a class="primary-button" href="#transmissions" data-close-lore>
-                    CHOOSE A SIGNAL
-                    <span>&gt;</span>
+                        CHOOSE A SIGNAL
+                        <span>&gt;</span>
                     </a>
 
                 </div>
@@ -810,7 +801,6 @@
             </div>
 
         </div>
-
 
         <audio
             id="ambientAudio"

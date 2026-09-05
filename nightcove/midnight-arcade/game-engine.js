@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
      GAME FILE MODAL
   ========================================================= */
 
+  
   function openModal() {
 
     if (!gameModal) return;
