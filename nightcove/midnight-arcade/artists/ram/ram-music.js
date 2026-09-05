@@ -47,26 +47,29 @@ const equalizer =
 
 
 
-/* PLAY / PAUSE */
-
-
 playButton.addEventListener(
     "click",
     async () => {
 
         try {
 
-            if (audio.paused) {
+            if (
+                audio.paused
+            ) {
 
                 await audio.play();
 
-            } else {
+            }
+
+            else {
 
                 audio.pause();
 
             }
 
-        } catch (error) {
+        }
+
+        catch (error) {
 
             console.error(
                 "Audio could not play:",
@@ -84,38 +87,37 @@ playButton.addEventListener(
 );
 
 
+
 audio.addEventListener(
-    "canplay",
+    "play",
     () => {
 
-        console.log(
-            "AUDIO READY:",
-            audio.currentSrc
+        playButton.textContent =
+            "❚❚";
+
+        equalizer.classList.add(
+            "playing"
         );
 
     }
 );
 
 
+
 audio.addEventListener(
-    "error",
+    "pause",
     () => {
 
-        console.error(
-            "AUDIO LOAD ERROR:",
-            audio.error
-        );
+        playButton.textContent =
+            "▶";
 
-        console.error(
-            "FAILED SOURCE:",
-            audio.currentSrc
+        equalizer.classList.remove(
+            "playing"
         );
 
     }
 );
 
-
-/* SKIP */
 
 
 rewindButton.addEventListener(
@@ -137,6 +139,10 @@ forwardButton.addEventListener(
     "click",
     () => {
 
+        if (!audio.duration) {
+            return;
+        }
+
         audio.currentTime =
             Math.min(
                 audio.duration,
@@ -146,9 +152,6 @@ forwardButton.addEventListener(
     }
 );
 
-
-
-/* PROGRESS */
 
 
 audio.addEventListener(
@@ -184,9 +187,6 @@ audio.addEventListener(
 
 
 
-/* DURATION */
-
-
 audio.addEventListener(
     "loadedmetadata",
     () => {
@@ -199,9 +199,6 @@ audio.addEventListener(
     }
 );
 
-
-
-/* SCRUB */
 
 
 progressBar.addEventListener(
@@ -231,9 +228,6 @@ progressBar.addEventListener(
 
 
 
-/* TIME FORMAT */
-
-
 function formatTime(
     seconds
 ) {
@@ -260,3 +254,36 @@ function formatTime(
     );
 
 }
+
+
+
+audio.addEventListener(
+    "canplay",
+    () => {
+
+        console.log(
+            "RAM AUDIO READY:",
+            audio.currentSrc
+        );
+
+    }
+);
+
+
+
+audio.addEventListener(
+    "error",
+    () => {
+
+        console.error(
+            "RAM AUDIO LOAD ERROR:",
+            audio.error
+        );
+
+        console.error(
+            "FAILED SOURCE:",
+            audio.currentSrc
+        );
+
+    }
+);

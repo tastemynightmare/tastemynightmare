@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Princess Red | Midnight Arcade</title>
-    <link rel="stylesheet" href="princess-red-music.css">
-    </head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <title>Ram the Pharaoh | Midnight Arcade</title>
+
+        <link rel="stylesheet" href="ram-music.css">
+    </head>
 
     <body>
 
         <main class="sound-room">
 
-            <!-- BACKGROUND DECOR -->
-
             <div class="stars"></div>
-
-
-            <!-- NAVIGATION -->
 
             <nav class="sound-nav">
 
@@ -31,26 +27,17 @@
 
             </nav>
 
-
-            <!-- MAIN CHARACTER AREA -->
-
             <section class="artist-stage">
-
-
-                <!-- PRINCESS RED -->
 
                 <div class="sprite-area">
 
                     <img
-                        src="assets/princess-red-sprite.webp"
-                        alt="Princess Red"
+                        src="assets/ram-sprite.webp"
+                        alt="Ram the Pharaoh"
                         class="artist-sprite"
                     >
 
                 </div>
-
-
-                <!-- MUSIC PLAYER -->
 
                 <div class="player-card">
 
@@ -58,45 +45,35 @@
                         NOW TRANSMITTING
                     </p>
 
-
                     <h1>
-                        PRINCESS RED
+                        RAM THE PHARAOH
                     </h1>
 
-
                     <p class="artist-location">
-                        CHICAGO // DOLLHOUSE DISTRICT
+                        JERSEY // PHARAOH FREQUENCY
                     </p>
-
-
-                    <!-- ALBUM ART -->
 
                     <div class="album-frame">
 
                         <img
-                            src="assets/princess-red-cover.webp"
-                            alt="Princess Red song artwork"
+                            src="assets/ram-cover.webp"
+                            alt="Ram the Pharaoh song artwork"
                             class="album-art"
                         >
 
                     </div>
 
-
-                    <!-- SONG INFORMATION -->
-
                     <div class="song-info">
 
                         <h2 id="songTitle">
-                            SAVE ME
+                            RAM'S FESTIVAL PICK
                         </h2>
 
                         <p>
-                            Princess Red
+                            Ram the Pharaoh
                         </p>
 
                     </div>
-
-                    <!-- PROGRESS BAR -->
 
                     <div class="progress-container">
 
@@ -113,13 +90,10 @@
                         >
 
                         <span id="duration">
-                            1:38
+                            0:00
                         </span>
 
                     </div>
-
-
-                    <!-- PLAYER CONTROLS -->
 
                     <div class="controls">
 
@@ -130,7 +104,6 @@
                             ↶
                         </button>
 
-
                         <button
                             id="playButton"
                             class="play-button"
@@ -138,7 +111,6 @@
                         >
                             ▶
                         </button>
-
 
                         <button
                             id="forwardButton"
@@ -149,14 +121,10 @@
 
                     </div>
 
-
-                    <!-- CUTE FAKE EQUALIZER -->
-
                     <div
                         id="equalizer"
                         class="equalizer"
                     >
-
                         <span></span>
                         <span></span>
                         <span></span>
@@ -164,32 +132,29 @@
                         <span></span>
                         <span></span>
                         <span></span>
-
                     </div>
 
-                    <!-- AUDIO -->
-                        <audio id="audioPlayer" preload="metadata">
-                            <source
-                                src="assets/princess-red-song.mp3"
-                                type="audio/mpeg"
-                            >
-                        </audio>
-
-                    <!-- OTHER LINKS -->
+                    <audio id="audioPlayer" preload="metadata">
+                        <source
+                            src="assets/ram-song.mp3"
+                            type="audio/mpeg"
+                        >
+                    </audio>
 
                     <div class="artist-actions">
 
                         <a
-                            href="../../games/princess-red/"
+                            href="../../games/ram/"
                             class="secondary-button"
                         >
-                            ♥ REPLAY SAVE ME!
+                            𓂀 REPLAY THE CURSE
                         </a>
 
                         <a
                             href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
                             class="ticket-button"
                             target="_blank"
+                            rel="noopener noreferrer"
                         >
                             🎟 BUBBLES & FLOW
                         </a>
@@ -201,17 +166,14 @@
             </section>
 
             <footer>
-
                 <p>
                     TASTE MY NIGHTMARE // MIDNIGHT ARCADE
                 </p>
-
             </footer>
 
         </main>
 
-        <script src="princess-red-music.js"></script>
+        <script src="ram-music.js"></script>
 
     </body>
-
 </html>
