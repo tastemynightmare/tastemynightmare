@@ -1,258 +1,274 @@
 const CONFIG = {
-  ticketUrl: "https://shotgun.live/en/festivals/bubbles-flow-music-festival",
-  princessRedPageUrl: "../../artists/princess-red/",
+  ashelicPageUrl: "../../artists/ashelic-rose/",
   musicEnabled: true
 };
 
 const ASSETS = {
+
   characters: {
-    redWorried: "assets/characters/princess-red-worried.webp",
-    redNeutral: "assets/characters/princess-red-neutral.webp",
-    redPerformance: "assets/characters/princess-red-performance.webp",
-    judge: "assets/characters/the-judge.webp",
-    destroyer: "assets/characters/the-destroyer.webp",
-    demon: "assets/characters/the-demon.webp",
-    empty: "assets/characters/empty-red.webp",
-    bitty: "assets/characters/bitty.webp"
+    ashelicSweet: "assets/characters/ashelic-sweet.webp",
+    ashelicHungry: "assets/characters/ashelic-hungry.webp",
+    ashelicWounded: "assets/characters/ashelic-wounded.webp",
+    ashelicQueen: "assets/characters/ashelic-queen.webp",
+    falseRose: "assets/characters/false-rose.webp",
+    hunger: "assets/characters/the-hunger.webp"
   },
 
   backgrounds: {
     transmission: "assets/backgrounds/transmission-room.webp",
-    district: "assets/backgrounds/dollhouse-district.webp",
-    street: "assets/backgrounds/dollhouse-street.webp",
-    backstage: "assets/backgrounds/backstage.webp",
-    stage: "assets/backgrounds/princess-red-stage.webp"
+    bloodGarden: "assets/backgrounds/blood-garden.webp",
+    mirrorHall: "assets/backgrounds/mirror-hall.webp",
+    feedingRoom: "assets/backgrounds/feeding-room.webp",
+    throneRoom: "assets/backgrounds/throne-room.webp",
+    threshold: "assets/backgrounds/threshold.webp"
   },
 
   audio: {
-    ambient: "assets/audio/dollhouse-loop.mp3",
+    ambient: "assets/audio/ashelic-loop.mp3",
     click: "assets/audio/ui-click.mp3",
     glitch: "assets/audio/glitch.mp3",
-    fragment: "assets/audio/fragment-unlock.mp3"
+    fragment: "assets/audio/fragment-unlock.mp3",
+    rise: "assets/audio/rise.mp3"
   }
 };
 
 const story = {
+
   intro: {
-    speaker: "Princess Red",
-    text: "OMGGGG YOU ANSWERED 😭💗 Okay sooooo... tiny problem. I think I lost myself.",
-    sprite: "redWorried",
+    speaker: "Ashelic Rose",
+    text: "Come closer.",
+    sprite: "ashelicSweet",
     background: "transmission",
-    objective: "Figure out what happened to Princess Red.",
+    objective: "Answer the final transmission.",
     choices: [
-      { text: "What does that mean?", next: "introExplain" },
-      { text: "Girl WHAT did you do?", next: "introExplain" }
+      { text: "That sounds suspicious.", next: "lure" },
+      { text: "I'm listening.", next: "lure" }
     ]
   },
 
-  introExplain: {
-    speaker: "Princess Red",
-    text: "I was getting ready for Bubbles & Flow when somebody outside started singing in MY voice. Then another one showed up. Then another...",
-    sprite: "redWorried",
+  lure: {
+    speaker: "Ashelic Rose",
+    text: "Good. I need someone who can tell the difference between hunger and power.",
+    sprite: "ashelicSweet",
     background: "transmission",
-    objective: "Listen to Red's transmission.",
+    objective: "Find out what Ashelic is feeding on.",
     choices: [
-      { text: "So there are copies of you?", next: "warning" }
+      { text: "Aren't those the same thing for you?", next: "difference" }
     ]
   },
 
-  warning: {
-    speaker: "??? RED",
-    text: "Don't listen to her.",
-    sprite: "redNeutral",
+  difference: {
+    speaker: "Ashelic Rose",
+    text: "That's what I thought too.",
+    sprite: "ashelicHungry",
     background: "transmission",
-    objective: "Enter the Dollhouse District.",
-    effect: "glitch",
-    glitchText: "WHICH RED IS REAL?",
+    objective: "Enter Ashelic's corrupted domain.",
+    glitchText: "FINAL CARTRIDGE DETECTED",
     choices: [
-      { text: "ENTER THE DOLLHOUSE DISTRICT", next: "district" }
+      { text: "ENTER", next: "bloodGarden" }
     ]
   },
 
-  district: {
-    speaker: "Bitty",
-    text: "Welcome to the Dollhouse District, Nightshade. Four Reds are loose. Only one can take the stage.",
-    sprite: "bitty",
-    background: "district",
-    objective: "Find the four false Reds.",
+  bloodGarden: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "The garden is beautiful because everything in it grew around a wound. Red roses climb black iron. Every thorn has a name.",
+    sprite: null,
+    background: "bloodGarden",
+    objective: "Follow the roses.",
     choices: [
-      { text: "Start searching", next: "judge" }
+      { text: "READ THE NAMES", next: "names" }
     ]
   },
 
-  judge: {
-    speaker: "The Judge",
-    text: "Shhh. Everybody's watching her. Somebody has to make sure she doesn't embarrass herself.",
-    sprite: "judge",
-    background: "street",
-    objective: "Question The Judge.",
+  names: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "REJECTION. SHAME. DESIRE. HUMILIATION. ABANDONMENT. RAGE. WANT. Every word glows like something still feeding.",
+    sprite: null,
+    background: "bloodGarden",
+    objective: "Find Ashelic beneath the glamour.",
     choices: [
-      { text: "You're not protecting her.", next: "judgeReply" },
-      { text: "Who are you afraid of?", next: "judgeReply" }
+      { text: "KEEP WALKING", next: "mirrorHall" }
     ]
   },
 
-  judgeReply: {
-    speaker: "The Judge",
-    text: "Afraid? I'm the only reason they still like her.",
-    sprite: "judge",
-    background: "street",
-    objective: "Find the next Red.",
+  mirrorHall: {
+    speaker: "False Rose",
+    text: "There she is.",
+    sprite: "falseRose",
+    background: "mirrorHall",
+    objective: "Identify the version in the mirror.",
     choices: [
-      { text: "Keep searching", next: "destroyer" }
+      { text: "Who are you?", next: "falseRoseAnswer" }
     ]
   },
 
-  destroyer: {
-    speaker: "The Destroyer",
-    text: "You want Princess Red? I know every single thing she hates about herself. Wanna hear?",
-    sprite: "destroyer",
-    background: "street",
-    objective: "Don't let The Destroyer distract you.",
+  falseRoseAnswer: {
+    speaker: "False Rose",
+    text: "I'm the version everybody wanted. Sweet enough to approach. Dangerous enough to desire. Hurt enough to keep proving it.",
+    sprite: "falseRose",
+    background: "mirrorHall",
+    objective: "Separate performance from self.",
     choices: [
-      { text: "No. Where is she?", next: "destroyerReply" },
-      { text: "You're using her own thoughts against her.", next: "destroyerReply" }
+      { text: "And what does Ashelic want?", next: "crack" }
     ]
   },
 
-  destroyerReply: {
-    speaker: "The Destroyer",
-    text: "Of course I am. Nobody knows how to hurt you like you do.",
-    sprite: "destroyer",
-    background: "street",
-    objective: "Find the next Red.",
-    choices: [
-      { text: "Leave", next: "demon" }
-    ]
-  },
-
-  demon: {
-    speaker: "The Demon",
-    text: "Everybody acts like I'm the bad one. I'm trying to help. You can't get hurt if you stop caring.",
-    sprite: "demon",
-    background: "street",
-    objective: "Reject The Demon's shortcut.",
-    choices: [
-      { text: "That's not freedom.", next: "demonReply" },
-      { text: "And what happens when she stops feeling everything?", next: "demonReply" }
-    ]
-  },
-
-  demonReply: {
-    speaker: "The Demon",
-    text: "See? Now you're overthinking too. Cute.",
-    sprite: "demon",
-    background: "street",
-    objective: "Find the final false Red.",
-    choices: [
-      { text: "Keep moving", next: "empty" }
-    ]
-  },
-
-  empty: {
-    speaker: "Empty Red",
+  crack: {
+    speaker: "False Rose",
     text: "...",
-    sprite: "empty",
-    background: "street",
-    objective: "Talk to Empty Red.",
+    sprite: "falseRose",
+    background: "mirrorHall",
+    objective: "Break the mirror.",
+    glitchText: "QUESTION NOT RECOGNIZED",
     choices: [
-      { text: "Red?", next: "emptyReply" }
+      { text: "ASK AGAIN", next: "ashelicAppears" }
     ]
   },
 
-  emptyReply: {
-    speaker: "Empty Red",
-    text: "Doesn't matter.",
-    sprite: "empty",
-    background: "street",
-    objective: "Decide who the real Princess Red is.",
+  ashelicAppears: {
+    speaker: "Ashelic Rose",
+    text: "I don't know.",
+    sprite: "ashelicWounded",
+    background: "mirrorHall",
+    objective: "Stay with the answer.",
     choices: [
-      { text: "What doesn't?", next: "guess" }
+      { text: "Then start there.", next: "feedingRoom" }
     ]
   },
 
-  guess: {
-    speaker: "Bitty",
-    text: "You've met them all. Which one is the REAL Princess Red?",
-    sprite: "bitty",
-    background: "district",
-    objective: "Choose carefully.",
+  feedingRoom: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "Behind the mirrors is a locked room. Every old wound is connected to a red tube leading into a single black heart.",
+    sprite: null,
+    background: "feedingRoom",
+    objective: "Find the source of the hunger.",
     choices: [
-      { text: "The Judge", next: "wrong" },
-      { text: "The Destroyer", next: "wrong" },
-      { text: "The Demon", next: "wrong" },
-      { text: "Empty Red", next: "wrong" },
-      { text: "None of them.", next: "backstage" }
+      { text: "OPEN THE ROOM", next: "hungerAppears" }
     ]
   },
 
-  wrong: {
-    speaker: "??? Red",
-    text: "You chose me! Don't worry. I'll take it from here. :)",
-    sprite: "redNeutral",
-    background: "stage",
-    objective: "You chose the wrong Red.",
-    effect: "glitch",
-    glitchText: "PRINCESS RED WAS NOT FOUND",
+  hungerAppears: {
+    speaker: "The Hunger",
+    text: "Don't touch that.",
+    sprite: "hunger",
+    background: "feedingRoom",
+    objective: "Face the thing feeding on the wounds.",
     choices: [
-      { text: "WAIT... TRY AGAIN", next: "guess" }
+      { text: "What are you?", next: "hungerAnswer" }
     ]
   },
 
-  backstage: {
-    speaker: "Princess Red",
-    text: "I don't trust any of them.",
-    sprite: "redWorried",
-    background: "backstage",
-    objective: "Help Red face what followed her here.",
+  hungerAnswer: {
+    speaker: "The Hunger",
+    text: "I'm what kept her moving. Wanting. Taking. Proving. If I stop, who is she?",
+    sprite: "hunger",
+    background: "feedingRoom",
+    objective: "Decide what Ashelic keeps.",
     choices: [
-      { text: "They're you.", next: "realization" }
+      { text: "Keep feeding. Pain made her powerful.", next: "badEnding" },
+      { text: "Take the power. Stop feeding the wound.", next: "transmute" }
     ]
   },
 
-  realization: {
-    speaker: "Princess Red",
-    text: "Exactly.",
-    sprite: "redWorried",
-    background: "backstage",
-    objective: "Choose how Red responds.",
+  badEnding: {
+    speaker: "Ashelic Rose",
+    text: "Then I guess I stay hungry.",
+    sprite: "ashelicHungry",
+    background: "feedingRoom",
+    objective: "Hunger is not dominion.",
+    glitchText: "APPETITE IS NOT AUTHORITY",
     choices: [
-      { text: "Destroy them.", next: "fight" },
-      { text: "Let them in.", next: "mic" }
+      { text: "RUN IT BACK", next: "hungerAnswer" }
     ]
   },
 
-  fight: {
-    speaker: "Princess Red",
-    text: "WHY DO THEY KEEP COMING BACK?!",
-    sprite: "redWorried",
-    background: "stage",
-    objective: "Change the strategy.",
-    effect: "shake",
+  transmute: {
+    speaker: "Ashelic Rose",
+    text: "So I don't have to forgive it. I don't have to forget it. I just don't have to keep eating from it.",
+    sprite: "ashelicWounded",
+    background: "feedingRoom",
+    objective: "Separate memory from fuel.",
     choices: [
-      { text: "You can't kill pieces of yourself. Take the mic.", next: "mic" }
+      { text: "Exactly.", next: "cutTubes" }
     ]
   },
 
-  mic: {
-    speaker: "Princess Red",
-    text: "Can y'all shut the fuck up?",
-    sprite: "redPerformance",
-    background: "stage",
-    objective: "Let Princess Red take the stage.",
+  cutTubes: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "One by one, the tubes snap. The wounds remain. The heart keeps beating.",
+    sprite: null,
+    background: "feedingRoom",
+    objective: "See what remains without the feeding.",
     choices: [
-      { text: "🎤 TURN IT UP", next: "integration" }
+      { text: "LOOK AT ASHELIC", next: "withoutHunger" }
+    ]
+  },
+
+  withoutHunger: {
+    speaker: "Ashelic Rose",
+    text: "...I'm still here.",
+    sprite: "ashelicSweet",
+    background: "feedingRoom",
+    objective: "Let Ashelic choose herself.",
+    choices: [
+      { text: "What do you want now?", next: "want" }
+    ]
+  },
+
+  want: {
+    speaker: "Ashelic Rose",
+    text: "Everything.",
+    sprite: "ashelicSweet",
+    background: "feedingRoom",
+    objective: "Define the desire.",
+    choices: [
+      { text: "Because you're starving?", next: "clarify" },
+      { text: "Because it's yours to pursue?", next: "clarify" }
+    ]
+  },
+
+  clarify: {
+    speaker: "Ashelic Rose",
+    text: "Because I choose it.",
+    sprite: "ashelicQueen",
+    background: "throneRoom",
+    objective: "Take the throne.",
+    choices: [
+      { text: "THEN TAKE IT", next: "throne" }
+    ]
+  },
+
+  throne: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "The glamour changes. No longer bait. No longer armor. A crown can still be beautiful without asking permission to exist.",
+    sprite: "ashelicQueen",
+    background: "throneRoom",
+    objective: "Claim dominion.",
+    choices: [
+      { text: "SIT", next: "fragmentsCall" }
+    ]
+  },
+
+  fragmentsCall: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "Five signals answer from somewhere beyond the room.",
+    sprite: null,
+    background: "throneRoom",
+    objective: "Receive the other fragments.",
+    glitchText: "HEART // WORD // CHOICE // WILL // MEMORY",
+    choices: [
+      { text: "CALL THEM HOME", next: "integration" }
     ]
   },
 
   integration: {
-    speaker: "MIDNIGHT ARCADE",
-    text: "The voices don't disappear. They fall back into place. Judgment becomes awareness. Destruction becomes honesty. Corruption becomes instinct. Emptiness becomes rest.",
-    sprite: "redPerformance",
-    background: "stage",
-    objective: "Witness the transformation.",
+    speaker: "Ashelic Rose",
+    text: "None of them made me whole. They reminded me I already was.",
+    sprite: "ashelicQueen",
+    background: "throneRoom",
+    objective: "Complete Ashelic's transmission.",
     choices: [
-      { text: "CONTINUE", next: "fragment" }
+      { text: "CLAIM THE SELF", next: "fragment" }
     ]
   },
 
@@ -260,17 +276,21 @@ const story = {
     type: "fragment"
   },
 
-  shee: {
+  threshold: {
     speaker: "???",
-    text: "SHEE HEARD YOU.",
+    text: "IDENTITY STABLE.",
     sprite: null,
-    background: "stage",
-    objective: "Follow the signal.",
+    background: "threshold",
+    objective: "Approach the threshold.",
     effect: "glitch",
-    glitchText: "SHEE HEARD YOU.",
+    glitchText: "A NEW PROGRAM IS WAITING.",
     choices: [
-      { text: "ENTER BUBBLES & FLOW", next: "festival" }
+      { text: "OPEN THE DOOR", next: "final" }
     ]
+  },
+
+  final: {
+    type: "final"
   },
 
   festival: {
@@ -284,7 +304,6 @@ const gameState = {
   scenesVisited: 0
 };
 
-const sceneEl = document.getElementById("scene");
 const backgroundEl = document.getElementById("sceneBackground");
 const spriteEl = document.getElementById("characterSprite");
 const speakerEl = document.getElementById("speakerName");
@@ -294,14 +313,15 @@ const objectiveEl = document.getElementById("objectiveText");
 const sceneCounterEl = document.getElementById("sceneCounter");
 const glitchMessageEl = document.getElementById("glitchMessage");
 const fragmentScreenEl = document.getElementById("fragmentScreen");
+const finalScreenEl = document.getElementById("finalScreen");
 const festivalScreenEl = document.getElementById("festivalScreen");
 const fragmentContinueBtn = document.getElementById("fragmentContinue");
+const riseButton = document.getElementById("riseButton");
 const soundToggleBtn = document.getElementById("soundToggle");
 const musicPlayer = document.getElementById("musicPlayer");
 const sfxPlayer = document.getElementById("sfxPlayer");
 
-document.getElementById("ticketLink").href = CONFIG.ticketUrl;
-document.getElementById("page-link").href = CONFIG.princessRedPageUrl;
+document.getElementById("page-link").href = CONFIG.ashelicPageUrl;
 
 function asset(group, key) {
   return ASSETS[group]?.[key] || "";
@@ -309,6 +329,7 @@ function asset(group, key) {
 
 function playSfx(key) {
   if (!gameState.soundOn) return;
+
   const src = asset("audio", key);
   if (!src) return;
 
@@ -319,6 +340,8 @@ function playSfx(key) {
 
 function startAmbient() {
   if (!gameState.soundOn) return;
+  if (!CONFIG.musicEnabled) return;
+
   const src = asset("audio", "ambient");
   if (!src) return;
 
@@ -352,7 +375,7 @@ function setBackground(key) {
   }
 
   backgroundEl.style.backgroundImage =
-    `linear-gradient(rgba(9,0,15,0.05), rgba(9,0,15,0.3)), url("${src}")`;
+    `linear-gradient(rgba(10,0,4,.05), rgba(10,0,4,.34)), url("${src}")`;
 }
 
 function setSprite(key, effect) {
@@ -366,12 +389,14 @@ function setSprite(key, effect) {
   }
 
   const src = asset("characters", key);
+
   spriteEl.src = src;
   spriteEl.alt = key.replace(/([A-Z])/g, " $1").trim();
   spriteEl.hidden = false;
 
   requestAnimationFrame(() => {
     spriteEl.classList.add("enter");
+
     if (effect === "shake") spriteEl.classList.add("shake");
     if (effect === "glitch") spriteEl.classList.add("glitch");
   });
@@ -379,41 +404,53 @@ function setSprite(key, effect) {
 
 let typewriterTimer = null;
 
-function typeText(text) {
+function typeText(text, onComplete) {
   if (typewriterTimer) {
     clearTimeout(typewriterTimer);
+    typewriterTimer = null;
   }
 
   dialogueEl.textContent = "";
-  let i = 0;
 
+  let i = 0;
   const speed = 12;
 
   function typeNext() {
     if (i >= text.length) {
       typewriterTimer = null;
+      if (onComplete) onComplete();
       return;
     }
 
     dialogueEl.textContent += text[i];
     i += 1;
+
     typewriterTimer = setTimeout(typeNext, speed);
   }
 
   typeNext();
 }
 
+let glitchTimer = null;
+
 function showGlitchMessage(text) {
   if (!text) return;
 
+  if (glitchTimer) {
+    clearTimeout(glitchTimer);
+  }
+
   glitchMessageEl.textContent = text;
   glitchMessageEl.hidden = false;
+
   document.body.classList.add("corrupted");
+
   playSfx("glitch");
 
-  setTimeout(() => {
+  glitchTimer = setTimeout(() => {
     glitchMessageEl.hidden = true;
     document.body.classList.remove("corrupted");
+    glitchTimer = null;
   }, 850);
 }
 
@@ -422,6 +459,7 @@ function renderChoices(choices = []) {
 
   choices.forEach(choice => {
     const button = document.createElement("button");
+
     button.type = "button";
     button.className = "choice-button";
     button.textContent = choice.text;
@@ -440,9 +478,13 @@ function showFragment() {
   playSfx("fragment");
 }
 
+function showFinal() {
+  finalScreenEl.hidden = false;
+  musicPlayer.pause();
+}
+
 function showFestival() {
   festivalScreenEl.hidden = false;
-  musicPlayer.pause();
 }
 
 function renderScene(sceneId) {
@@ -461,6 +503,11 @@ function renderScene(sceneId) {
     return;
   }
 
+  if (scene.type === "final") {
+    showFinal();
+    return;
+  }
+
   if (scene.type === "festival") {
     showFestival();
     return;
@@ -472,8 +519,12 @@ function renderScene(sceneId) {
 
   setBackground(scene.background);
   setSprite(scene.sprite, scene.effect);
-  typeText(scene.text || "");
-  renderChoices(scene.choices);
+
+  choicesEl.innerHTML = "";
+
+  typeText(scene.text || "", () => {
+    renderChoices(scene.choices);
+  });
 
   if (scene.glitchText) {
     showGlitchMessage(scene.glitchText);
@@ -488,7 +539,27 @@ function goToScene(sceneId) {
 
 fragmentContinueBtn.addEventListener("click", () => {
   fragmentScreenEl.hidden = true;
-  goToScene("shee");
+  goToScene("threshold");
+});
+
+riseButton.addEventListener("click", () => {
+  playSfx("rise");
+
+  document.body.classList.add("risen");
+
+  document.getElementById("finalStatus").textContent =
+    "STATUS: RISEN";
+
+  document.getElementById("finalTitle").textContent =
+    "SHEE";
+
+  riseButton.textContent =
+    "CONTINUE";
+
+  riseButton.onclick = () => {
+    finalScreenEl.hidden = true;
+    festivalScreenEl.hidden = false;
+  };
 });
 
 soundToggleBtn.addEventListener("click", toggleSound);

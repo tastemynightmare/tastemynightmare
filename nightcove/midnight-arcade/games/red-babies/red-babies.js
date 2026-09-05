@@ -1,31 +1,27 @@
 const CONFIG = {
   ticketUrl: "https://shotgun.live/en/festivals/bubbles-flow-music-festival",
-  princessRedPageUrl: "../../artists/princess-red/",
+  redBabiesPageUrl: "../../artists/red-babies/",
   musicEnabled: true
 };
 
 const ASSETS = {
   characters: {
-    redWorried: "assets/characters/princess-red-worried.webp",
-    redNeutral: "assets/characters/princess-red-neutral.webp",
-    redPerformance: "assets/characters/princess-red-performance.webp",
-    judge: "assets/characters/the-judge.webp",
-    destroyer: "assets/characters/the-destroyer.webp",
-    demon: "assets/characters/the-demon.webp",
-    empty: "assets/characters/empty-red.webp",
-    bitty: "assets/characters/bitty.webp"
+    redBabiesNeutral: "assets/characters/red-babies-neutral.webp",
+    redBabiesTired: "assets/characters/red-babies-tired.webp",
+    redBabiesPerformance: "assets/characters/red-babies-performance.webp",
+    underdog: "assets/characters/the-underdog.webp"
   },
 
   backgrounds: {
     transmission: "assets/backgrounds/transmission-room.webp",
-    district: "assets/backgrounds/dollhouse-district.webp",
-    street: "assets/backgrounds/dollhouse-street.webp",
-    backstage: "assets/backgrounds/backstage.webp",
-    stage: "assets/backgrounds/princess-red-stage.webp"
+    deadAir: "assets/backgrounds/dead-air.webp",
+    abandonedRoom: "assets/backgrounds/abandoned-room.webp",
+    tapeRoom: "assets/backgrounds/tape-room.webp",
+    stage: "assets/backgrounds/red-babies-stage.webp"
   },
 
   audio: {
-    ambient: "assets/audio/dollhouse-loop.mp3",
+    ambient: "assets/audio/dead-air-loop.mp3",
     click: "assets/audio/ui-click.mp3",
     glitch: "assets/audio/glitch.mp3",
     fragment: "assets/audio/fragment-unlock.mp3"
@@ -33,226 +29,199 @@ const ASSETS = {
 };
 
 const story = {
+
   intro: {
-    speaker: "Princess Red",
-    text: "OMGGGG YOU ANSWERED 😭💗 Okay sooooo... tiny problem. I think I lost myself.",
-    sprite: "redWorried",
+    speaker: "Red Babies",
+    text: "You hear that?",
+    sprite: "redBabiesNeutral",
     background: "transmission",
-    objective: "Figure out what happened to Princess Red.",
+    objective: "Answer the transmission.",
     choices: [
-      { text: "What does that mean?", next: "introExplain" },
-      { text: "Girl WHAT did you do?", next: "introExplain" }
+      { text: "Hear what?", next: "static" },
+      { text: "Mostly static.", next: "static" }
     ]
   },
 
-  introExplain: {
-    speaker: "Princess Red",
-    text: "I was getting ready for Bubbles & Flow when somebody outside started singing in MY voice. Then another one showed up. Then another...",
-    sprite: "redWorried",
+  static: {
+    speaker: "Red Babies",
+    text: "Exactly. It's been doing that all night. Every time I get close to finishing something, the signal eats it.",
+    sprite: "redBabiesTired",
     background: "transmission",
-    objective: "Listen to Red's transmission.",
+    objective: "Find what's buried in the signal.",
     choices: [
-      { text: "So there are copies of you?", next: "warning" }
+      { text: "Where are you?", next: "deadAir" }
     ]
   },
 
-  warning: {
-    speaker: "??? RED",
-    text: "Don't listen to her.",
-    sprite: "redNeutral",
-    background: "transmission",
-    objective: "Enter the Dollhouse District.",
-    effect: "glitch",
-    glitchText: "WHICH RED IS REAL?",
-    choices: [
-      { text: "ENTER THE DOLLHOUSE DISTRICT", next: "district" }
-    ]
-  },
-
-  district: {
-    speaker: "Bitty",
-    text: "Welcome to the Dollhouse District, Nightshade. Four Reds are loose. Only one can take the stage.",
-    sprite: "bitty",
-    background: "district",
-    objective: "Find the four false Reds.",
-    choices: [
-      { text: "Start searching", next: "judge" }
-    ]
-  },
-
-  judge: {
-    speaker: "The Judge",
-    text: "Shhh. Everybody's watching her. Somebody has to make sure she doesn't embarrass herself.",
-    sprite: "judge",
-    background: "street",
-    objective: "Question The Judge.",
-    choices: [
-      { text: "You're not protecting her.", next: "judgeReply" },
-      { text: "Who are you afraid of?", next: "judgeReply" }
-    ]
-  },
-
-  judgeReply: {
-    speaker: "The Judge",
-    text: "Afraid? I'm the only reason they still like her.",
-    sprite: "judge",
-    background: "street",
-    objective: "Find the next Red.",
-    choices: [
-      { text: "Keep searching", next: "destroyer" }
-    ]
-  },
-
-  destroyer: {
-    speaker: "The Destroyer",
-    text: "You want Princess Red? I know every single thing she hates about herself. Wanna hear?",
-    sprite: "destroyer",
-    background: "street",
-    objective: "Don't let The Destroyer distract you.",
-    choices: [
-      { text: "No. Where is she?", next: "destroyerReply" },
-      { text: "You're using her own thoughts against her.", next: "destroyerReply" }
-    ]
-  },
-
-  destroyerReply: {
-    speaker: "The Destroyer",
-    text: "Of course I am. Nobody knows how to hurt you like you do.",
-    sprite: "destroyer",
-    background: "street",
-    objective: "Find the next Red.",
-    choices: [
-      { text: "Leave", next: "demon" }
-    ]
-  },
-
-  demon: {
-    speaker: "The Demon",
-    text: "Everybody acts like I'm the bad one. I'm trying to help. You can't get hurt if you stop caring.",
-    sprite: "demon",
-    background: "street",
-    objective: "Reject The Demon's shortcut.",
-    choices: [
-      { text: "That's not freedom.", next: "demonReply" },
-      { text: "And what happens when she stops feeling everything?", next: "demonReply" }
-    ]
-  },
-
-  demonReply: {
-    speaker: "The Demon",
-    text: "See? Now you're overthinking too. Cute.",
-    sprite: "demon",
-    background: "street",
-    objective: "Find the final false Red.",
-    choices: [
-      { text: "Keep moving", next: "empty" }
-    ]
-  },
-
-  empty: {
-    speaker: "Empty Red",
-    text: "...",
-    sprite: "empty",
-    background: "street",
-    objective: "Talk to Empty Red.",
-    choices: [
-      { text: "Red?", next: "emptyReply" }
-    ]
-  },
-
-  emptyReply: {
-    speaker: "Empty Red",
-    text: "Doesn't matter.",
-    sprite: "empty",
-    background: "street",
-    objective: "Decide who the real Princess Red is.",
-    choices: [
-      { text: "What doesn't?", next: "guess" }
-    ]
-  },
-
-  guess: {
-    speaker: "Bitty",
-    text: "You've met them all. Which one is the REAL Princess Red?",
-    sprite: "bitty",
-    background: "district",
-    objective: "Choose carefully.",
-    choices: [
-      { text: "The Judge", next: "wrong" },
-      { text: "The Destroyer", next: "wrong" },
-      { text: "The Demon", next: "wrong" },
-      { text: "Empty Red", next: "wrong" },
-      { text: "None of them.", next: "backstage" }
-    ]
-  },
-
-  wrong: {
-    speaker: "??? Red",
-    text: "You chose me! Don't worry. I'll take it from here. :)",
-    sprite: "redNeutral",
-    background: "stage",
-    objective: "You chose the wrong Red.",
-    effect: "glitch",
-    glitchText: "PRINCESS RED WAS NOT FOUND",
-    choices: [
-      { text: "WAIT... TRY AGAIN", next: "guess" }
-    ]
-  },
-
-  backstage: {
-    speaker: "Princess Red",
-    text: "I don't trust any of them.",
-    sprite: "redWorried",
-    background: "backstage",
-    objective: "Help Red face what followed her here.",
-    choices: [
-      { text: "They're you.", next: "realization" }
-    ]
-  },
-
-  realization: {
-    speaker: "Princess Red",
-    text: "Exactly.",
-    sprite: "redWorried",
-    background: "backstage",
-    objective: "Choose how Red responds.",
-    choices: [
-      { text: "Destroy them.", next: "fight" },
-      { text: "Let them in.", next: "mic" }
-    ]
-  },
-
-  fight: {
-    speaker: "Princess Red",
-    text: "WHY DO THEY KEEP COMING BACK?!",
-    sprite: "redWorried",
-    background: "stage",
-    objective: "Change the strategy.",
-    effect: "shake",
-    choices: [
-      { text: "You can't kill pieces of yourself. Take the mic.", next: "mic" }
-    ]
-  },
-
-  mic: {
-    speaker: "Princess Red",
-    text: "Can y'all shut the fuck up?",
-    sprite: "redPerformance",
-    background: "stage",
-    objective: "Let Princess Red take the stage.",
-    choices: [
-      { text: "🎤 TURN IT UP", next: "integration" }
-    ]
-  },
-
-  integration: {
+  deadAir: {
     speaker: "MIDNIGHT ARCADE",
-    text: "The voices don't disappear. They fall back into place. Judgment becomes awareness. Destruction becomes honesty. Corruption becomes instinct. Emptiness becomes rest.",
-    sprite: "redPerformance",
-    background: "stage",
-    objective: "Witness the transformation.",
+    text: "LOCATION IDENTIFIED: DEAD AIR.",
+    sprite: null,
+    background: "deadAir",
+    objective: "Enter the abandoned frequency.",
+    glitchText: "THE BOY BENEATH THE STATIC",
     choices: [
-      { text: "CONTINUE", next: "fragment" }
+      { text: "ENTER DEAD AIR", next: "abandoned" }
+    ]
+  },
+
+  abandoned: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "Empty rooms. Dead amps. Half-finished posters. Cigarette burns. Pink paint over black walls. Every abandoned idea Red Babies ever walked away from is still here.",
+    sprite: null,
+    background: "abandonedRoom",
+    objective: "Search the abandoned rooms.",
+    choices: [
+      { text: "LOOK FOR RED BABIES", next: "findRed" }
+    ]
+  },
+
+  findRed: {
+    speaker: "Red Babies",
+    text: "I been here before.",
+    sprite: "redBabiesTired",
+    background: "abandonedRoom",
+    objective: "Figure out why the room feels familiar.",
+    choices: [
+      { text: "You built this place?", next: "familiar" },
+      { text: "Then why come back?", next: "familiar" }
+    ]
+  },
+
+  familiar: {
+    speaker: "Red Babies",
+    text: "Nah. I left it. That's different.",
+    sprite: "redBabiesTired",
+    background: "abandonedRoom",
+    objective: "Follow what was left behind.",
+    choices: [
+      { text: "What's moving behind you?", next: "underdogAppears" }
+    ]
+  },
+
+  underdogAppears: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "A black dog-shaped shadow crawls out from under a busted couch. Its fur is made of television static. Paper hangs from its mouth.",
+    sprite: "underdog",
+    background: "abandonedRoom",
+    objective: "Follow the Underdog.",
+    choices: [
+      { text: "Take the paper.", next: "lyrics" }
+    ]
+  },
+
+  lyrics: {
+    speaker: "Red Babies",
+    text: "...That's mine.",
+    sprite: "redBabiesNeutral",
+    background: "abandonedRoom",
+    objective: "Read what the Underdog carried back.",
+    choices: [
+      { text: "Old lyrics?", next: "discarded" }
+    ]
+  },
+
+  discarded: {
+    speaker: "Red Babies",
+    text: "Old lyrics. Old ideas. Old versions. Stuff I thought wasn't good enough, or wasn't worth finishing.",
+    sprite: "redBabiesTired",
+    background: "abandonedRoom",
+    objective: "Follow the Underdog deeper.",
+    choices: [
+      { text: "It kept all of it.", next: "tapeRoom" }
+    ]
+  },
+
+  tapeRoom: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "The Underdog leads you into a room full of tapes. Every one is labeled with something Red Babies abandoned.",
+    sprite: "underdog",
+    background: "tapeRoom",
+    objective: "Choose what to do with the archive.",
+    choices: [
+      { text: "BURN IT ALL", next: "burn" },
+      { text: "PLAY THE TAPE", next: "playTape" }
+    ]
+  },
+
+  burn: {
+    speaker: "Red Babies",
+    text: "Maybe that's cleaner.",
+    sprite: "redBabiesNeutral",
+    background: "tapeRoom",
+    objective: "Watch what the fire takes.",
+    choices: [
+      { text: "LIGHT IT", next: "badEnding" }
+    ]
+  },
+
+  badEnding: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "The room catches fast. The static goes silent. So does everything else.",
+    sprite: null,
+    background: "deadAir",
+    objective: "Silence isn't the same as release.",
+    glitchText: "NOTHING LEFT TO TRANSMUTE",
+    choices: [
+      { text: "RUN IT BACK", next: "tapeRoom" }
+    ]
+  },
+
+  playTape: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "The tape clicks into place. At first: hiss. Then a guitar. Then a voice that sounds unfinished, tired, ugly, alive.",
+    sprite: null,
+    background: "tapeRoom",
+    objective: "Let the abandoned thing play.",
+    choices: [
+      { text: "DON'T TURN IT OFF", next: "songForms" }
+    ]
+  },
+
+  songForms: {
+    speaker: "Red Babies",
+    text: "I would've deleted this.",
+    sprite: "redBabiesNeutral",
+    background: "tapeRoom",
+    objective: "Stay with the unfinished song.",
+    choices: [
+      { text: "Good thing you didn't.", next: "transmute" },
+      { text: "Finish it now.", next: "transmute" }
+    ]
+  },
+
+  transmute: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "The bad recording doesn't become pretty. It becomes useful. The static turns into distortion. The discarded lyrics become a hook. The room starts sounding like a song.",
+    sprite: "redBabiesPerformance",
+    background: "stage",
+    objective: "Turn memory into sound.",
+    choices: [
+      { text: "PLAY IT LOUDER", next: "underdogReturns" }
+    ]
+  },
+
+  underdogReturns: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "The Underdog drops the last scrap of paper at Red Babies' feet, then dissolves into the speakers.",
+    sprite: "underdog",
+    background: "stage",
+    objective: "Read the final message.",
+    choices: [
+      { text: "PICK IT UP", next: "backwardVoice" }
+    ]
+  },
+
+  backwardVoice: {
+    speaker: "???",
+    text: "BRING ME BACK TO ME.",
+    sprite: null,
+    background: "stage",
+    objective: "Complete the transmission.",
+    effect: "glitch",
+    glitchText: "BRING ME BACK TO ME",
+    choices: [
+      { text: "KEEP THE TAPE", next: "fragment" }
     ]
   },
 
@@ -262,7 +231,7 @@ const story = {
 
   shee: {
     speaker: "???",
-    text: "SHEE HEARD YOU.",
+    text: "WHAT WAS DISCARDED STILL REMEMBERS.",
     sprite: null,
     background: "stage",
     objective: "Follow the signal.",
@@ -284,7 +253,6 @@ const gameState = {
   scenesVisited: 0
 };
 
-const sceneEl = document.getElementById("scene");
 const backgroundEl = document.getElementById("sceneBackground");
 const spriteEl = document.getElementById("characterSprite");
 const speakerEl = document.getElementById("speakerName");
@@ -301,7 +269,7 @@ const musicPlayer = document.getElementById("musicPlayer");
 const sfxPlayer = document.getElementById("sfxPlayer");
 
 document.getElementById("ticketLink").href = CONFIG.ticketUrl;
-document.getElementById("page-link").href = CONFIG.princessRedPageUrl;
+document.getElementById("page-link").href = CONFIG.redBabiesPageUrl;
 
 function asset(group, key) {
   return ASSETS[group]?.[key] || "";
@@ -311,7 +279,6 @@ function playSfx(key) {
   if (!gameState.soundOn) return;
   const src = asset("audio", key);
   if (!src) return;
-
   sfxPlayer.src = src;
   sfxPlayer.currentTime = 0;
   sfxPlayer.play().catch(() => {});
@@ -319,6 +286,8 @@ function playSfx(key) {
 
 function startAmbient() {
   if (!gameState.soundOn) return;
+  if (!CONFIG.musicEnabled) return;
+
   const src = asset("audio", "ambient");
   if (!src) return;
 
@@ -352,7 +321,7 @@ function setBackground(key) {
   }
 
   backgroundEl.style.backgroundImage =
-    `linear-gradient(rgba(9,0,15,0.05), rgba(9,0,15,0.3)), url("${src}")`;
+    `linear-gradient(rgba(10,9,11,.06), rgba(10,9,11,.34)), url("${src}")`;
 }
 
 function setSprite(key, effect) {
@@ -366,12 +335,14 @@ function setSprite(key, effect) {
   }
 
   const src = asset("characters", key);
+
   spriteEl.src = src;
   spriteEl.alt = key.replace(/([A-Z])/g, " $1").trim();
   spriteEl.hidden = false;
 
   requestAnimationFrame(() => {
     spriteEl.classList.add("enter");
+
     if (effect === "shake") spriteEl.classList.add("shake");
     if (effect === "glitch") spriteEl.classList.add("glitch");
   });
@@ -379,19 +350,20 @@ function setSprite(key, effect) {
 
 let typewriterTimer = null;
 
-function typeText(text) {
+function typeText(text, onComplete) {
   if (typewriterTimer) {
     clearTimeout(typewriterTimer);
+    typewriterTimer = null;
   }
 
   dialogueEl.textContent = "";
   let i = 0;
-
   const speed = 12;
 
   function typeNext() {
     if (i >= text.length) {
       typewriterTimer = null;
+      if (onComplete) onComplete();
       return;
     }
 
@@ -403,17 +375,22 @@ function typeText(text) {
   typeNext();
 }
 
+let glitchTimer = null;
+
 function showGlitchMessage(text) {
   if (!text) return;
+
+  if (glitchTimer) clearTimeout(glitchTimer);
 
   glitchMessageEl.textContent = text;
   glitchMessageEl.hidden = false;
   document.body.classList.add("corrupted");
   playSfx("glitch");
 
-  setTimeout(() => {
+  glitchTimer = setTimeout(() => {
     glitchMessageEl.hidden = true;
     document.body.classList.remove("corrupted");
+    glitchTimer = null;
   }, 850);
 }
 
@@ -422,6 +399,7 @@ function renderChoices(choices = []) {
 
   choices.forEach(choice => {
     const button = document.createElement("button");
+
     button.type = "button";
     button.className = "choice-button";
     button.textContent = choice.text;
@@ -472,8 +450,12 @@ function renderScene(sceneId) {
 
   setBackground(scene.background);
   setSprite(scene.sprite, scene.effect);
-  typeText(scene.text || "");
-  renderChoices(scene.choices);
+
+  choicesEl.innerHTML = "";
+
+  typeText(scene.text || "", () => {
+    renderChoices(scene.choices);
+  });
 
   if (scene.glitchText) {
     showGlitchMessage(scene.glitchText);

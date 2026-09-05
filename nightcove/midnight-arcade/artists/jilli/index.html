@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JILLI | Midnight Arcade</title>
+        <link rel="stylesheet" href="jilli-music.css">
+    </head>
+
+    <body>
+
+        <main class="sound-room">
+
+            <div class="ambient-orbs" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="sound-nav">
+
+                <a href="../../games.html">
+                ← MIDNIGHT ARCADE
+                </a>
+
+                <span>
+                TMN // ARTIST TRANSMISSION
+                </span>
+
+            </nav>
+
+            <section class="artist-stage">
+
+                <div class="sprite-area">
+
+                    <img
+                        src="assets/jilli-sprite.webp"
+                        alt="JILLI"
+                        class="artist-sprite"
+                    >
+
+                </div>
+
+                <div class="player-card">
+
+                    <p class="transmission-label">
+                    NOW TRANSMITTING
+                    </p>
+
+                    <h1>
+                    JILLI
+                    </h1>
+
+                    <p class="artist-location">
+                    HEARTBREAK FAIRYLAND // SOUTH FLORIDA
+                    </p>
+
+                    <div class="album-frame">
+
+                        <img
+                            src="assets/jilli-cover.webp"
+                            alt="JILLI song artwork"
+                            class="album-art"
+                        >
+
+                    </div>
+
+                    <div class="song-info">
+
+                        <h2 id="songTitle">
+                        JILLI'S FESTIVAL PICK
+                        </h2>
+
+                        <p>
+                        JILLI
+                        </p>
+
+                    </div>
+
+                    <div class="progress-container">
+
+                        <span id="currentTime">
+                        0:00
+                        </span>
+
+                        <input
+                        id="progressBar"
+                        type="range"
+                        min="0"
+                        max="100"
+                        value="0"
+                        aria-label="Song progress"
+                        >
+
+                        <span id="duration">
+                        0:00
+                        </span>
+
+                    </div>
+
+                    <div class="controls">
+
+                        <button
+                        id="rewindButton"
+                        aria-label="Rewind 10 seconds"
+                        >
+                        ↶
+                        </button>
+
+                        <button
+                        id="playButton"
+                        class="play-button"
+                        aria-label="Play"
+                        >
+                        ▶
+                        </button>
+
+                        <button id="forwardButton" aria-label="Forward 10 seconds">
+                        ↷
+                        </button>
+
+                    </div>
+
+                    <div id="equalizer" class="equalizer" aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <audio id="audioPlayer" preload="metadata">
+                        <source src="assets/jilli-song.mp3" type="audio/mpeg">
+                    </audio>
+
+                    <p id="audioStatus" class="audio-status" aria-live="polite"></p>
+
+                    <div class="artist-actions">
+
+                        <a
+                        href="../../games/jilli/"
+                        class="secondary-button"
+                        >
+                        ♡ REPLAY SLAY OR BE SLAYED
+                        </a>
+
+                        <a
+                        href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
+                        class="ticket-button"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >
+                        🎟 BUBBLES & FLOW
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <footer>
+                <p>
+                TASTE MY NIGHTMARE // MIDNIGHT ARCADE
+                </p>
+            </footer>
+
+        </main>
+
+        <script src="jilli-music.js"></script>
+
+    </body>
+</html>

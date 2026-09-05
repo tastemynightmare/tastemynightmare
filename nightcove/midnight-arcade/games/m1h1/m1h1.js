@@ -1,31 +1,27 @@
 const CONFIG = {
   ticketUrl: "https://shotgun.live/en/festivals/bubbles-flow-music-festival",
-  princessRedPageUrl: "../../artists/princess-red/",
+  m1h1PageUrl: "../../artists/m1h1/",
   musicEnabled: true
 };
 
 const ASSETS = {
   characters: {
-    redWorried: "assets/characters/princess-red-worried.webp",
-    redNeutral: "assets/characters/princess-red-neutral.webp",
-    redPerformance: "assets/characters/princess-red-performance.webp",
-    judge: "assets/characters/the-judge.webp",
-    destroyer: "assets/characters/the-destroyer.webp",
-    demon: "assets/characters/the-demon.webp",
-    empty: "assets/characters/empty-red.webp",
-    bitty: "assets/characters/bitty.webp"
+    m1h1Neutral: "assets/characters/m1h1-neutral.webp",
+    m1h1Rage: "assets/characters/m1h1-rage.webp",
+    m1h1Performance: "assets/characters/m1h1-performance.webp",
+    pitZombie: "assets/characters/pit-zombie.webp"
   },
 
   backgrounds: {
     transmission: "assets/backgrounds/transmission-room.webp",
-    district: "assets/backgrounds/dollhouse-district.webp",
-    street: "assets/backgrounds/dollhouse-street.webp",
-    backstage: "assets/backgrounds/backstage.webp",
-    stage: "assets/backgrounds/princess-red-stage.webp"
+    venue: "assets/backgrounds/neverending-venue.webp",
+    hallway: "assets/backgrounds/looping-hallway.webp",
+    pit: "assets/backgrounds/moshpit.webp",
+    overload: "assets/backgrounds/overload-stage.webp"
   },
 
   audio: {
-    ambient: "assets/audio/dollhouse-loop.mp3",
+    ambient: "assets/audio/rage-loop.mp3",
     click: "assets/audio/ui-click.mp3",
     glitch: "assets/audio/glitch.mp3",
     fragment: "assets/audio/fragment-unlock.mp3"
@@ -33,226 +29,201 @@ const ASSETS = {
 };
 
 const story = {
+
   intro: {
-    speaker: "Princess Red",
-    text: "OMGGGG YOU ANSWERED 😭💗 Okay sooooo... tiny problem. I think I lost myself.",
-    sprite: "redWorried",
+    speaker: "M1H1",
+    text: "YO. THIS SHOW WON'T END.",
+    sprite: "m1h1Rage",
     background: "transmission",
-    objective: "Figure out what happened to Princess Red.",
+    objective: "Answer M1H1's transmission.",
     choices: [
-      { text: "What does that mean?", next: "introExplain" },
-      { text: "Girl WHAT did you do?", next: "introExplain" }
+      { text: "What do you mean won't end?", next: "problem" },
+      { text: "That sounds like a good problem for you.", next: "problem" }
     ]
   },
 
-  introExplain: {
-    speaker: "Princess Red",
-    text: "I was getting ready for Bubbles & Flow when somebody outside started singing in MY voice. Then another one showed up. Then another...",
-    sprite: "redWorried",
+  problem: {
+    speaker: "M1H1",
+    text: "Nah. I mean literally. Every time I finish the set, the first song starts again.",
+    sprite: "m1h1Neutral",
     background: "transmission",
-    objective: "Listen to Red's transmission.",
+    objective: "Find the loop.",
     choices: [
-      { text: "So there are copies of you?", next: "warning" }
+      { text: "Where's the exit?", next: "exit" }
     ]
   },
 
-  warning: {
-    speaker: "??? RED",
-    text: "Don't listen to her.",
-    sprite: "redNeutral",
+  exit: {
+    speaker: "M1H1",
+    text: "Tried it. Door takes me right back to the pit.",
+    sprite: "m1h1Neutral",
     background: "transmission",
-    objective: "Enter the Dollhouse District.",
-    effect: "glitch",
-    glitchText: "WHICH RED IS REAL?",
+    objective: "Enter the venue.",
     choices: [
-      { text: "ENTER THE DOLLHOUSE DISTRICT", next: "district" }
+      { text: "Send the location.", next: "arrival" }
     ]
   },
 
-  district: {
-    speaker: "Bitty",
-    text: "Welcome to the Dollhouse District, Nightshade. Four Reds are loose. Only one can take the stage.",
-    sprite: "bitty",
-    background: "district",
-    objective: "Find the four false Reds.",
+  arrival: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "LOCATION IDENTIFIED: THE NEVERENDING MOSHPIT.",
+    sprite: null,
+    background: "venue",
+    objective: "Enter the loop.",
+    glitchText: "RAGE FOREVER",
     choices: [
-      { text: "Start searching", next: "judge" }
+      { text: "ENTER THE VENUE", next: "pit" }
     ]
   },
 
-  judge: {
-    speaker: "The Judge",
-    text: "Shhh. Everybody's watching her. Somebody has to make sure she doesn't embarrass herself.",
-    sprite: "judge",
-    background: "street",
-    objective: "Question The Judge.",
+  pit: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "The room is packed. Green lights flash. The same breakdown hits again. Nobody looks tired. Nobody can stop moving.",
+    sprite: "pitZombie",
+    background: "pit",
+    objective: "Figure out what feeds the venue.",
     choices: [
-      { text: "You're not protecting her.", next: "judgeReply" },
-      { text: "Who are you afraid of?", next: "judgeReply" }
+      { text: "Try the exit.", next: "hallway" }
     ]
   },
 
-  judgeReply: {
-    speaker: "The Judge",
-    text: "Afraid? I'm the only reason they still like her.",
-    sprite: "judge",
-    background: "street",
-    objective: "Find the next Red.",
+  hallway: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "EXIT → HALLWAY → EXIT → HALLWAY → PIT. Every door returns you to the same drop.",
+    sprite: null,
+    background: "hallway",
+    objective: "Break the loop.",
+    glitchText: "NO EXIT // KEEP MOVING",
     choices: [
-      { text: "Keep searching", next: "destroyer" }
+      { text: "Go back to M1H1.", next: "findM1" }
     ]
   },
 
-  destroyer: {
-    speaker: "The Destroyer",
-    text: "You want Princess Red? I know every single thing she hates about herself. Wanna hear?",
-    sprite: "destroyer",
-    background: "street",
-    objective: "Don't let The Destroyer distract you.",
+  findM1: {
+    speaker: "M1H1",
+    text: "I tried cutting the music. Crowd started chanting until the power came back.",
+    sprite: "m1h1Neutral",
+    background: "pit",
+    objective: "Understand the venue.",
     choices: [
-      { text: "No. Where is she?", next: "destroyerReply" },
-      { text: "You're using her own thoughts against her.", next: "destroyerReply" }
+      { text: "Maybe it feeds on energy.", next: "feeds" },
+      { text: "What if everybody calms down?", next: "calmIdea" }
     ]
   },
 
-  destroyerReply: {
-    speaker: "The Destroyer",
-    text: "Of course I am. Nobody knows how to hurt you like you do.",
-    sprite: "destroyer",
-    background: "street",
-    objective: "Find the next Red.",
+  calmIdea: {
+    speaker: "M1H1",
+    text: "You want me to tell THIS room to calm down?",
+    sprite: "m1h1Rage",
+    background: "pit",
+    objective: "Test the wrong solution.",
     choices: [
-      { text: "Leave", next: "demon" }
+      { text: "Fair. Never mind.", next: "feeds" },
+      { text: "Try it anyway.", next: "calmFail" }
     ]
   },
 
-  demon: {
-    speaker: "The Demon",
-    text: "Everybody acts like I'm the bad one. I'm trying to help. You can't get hurt if you stop caring.",
-    sprite: "demon",
-    background: "street",
-    objective: "Reject The Demon's shortcut.",
+  calmFail: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "The beat softens. The crowd slows. The walls brighten like the venue is feeding.",
+    sprite: null,
+    background: "pit",
+    objective: "Stop feeding the loop.",
+    glitchText: "ENERGY STABILIZED // LOOP RESET",
     choices: [
-      { text: "That's not freedom.", next: "demonReply" },
-      { text: "And what happens when she stops feeling everything?", next: "demonReply" }
+      { text: "NOPE. TURN IT BACK UP.", next: "feeds" }
     ]
   },
 
-  demonReply: {
-    speaker: "The Demon",
-    text: "See? Now you're overthinking too. Cute.",
-    sprite: "demon",
-    background: "street",
-    objective: "Find the final false Red.",
+  feeds: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "The venue doesn't feed on chaos. It feeds on CONTROLLED chaos — just enough energy to keep the same night repeating forever.",
+    sprite: null,
+    background: "pit",
+    objective: "Push the room beyond what it can recycle.",
     choices: [
-      { text: "Keep moving", next: "empty" }
+      { text: "So don't calm it down. Overload it.", next: "m1GetsIt" }
     ]
   },
 
-  empty: {
-    speaker: "Empty Red",
-    text: "...",
-    sprite: "empty",
-    background: "street",
-    objective: "Talk to Empty Red.",
+  m1GetsIt: {
+    speaker: "M1H1",
+    text: "Oh. We break the whole damn thing.",
+    sprite: "m1h1Rage",
+    background: "pit",
+    objective: "Overload the venue.",
     choices: [
-      { text: "Red?", next: "emptyReply" }
+      { text: "RAGE HARDER", next: "overloadChoice" }
     ]
   },
 
-  emptyReply: {
-    speaker: "Empty Red",
-    text: "Doesn't matter.",
-    sprite: "empty",
-    background: "street",
-    objective: "Decide who the real Princess Red is.",
+  overloadChoice: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "The venue starts compensating. More lights. More volume. More bodies. It wants the energy back inside the loop.",
+    sprite: null,
+    background: "pit",
+    objective: "Choose how to push past the limit.",
     choices: [
-      { text: "What doesn't?", next: "guess" }
+      { text: "CUT THE SET SHORT AND RUN", next: "badEnding" },
+      { text: "MAKE THE CROWD GO EVEN HARDER", next: "overload" }
     ]
   },
 
-  guess: {
-    speaker: "Bitty",
-    text: "You've met them all. Which one is the REAL Princess Red?",
-    sprite: "bitty",
-    background: "district",
-    objective: "Choose carefully.",
+  badEnding: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "M1H1 reaches the exit. The door opens onto the first song.",
+    sprite: "m1h1Neutral",
+    background: "hallway",
+    objective: "Running is still part of the loop.",
+    glitchText: "SET RESTARTING",
     choices: [
-      { text: "The Judge", next: "wrong" },
-      { text: "The Destroyer", next: "wrong" },
-      { text: "The Demon", next: "wrong" },
-      { text: "Empty Red", next: "wrong" },
-      { text: "None of them.", next: "backstage" }
+      { text: "RUN IT BACK", next: "overloadChoice" }
     ]
   },
 
-  wrong: {
-    speaker: "??? Red",
-    text: "You chose me! Don't worry. I'll take it from here. :)",
-    sprite: "redNeutral",
-    background: "stage",
-    objective: "You chose the wrong Red.",
-    effect: "glitch",
-    glitchText: "PRINCESS RED WAS NOT FOUND",
-    choices: [
-      { text: "WAIT... TRY AGAIN", next: "guess" }
-    ]
-  },
-
-  backstage: {
-    speaker: "Princess Red",
-    text: "I don't trust any of them.",
-    sprite: "redWorried",
-    background: "backstage",
-    objective: "Help Red face what followed her here.",
-    choices: [
-      { text: "They're you.", next: "realization" }
-    ]
-  },
-
-  realization: {
-    speaker: "Princess Red",
-    text: "Exactly.",
-    sprite: "redWorried",
-    background: "backstage",
-    objective: "Choose how Red responds.",
-    choices: [
-      { text: "Destroy them.", next: "fight" },
-      { text: "Let them in.", next: "mic" }
-    ]
-  },
-
-  fight: {
-    speaker: "Princess Red",
-    text: "WHY DO THEY KEEP COMING BACK?!",
-    sprite: "redWorried",
-    background: "stage",
-    objective: "Change the strategy.",
+  overload: {
+    speaker: "M1H1",
+    text: "OPEN THIS SHIT UP.",
+    sprite: "m1h1Performance",
+    background: "overload",
+    objective: "Push the room past capacity.",
     effect: "shake",
     choices: [
-      { text: "You can't kill pieces of yourself. Take the mic.", next: "mic" }
+      { text: "OPEN THE PIT", next: "systemFail" }
     ]
   },
 
-  mic: {
-    speaker: "Princess Red",
-    text: "Can y'all shut the fuck up?",
-    sprite: "redPerformance",
-    background: "stage",
-    objective: "Let Princess Red take the stage.",
-    choices: [
-      { text: "🎤 TURN IT UP", next: "integration" }
-    ]
-  },
-
-  integration: {
+  systemFail: {
     speaker: "MIDNIGHT ARCADE",
-    text: "The voices don't disappear. They fall back into place. Judgment becomes awareness. Destruction becomes honesty. Corruption becomes instinct. Emptiness becomes rest.",
-    sprite: "redPerformance",
-    background: "stage",
-    objective: "Witness the transformation.",
+    text: "The crowd surges. The lights blow one by one. The speakers clip. The venue tries to restart the song and fails.",
+    sprite: "m1h1Performance",
+    background: "overload",
+    objective: "Keep moving forward.",
+    glitchText: "LOOP CAPACITY EXCEEDED",
     choices: [
-      { text: "CONTINUE", next: "fragment" }
+      { text: "DON'T STOP", next: "breakthrough" }
+    ]
+  },
+
+  breakthrough: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "For the first time all night, the next sound isn't the first song. It's silence from somewhere outside.",
+    sprite: null,
+    background: "overload",
+    objective: "Find the real exit.",
+    choices: [
+      { text: "MOVE TOWARD IT", next: "realExit" }
+    ]
+  },
+
+  realExit: {
+    speaker: "M1H1",
+    text: "There it is.",
+    sprite: "m1h1Neutral",
+    background: "hallway",
+    objective: "Leave the loop behind.",
+    choices: [
+      { text: "KEEP GOING", next: "fragment" }
     ]
   },
 
@@ -262,9 +233,9 @@ const story = {
 
   shee: {
     speaker: "???",
-    text: "SHEE HEARD YOU.",
+    text: "WHAT MOVES FORWARD CANNOT BE KEPT IN A LOOP.",
     sprite: null,
-    background: "stage",
+    background: "overload",
     objective: "Follow the signal.",
     effect: "glitch",
     glitchText: "SHEE HEARD YOU.",
@@ -284,7 +255,6 @@ const gameState = {
   scenesVisited: 0
 };
 
-const sceneEl = document.getElementById("scene");
 const backgroundEl = document.getElementById("sceneBackground");
 const spriteEl = document.getElementById("characterSprite");
 const speakerEl = document.getElementById("speakerName");
@@ -301,7 +271,7 @@ const musicPlayer = document.getElementById("musicPlayer");
 const sfxPlayer = document.getElementById("sfxPlayer");
 
 document.getElementById("ticketLink").href = CONFIG.ticketUrl;
-document.getElementById("page-link").href = CONFIG.princessRedPageUrl;
+document.getElementById("page-link").href = CONFIG.m1h1PageUrl;
 
 function asset(group, key) {
   return ASSETS[group]?.[key] || "";
@@ -309,6 +279,7 @@ function asset(group, key) {
 
 function playSfx(key) {
   if (!gameState.soundOn) return;
+
   const src = asset("audio", key);
   if (!src) return;
 
@@ -319,6 +290,8 @@ function playSfx(key) {
 
 function startAmbient() {
   if (!gameState.soundOn) return;
+  if (!CONFIG.musicEnabled) return;
+
   const src = asset("audio", "ambient");
   if (!src) return;
 
@@ -352,7 +325,7 @@ function setBackground(key) {
   }
 
   backgroundEl.style.backgroundImage =
-    `linear-gradient(rgba(9,0,15,0.05), rgba(9,0,15,0.3)), url("${src}")`;
+    `linear-gradient(rgba(7,9,8,.05), rgba(7,9,8,.32)), url("${src}")`;
 }
 
 function setSprite(key, effect) {
@@ -366,32 +339,36 @@ function setSprite(key, effect) {
   }
 
   const src = asset("characters", key);
+
   spriteEl.src = src;
   spriteEl.alt = key.replace(/([A-Z])/g, " $1").trim();
   spriteEl.hidden = false;
 
   requestAnimationFrame(() => {
     spriteEl.classList.add("enter");
+
     if (effect === "shake") spriteEl.classList.add("shake");
     if (effect === "glitch") spriteEl.classList.add("glitch");
   });
 }
 
 let typewriterTimer = null;
+let renderToken = 0;
 
-function typeText(text) {
+function typeText(text, onComplete) {
   if (typewriterTimer) {
     clearTimeout(typewriterTimer);
+    typewriterTimer = null;
   }
 
   dialogueEl.textContent = "";
   let i = 0;
-
   const speed = 12;
 
   function typeNext() {
     if (i >= text.length) {
       typewriterTimer = null;
+      if (onComplete) onComplete();
       return;
     }
 
@@ -403,17 +380,22 @@ function typeText(text) {
   typeNext();
 }
 
+let glitchTimer = null;
+
 function showGlitchMessage(text) {
   if (!text) return;
+
+  if (glitchTimer) clearTimeout(glitchTimer);
 
   glitchMessageEl.textContent = text;
   glitchMessageEl.hidden = false;
   document.body.classList.add("corrupted");
   playSfx("glitch");
 
-  setTimeout(() => {
+  glitchTimer = setTimeout(() => {
     glitchMessageEl.hidden = true;
     document.body.classList.remove("corrupted");
+    glitchTimer = null;
   }, 850);
 }
 
@@ -422,13 +404,26 @@ function renderChoices(choices = []) {
 
   choices.forEach(choice => {
     const button = document.createElement("button");
+
     button.type = "button";
     button.className = "choice-button";
     button.textContent = choice.text;
 
     button.addEventListener("click", () => {
+      // Prevent double-clicks and remove the old choice UI immediately.
+      Array.from(choicesEl.children).forEach(choiceButton => {
+        choiceButton.disabled = true;
+      });
+
+      choicesEl.classList.add("choices--leaving");
+
       playSfx("click");
-      goToScene(choice.next);
+
+      requestAnimationFrame(() => {
+        choicesEl.innerHTML = "";
+        choicesEl.classList.remove("choices--leaving");
+        goToScene(choice.next);
+      });
     });
 
     choicesEl.appendChild(button);
@@ -453,8 +448,15 @@ function renderScene(sceneId) {
     return;
   }
 
+  const thisRender = ++renderToken;
+
   gameState.currentScene = sceneId;
   gameState.scenesVisited += 1;
+
+  // Clear the previous interface BEFORE drawing the next scene.
+  choicesEl.innerHTML = "";
+  glitchMessageEl.hidden = true;
+  document.body.classList.remove("corrupted");
 
   if (scene.type === "fragment") {
     showFragment();
@@ -472,8 +474,18 @@ function renderScene(sceneId) {
 
   setBackground(scene.background);
   setSprite(scene.sprite, scene.effect);
-  typeText(scene.text || "");
-  renderChoices(scene.choices);
+
+  typeText(scene.text || "", () => {
+    // Prevent a finished OLD typewriter callback from resurrecting old choices.
+    if (
+      thisRender !== renderToken ||
+      gameState.currentScene !== sceneId
+    ) {
+      return;
+    }
+
+    renderChoices(scene.choices);
+  });
 
   if (scene.glitchText) {
     showGlitchMessage(scene.glitchText);
@@ -483,6 +495,23 @@ function renderScene(sceneId) {
 }
 
 function goToScene(sceneId) {
+  // Kill anything visually left over from the previous choice immediately.
+  renderToken += 1;
+
+  if (typewriterTimer) {
+    clearTimeout(typewriterTimer);
+    typewriterTimer = null;
+  }
+
+  if (typeof glitchTimer !== "undefined" && glitchTimer) {
+    clearTimeout(glitchTimer);
+    glitchTimer = null;
+  }
+
+  choicesEl.innerHTML = "";
+  glitchMessageEl.hidden = true;
+  document.body.classList.remove("corrupted");
+
   renderScene(sceneId);
 }
 

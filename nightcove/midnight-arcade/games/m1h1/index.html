@@ -3,134 +3,135 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#09000f" />
-        <title>Princess Red: SAVE ME! | Midnight Arcade</title>
-        <meta
-            name="description"
-            content="Enter Princess Red's nightmare in the first Midnight Arcade transmission from Taste My Nightmare."
-        />
-        <link rel="stylesheet" href="princess-red.css" />
+        <meta name="theme-color" content="#070908" />
+        <title>M1H1: RAGE FOREVER | Midnight Arcade</title>
+        <meta name="description" content="Enter M1H1's Neverending Moshpit in Midnight Arcade." />
+        <link rel="stylesheet" href="m1h1.css" />
     </head>
+
     <body>
+
         <main id="game" class="game-shell">
+
             <section id="scene" class="scene" aria-live="polite">
+
                 <div id="sceneBackground" class="scene__background"></div>
                 <div class="scene__overlay"></div>
                 <div class="scene__scanlines"></div>
 
                 <header class="topbar">
+
                     <a class="brand" href="../../games.html" aria-label="Back to Midnight Arcade">
                         <span class="brand__eyebrow">Taste My Nightmare</span>
                         <span class="brand__title">MIDNIGHT ARCADE</span>
                     </a>
 
                     <div class="status">
-                        <span id="chapterLabel">CARTRIDGE 001</span>
+                        <span id="chapterLabel">CARTRIDGE 004</span>
                         <span class="status__dot">●</span>
+
                         <button id="soundToggle" class="icon-button" type="button" aria-label="Toggle sound">
-                        SOUND: ON
+                            SOUND: ON
                         </button>
                     </div>
+
                 </header>
 
                 <section class="stage">
+
                     <div id="glitchMessage" class="glitch-message" hidden></div>
 
                     <div id="characterLayer" class="character-layer">
-                        <img
-                            id="characterSprite"
-                            class="character-sprite"
-                            src=""
-                            alt=""
-                            hidden
-                        />
+                        <img id="characterSprite" class="character-sprite" src="" alt="" hidden />
                     </div>
 
                     <aside id="objectiveCard" class="objective-card">
                         <span class="objective-card__label">CURRENT OBJECTIVE</span>
                         <strong id="objectiveText">Answer the transmission.</strong>
                     </aside>
+
                 </section>
 
                 <section id="dialoguePanel" class="dialogue-panel">
+
                     <div class="dialogue-panel__header">
                         <span id="speakerName" class="speaker-name">MIDNIGHT ARCADE</span>
-                        <span id="sceneCounter" class="scene-counter">01 / 01</span>
+                        <span id="sceneCounter" class="scene-counter">01</span>
                     </div>
 
-                    <p id="dialogueText" class="dialogue-text">
-                        Loading transmission...
-                    </p>
-
+                    <p id="dialogueText" class="dialogue-text">Loading transmission...</p>
                     <div id="choices" class="choices"></div>
+
                 </section>
 
                 <section id="fragmentScreen" class="fragment-screen" hidden>
+
                     <div class="fragment-screen__inner">
-                        <div class="fragment-icon">♥</div>
-                        <p class="eyebrow">FRAGMENT 01 ACQUIRED</p>
-                        <h2>THE HEART</h2>
-                        <p>SELF-RECOGNITION</p>
+                        <div class="fragment-icon">⚡</div>
+                        <p class="eyebrow">FRAGMENT 04 ACQUIRED</p>
+                        <h2>THE WILL</h2>
+                        <p>FORWARD MOTION</p>
+
                         <button id="fragmentContinue" class="primary-button" type="button">
-                        CONTINUE
+                            CONTINUE
                         </button>
                     </div>
+
                 </section>
 
                 <section id="festivalScreen" class="festival-screen" hidden>
+
                     <div class="festival-card">
+
                         <div class="festival-card__copy">
+
                             <p class="eyebrow">TRANSMISSION COMPLETE</p>
+
                             <h1>BUBBLES &amp; FLOW</h1>
+
                             <p>
-                                Princess Red made it out of the Dollhouse 
-                                District.
-                                Catch her where the nightmare crosses into real 
-                                life!
+                                M1H1 broke the loop by pushing the room past what it could contain.
+                                Catch him where the nightmare crosses into real life.
                             </p>
 
                             <div class="festival-actions">
-                                <a
-                                    id="ticketLink"
-                                    class="primary-button"
-                                    href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                🎟 GET TICKETS
+
+                                <a id="ticketLink" class="primary-button"
+                                href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
+                                target="_blank" rel="noopener noreferrer">
+                                    🎟 GET TICKETS
                                 </a>
 
-                                <a
-                                    id="page-link"
-                                    class="secondary-button"
-                                    href="../../artists/princess-red/index.html"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                🎧 ENTER PRINCESS RED'S SOUND ROOM
+                                <a id="page-link" class="secondary-button" href="../../artists/m1h1/">
+                                    🎧 ENTER M1H1'S SOUND ROOM
                                 </a>
 
                                 <a class="secondary-button" href="../../games.html">
-                                🕹 MIDNIGHT ARCADE
+                                    🕹 MIDNIGHT ARCADE
                                 </a>
+
                             </div>
+
                         </div>
 
                         <div class="festival-card__poster">
-                            <img
-                                id="festivalPoster"
-                                src="assets/ui/princess-red-festival-flyer.webp"
-                                alt="Bubbles and Flow festival flyer featuring Princess Red"
-                            />
+                            <img id="festivalPoster"
+                                src="assets/ui/m1h1-festival-flyer.webp"
+                                alt="Bubbles and Flow festival flyer featuring M1H1" />
                         </div>
+
                     </div>
+
                 </section>
+
             </section>
+
         </main>
 
         <audio id="musicPlayer" loop preload="auto"></audio>
         <audio id="sfxPlayer" preload="auto"></audio>
 
-        <script src="princess-red.js"></script>
+        <script src="m1h1.js"></script>
+
     </body>
 </html>
