@@ -693,10 +693,15 @@ img {
   gap: 22px;
 }
 
+/* =====================================================
+   TRANSMISSION CARDS
+===================================================== */
+
 .character-card {
   --card-accent: var(--pink);
   --card-secondary: var(--blue);
   --card-bg: #16091d;
+  --card-image: none;
 
   position: relative;
   isolation: isolate;
@@ -709,15 +714,67 @@ img {
   overflow: hidden;
 
   border: 1px solid color-mix(in srgb, var(--card-accent) 42%, transparent);
-  background:
-    radial-gradient(circle at 20% 10%, color-mix(in srgb, var(--card-accent) 18%, transparent), transparent 35%),
-    radial-gradient(circle at 85% 28%, color-mix(in srgb, var(--card-secondary) 15%, transparent), transparent 35%),
-    var(--card-bg);
+  background: var(--card-bg);
 
   transition:
     transform .18s ease,
     border-color .18s ease,
     box-shadow .18s ease;
+}
+
+.character-card::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  z-index: 0;
+
+  background-image: var(--card-image);
+  background-size: cover;
+  background-position: center;
+
+  opacity: .38;
+
+  filter:
+    blur(14px)
+    brightness(.58)
+    saturate(.78);
+
+  transform: scale(1.08);
+  pointer-events: none;
+}
+
+.character-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      color-mix(in srgb, var(--card-accent) 20%, transparent),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 85% 28%,
+      color-mix(in srgb, var(--card-secondary) 16%, transparent),
+      transparent 40%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--card-bg) 68%, transparent),
+      color-mix(in srgb, var(--card-bg) 90%, transparent)
+    );
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  pointer-events: none;
+}
+
+.character-card > * {
+  position: relative;
+  z-index: 2;
 }
 
 .character-card:hover {
@@ -736,7 +793,6 @@ img {
 .card-noise {
   position: absolute;
   inset: 0;
-
   z-index: 4;
 
   pointer-events: none;
@@ -783,25 +839,16 @@ img {
 
   overflow: hidden;
 
-  border-top:
-    1px solid
-    color-mix(in srgb, var(--card-accent) 25%, transparent);
-
-  border-bottom:
-    1px solid
-    color-mix(in srgb, var(--card-accent) 25%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--card-accent) 25%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--card-accent) 25%, transparent);
 
   background:
     radial-gradient(
       circle at center,
-      color-mix(
-        in srgb,
-        var(--card-accent) 18%,
-        transparent
-      ),
+      color-mix(in srgb, var(--card-accent) 18%, transparent),
       transparent 48%
     ),
-    rgba(8, 3, 13, .36);
+    rgba(8, 3, 13, .40);
 
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
@@ -959,188 +1006,52 @@ img {
 }
 
 /* =====================================================
-   CHARACTER CARDS
-===================================================== */
-
-.character-card {
-  --card-accent: var(--pink);
-  --card-secondary: var(--blue);
-  --card-bg: #16091d;
-  --card-image: none;
-
-  position: relative;
-  isolation: isolate;
-
-  min-height: 650px;
-
-  display: flex;
-  flex-direction: column;
-
-  overflow: hidden;
-
-  border:
-    1px solid
-    color-mix(in srgb, var(--card-accent) 42%, transparent);
-
-  background: var(--card-bg);
-
-  transition:
-    transform .18s ease,
-    border-color .18s ease,
-    box-shadow .18s ease;
-}
-
-
-/* =====================================================
-   HIDDEN ENVIRONMENT IMAGE
-   sits BEHIND the frosted card
-===================================================== */
-
-.character-card::before {
-  content: "";
-
-  position: absolute;
-  inset: -20px;
-
-  z-index: -2;
-
-  background-image: var(--card-image);
-  background-size: cover;
-  background-position: center;
-
-  opacity: .46;
-
-  filter:
-    blur(13px)
-    brightness(.55)
-    saturate(.72);
-
-  transform: scale(1.08);
-}
-
-
-/* =====================================================
-   FROSTED GLASS / ARTIST COLOR WASH
-===================================================== */
-
-.character-card::after {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  z-index: -1;
-
-  pointer-events: none;
-
-  background:
-    radial-gradient(
-      circle at 20% 10%,
-      color-mix(
-        in srgb,
-        var(--card-accent) 20%,
-        transparent
-      ),
-      transparent 38%
-    ),
-
-    radial-gradient(
-      circle at 85% 28%,
-      color-mix(
-        in srgb,
-        var(--card-secondary) 17%,
-        transparent
-      ),
-      transparent 40%
-    ),
-
-    linear-gradient(
-      180deg,
-      color-mix(
-        in srgb,
-        var(--card-bg) 70%,
-        transparent
-      ),
-      color-mix(
-        in srgb,
-        var(--card-bg) 92%,
-        transparent
-      )
-    );
-
-  backdrop-filter:
-    blur(13px)
-    saturate(.8);
-
-  -webkit-backdrop-filter:
-    blur(13px)
-    saturate(.8);
-}
-
-
-/* Make sure card contents stay above environment */
-
-.character-card > * {
-  position: relative;
-  z-index: 2;
-}
-
-/* =====================================================
-   ARTIST COLOR SYSTEMS + HIDDEN ENVIRONMENTS
+   ARTIST COLOR SYSTEMS + ENVIRONMENT ART
+   Image paths are relative to bubbles.css.
 ===================================================== */
 
 .character-card--princess {
   --card-accent: #42ddff;
   --card-secondary: #9b5cff;
   --card-bg: #090817;
-
-  --card-image: url("bubbles-and-flow/images/princess.png");
+  --card-image: url("images/princess.png");
 }
-
 
 .character-card--ram {
   --card-accent: #f3aa35;
   --card-secondary: #86ba54;
   --card-bg: #160e07;
-
-  --card-image: url("bubbles-and-flow/images/ram.png");
+  --card-image: url("images/ram.png");
 }
-
 
 .character-card--jilli {
   --card-accent: #ff3fba;
   --card-secondary: #6df2a7;
   --card-bg: #07130f;
-
-  --card-image: url("bubbles-and-flow/images/jilli.png");
+  --card-image: url("images/Jill.png");
 }
-
 
 .character-card--m1h1 {
   --card-accent: #67e548;
   --card-secondary: #eb3349;
   --card-bg: #08120b;
-
-  --card-image: url("bubbles-and-flow/images/m1h1.png");
+  --card-image: url("images/m1h1.png");
 }
-
 
 .character-card--redbabies {
   --card-accent: #8f241c;
   --card-secondary: #4e8d91;
   --card-bg: #0b0b0a;
-
-  --card-image: url("bubbles-and-flow/images/babies.png");
+  --card-image: url("images/babies.png");
 }
-
 
 .character-card--ashelic {
   --card-accent: #d90d2d;
   --card-secondary: #f3ece7;
   --card-bg: #100306;
-
-  --card-image: url("bubbles-and-flow/images/ashelic.png");
+  --card-image: url("images/Ashelic.png");
 }
+
 
 /* =====================================================
    SIGNAL FOOTER
@@ -1173,9 +1084,134 @@ img {
   animation: blink .65s infinite;
 }
 
+
+/* =====================================================
+   MODALS
+===================================================== */
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: grid;
+  place-items: center;
+
+  padding: 20px;
+}
+
+.modal[hidden] {
+  display: none !important;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background: rgba(3, 0, 7, .86);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  cursor: pointer;
+}
+
+.modal__window {
+  position: relative;
+  z-index: 1;
+
+  width: min(640px, 100%);
+  max-height: min(760px, calc(100vh - 40px));
+  overflow: auto;
+
+  border: 1px solid var(--border);
+
+  background:
+    radial-gradient(circle at 80% 10%, rgba(88,204,255,.08), transparent 30%),
+    #0c0411;
+
+  box-shadow:
+    0 0 70px rgba(255,79,184,.16);
+}
+
+.modal__bar {
+  min-height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-left: 14px;
+
+  border-bottom: 1px solid var(--border);
+
+  color: var(--baby-blue);
+
+  font-size: 8px;
+  letter-spacing: .13em;
+}
+
+.modal__close {
+  width: 44px;
+  height: 44px;
+
+  border: 0;
+  border-left: 1px solid var(--border);
+
+  background: transparent;
+
+  color: var(--white);
+
+  cursor: pointer;
+}
+
+.modal__content {
+  padding: clamp(25px, 6vw, 50px);
+}
+
+.modal__content h2 {
+  margin: 8px 0 5px;
+
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7vw, 70px);
+  line-height: .9;
+}
+
+.modal__content h3 {
+  margin: 8px 0 20px;
+
+  color: var(--pink);
+
+  font-family: var(--font-display);
+  font-size: clamp(20px, 4vw, 30px);
+}
+
+.modal__content > p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.modal__warning {
+  margin: 24px 0;
+  padding: 14px;
+
+  border: 1px solid rgba(255,216,74,.25);
+
+  color: var(--yellow);
+
+  font-size: 9px;
+  line-height: 1.7;
+  letter-spacing: .08em;
+}
+
+
 /* =====================================================
    ARTIST PREVIEW MODAL COLORS
-   ONLY affects #previewModal
 ===================================================== */
 
 #previewModal {
@@ -1183,209 +1219,196 @@ img {
   --preview-secondary: #58ccff;
   --preview-bg: #0c0411;
   --preview-text: #fff8fd;
+  --preview-muted: #d7bdd5;
 }
 
-/* PRINCESS RED — cyan / electric purple */
 #previewModal[data-artist="princess-red"] {
   --preview-accent: #42ddff;
   --preview-secondary: #9b5cff;
   --preview-bg: #090817;
+  --preview-muted: #ddd2ff;
 }
 
-/* RAM THE PHARAOH — gold / green */
 #previewModal[data-artist="ram"] {
   --preview-accent: #f3aa35;
   --preview-secondary: #86ba54;
   --preview-bg: #160e07;
+  --preview-muted: #d8c79e;
 }
 
-/* JILLI — neon pink / enchanted green */
 #previewModal[data-artist="jilli"] {
   --preview-accent: #ff3fba;
   --preview-secondary: #6df2a7;
   --preview-bg: #07130f;
+  --preview-muted: #d6efdf;
 }
 
-/* M1H1 — radioactive green / red */
 #previewModal[data-artist="m1h1"] {
   --preview-accent: #67e548;
   --preview-secondary: #eb3349;
   --preview-bg: #08120b;
+  --preview-muted: #c4d5c0;
 }
 
-/* RED BABIES — oxide red / dead-TV cyan */
 #previewModal[data-artist="red-babies"] {
   --preview-accent: #8f241c;
   --preview-secondary: #4e8d91;
   --preview-bg: #0b0b0a;
+  --preview-muted: #d4c39c;
 }
 
-/* ASHELIC ROSE — blood red / bone */
 #previewModal[data-artist="ashelic-rose"] {
   --preview-accent: #d90d2d;
   --preview-secondary: #f3ece7;
   --preview-bg: #100306;
+  --preview-muted: #d9b9bd;
 }
 
-
-/* MODAL WINDOW */
-
 #previewModal .modal__window {
-  border-color: color-mix(
-    in srgb,
-    var(--preview-accent) 55%,
-    transparent
-  );
+  border-color:
+    color-mix(in srgb, var(--preview-accent) 55%, transparent);
 
   background:
     radial-gradient(
       circle at 80% 10%,
-      color-mix(
-        in srgb,
-        var(--preview-secondary) 14%,
-        transparent
-      ),
+      color-mix(in srgb, var(--preview-secondary) 14%, transparent),
       transparent 32%
     ),
     radial-gradient(
       circle at 15% 85%,
-      color-mix(
-        in srgb,
-        var(--preview-accent) 10%,
-        transparent
-      ),
+      color-mix(in srgb, var(--preview-accent) 10%, transparent),
       transparent 35%
     ),
     var(--preview-bg);
 
   box-shadow:
     0 0 70px
-    color-mix(
-      in srgb,
-      var(--preview-accent) 22%,
-      transparent
-    );
+    color-mix(in srgb, var(--preview-accent) 22%, transparent);
 }
-
-
-/* TOP BAR */
 
 #previewModal .modal__bar {
   border-bottom-color:
-    color-mix(
-      in srgb,
-      var(--preview-accent) 45%,
-      transparent
-    );
+    color-mix(in srgb, var(--preview-accent) 45%, transparent);
 
   color: var(--preview-secondary);
 }
 
-
-/* CLOSE BUTTON */
-
 #previewModal .modal__close {
   border-left-color:
-    color-mix(
-      in srgb,
-      var(--preview-accent) 45%,
-      transparent
-    );
+    color-mix(in srgb, var(--preview-accent) 45%, transparent);
 }
 
-#previewModal .modal__close:hover {
+#previewModal .modal__close:hover,
+#previewModal .modal__close:focus-visible {
   background:
-    color-mix(
-      in srgb,
-      var(--preview-accent) 15%,
-      transparent
-    );
+    color-mix(in srgb, var(--preview-accent) 15%, transparent);
 
   color: var(--preview-accent);
 }
 
-
-/* SIGNAL LABEL */
-
 #previewModal .system-label {
   color: var(--preview-secondary);
 }
-
-
-/* ARTIST NAME */
 
 #previewModal #previewTitle {
   color: var(--preview-text);
 
   text-shadow:
     3px 3px 0
-    color-mix(
-      in srgb,
-      var(--preview-accent) 45%,
-      #000
-    );
+    color-mix(in srgb, var(--preview-accent) 45%, #000);
 }
-
-
-/* ROUTE TITLE */
 
 #previewModal #previewRoute {
   color: var(--preview-accent);
 }
 
-
-/* BODY COPY */
-
 #previewModal #previewCopy {
-  color:
-    color-mix(
-      in srgb,
-      var(--preview-text) 75%,
-      var(--preview-secondary)
-    );
+  color: var(--preview-muted);
 }
-
-
-/* WARNING BOX */
 
 #previewModal .modal__warning {
   border-color:
-    color-mix(
-      in srgb,
-      var(--preview-secondary) 35%,
-      transparent
-    );
+    color-mix(in srgb, var(--preview-secondary) 35%, transparent);
 
   background:
-    color-mix(
-      in srgb,
-      var(--preview-secondary) 6%,
-      transparent
-    );
+    color-mix(in srgb, var(--preview-secondary) 6%, transparent);
 
   color: var(--preview-secondary);
 }
-
-
-/* ENTER TRANSMISSION BUTTON */
 
 #previewModal .primary-button {
   background: var(--preview-accent);
 
   border-color:
-    color-mix(
-      in srgb,
-      var(--preview-accent) 70%,
-      white
-    );
+    color-mix(in srgb, var(--preview-accent) 70%, white);
 
   color: var(--preview-bg);
 }
 
-#previewModal .primary-button:hover {
+#previewModal .primary-button:hover,
+#previewModal .primary-button:focus-visible {
   background: var(--preview-secondary);
   border-color: var(--preview-secondary);
   color: var(--preview-bg);
+}
+
+
+/* Lore modal stays on Bubbles & Flow palette */
+
+#loreModal .modal__window {
+  border-color: var(--border);
+
+  background:
+    radial-gradient(circle at 80% 10%, rgba(88,204,255,.08), transparent 30%),
+    #0c0411;
+
+  box-shadow:
+    0 0 70px rgba(255,79,184,.16);
+}
+
+
+/* =====================================================
+   LOCKED STATE + INTERACTION
+===================================================== */
+
+.preview-link {
+  position: relative;
+  z-index: 5;
+}
+
+.character-card.is-locked {
+  filter: saturate(.65);
+}
+
+.character-card.is-locked .portrait-frame::after {
+  content: "LOCKED";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+
+  display: grid;
+  place-items: center;
+
+  background: rgba(8,2,13,.48);
+
+  color: var(--card-accent);
+
+  font-family: var(--font-display);
+  font-size: clamp(24px, 4vw, 42px);
+  letter-spacing: .12em;
+}
+
+.play-link--locked,
+.primary-button.is-disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--baby-blue);
+  outline-offset: 3px;
 }
 
 
@@ -1442,7 +1465,6 @@ img {
 ===================================================== */
 
 @media (max-width: 1050px) {
-
   .hero {
     grid-template-columns: 1fr;
   }
@@ -1462,12 +1484,9 @@ img {
   .festival-strip__center {
     display: none;
   }
-
 }
 
-
 @media (max-width: 700px) {
-
   .topbar__nav a:not(:last-of-type) {
     display: none;
   }
@@ -1510,12 +1529,9 @@ img {
   .signal-footer .secondary-button {
     width: 100%;
   }
-
 }
 
-
 @media (max-width: 450px) {
-
   .topbar {
     align-items: flex-start;
   }
@@ -1549,141 +1565,15 @@ img {
   .preview-link {
     justify-content: center;
   }
-
-}
-
-
-/* JILLI: enchanted forest treatment */
-.character-card--jilli {
-  background:
-    radial-gradient(circle at 18% 16%, rgba(255,63,186,.20), transparent 28%),
-    radial-gradient(circle at 78% 30%, rgba(109,242,167,.14), transparent 30%),
-    linear-gradient(180deg, #0b1a13 0%, #06100c 100%);
-}
-
-.character-card--jilli .portrait-frame {
-  background:
-    radial-gradient(circle at 50% 32%, rgba(255,63,186,.18), transparent 27%),
-    radial-gradient(circle at 20% 75%, rgba(109,242,167,.16), transparent 24%),
-    linear-gradient(180deg, #0c1d15, #050b08);
-}
-
-/* PRINCESS RED: neon blue + purple */
-.character-card--princess {
-  background:
-    radial-gradient(circle at 20% 12%, rgba(66,221,255,.20), transparent 30%),
-    radial-gradient(circle at 82% 28%, rgba(155,92,255,.18), transparent 32%),
-    linear-gradient(180deg, #0b0a1f 0%, #060710 100%);
-}
-
-.character-card--princess .portrait-frame {
-  background:
-    radial-gradient(circle at 40% 35%, rgba(66,221,255,.17), transparent 28%),
-    radial-gradient(circle at 70% 65%, rgba(155,92,255,.16), transparent 24%),
-    #050713;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .star {
-    animation: none;
-  }
-
+  .star,
   .bubble {
     animation: none;
   }
-}
 
-/* =====================================================
-   FINAL INTERACTION FIXES
-===================================================== */
-
-body.modal-open {
-  overflow: hidden;
-}
-
-main,
-.topbar {
-  position: relative;
-  z-index: 1;
-}
-
-.starfield {
-  z-index: 0;
-}
-
-.star--blue {
-  background: #9de8ff;
-  box-shadow:
-    0 0 calc(var(--size) * 4) rgba(88,204,255,.7);
-}
-
-.star--pink {
-  background: #ffd7f2;
-  box-shadow:
-    0 0 calc(var(--size) * 4) rgba(255,79,184,.6);
-}
-
-.star--sparkle {
-  border-radius: 0;
-  background: #fff8fd;
-
-  clip-path:
-    polygon(
-      50% 0%,
-      59% 38%,
-      100% 50%,
-      59% 62%,
-      50% 100%,
-      41% 62%,
-      0% 50%,
-      41% 38%
-    );
-
-  box-shadow:
-    0 0 10px rgba(255,255,255,.85),
-    0 0 18px rgba(157,232,255,.5);
-}
-
-.preview-link {
-  position: relative;
-  z-index: 5;
-}
-
-.preview-link:hover {
-  border-color: var(--card-accent);
-  color: var(--card-accent);
-}
-
-.character-card.is-locked {
-  filter: saturate(.65);
-}
-
-.character-card.is-locked .portrait-frame::after {
-  content: "LOCKED";
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-
-  display: grid;
-  place-items: center;
-
-  background: rgba(8,2,13,.48);
-
-  color: var(--card-accent);
-  font-family: var(--font-display);
-  font-size: clamp(24px, 4vw, 42px);
-  letter-spacing: .12em;
-}
-
-.play-link--locked,
-.primary-button.is-disabled {
-  opacity: .45;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-button:focus-visible,
-a:focus-visible {
-  outline: 2px solid var(--baby-blue);
-  outline-offset: 3px;
+  html {
+    scroll-behavior: auto;
+  }
 }

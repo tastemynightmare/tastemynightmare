@@ -1,13 +1,49 @@
 document.addEventListener("DOMContentLoaded", () => {
+  "use strict";
 
   /* =====================================================
-     CUTESY FLOATING STARFIELD
+     HELPERS
   ====================================================== */
 
-  const starfield = document.getElementById("starfield");
+  const $ = (selector, scope = document) => scope.querySelector(selector);
+  const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
+
+  function openModal(modal) {
+    if (!modal) return;
+
+    modal.hidden = false;
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+
+    const focusTarget =
+      $(".modal__close", modal) ||
+      $("a, button, [tabindex]:not([tabindex='-1'])", modal);
+
+    if (focusTarget) {
+      requestAnimationFrame(() => focusTarget.focus());
+    }
+  }
+
+  function closeModal(modal) {
+    if (!modal) return;
+
+    modal.hidden = true;
+    modal.setAttribute("aria-hidden", "true");
+
+    if ($$(".modal:not([hidden])").length === 0) {
+      document.body.classList.remove("modal-open");
+    }
+  }
+
+  /* =====================================================
+     FLOATING STARFIELD
+  ====================================================== */
+
+  const starfield = $("#starfield");
 
   if (starfield) {
     const starCount = window.innerWidth < 700 ? 45 : 80;
+    const fragment = document.createDocumentFragment();
 
     for (let i = 0; i < starCount; i += 1) {
       const star = document.createElement("span");
@@ -34,13 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
       star.style.setProperty("--delay", `${(Math.random() * -40).toFixed(2)}s`);
       star.style.setProperty("--twinkle", `${(Math.random() * 2 + 1.3).toFixed(2)}s`);
       star.style.setProperty("--twinkle-delay", `${(Math.random() * -3).toFixed(2)}s`);
-      star.style.setProperty("--opacity", `${(Math.random() * .45 + .5).toFixed(2)}`);
+      star.style.setProperty("--opacity", `${(Math.random() * 0.45 + 0.5).toFixed(2)}`);
       star.style.setProperty("--drift-x", `${(Math.random() * 110 - 55).toFixed(0)}px`);
 
-      starfield.appendChild(star);
+      fragment.appendChild(star);
     }
-  }
 
+    starfield.appendChild(fragment);
+  }
 
   /* =====================================================
      TRANSMISSION PREVIEW DATA
@@ -57,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
       locked: false
     },
 
-    "ram": {
+    ram: {
       title: "RAM THE PHARAOH",
       route: "THE MISSING SLAB",
       zone: "NEW JERSEY // 3000 B.C.",
@@ -67,9 +104,9 @@ document.addEventListener("DOMContentLoaded", () => {
       locked: false
     },
 
-    "jilli": {
-      title: "JILLI",
-      route: "SLAY OR BE SLAYED",
+    jilli: {
+      title: "JILLIAN!",
+      route: "SLAYYY OR BE SLAYED",
       zone: "HEARTBREAK FAIRYLAND",
       copy:
         "Jilli sang one song and accidentally enchanted the entire crowd into permanent devotion. Break the spell without killing the connection.",
@@ -77,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
       locked: false
     },
 
-    "m1h1": {
+    m1h1: {
       title: "M1H1",
       route: "RAGE FOREVER",
       zone: "THE NEVERENDING MOSHPIT",
@@ -108,22 +145,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-
   /* =====================================================
      PREVIEW MODAL
-     One modal. Every PREVIEW button targets it.
   ====================================================== */
 
-  const previewModal = document.getElementById("previewModal");
-  const previewTitle = document.getElementById("previewTitle");
-  const previewRoute = document.getElementById("previewRoute");
-  const previewZone = document.getElementById("previewZone");
-  const previewCopy = document.getElementById("previewCopy");
-  const previewPlayLink = document.getElementById("previewPlayLink");
-  const previewButtons = document.querySelectorAll(".preview-link");
-  const previewCloseButtons = document.querySelectorAll("[data-close-preview]");
+  const previewModal = $("#previewModal");
+  const previewTitle = $("#previewTitle");
+  const previewRoute = $("#previewRoute");
+  const previewZone = $("#previewZone");
+  const previewCopy = $("#previewCopy");
+  const previewPlayLink = $("#previewPlayLink");
 
-  previewButtons.forEach((button) => {
+  $$(".preview-link").forEach((button) => {
     button.addEventListener("click", () => {
       const artistId = button.dataset.preview;
       const data = previews[artistId];
@@ -137,11 +170,11 @@ document.addEventListener("DOMContentLoaded", () => {
         !previewCopy ||
         !previewPlayLink
       ) {
+        console.warn("Preview modal is missing required markup.", { artistId });
         return;
       }
 
       previewModal.dataset.artist = artistId;
-
       previewTitle.textContent = data.title;
       previewRoute.textContent = data.route;
       previewZone.textContent = data.zone;
@@ -151,80 +184,62 @@ document.addEventListener("DOMContentLoaded", () => {
         previewPlayLink.removeAttribute("href");
         previewPlayLink.setAttribute("aria-disabled", "true");
         previewPlayLink.classList.add("is-disabled");
-        previewPlayLink.innerHTML =
-          'TRANSMISSION LOCKED <span>X</span>';
+        previewPlayLink.innerHTML = 'TRANSMISSION LOCKED <span>X</span>';
       } else {
         previewPlayLink.href = data.href;
         previewPlayLink.removeAttribute("aria-disabled");
         previewPlayLink.classList.remove("is-disabled");
-        previewPlayLink.innerHTML =
-          'ENTER TRANSMISSION <span>&gt;</span>';
+        previewPlayLink.innerHTML = 'ENTER TRANSMISSION <span>&gt;</span>';
       }
 
-      previewModal.hidden = false;
-      document.body.classList.add("modal-open");
+      openModal(previewModal);
     });
   });
 
-  previewCloseButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      if (!previewModal) {
-        return;
-      }
-
-      previewModal.hidden = true;
-      document.body.classList.remove("modal-open");
-    });
+  $$("[data-close-preview]").forEach((control) => {
+    control.addEventListener("click", () => closeModal(previewModal));
   });
-
 
   /* =====================================================
-     LORE MODAL
+     SYSTEM FILE / LORE MODAL
   ====================================================== */
 
-  const loreButton = document.getElementById("loreButton");
-  const loreModal = document.getElementById("loreModal");
-  const loreCloseButtons = document.querySelectorAll("[data-close-lore]");
+  const loreButton = $("#loreButton");
+  const loreModal = $("#loreModal");
 
   if (loreButton && loreModal) {
-    loreButton.addEventListener("click", () => {
-      loreModal.hidden = false;
-      document.body.classList.add("modal-open");
-    });
+    loreButton.addEventListener("click", () => openModal(loreModal));
   }
 
-  loreCloseButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      if (!loreModal) {
-        return;
-      }
+  $$("[data-close-lore]").forEach((control) => {
+    control.addEventListener("click", (event) => {
+      closeModal(loreModal);
 
-      loreModal.hidden = true;
-      document.body.classList.remove("modal-open");
+      if (control.matches("a[href^='#']")) {
+        const target = $(control.getAttribute("href"));
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
     });
   });
 
-
   /* =====================================================
-     ESCAPE TO CLOSE MODALS
+     KEYBOARD MODAL CONTROL
   ====================================================== */
 
   document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape") {
-      return;
+    if (event.key !== "Escape") return;
+
+    if (previewModal && !previewModal.hidden) {
+      closeModal(previewModal);
     }
 
-    if (previewModal) {
-      previewModal.hidden = true;
+    if (loreModal && !loreModal.hidden) {
+      closeModal(loreModal);
     }
-
-    if (loreModal) {
-      loreModal.hidden = true;
-    }
-
-    document.body.classList.remove("modal-open");
   });
-
 
   /* =====================================================
      FRAGMENT PROGRESS
@@ -291,116 +306,106 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderProgress() {
     const progress = readProgress();
-    const fragmentCount = document.getElementById("fragmentCount");
-    const fragmentStatus = document.getElementById("fragmentStatus");
+    const fragmentCount = $("#fragmentCount");
+    const fragmentStatus = $("#fragmentStatus");
 
     if (fragmentCount) {
       fragmentCount.textContent = String(progress.length);
     }
 
-    document.querySelectorAll("[data-fragment]").forEach((item) => {
-      const id = item.dataset.fragment;
-
+    $$("[data-fragment]").forEach((item) => {
       item.classList.toggle(
         "is-recovered",
-        progress.includes(id)
+        progress.includes(item.dataset.fragment)
       );
     });
 
-    document.querySelectorAll("[data-character]").forEach((card) => {
+    $$("[data-character]").forEach((card) => {
       const id = card.dataset.character;
+      const status = $(".card-status", card);
 
-      if (!progress.includes(id)) {
+      if (!status || !progress.includes(id)) {
         return;
       }
 
-      const status = card.querySelector(".card-status");
-
-      if (!status) {
-        return;
-      }
-
-      const number = status.querySelector("span");
+      const number = $("span", status);
       const numberText = number ? number.outerHTML : "";
 
-      status.innerHTML =
-        `${numberText} FRAGMENT RECOVERED`;
+      status.innerHTML = `${numberText} FRAGMENT RECOVERED`;
     });
 
-    if (fragmentStatus) {
-      const missing = 5 - progress.length;
+    if (!fragmentStatus) return;
 
-      if (progress.length === 0) {
-        fragmentStatus.textContent = "SIGNAL INCOMPLETE.";
-      } else if (missing > 0) {
-        fragmentStatus.textContent =
-          `${missing} FRAGMENT${missing === 1 ? "" : "S"} STILL MISSING.`;
-      } else {
-        fragmentStatus.textContent =
-          "FIVE FRAGMENTS RECOVERED. FINAL SIGNAL REMAINS LOCKED.";
-      }
+    const missing = fragmentIds.length - progress.length;
+
+    if (progress.length === 0) {
+      fragmentStatus.textContent = "SIGNAL INCOMPLETE.";
+    } else if (missing > 0) {
+      fragmentStatus.textContent =
+        `${missing} FRAGMENT${missing === 1 ? "" : "S"} STILL MISSING.`;
+    } else {
+      fragmentStatus.textContent =
+        "FIVE FRAGMENTS RECOVERED. FINAL SIGNAL REMAINS LOCKED.";
     }
   }
 
   markCompletedFromQuery();
   renderProgress();
 
-
   /* =====================================================
      AMBIENT AUDIO
   ====================================================== */
 
-  const soundToggle = document.getElementById("soundToggle");
-  const ambientAudio = document.getElementById("ambientAudio");
+  const soundToggle = $("#soundToggle");
+  const ambientAudio = $("#ambientAudio");
   let soundOn = false;
 
   if (soundToggle && ambientAudio) {
     soundToggle.addEventListener("click", async () => {
-      if (!soundOn) {
-        ambientAudio.volume = .24;
-
-        try {
-          await ambientAudio.play();
-          soundOn = true;
-          soundToggle.textContent = "SOUND: ON";
-        } catch (error) {
-          console.warn(
-            "Ambient audio could not play. Check assets/audio/bubbles-flow-loop.mp3",
-            error
-          );
-        }
-      } else {
+      if (soundOn) {
         ambientAudio.pause();
         soundOn = false;
         soundToggle.textContent = "SOUND: OFF";
+        return;
+      }
+
+      ambientAudio.volume = 0.24;
+
+      try {
+        await ambientAudio.play();
+        soundOn = true;
+        soundToggle.textContent = "SOUND: ON";
+      } catch (error) {
+        console.warn(
+          "Ambient audio could not play. Check assets/audio/bubbles-flow-loop.mp3",
+          error
+        );
       }
     });
   }
-
 
   /* =====================================================
      ROTATING SYSTEM MESSAGE
   ====================================================== */
 
-  const signalMessage = document.getElementById("signalMessage");
+  const signalMessage = $("#signalMessage");
 
   const messages = [
-    "Five nightmares are currently broadcasting.",
-    "The final transmission remains locked.",
-    "Bubbles & Flow signal detected inside Night Cove.",
-    "Fragments may persist between sessions.",
-    "Unknown signal repeats: SAY A PRAYER TO SHEE."
+    "Five nightmares are currently broadcasting...",
+    "The final transmission remains locked...",
+    "Bubbles & Flow signal detected inside Night Cove...",
+    "Fragments may persist between sessions...",
+    "Unknown signal repeats: SAY A PRAYER TO SHEEEEEE"
   ];
 
-  let messageIndex = 0;
-
   if (signalMessage) {
-    setInterval(() => {
+    let messageIndex = 0;
+
+    window.setInterval(() => {
       messageIndex = (messageIndex + 1) % messages.length;
       signalMessage.textContent = messages[messageIndex];
     }, 5200);
   }
 
   console.log("BUBBLES & FLOW: ONLINE");
-
 });
