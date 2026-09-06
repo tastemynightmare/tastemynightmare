@@ -16,11 +16,11 @@ const ASSETS = {
   },
 
   backgrounds: {
-    transmission: "assets/backgrounds/transmission-room.webp",
-    jerseyEgypt: "assets/backgrounds/jersey-egypt.webp",
-    templeExterior: "assets/backgrounds/temple-exterior.webp",
-    templeInterior: "assets/backgrounds/temple-interior.webp",
-    stage: "assets/backgrounds/ram-stage.webp"
+    transmission: "assets/backgrounds/ram-bgr.png",
+    jerseyEgypt: "assets/backgrounds/jersey-egypt.png",
+    templeExterior: "assets/backgrounds/temple-exterior.png",
+    templeInterior: "assets/backgrounds/temple-interior.png",
+    stage: "assets/backgrounds/ram-stage.png"
   },
 
   audio: {
@@ -109,19 +109,33 @@ const story = {
     choices: [
       {
         text: "What's with the giant speakers?",
-        next: "speakers"
+        next: "speakers1"
       },
       {
         text: "Please tell me that's not your slab glowing up there.",
-        next: "speakers"
+        next: "speakers2"
       }
     ]
   },
 
 
-  speakers: {
+  speakers1: {
     speaker: "MIDNIGHT ARCADE",
     text: "Every bass hit shakes the sand. Ancient symbols flicker across busted Jersey street signs. A voice loops through the speakers: REAL NAME RAM... PEOPLE CALLING ME THE PHARAOH.",
+    sprite: "ramNeutral",
+    background: "jerseyEgypt",
+    objective: "Follow Ram's voice through the curse.",
+    choices: [
+      {
+        text: "Follow the loop",
+        next: "stanEntrance"
+      }
+    ]
+  },
+
+  speakers2: {
+    speaker: "MIDNIGHT ARCADE",
+    text: "YOOOO IT IS MY SLAB!!! We gotta grab it!!!",
     sprite: "ramNeutral",
     background: "jerseyEgypt",
     objective: "Follow Ram's voice through the curse.",
@@ -143,19 +157,41 @@ const story = {
     choices: [
       {
         text: "We're just here for Ram's slab.",
-        next: "stanQuestion"
+        next: "stanQuestion1"
       },
       {
         text: "Who even are you?",
-        next: "stanQuestion"
+        next: "stanQuestion2"
       }
     ]
   },
 
 
-  stanQuestion: {
+  stanQuestion1: {
     speaker: "Stan of Ra",
-    text: "A name is not decoration. A title is not costume. If he calls himself Pharaoh, then tell me: what makes the title real?",
+    text: "If you want Ram's slab you must go through ME!! Now prove yourself. What gives Ram his power?",
+    sprite: "stanOfRa",
+    background: "templeExterior",
+    objective: "Answer Stan of Ra.",
+    choices: [
+      {
+        text: "What people call him.",
+        next: "wrongTitle"
+      },
+      {
+        text: "What he says and stands on.",
+        next: "correctTitle"
+      },
+      {
+        text: "The jewelry probably helps.",
+        next: "wrongTitle"
+      }
+    ]
+  },
+
+  stanQuestion2: {
+    speaker: "Stan of Ra",
+    text: "Forget who I am.. A name is not decoration. A title is not costume! Ram calls himself Pharaoh, then tell me: what makes the title real?",
     sprite: "stanOfRa",
     background: "templeExterior",
     objective: "Answer Stan of Ra.",
@@ -185,7 +221,7 @@ const story = {
     choices: [
       {
         text: "Try again",
-        next: "stanQuestion"
+        next: "stanQuestion1"
       }
     ]
   },
