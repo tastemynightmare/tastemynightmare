@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#0a0004">
         <title>ASHELIC ROSE | Midnight Arcade</title>
         <link rel="stylesheet" href="ashelic-rose-music.css">
     </head>
@@ -12,56 +13,59 @@
         <main class="sound-room">
 
             <div class="ambient-orbs" aria-hidden="true">
-                <span></span>
-                <span></span>
-                <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
             </div>
 
             <nav class="sound-nav">
-
-                <a href="../../games.html">
+            <a href="../../games.html">
                 ← MIDNIGHT ARCADE
-                </a>
+            </a>
 
-                <span>
+            <span>
                 TMN // ARTIST TRANSMISSION
-                </span>
-
+            </span>
             </nav>
 
             <section class="artist-stage">
 
-                <div class="sprite-area">
+                <div class="sprite-area" aria-label="Ashelic Rose character stickers">
 
                     <img
                     src="assets/ashelic-queen.png"
-                    alt="ASHELIC ROSE"
-                    class="artist-sprite"
+                    alt="Ashelic Rose queen form"
+                    class="artist-sprite artist-sprite--queen"
                     >
-
 
                     <img
                     src="assets/ashelic-wounded.png"
-                    alt="ASHELIC ROSE"
-                    class="artist-sprite"
+                    alt="Ashelic Rose wounded"
+                    class="artist-sprite artist-sprite--wounded"
                     >
 
                     <img
                     src="assets/ashelic-dark.png"
-                    alt="ASHELIC ROSE"
-                    class="artist-sprite"
+                    alt="Ashelic Rose dark form"
+                    class="artist-sprite artist-sprite--dark"
                     >
 
                     <img
                     src="assets/ashelic-sweet.png"
-                    alt="ASHELIC ROSE"
-                    class="artist-sprite"
+                    alt="Ashelic Rose sweet form"
+                    class="artist-sprite artist-sprite--sweet"
                     >
 
                     <img
                     src="assets/lollipop.png"
-                    alt="ASHELIC ROSE"
-                    class="artist-sprite"
+                    alt="Ashelic Rose lollipop"
+                    class="artist-sprite artist-sprite--lollipop"
+                    >
+
+                    <img
+                    src="assets/ash-logo.png"
+                    alt="Ashelic Rose logo"
+                    class="artist-sprite artist-sprite--logo"
                     >
 
                 </div>
@@ -81,115 +85,112 @@
                     </p>
 
                     <div class="album-frame">
-
-                        <img
+                    <img
                         src="assets/ashelic-rose-cover.webp"
-                        alt="ASHELIC ROSE song artwork"
+                        alt="Ashelic Rose song artwork"
                         class="album-art"
-                        >
-
+                    >
                     </div>
 
                     <div class="song-info">
-
-                        <h2 id="songTitle">
+                    <h2 id="songTitle">
                         BEY BLADE
-                        </h2>
+                    </h2>
 
-                        <p>
+                    <p>
                         ASHELIC ROSE
-                        </p>
-
+                    </p>
                     </div>
 
                     <div class="progress-container">
+                    <span id="currentTime">0:00</span>
 
-                        <span id="currentTime">
-                        0:00
-                        </span>
-
-                        <input
+                    <input
                         id="progressBar"
                         type="range"
                         min="0"
                         max="100"
+                        step="0.1"
                         value="0"
                         aria-label="Song progress"
-                        >
+                    >
 
-                        <span id="duration">
-                        1:55
-                        </span>
-
+                    <span id="duration">0:00</span>
                     </div>
 
                     <div class="controls">
-
-                        <button
+                    <button
                         id="rewindButton"
+                        type="button"
                         aria-label="Rewind 10 seconds"
-                        >
+                        title="Rewind 10 seconds"
+                    >
                         ←
-                        </button>
+                    </button>
 
-                        <button
+                    <button
                         id="playButton"
                         class="play-button"
+                        type="button"
                         aria-label="Play"
-                        >
+                    >
                         ▶
-                        </button>
+                    </button>
 
-                        <button
-                        id="rewindButton"
-                        aria-label="Rewind 10 seconds"
-                        >
+                    <button
+                        id="forwardButton"
+                        type="button"
+                        aria-label="Forward 10 seconds"
+                        title="Forward 10 seconds"
+                    >
                         →
-                        </button>
-
+                    </button>
                     </div>
 
                     <div
-                        id="equalizer"
-                        class="equalizer"
-                        aria-hidden="true"
-                        >
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    id="equalizer"
+                    class="equalizer"
+                    aria-hidden="true"
+                    >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                     </div>
 
                     <audio id="audioPlayer" preload="metadata">
-                        <source
+                    <source
                         src="assets/ashelic-song.mp3"
                         type="audio/mpeg"
-                        >
+                    >
+                    Your browser does not support HTML audio.
                     </audio>
 
-                    <p id="audioStatus" class="audio-status" aria-live="polite"></p>
+                    <p
+                    id="audioStatus"
+                    class="audio-status"
+                    aria-live="polite"
+                    ></p>
 
                     <div class="artist-actions">
-
-                        <a
-                        href="../../games/ashelic-rose/"
+                    <a
+                        href="../../bubbles-and-flow/ashelic-rose/index.html"
                         class="secondary-button"
-                        >
+                    >
                         ♥ REPLAY BLOOD RITE
-                        </a>
+                    </a>
 
-                        <a
+                    <a
                         href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
                         class="ticket-button"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >
+                    >
                         🎟 BUBBLES & FLOW
-                        </a>
-
+                    </a>
                     </div>
 
                 </div>
@@ -198,7 +199,7 @@
 
             <footer>
                 <p>
-                TASTE MY NIGHTMARE // MIDNIGHT ARCADE
+                    TASTE MY NIGHTMARE // MIDNIGHT ARCADE
                 </p>
             </footer>
 

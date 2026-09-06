@@ -217,7 +217,7 @@ input {
 /* scattered left-side sticker composition */
 
 .artist-sprite--performance {
-  width: min(330px, 72%);
+  width: min(360px, 82%);
   left: 8%;
   top: 14%;
   z-index: 5;
@@ -226,7 +226,7 @@ input {
 }
 
 .artist-sprite--siren {
-  width: min(235px, 50%);
+  width: min(235px, 70%);
   left: 0;
   top: 0;
   z-index: 3;
@@ -236,7 +236,7 @@ input {
 }
 
 .artist-sprite--neutral {
-  width: min(210px, 46%);
+  width: min(210px, 56%);
   right: 2%;
   top: 5%;
   z-index: 2;
@@ -246,7 +246,7 @@ input {
 }
 
 .artist-sprite--worried {
-  width: min(190px, 42%);
+  width: min(230px, 52%);
   left: 2%;
   bottom: 3%;
   z-index: 4;
@@ -256,13 +256,24 @@ input {
 }
 
 .artist-sprite--fairy {
-  width: min(210px, 46%);
+  width: min(270px, 66%);
   right: 0;
   bottom: 2%;
   z-index: 3;
 
   transform: rotate(-7deg);
   animation-delay: -1.3s;
+}
+
+
+.artist-sprite--logo {
+  width: min(512px, 95%);
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+
+  transform: translate(-50%, -50%);
+  animation-delay: -2s;
 }
 
 
