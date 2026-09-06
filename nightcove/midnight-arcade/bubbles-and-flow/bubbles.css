@@ -772,6 +772,10 @@ img {
   font-size: 13px;
 }
 
+/* =====================================================
+   PORTRAIT FRAME
+===================================================== */
+
 .portrait-frame {
   position: relative;
 
@@ -779,13 +783,30 @@ img {
 
   overflow: hidden;
 
-  border-top: 1px solid color-mix(in srgb, var(--card-accent) 25%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--card-accent) 25%, transparent);
+  border-top:
+    1px solid
+    color-mix(in srgb, var(--card-accent) 25%, transparent);
+
+  border-bottom:
+    1px solid
+    color-mix(in srgb, var(--card-accent) 25%, transparent);
 
   background:
-    radial-gradient(circle at center, color-mix(in srgb, var(--card-accent) 18%, transparent), transparent 48%),
-    #08030d;
+    radial-gradient(
+      circle at center,
+      color-mix(
+        in srgb,
+        var(--card-accent) 18%,
+        transparent
+      ),
+      transparent 48%
+    ),
+    rgba(8, 3, 13, .36);
+
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
 }
+
 
 .portrait-frame img {
   position: absolute;
@@ -798,6 +819,7 @@ img {
 
   z-index: 2;
 }
+
 
 .portrait-frame img.missing {
   display: none;
@@ -936,45 +958,189 @@ img {
   color: var(--card-secondary);
 }
 
+/* =====================================================
+   CHARACTER CARDS
+===================================================== */
 
-/* ARTIST COLOR SYSTEMS */
+.character-card {
+  --card-accent: var(--pink);
+  --card-secondary: var(--blue);
+  --card-bg: #16091d;
+  --card-image: none;
+
+  position: relative;
+  isolation: isolate;
+
+  min-height: 650px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    color-mix(in srgb, var(--card-accent) 42%, transparent);
+
+  background: var(--card-bg);
+
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease;
+}
+
+
+/* =====================================================
+   HIDDEN ENVIRONMENT IMAGE
+   sits BEHIND the frosted card
+===================================================== */
+
+.character-card::before {
+  content: "";
+
+  position: absolute;
+  inset: -20px;
+
+  z-index: -2;
+
+  background-image: var(--card-image);
+  background-size: cover;
+  background-position: center;
+
+  opacity: .46;
+
+  filter:
+    blur(13px)
+    brightness(.55)
+    saturate(.72);
+
+  transform: scale(1.08);
+}
+
+
+/* =====================================================
+   FROSTED GLASS / ARTIST COLOR WASH
+===================================================== */
+
+.character-card::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      color-mix(
+        in srgb,
+        var(--card-accent) 20%,
+        transparent
+      ),
+      transparent 38%
+    ),
+
+    radial-gradient(
+      circle at 85% 28%,
+      color-mix(
+        in srgb,
+        var(--card-secondary) 17%,
+        transparent
+      ),
+      transparent 40%
+    ),
+
+    linear-gradient(
+      180deg,
+      color-mix(
+        in srgb,
+        var(--card-bg) 70%,
+        transparent
+      ),
+      color-mix(
+        in srgb,
+        var(--card-bg) 92%,
+        transparent
+      )
+    );
+
+  backdrop-filter:
+    blur(13px)
+    saturate(.8);
+
+  -webkit-backdrop-filter:
+    blur(13px)
+    saturate(.8);
+}
+
+
+/* Make sure card contents stay above environment */
+
+.character-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* =====================================================
+   ARTIST COLOR SYSTEMS + HIDDEN ENVIRONMENTS
+===================================================== */
 
 .character-card--princess {
   --card-accent: #42ddff;
   --card-secondary: #9b5cff;
   --card-bg: #090817;
+
+  --card-image: url("bubbles-and-flow/images/princess.png");
 }
+
 
 .character-card--ram {
   --card-accent: #f3aa35;
   --card-secondary: #86ba54;
   --card-bg: #160e07;
+
+  --card-image: url("bubbles-and-flow/images/ram.png");
 }
+
 
 .character-card--jilli {
   --card-accent: #ff3fba;
   --card-secondary: #6df2a7;
   --card-bg: #07130f;
+
+  --card-image: url("bubbles-and-flow/images/jilli.png");
 }
+
 
 .character-card--m1h1 {
   --card-accent: #67e548;
   --card-secondary: #eb3349;
   --card-bg: #08120b;
+
+  --card-image: url("bubbles-and-flow/images/m1h1.png");
 }
+
 
 .character-card--redbabies {
   --card-accent: #8f241c;
   --card-secondary: #4e8d91;
   --card-bg: #0b0b0a;
+
+  --card-image: url("bubbles-and-flow/images/babies.png");
 }
+
 
 .character-card--ashelic {
   --card-accent: #d90d2d;
   --card-secondary: #f3ece7;
   --card-bg: #100306;
-}
 
+  --card-image: url("bubbles-and-flow/images/ashelic.png");
+}
 
 /* =====================================================
    SIGNAL FOOTER
@@ -1007,118 +1173,219 @@ img {
   animation: blink .65s infinite;
 }
 
-
 /* =====================================================
-   MODALS
+   ARTIST PREVIEW MODAL COLORS
+   ONLY affects #previewModal
 ===================================================== */
 
-.modal {
-  position: fixed;
-  inset: 0;
-
-  z-index: 150;
-
-  display: grid;
-  place-items: center;
-
-  padding: 20px;
+#previewModal {
+  --preview-accent: #ff4fb8;
+  --preview-secondary: #58ccff;
+  --preview-bg: #0c0411;
+  --preview-text: #fff8fd;
 }
 
-.modal[hidden] {
-  display: none;
+/* PRINCESS RED — cyan / electric purple */
+#previewModal[data-artist="princess-red"] {
+  --preview-accent: #42ddff;
+  --preview-secondary: #9b5cff;
+  --preview-bg: #090817;
 }
 
-.modal__backdrop {
-  position: absolute;
-  inset: 0;
-
-  background: rgba(3,0,7,.86);
-  backdrop-filter: blur(8px);
+/* RAM THE PHARAOH — gold / green */
+#previewModal[data-artist="ram"] {
+  --preview-accent: #f3aa35;
+  --preview-secondary: #86ba54;
+  --preview-bg: #160e07;
 }
 
-.modal__window {
-  position: relative;
-  z-index: 2;
+/* JILLI — neon pink / enchanted green */
+#previewModal[data-artist="jilli"] {
+  --preview-accent: #ff3fba;
+  --preview-secondary: #6df2a7;
+  --preview-bg: #07130f;
+}
 
-  width: min(640px, 100%);
+/* M1H1 — radioactive green / red */
+#previewModal[data-artist="m1h1"] {
+  --preview-accent: #67e548;
+  --preview-secondary: #eb3349;
+  --preview-bg: #08120b;
+}
 
-  border: 1px solid var(--border);
+/* RED BABIES — oxide red / dead-TV cyan */
+#previewModal[data-artist="red-babies"] {
+  --preview-accent: #8f241c;
+  --preview-secondary: #4e8d91;
+  --preview-bg: #0b0b0a;
+}
+
+/* ASHELIC ROSE — blood red / bone */
+#previewModal[data-artist="ashelic-rose"] {
+  --preview-accent: #d90d2d;
+  --preview-secondary: #f3ece7;
+  --preview-bg: #100306;
+}
+
+
+/* MODAL WINDOW */
+
+#previewModal .modal__window {
+  border-color: color-mix(
+    in srgb,
+    var(--preview-accent) 55%,
+    transparent
+  );
 
   background:
-    radial-gradient(circle at 80% 10%, rgba(88,204,255,.08), transparent 30%),
-    #0c0411;
+    radial-gradient(
+      circle at 80% 10%,
+      color-mix(
+        in srgb,
+        var(--preview-secondary) 14%,
+        transparent
+      ),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 15% 85%,
+      color-mix(
+        in srgb,
+        var(--preview-accent) 10%,
+        transparent
+      ),
+      transparent 35%
+    ),
+    var(--preview-bg);
 
   box-shadow:
-    0 0 70px rgba(255,79,184,.16);
+    0 0 70px
+    color-mix(
+      in srgb,
+      var(--preview-accent) 22%,
+      transparent
+    );
 }
 
-.modal__bar {
-  min-height: 44px;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* TOP BAR */
 
-  padding-left: 14px;
+#previewModal .modal__bar {
+  border-bottom-color:
+    color-mix(
+      in srgb,
+      var(--preview-accent) 45%,
+      transparent
+    );
 
-  border-bottom: 1px solid var(--border);
-
-  color: var(--baby-blue);
-
-  font-size: 8px;
-  letter-spacing: .13em;
+  color: var(--preview-secondary);
 }
 
-.modal__close {
-  width: 44px;
-  height: 44px;
 
-  border: 0;
-  border-left: 1px solid var(--border);
+/* CLOSE BUTTON */
 
-  background: transparent;
-
-  color: var(--white);
-
-  cursor: pointer;
+#previewModal .modal__close {
+  border-left-color:
+    color-mix(
+      in srgb,
+      var(--preview-accent) 45%,
+      transparent
+    );
 }
 
-.modal__content {
-  padding: clamp(25px, 6vw, 50px);
+#previewModal .modal__close:hover {
+  background:
+    color-mix(
+      in srgb,
+      var(--preview-accent) 15%,
+      transparent
+    );
+
+  color: var(--preview-accent);
 }
 
-.modal__content h2 {
-  margin: 8px 0 5px;
 
-  font-family: var(--font-display);
-  font-size: clamp(40px, 7vw, 70px);
-  line-height: .9;
+/* SIGNAL LABEL */
+
+#previewModal .system-label {
+  color: var(--preview-secondary);
 }
 
-.modal__content h3 {
-  margin: 0 0 20px;
 
-  color: var(--pink);
+/* ARTIST NAME */
 
-  font-family: var(--font-display);
-  font-size: 22px;
+#previewModal #previewTitle {
+  color: var(--preview-text);
+
+  text-shadow:
+    3px 3px 0
+    color-mix(
+      in srgb,
+      var(--preview-accent) 45%,
+      #000
+    );
 }
 
-.modal__content p {
-  color: var(--muted);
-  line-height: 1.8;
+
+/* ROUTE TITLE */
+
+#previewModal #previewRoute {
+  color: var(--preview-accent);
 }
 
-.modal__warning {
-  margin: 24px 0;
-  padding: 13px;
 
-  border: 1px solid rgba(255,216,74,.25);
+/* BODY COPY */
 
-  color: var(--yellow);
+#previewModal #previewCopy {
+  color:
+    color-mix(
+      in srgb,
+      var(--preview-text) 75%,
+      var(--preview-secondary)
+    );
+}
 
-  font-size: 9px;
-  line-height: 1.6;
+
+/* WARNING BOX */
+
+#previewModal .modal__warning {
+  border-color:
+    color-mix(
+      in srgb,
+      var(--preview-secondary) 35%,
+      transparent
+    );
+
+  background:
+    color-mix(
+      in srgb,
+      var(--preview-secondary) 6%,
+      transparent
+    );
+
+  color: var(--preview-secondary);
+}
+
+
+/* ENTER TRANSMISSION BUTTON */
+
+#previewModal .primary-button {
+  background: var(--preview-accent);
+
+  border-color:
+    color-mix(
+      in srgb,
+      var(--preview-accent) 70%,
+      white
+    );
+
+  color: var(--preview-bg);
+}
+
+#previewModal .primary-button:hover {
+  background: var(--preview-secondary);
+  border-color: var(--preview-secondary);
+  color: var(--preview-bg);
 }
 
 

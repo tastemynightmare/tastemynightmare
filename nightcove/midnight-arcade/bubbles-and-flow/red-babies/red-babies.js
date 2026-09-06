@@ -100,7 +100,7 @@ const story = {
 
   underdogAppears: {
     speaker: "MIDNIGHT ARCADE",
-    text: "A black dog-shaped shadow crawls out from under a busted couch. Its fur is made of television static. Paper hangs from its mouth.",
+    text: "An odd creature crawls out from under a busted couch. Seems like one of Red Babies worst Nightmares.",
     sprite: "underdog",
     background: "abandonedRoom",
     objective: "Follow the Underdog.",

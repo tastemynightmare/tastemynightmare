@@ -6,12 +6,12 @@ const CONFIG = {
 const ASSETS = {
 
   characters: {
-    ashelicSweet: "assets/characters/ashelic-sweet.webp",
-    ashelicHungry: "assets/characters/ashelic-hungry.webp",
-    ashelicWounded: "assets/characters/ashelic-wounded.webp",
-    ashelicQueen: "assets/characters/ashelic-queen.webp",
-    falseRose: "assets/characters/false-rose.webp",
-    hunger: "assets/characters/the-hunger.webp"
+    ashelicSweet: "assets/characters/ashelic-sweet.png",
+    ashelicHungry: "assets/characters/ashelic-hungry.png",
+    ashelicWounded: "assets/characters/ashelic-wounded.png",
+    ashelicQueen: "assets/characters/ashelic-queen.png",
+    falseRose: "assets/characters/ashelic-dark.png",
+    hunger: "assets/characters/the-hunger.png"
   },
 
   backgrounds: {

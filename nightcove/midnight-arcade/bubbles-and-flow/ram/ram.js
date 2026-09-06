@@ -11,8 +11,8 @@ const ASSETS = {
     ramNeutral: "assets/characters/ram-neutral.png",
     ramConcerned: "assets/characters/ram-concerned.png",
     ramPerformance: "assets/characters/ram-performance.png",
-    stanOfRa: "assets/characters/stan-of-ra.webp",
-    slabThief: "assets/characters/slab-thief.webp"
+    stanOfRa: "assets/characters/stan-of-ra.png",
+    slabThief: "assets/characters/slab-thief.png"
   },
 
   backgrounds: {

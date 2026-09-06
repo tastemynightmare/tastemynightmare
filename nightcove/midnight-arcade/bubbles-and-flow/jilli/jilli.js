@@ -4,7 +4,6 @@ const CONFIG = {
   musicEnabled: true
 };
 
-
 const ASSETS = {
 
   characters: {
@@ -12,8 +11,8 @@ const ASSETS = {
     jilliWorried: "assets/characters/jilli-worried.png",
     jilliSiren: "assets/characters/jilli-siren.png",
     jilliPerformance: "assets/characters/jilli-performance.png",
-    enchantedFan: "assets/characters/enchanted-fan.webp",
-    fairyDouble: "assets/characters/fairy-double.webp"
+    enchantedFan: "assets/characters/enchanted-fan.png",
+    fairyDouble: "assets/characters/fairy-double.png"
   },
 
   backgrounds: {
@@ -32,7 +31,6 @@ const ASSETS = {
   }
 
 };
-
 
 const story = {
 
@@ -54,7 +52,6 @@ const story = {
     ]
   },
 
-
   problem: {
     speaker: "Jilli",
     text: "I sang one song and now everybody here is obsessed with me. Like... not normal obsessed. Fairy curse obsessed.",
@@ -68,7 +65,6 @@ const story = {
       }
     ]
   },
-
 
   stopSinging: {
     speaker: "Jilli",
@@ -84,7 +80,6 @@ const story = {
     ]
   },
 
-
   arrival: {
     speaker: "MIDNIGHT ARCADE",
     text: "LOCATION IDENTIFIED: HEARTBREAK FAIRYLAND.",
@@ -99,7 +94,6 @@ const story = {
       }
     ]
   },
-
 
   fanEncounter: {
     speaker: "Enchanted Fan",

@@ -9,7 +9,7 @@ const ASSETS = {
     m1h1Neutral: "assets/characters/m1h1-neutral.png",
     m1h1Rage: "assets/characters/m1h1-rage.png",
     m1h1Performance: "assets/characters/m1h1-performance.png",
-    pitZombie: "assets/characters/pit-zombie.webp"
+    pitZombie: "assets/characters/zombies.png"
   },
 
   backgrounds: {

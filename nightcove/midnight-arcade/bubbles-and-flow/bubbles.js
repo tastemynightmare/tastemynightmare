@@ -140,6 +140,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      previewModal.dataset.artist = artistId;
+
       previewTitle.textContent = data.title;
       previewRoute.textContent = data.route;
       previewZone.textContent = data.zone;
