@@ -37,7 +37,7 @@ const story = {
 
   intro: {
     speaker: "Ram",
-    text: "Yo. You free? I got a situation.",
+    text: "Yooo! You free? I got a situation!",
     sprite: "ramNeutral",
     background: "transmission",
     objective: "Answer Ram's transmission.",
@@ -47,7 +47,7 @@ const story = {
         next: "slabGone"
       },
       {
-        text: "Why do I feel like this is already cursed?",
+        text: "Why do I feel like this situation is already cursed?",
         next: "slabGone"
       }
     ]
@@ -56,13 +56,13 @@ const story = {
 
   slabGone: {
     speaker: "Ram",
-    text: "Somebody stole my slab.",
+    text: "Look bruh.. Somebody stole my slab!",
     sprite: "ramConcerned",
     background: "transmission",
     objective: "Figure out what was taken.",
     choices: [
       {
-        text: "Your... slab?",
+        text: "Your... slab???",
         next: "slabExplain"
       }
     ]
@@ -71,7 +71,7 @@ const story = {
 
   slabExplain: {
     speaker: "Ram",
-    text: "Yeah. My slab. Had my name carved in it, bars on the back, whole thing. I turned around for TWO seconds and now the sky is green.",
+    text: "Yeah. My slab. Had my name carved in it, bars on the back, whole thing. I turned around for TWO seconds and now the sky is green!!",
     sprite: "ramConcerned",
     background: "transmission",
     objective: "Locate the missing slab.",
@@ -136,7 +136,7 @@ const story = {
 
   stanEntrance: {
     speaker: "Stan of Ra",
-    text: "HALT. No one enters the Temple of the Missing Slab without proving they know the power of the word.",
+    text: "HALT!! No one enters the Temple of the Missing Slab without proving they know the power of the word.",
     sprite: "stanOfRa",
     background: "templeExterior",
     objective: "Get past Stan of Ra.",
@@ -290,7 +290,7 @@ const story = {
 
   ramSpeaks: {
     speaker: "Ram",
-    text: "Real name Ram. People calling me the Pharaoh. Step up to the plate.",
+    text: "Real name Ram. People calling me the Pharaoh. Step up to the plate!",
     sprite: "ramPerformance",
     background: "stage",
     objective: "Break the curse with Ram's own words.",

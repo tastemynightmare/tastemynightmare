@@ -8,16 +8,16 @@ const ASSETS = {
   characters: {
     m1h1Neutral: "assets/characters/m1h1-neutral.png",
     m1h1Rage: "assets/characters/m1h1-rage.png",
-    m1h1Performance: "assets/characters/m1h1-performance.png",
+    m1h1Performance: "assets/characters/m1h1-spray.png",
     pitZombie: "assets/characters/zombies.png"
   },
 
   backgrounds: {
-    transmission: "assets/backgrounds/transmission-room.webp",
-    venue: "assets/backgrounds/neverending-venue.webp",
-    hallway: "assets/backgrounds/looping-hallway.webp",
-    pit: "assets/backgrounds/moshpit.webp",
-    overload: "assets/backgrounds/overload-stage.webp"
+    transmission: "assets/backgrounds/m1h1-bgr.png",
+    venue: "assets/backgrounds/neverending-venue.png",
+    hallway: "assets/backgrounds/looping-hallway.png",
+    pit: "assets/backgrounds/moshpit.png",
+    overload: "assets/backgrounds/overload-stage.png"
   },
 
   audio: {
