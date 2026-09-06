@@ -1,0 +1,127 @@
+/* =====================================================
+   TMN SOUND ROOM ACCESSIBILITY ADD-ON
+   Add this AFTER each artist's main sound-room CSS.
+   Designed to preserve the current responsive layout.
+===================================================== */
+
+/* Better keyboard focus without changing normal mouse styling */
+:where(a, button, input[type="range"]):focus-visible {
+  outline: 3px solid var(--secondary, #ffffff);
+  outline-offset: 4px;
+}
+
+/* Keep focus visible on dark / glowing backgrounds */
+:where(a, button):focus-visible {
+  box-shadow:
+    0 0 0 2px var(--black, #000000),
+    0 0 0 5px color-mix(
+      in srgb,
+      var(--secondary, #ffffff) 80%,
+      transparent
+    );
+}
+
+/* Do not remove outlines for keyboard users */
+:where(a, button, input):focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Improve text readability for small labels */
+.sound-nav span,
+.transmission-label,
+.artist-location,
+.audio-status,
+footer {
+  text-wrap: balance;
+}
+
+/* Prevent tiny tap targets on touch devices */
+@media (pointer: coarse) {
+  .controls button,
+  .sound-nav a,
+  .artist-actions a {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* Make range control easier to use without changing page layout */
+#progressBar {
+  min-height: 24px;
+}
+
+/* High contrast support */
+@media (prefers-contrast: more) {
+  .player-card {
+    border-width: 2px;
+  }
+
+  .secondary-button {
+    border-width: 2px;
+  }
+
+  .sound-nav {
+    border-bottom-width: 2px;
+  }
+
+  .audio-status,
+  .artist-location,
+  .transmission-label {
+    opacity: 1;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  .artist-sprite,
+  .ambient-orbs span,
+  .equalizer.playing span {
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Screen-reader-only utility class */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Keep status messages available to AT without shifting layout */
+.audio-status:empty {
+  min-height: 1.2em;
+}
+
+/* Avoid horizontal overflow when users zoom text */
+.player-card,
+.song-info,
+.artist-actions,
+.progress-container {
+  min-width: 0;
+}
+
+.song-info h2,
+.artist-location,
+.transmission-label,
+.artist-actions a {
+  overflow-wrap: anywhere;
+}

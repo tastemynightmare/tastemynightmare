@@ -1,223 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Princess Red | Midnight Arcade</title>
-        <link rel="stylesheet" href="princess-red-music.css">
-    </head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#070713">
+    <title>Princess Red | Midnight Arcade</title>
+    <link rel="stylesheet" href="princess-red-music.css">
+    <link rel="stylesheet" href="../shared/sound-room-accessibility.css">
+  </head>
 
-    <body>
+  <body>
 
-        <main class="sound-room">
+    <main class="sound-room">
 
-            <!-- BACKGROUND DECOR -->
+      <div class="ambient-orbs" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
-            <div class="stars"></div>
+      <nav class="sound-nav">
+        <a href="../../games.html">
+          ← MIDNIGHT ARCADE
+        </a>
 
-            <!-- NAVIGATION -->
+        <span>
+          TMN // ARTIST TRANSMISSION
+        </span>
+      </nav>
 
-            <nav class="sound-nav">
+      <section class="artist-stage">
 
-                <a href="../../games.html">
-                    ← MIDNIGHT ARCADE
-                </a>
+        <div class="sprite-area" aria-label="Princess Red character stickers">
 
-                <span>
-                    TMN // ARTIST TRANSMISSION
-                </span>
+          <img
+            src="assets/princess-red-sad.png"
+            alt="Princess Red sad"
+            class="artist-sprite artist-sprite--sad"
+          >
 
-            </nav>
+          <img
+            src="assets/princess-red-happy.png"
+            alt="Princess Red happy"
+            class="artist-sprite artist-sprite--happy"
+          >
 
-            <!-- MAIN CHARACTER AREA -->
+          <img
+            src="assets/princess-red-sideeye.png"
+            alt="Princess Red side eye"
+            class="artist-sprite artist-sprite--sideeye"
+          >
 
-            <section class="artist-stage">
+          <img
+            src="assets/princess-red-performance.png"
+            alt="Princess Red performing"
+            class="artist-sprite artist-sprite--performance"
+          >
 
-                <!-- PRINCESS RED -->
+          <img
+            src="assets/princess-red-logo.png"
+            alt="Princess Red logo"
+            class="artist-sprite artist-sprite--logo"
+          >
 
-                <div class="sprite-area">
+          <img
+            src="assets/princess-red-sittin.png"
+            alt="Princess Red happy"
+            class="artist-sprite artist-sprite--sittin"
+          >
 
-                    <img
-                        src="assets/princess-red-sad.png"
-                        alt="Princess Red"
-                        class="artist-sprite"
-                    >
+        </div>
 
-                    <img
-                        src="assets/princess-red-happy.png"
-                        alt="Princess Red"
-                        class="artist-sprite"
-                    >
+        <div class="player-card">
 
-                    <img
-                        src="assets/princess-red-sideeye.png"
-                        alt="Princess Red"
-                        class="artist-sprite"
-                    >
+          <p class="transmission-label">
+            NOW TRANSMITTING
+          </p>
 
-                    <img
-                        src="assets/princess-red-performance.png"
-                        alt="Princess Red"
-                        class="artist-sprite"
-                    >
+          <h1>
+            PRINCESS RED
+          </h1>
 
-                    <img
-                        src="assets/princess-red-logo.png"
-                        alt="Princess Red"
-                        class="artist-sprite"
-                    >
+          <p class="artist-location">
+            CHICAGO // DOLLHOUSE DISTRICT
+          </p>
 
-                </div>
+          <div class="album-frame">
+            <img
+              src="assets/princess-red-cover.webp"
+              alt="Princess Red song artwork"
+              class="album-art"
+            >
+          </div>
 
-                <!-- MUSIC PLAYER -->
+          <div class="song-info">
+            <h2 id="songTitle">
+              SAVE ME
+            </h2>
 
-                <div class="player-card">
+            <p>
+              PRINCESS RED
+            </p>
+          </div>
 
-                    <p class="transmission-label">
-                        NOW TRANSMITTING
-                    </p>
+          <div class="progress-container">
+            <span id="currentTime">0:00</span>
 
-                    <h1>
-                        PRINCESS RED
-                    </h1>
+            <input
+              id="progressBar"
+              type="range"
+              min="0"
+              max="100"
+              step="0.1"
+              value="0"
+              aria-label="Song progress"
+            >
 
-                    <p class="artist-location">
-                        CHICAGO // DOLLHOUSE DISTRICT
-                    </p>
+            <span id="duration">0:00</span>
+          </div>
 
-                    <!-- ALBUM ART -->
+          <div class="controls">
+            <button
+              id="rewindButton"
+              type="button"
+              aria-label="Rewind 10 seconds"
+              title="Rewind 10 seconds"
+            >
+              ←
+            </button>
 
-                    <div class="album-frame">
+            <button
+              id="playButton"
+              class="play-button"
+              type="button"
+              aria-label="Play"
+            >
+              ▶
+            </button>
 
-                        <img
-                            src="assets/princess-red-cover.webp"
-                            alt="Princess Red song artwork"
-                            class="album-art"
-                        >
+            <button
+              id="forwardButton"
+              type="button"
+              aria-label="Forward 10 seconds"
+              title="Forward 10 seconds"
+            >
+              →
+            </button>
+          </div>
 
-                    </div>
+          <div
+            id="equalizer"
+            class="equalizer"
+            aria-hidden="true"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
 
-                    <!-- SONG INFORMATION -->
+          <audio id="audioPlayer" preload="metadata">
+            <source
+              src="assets/princess-red-song.mp3"
+              type="audio/mpeg"
+            >
+            Your browser does not support audio playback.
+          </audio>
 
-                    <div class="song-info">
+          <p
+            id="audioStatus"
+            class="audio-status"
+            aria-live="polite"
+          ></p>
 
-                        <h2 id="songTitle">
-                            SAVE ME
-                        </h2>
+          <div class="artist-actions">
+            <a
+              href="../../bubbles-and-flow/princess-red/index.html"
+              class="secondary-button"
+            >
+              ♥ REPLAY SAVE ME!
+            </a>
 
-                        <p>
-                            Princess Red
-                        </p>
+            <a
+              href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
+              class="ticket-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🎟 BUBBLES & FLOW
+            </a>
+          </div>
 
-                    </div>
+        </div>
 
-                    <!-- PROGRESS BAR -->
+      </section>
 
-                    <div class="progress-container">
+      <footer>
+        <p>
+          TASTE MY NIGHTMARE // MIDNIGHT ARCADE
+        </p>
+      </footer>
 
-                        <span id="currentTime">
-                            0:00
-                        </span>
+    </main>
 
-                        <input
-                            id="progressBar"
-                            type="range"
-                            min="0"
-                            max="100"
-                            value="1:38"
-                        >
+    <script src="princess-red-music.js"></script>
 
-                        <span id="duration">
-                            1:38
-                        </span>
-
-                    </div>
-
-                    <!-- PLAYER CONTROLS -->
-
-                    <div class="controls">
-
-                        <button
-                        id="rewindButton"
-                        aria-label="Rewind 10 seconds"
-                        >
-                        ←
-                        </button>
-
-                        <button
-                        id="playButton"
-                        class="play-button"
-                        aria-label="Play"
-                        >
-                        ▶
-                        </button>
-
-                        <button
-                        id="rewindButton"
-                        aria-label="Rewind 10 seconds"
-                        >
-                        →
-                        </button>
-
-                    </div>
-
-                    <!-- CUTE FAKE EQUALIZER -->
-
-                    <div id="equalizer" class="equalizer">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                    <!-- AUDIO -->
-                        <audio id="audioPlayer" preload="metadata">
-                            <source
-                                src="assets/princess-red-song.mp3"
-                                type="audio/mpeg"
-                            >
-                        </audio>
-
-                    <!-- OTHER LINKS -->
-
-                    <div class="artist-actions">
-
-                        <a
-                            href="../../bubbles-and-flow/princess-red/index.html"
-                            class="secondary-button"
-                        >
-                            ♥ REPLAY SAVE ME!
-                        </a>
-
-                        <a
-                            href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
-                            class="ticket-button"
-                            target="_blank"
-                        >
-                            🎟 BUBBLES & FLOW
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-            <footer>
-
-                <p>
-                    TASTE MY NIGHTMARE // MIDNIGHT ARCADE
-                </p>
-
-            </footer>
-
-        </main>
-
-        <script src="princess-red-music.js"></script>
-
-    </body>
-
+  </body>
 </html>

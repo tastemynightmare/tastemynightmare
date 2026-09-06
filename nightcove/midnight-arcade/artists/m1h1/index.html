@@ -1,217 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>M1H1 | Midnight Arcade</title>
-        <link rel="stylesheet" href="m1h1-music.css">
-    </head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#070908">
+    <title>M1H1 | Midnight Arcade</title>
+    <link rel="stylesheet" href="m1h1-music.css">
+    <link rel="stylesheet" href="../shared/sound-room-accessibility.css">
+  </head>
 
-    <body>
+  <body>
 
-        <main class="sound-room">
+    <main class="sound-room">
 
-            <div class="ambient-orbs" aria-hidden="true">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+      <div class="ambient-orbs" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
-            <nav class="sound-nav">
+      <nav class="sound-nav">
+        <a href="../../games.html">
+          ← MIDNIGHT ARCADE
+        </a>
 
-                <a href="../../games.html">
-                ← MIDNIGHT ARCADE
-                </a>
+        <span>
+          TMN // ARTIST TRANSMISSION
+        </span>
+      </nav>
 
-                <span>
-                TMN // ARTIST TRANSMISSION
-                </span>
+      <section class="artist-stage">
 
-            </nav>
+        <div class="sprite-area" aria-label="M1H1 character stickers">
 
-            <section class="artist-stage">
+          <img
+            src="assets/m1h1-rage.png"
+            alt="M1H1 raging"
+            class="artist-sprite artist-sprite--rage"
+          >
 
-                    <div class="sprite-area">
+          <img
+            src="assets/m1h1-neutral.png"
+            alt="M1H1 neutral"
+            class="artist-sprite artist-sprite--neutral"
+          >
 
-                        <img
-                        src="assets/m1h1-rage.png"
-                        alt="M1H1 1"
-                        class="artist-sprite"
-                        >
+          <img
+            src="assets/m1h1-performance.png"
+            alt="M1H1 performing"
+            class="artist-sprite artist-sprite--performance"
+          >
 
-                        <img
-                        src="assets/m1h1-neutral.png"
-                        alt="M1H1 2"
-                        class="artist-sprite"
-                        >
+          <img
+            src="assets/zombies.png"
+            alt="M1H1 zombie crowd"
+            class="artist-sprite artist-sprite--zombies"
+          >
 
-                        <img
-                        src="assets/m1h1-performance.png"
-                        alt="M1H1 3"
-                        class="artist-sprite"
-                        >
+          <img
+            src="assets/m1h1-dope.png"
+            alt="M1H1 dope pose"
+            class="artist-sprite artist-sprite--dope"
+          >
 
-                        <img
-                        src="assets/zombies.png"
-                        alt="M1H1 4"
-                        class="artist-sprite"
-                        >
+          <img
+            src="assets/m1h1-logo.png"
+            alt="M1H1 logo"
+            class="artist-sprite artist-sprite--logo"
+          >
 
-                        <img
-                        src="assets/m1h1-dope.png"
-                        alt="M1H1 5"
-                        class="artist-sprite"
-                        >
+        </div>
 
-                        <img
-                        src="assets/m1h1-logo.png"
-                        alt="M1H1 5"
-                        class="artist-sprite"
-                        >
+        <div class="player-card">
 
-                    </div>
+          <p class="transmission-label">
+            NOW TRANSMITTING
+          </p>
 
-                    <div class="player-card">
+          <h1>
+            M1H1
+          </h1>
 
-                        <p class="transmission-label">
-                            NOW TRANSMITTING
-                        </p>
+          <p class="artist-location">
+            NEVERENDING MOSHPIT // RAGE FREQUENCY
+          </p>
 
-                        <h1>
-                            M1H1
-                        </h1>
+          <div class="album-frame">
+            <img
+              src="assets/m1h1-cover.webp"
+              alt="M1H1 song artwork"
+              class="album-art"
+            >
+          </div>
 
-                        <p class="artist-location">
-                            NEVERENDING MOSHPIT // RAGE FREQUENCY
-                        </p>
+          <div class="song-info">
+            <h2 id="songTitle">
+              710
+            </h2>
 
-                        <div class="album-frame">
+            <p>
+              M1H1
+            </p>
+          </div>
 
-                        <img
-                        src="assets/m1h1-cover.webp"
-                        alt="M1H1 song artwork"
-                        class="album-art"
-                        >
+          <div class="progress-container">
+            <span id="currentTime">0:00</span>
 
-                    </div>
+            <input
+              id="progressBar"
+              type="range"
+              min="0"
+              max="100"
+              step="0.1"
+              value="0"
+              aria-label="Song progress"
+            >
 
-                    <div class="song-info">
+            <span id="duration">0:00</span>
+          </div>
 
-                        <h2 id="songTitle">
-                            710
-                        </h2>
+          <div class="controls">
+            <button
+              id="rewindButton"
+              type="button"
+              aria-label="Rewind 10 seconds"
+              title="Rewind 10 seconds"
+            >
+              ←
+            </button>
 
-                        <p>
-                            M1H1
-                        </p>
+            <button
+              id="playButton"
+              class="play-button"
+              type="button"
+              aria-label="Play"
+            >
+              ▶
+            </button>
 
-                    </div>
+            <button
+              id="forwardButton"
+              type="button"
+              aria-label="Forward 10 seconds"
+              title="Forward 10 seconds"
+            >
+              →
+            </button>
+          </div>
 
-                    <div class="progress-container">
+          <div
+            id="equalizer"
+            class="equalizer"
+            aria-hidden="true"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
 
-                        <span id="currentTime">
-                        0:00
-                        </span>
+          <audio id="audioPlayer" preload="metadata">
+            <source
+              src="assets/m1h1-song.mp3"
+              type="audio/mpeg"
+            >
+          </audio>
 
-                        <input
-                        id="progressBar"
-                        type="range"
-                        min="0"
-                        max="100"
-                        value="2:26"
-                        aria-label="Song progress"
-                        >
+          <p
+            id="audioStatus"
+            class="audio-status"
+            aria-live="polite"
+          ></p>
 
-                        <span id="duration">
-                        2:26
-                        </span>
+          <div class="artist-actions">
+            <a
+              href="../../bubbles-and-flow/m1h1/index.html"
+              class="secondary-button"
+            >
+              ⚡ REPLAY RAGE FOREVER
+            </a>
 
-                    </div>
+            <a
+              href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
+              class="ticket-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🎟 BUBBLES & FLOW
+            </a>
+          </div>
 
-                    <div class="controls">
+        </div>
 
-                        <button
-                        id="rewindButton"
-                        aria-label="Rewind 10 seconds"
-                        >
-                        ←
-                        </button>
+      </section>
 
-                        <button
-                        id="playButton"
-                        class="play-button"
-                        aria-label="Play"
-                        >
-                        ▶
-                        </button>
+      <footer>
+        <p>
+          TASTE MY NIGHTMARE // MIDNIGHT ARCADE
+        </p>
+      </footer>
 
+    </main>
 
-                        <button
-                        id="rewindButton"
-                        aria-label="Rewind 10 seconds"
-                        >
-                        →
-                        </button>
+    <script src="m1h1-music.js"></script>
 
-                    </div>
-
-                    <div
-                        id="equalizer"
-                        class="equalizer"
-                        aria-hidden="true"
-                        >
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                    <audio id="audioPlayer" preload="metadata">
-                    <source
-                    src="assets/m1h1-song.mp3"
-                    type="audio/mpeg"
-                    >
-                    Your browser does not support audio playback.
-                    </audio>
-
-                    <p id="audioStatus" class="audio-status" aria-live="polite"></p>
-
-                    <div class="artist-actions">
-
-                        <a
-                        href="../../bubbles-and-flow/m1h1/index.html"
-                        class="secondary-button"
-                        >
-                        ⚡ REPLAY RAGE FOREVER
-                        </a>
-
-                        <a
-                        href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
-                        class="ticket-button"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >
-                        🎟 BUBBLES & FLOW
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-            <footer>
-                <p>
-                TASTE MY NIGHTMARE // MIDNIGHT ARCADE
-                </p>
-            </footer>
-
-        </main>
-
-        <script src="m1h1-music.js"></script>
-
-    </body>
+  </body>
 </html>

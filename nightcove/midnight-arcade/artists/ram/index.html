@@ -1,209 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0a08">
 
-        <title>Ram the Pharaoh | Midnight Arcade</title>
+    <title>Ram the Pharaoh | Midnight Arcade</title>
 
-        <link rel="stylesheet" href="ram-music.css">
-    </head>
+    <link rel="stylesheet" href="ram-music.css">
+  </head>
 
-    <body>
+  <body>
 
-        <main class="sound-room">
+    <main class="sound-room">
 
-            <div class="stars"></div>
+      <div class="ambient-orbs" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
-            <nav class="sound-nav">
+      <nav class="sound-nav">
+        <a href="../../games.html">
+          ← MIDNIGHT ARCADE
+        </a>
 
-                <a href="../../games.html">
-                    ← MIDNIGHT ARCADE
-                </a>
+        <span>
+          TMN // ARTIST TRANSMISSION
+        </span>
+      </nav>
 
-                <span>
-                    TMN // ARTIST TRANSMISSION
-                </span>
+      <section class="artist-stage">
 
-            </nav>
+        <div class="sprite-area" aria-label="Ram the Pharaoh character stickers">
 
-            <section class="artist-stage">
+          <img
+            src="assets/ram-concerned.png"
+            alt="Ram the Pharaoh concerned"
+            class="artist-sprite artist-sprite--concerned"
+          >
 
-                <div class="sprite-area">
+          <img
+            src="assets/ram-neutral.png"
+            alt="Ram the Pharaoh neutral"
+            class="artist-sprite artist-sprite--neutral"
+          >
 
-                    <img
-                        src="assets/ram-concerned.png"
-                        alt="Ram the Pharaoh 1"
-                        class="artist-sprite"
-                    >
+          <img
+            src="assets/ram-performance.png"
+            alt="Ram the Pharaoh performing"
+            class="artist-sprite artist-sprite--performance"
+          >
 
-                    <img
-                        src="assets/ram-neutral.png"
-                        alt="Ram the Pharaoh 2"
-                        class="artist-sprite"
-                    >
+          <img
+            src="assets/slab-thief.png"
+            alt="Slab thief"
+            class="artist-sprite artist-sprite--thief"
+          >
 
-                    <img
-                        src="assets/ram-performance.png"
-                        alt="Ram the Pharaoh 3"
-                        class="artist-sprite"
-                    >
+          <img
+            src="assets/slab.png"
+            alt="The slab"
+            class="artist-sprite artist-sprite--slab"
+          >
 
-                    <img
-                        src="assets/slab-thief.png"
-                        alt="Ram the Pharaoh 4"
-                        class="artist-sprite"
-                    >
+          <img
+            src="assets/ram-logo.png"
+            alt="Ram the Pharaoh logo"
+            class="artist-sprite artist-sprite--logo"
+          >
 
-                    <img
-                        src="assets/slab.png"
-                        alt="Ram the Pharaoh 5"
-                        class="artist-sprite"
-                    >
+        </div>
 
-                    <img
-                        src="assets/ram-logo.png"
-                        alt="Ram the Pharaoh 6"
-                        class="artist-sprite"
-                    >
+        <div class="player-card">
 
-                </div>
+          <p class="transmission-label">
+            NOW TRANSMITTING
+          </p>
 
-                <div class="player-card">
+          <h1>
+            RAM THE PHARAOH
+          </h1>
 
-                    <p class="transmission-label">
-                        NOW TRANSMITTING
-                    </p>
+          <p class="artist-location">
+            JERSEY // PHARAOH FREQUENCY
+          </p>
 
-                    <h1>
-                        RAM THE PHARAOH
-                    </h1>
+          <div class="album-frame">
+            <img
+              src="assets/ram-cover.webp"
+              alt="Ram the Pharaoh song artwork"
+              class="album-art"
+            >
+          </div>
 
-                    <p class="artist-location">
-                        JERSEY // PHARAOH FREQUENCY
-                    </p>
+          <div class="song-info">
+            <h2 id="songTitle">
+              RAM'S FESTIVAL PICK
+            </h2>
 
-                    <div class="album-frame">
+            <p>
+              RAM THE PHARAOH
+            </p>
+          </div>
 
-                        <img
-                            src="assets/ram-cover.webp"
-                            alt="Ram the Pharaoh song artwork"
-                            class="album-art"
-                        >
+          <div class="progress-container">
+            <span id="currentTime">0:00</span>
 
-                    </div>
+            <input
+              id="progressBar"
+              type="range"
+              min="0"
+              max="100"
+              step="0.1"
+              value="0"
+              aria-label="Song progress"
+            >
 
-                    <div class="song-info">
+            <span id="duration">0:00</span>
+          </div>
 
-                        <h2 id="songTitle">
-                            RAM'S FESTIVAL PICK
-                        </h2>
+          <div class="controls">
+            <button
+              id="rewindButton"
+              type="button"
+              aria-label="Rewind 10 seconds"
+              title="Rewind 10 seconds"
+            >
+              ←
+            </button>
 
-                        <p>
-                            Ram the Pharaoh
-                        </p>
+            <button
+              id="playButton"
+              class="play-button"
+              type="button"
+              aria-label="Play"
+            >
+              ▶
+            </button>
 
-                    </div>
+            <button
+              id="forwardButton"
+              type="button"
+              aria-label="Forward 10 seconds"
+              title="Forward 10 seconds"
+            >
+              →
+            </button>
+          </div>
 
-                    <div class="progress-container">
+          <div
+            id="equalizer"
+            class="equalizer"
+            aria-hidden="true"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
 
-                        <span id="currentTime">
-                            0:00
-                        </span>
+          <audio id="audioPlayer" preload="metadata">
+            <source
+              src="assets/ram-song.mp3"
+              type="audio/mpeg"
+            >
+            Your browser does not support audio playback.
+          </audio>
 
-                        <input
-                            id="progressBar"
-                            type="range"
-                            min="0"
-                            max="100"
-                            value="0"
-                        >
+          <p
+            id="audioStatus"
+            class="audio-status"
+            aria-live="polite"
+          ></p>
 
-                        <span id="duration">
-                            0:00
-                        </span>
+          <div class="artist-actions">
+            <a
+              href="../../bubbles-and-flow/ram/index.html"
+              class="secondary-button"
+            >
+              𓂀 REPLAY THE CURSE
+            </a>
 
-                    </div>
+            <a
+              href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
+              class="ticket-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🎟 BUBBLES & FLOW
+            </a>
+          </div>
 
-                    <div class="controls">
+        </div>
 
-                        <button
-                        id="rewindButton"
-                        aria-label="Rewind 10 seconds"
-                        >
-                        ←
-                        </button>
+      </section>
 
-                        <button
-                        id="playButton"
-                        class="play-button"
-                        aria-label="Play"
-                        >
-                        ▶
-                        </button>
+      <footer>
+        <p>
+          TASTE MY NIGHTMARE // MIDNIGHT ARCADE
+        </p>
+      </footer>
 
-                        <button
-                        id="rewindButton"
-                        aria-label="Rewind 10 seconds"
-                        >
-                        →
-                        </button>
+    </main>
 
-                    </div>
+    <script src="ram-music.js"></script>
 
-                    <div
-                        id="equalizer"
-                        class="equalizer"
-                    >
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                    <audio id="audioPlayer" preload="metadata">
-                        <source
-                            src="assets/ram-song.mp3"
-                            type="audio/mpeg"
-                        >
-                    </audio>
-
-                    <div class="artist-actions">
-
-                        <a
-                            href="../../bubbles-and-flow/ram/index.html"
-                            class="secondary-button"
-                        >
-                            𓂀 REPLAY THE CURSE
-                        </a>
-
-                        <a
-                            href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
-                            class="ticket-button"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            🎟 BUBBLES & FLOW
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-            <footer>
-                <p>
-                    TASTE MY NIGHTMARE // MIDNIGHT ARCADE
-                </p>
-            </footer>
-
-        </main>
-
-        <script src="ram-music.js"></script>
-
-    </body>
+  </body>
 </html>
