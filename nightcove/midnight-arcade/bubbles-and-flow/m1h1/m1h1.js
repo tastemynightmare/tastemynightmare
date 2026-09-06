@@ -32,19 +32,30 @@ const story = {
 
   intro: {
     speaker: "M1H1",
-    text: "YO. THIS SHOW WON'T END. I GOTTA MAKE IT TO MY NEXT SET!",
+    text: "YOOO!!! THIS SHOW WON'T END. I GOTTA MAKE IT TO MY NEXT SET!!!",
     sprite: "m1h1Rage",
     background: "transmission",
     objective: "Answer M1H1's transmission.",
     choices: [
-      { text: "What do you mean won't end?", next: "problem" },
-      { text: "That sounds like a good problem for you.", next: "problem" }
+      { text: "What do you mean won't end?", next: "problem4" },
+      { text: "That sounds like a good problem for you.", next: "problem3" }
     ]
   },
 
-  problem: {
+  problem4: {
     speaker: "M1H1",
-    text: "Nah. I mean literally. Every time I finish the set, the first song starts again.",
+    text: "I mean literally!! IT WON'T END HAHAAA!! Every time I finish the set, the first song starts again!",
+    sprite: "m1h1Neutral",
+    background: "transmission",
+    objective: "Find the loop.",
+    choices: [
+      { text: "Where's the exit?", next: "exit" }
+    ]
+  },
+
+  problem3: {
+    speaker: "M1H1",
+    text: "NAHHH!! I mean literally!! IT WON'T END HAHAAA!! Every time I finish the set, the first song starts again!",
     sprite: "m1h1Neutral",
     background: "transmission",
     objective: "Find the loop.",
@@ -78,7 +89,7 @@ const story = {
 
   pit: {
     speaker: "MIDNIGHT ARCADE",
-    text: "The room is packed. Green lights flash. The same breakdown hits again. Nobody looks tired. Nobody can stop moving.",
+    text: "The room is packed! Green lights flash! The same breakdown hits again. Nobody looks tired. Nobody can stop moving.",
     sprite: "pitZombie",
     background: "pit",
     objective: "Figure out what feeds the venue.",
@@ -113,7 +124,7 @@ const story = {
 
   calmIdea: {
     speaker: "M1H1",
-    text: "You want me to tell THIS room to calm down?",
+    text: "You want me to tell THIS room to calm down? I'm a RAGERBOY WE CAN'T CALM DOWN!!",
     sprite: "m1h1Rage",
     background: "pit",
     objective: "Test the wrong solution.",
@@ -125,7 +136,7 @@ const story = {
 
   calmFail: {
     speaker: "MIDNIGHT ARCADE",
-    text: "The beat softens. The crowd slows. The walls brighten like the venue is feeding.",
+    text: "The beat softens. The crowd slows. The walls brighten like the venue is feeding. *Souls are corrupted and lost*",
     sprite: null,
     background: "pit",
     objective: "Stop feeding the loop.",
@@ -148,7 +159,7 @@ const story = {
 
   m1GetsIt: {
     speaker: "M1H1",
-    text: "Oh. We break the whole damn thing.",
+    text: "OHH SHITT!! We can break the whole damn thing!! RAGERBOY STYLE!! LET'S GOOOOOOO!!!",
     sprite: "m1h1Rage",
     background: "pit",
     objective: "Overload the venue.",
@@ -159,7 +170,7 @@ const story = {
 
   overloadChoice: {
     speaker: "MIDNIGHT ARCADE",
-    text: "The venue starts compensating. More lights. More volume. More bodies. It wants the energy back inside the loop.",
+    text: "The venue starts compensating. More lights! More volume!! More bodies!!! It wants the energy back inside the loop!!",
     sprite: null,
     background: "pit",
     objective: "Choose how to push past the limit.",
@@ -183,7 +194,7 @@ const story = {
 
   overload: {
     speaker: "M1H1",
-    text: "OPEN THIS SHIT UP.",
+    text: "OPEN THIS SHIT UP!!!!",
     sprite: "m1h1Performance",
     background: "overload",
     objective: "Push the room past capacity.",
@@ -218,7 +229,7 @@ const story = {
 
   realExit: {
     speaker: "M1H1",
-    text: "There it is.",
+    text: "There it is!! Let's get outta here!!",
     sprite: "m1h1Neutral",
     background: "hallway",
     objective: "Leave the loop behind.",

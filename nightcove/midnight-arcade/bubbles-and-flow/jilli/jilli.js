@@ -35,8 +35,8 @@ const ASSETS = {
 const story = {
 
   intro: {
-    speaker: "Jilli",
-    text: "Slayyy. Tiny emergency.",
+    speaker: "Jillian!",
+    text: "Slayyy. Oh! Haay I have a tiny emergency.",
     sprite: "jilliNeutral",
     background: "transmission",
     objective: "Answer Jilli's transmission.",
@@ -46,15 +46,29 @@ const story = {
         next: "problem"
       },
       {
-        text: "That does not sound tiny.",
-        next: "problem"
+        text: "Define tiny..",
+        next: "problem2"
+      }
+    ]
+  },
+
+  problem2: {
+    speaker: "Jillian!",
+    text: "Weeeelll.. I sang one song and now everybody here is obsessed with me. Like... not normal obsessed. Fairy curse obsessed.",
+    sprite: "jilliWorried",
+    background: "transmission",
+    objective: "Figure out what Jilli's song did.",
+    choices: [
+      {
+        text: "What happens if you stop singing?",
+        next: "stopSinging"
       }
     ]
   },
 
   problem: {
-    speaker: "Jilli",
-    text: "I sang one song and now everybody here is obsessed with me. Like... not normal obsessed. Fairy curse obsessed.",
+    speaker: "Jillian!",
+    text: "GIGANTIC!! I sang one song and now everybody here is obsessed with me. Like... not normal obsessed. Fairy curse obsessed.",
     sprite: "jilliWorried",
     background: "transmission",
     objective: "Figure out what Jilli's song did.",
@@ -67,14 +81,14 @@ const story = {
   },
 
   stopSinging: {
-    speaker: "Jilli",
-    text: "They start crying. Then they beg me to sing again. Then the flowers start screaming. It's a lot.",
+    speaker: "Jillian!",
+    text: "They start crying. Then they beg me to sing again. Then the flowers start screaming. The World has an apocalypse.. It's a lot.",
     sprite: "jilliWorried",
     background: "transmission",
     objective: "Enter Heartbreak Fairyland.",
     choices: [
       {
-        text: "Okay. I'm coming in.",
+        text: "WOW..Okay. I'm coming in.",
         next: "arrival"
       }
     ]
@@ -86,7 +100,7 @@ const story = {
     sprite: null,
     background: "fairyland",
     objective: "Find Jilli.",
-    glitchText: "SLAY OR BE SLAYED",
+    glitchText: "SLAYYY OR BE SLAYED",
     choices: [
       {
         text: "ENTER FAIRYLAND",
@@ -97,24 +111,24 @@ const story = {
 
   fanEncounter: {
     speaker: "Enchanted Fan",
-    text: "JILLI LOVES US. JILLI NEEDS US. JILLI WILL SING FOREVER.",
+    text: "JILLI LOVES US!! JILLI NEEDS US!!! JILLI WILL SING FOREVER!!!!",
     sprite: "enchantedFan",
     background: "fairyland",
     objective: "Get through the enchanted crowd.",
     choices: [
       {
         text: "Do you even want to be here?",
-        next: "fanAnswer"
+        next: "fanAnswer1"
       },
       {
         text: "Where is Jilli?",
-        next: "fanAnswer"
+        next: "fanAnswer2"
       }
     ]
   },
 
 
-  fanAnswer: {
+  fanAnswer1: {
     speaker: "Enchanted Fan",
     text: "Want? We don't need to want. She already chose for us.",
     sprite: "enchantedFan",
@@ -124,6 +138,21 @@ const story = {
     choices: [
       {
         text: "That's the problem.",
+        next: "garden"
+      }
+    ]
+  },
+
+  fanAnswer2: {
+    speaker: "Enchanted Fan",
+    text: "YESS!! JILLIIAAANN!! JILLIAANN WHERE AREE YOUUU OMGGG!!!",
+    sprite: "enchantedFan",
+    background: "fairyland",
+    objective: "Find the source of the spell.",
+    glitchText: "CHOICE DISABLED",
+    choices: [
+      {
+        text: "This is such a problem.",
         next: "garden"
       }
     ]
@@ -146,7 +175,7 @@ const story = {
 
 
   jilliFound: {
-    speaker: "Jilli",
+    speaker: "Jillian!",
     text: "Okay, so good news: they love me. Bad news: I think they physically cannot stop loving me.",
     sprite: "jilliSiren",
     background: "loveGarden",
@@ -154,19 +183,19 @@ const story = {
     choices: [
       {
         text: "That's not love if they can't choose.",
-        next: "realization"
+        next: "realization1"
       },
       {
         text: "Can you reverse it?",
-        next: "realization"
+        next: "realization2"
       }
     ]
   },
 
 
-  realization: {
-    speaker: "Jilli",
-    text: "Oh. Ew. Yeah, no. I don't want that.",
+  realization1: {
+    speaker: "Jillian!",
+    text: "Ohhh. Ewwwee. Yeah, no. I don't want that! Sorry I'm not like these losers in the scene. They can either choose me or GET LOST!!",
     sprite: "jilliWorried",
     background: "loveGarden",
     objective: "Find a way to break the spell.",
@@ -178,9 +207,23 @@ const story = {
     ]
   },
 
+  realization2: {
+    speaker: "Jillian!",
+    text: "Rever-OHH yeah I could totally reverse it.. I mean I don't want undying love and constant attention.. *sighs*",
+    sprite: "jilliWorried",
+    background: "loveGarden",
+    objective: "Find a way to break the spell.",
+    choices: [
+      {
+        text: "Then stop feeding it and REVERSE IT!!",
+        next: "fairyDouble"
+      }
+    ]
+  },
+
 
   fairyDouble: {
-    speaker: "Fairy Jilli",
+    speaker: "Fairy Fan",
     text: "Why would you break it? Everyone adores you. Nobody leaves. Nobody rejects you. Nobody says no.",
     sprite: "fairyDouble",
     background: "mirrorStage",
@@ -200,7 +243,7 @@ const story = {
 
   badEnding: {
     speaker: "MIDNIGHT ARCADE",
-    text: "The crowd cheers forever. Nobody leaves. Nobody can.",
+    text: "The crowd cheers forever. Nobody leaves. Nobody can. *They chant* WE LOVE JILLI WE LOVE JILLI!!!",
     sprite: "jilliSiren",
     background: "mirrorStage",
     objective: "That isn't connection.",
@@ -215,7 +258,7 @@ const story = {
 
 
   breakSpell: {
-    speaker: "Jilli",
+    speaker: "Jillian!",
     text: "Okay. If they stay after this, I want it to be because they actually want to.",
     sprite: "jilliNeutral",
     background: "mirrorStage",
@@ -275,8 +318,8 @@ const story = {
 
 
   jilliChooses: {
-    speaker: "Jilli",
-    text: "Yeah. Obviously. Slay.",
+    speaker: "Jillian!",
+    text: "Yeah!! Obviously. Slayyyy Queen!!!",
     sprite: "jilliPerformance",
     background: "stage",
     objective: "Return to the stage.",
