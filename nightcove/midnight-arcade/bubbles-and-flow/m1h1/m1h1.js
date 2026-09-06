@@ -21,7 +21,7 @@ const ASSETS = {
   },
 
   audio: {
-    ambient: "assets/audio/rage-loop.mp3",
+    ambient: "assets/audio/m1h1-song.mp3",
     click: "assets/audio/ui-click.mp3",
     glitch: "assets/audio/glitch.mp3",
     fragment: "assets/audio/fragment-unlock.mp3"

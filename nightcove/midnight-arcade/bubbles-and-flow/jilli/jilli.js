@@ -24,7 +24,7 @@ const ASSETS = {
   },
 
   audio: {
-    ambient: "assets/audio/jilli-loop.mp3",
+    ambient: "assets/audio/jilli-song.mp3",
     click: "assets/audio/ui-click.mp3",
     glitch: "assets/audio/glitch.wav",
     fragment: "assets/audio/fragment-unlock.mp3"
