@@ -1,202 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>JILLI | Midnight Arcade</title>
-        <link rel="stylesheet" href="jilli-music.css">
-    </head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#06100c">
 
-    <body>
+    <title>JILLI | Midnight Arcade</title>
 
-        <main class="sound-room">
+    <link rel="stylesheet" href="jilli-music.css">
+  </head>
 
-            <div class="ambient-orbs" aria-hidden="true">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+  <body>
 
-            <nav class="sound-nav">
+    <main class="sound-room">
 
-                <a href="../../games.html">
-                ← MIDNIGHT ARCADE
-                </a>
+      <div class="ambient-orbs" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
-                <span>
-                TMN // ARTIST TRANSMISSION
-                </span>
+      <nav class="sound-nav">
+        <a href="../../games.html">
+          ← MIDNIGHT ARCADE
+        </a>
 
-            </nav>
+        <span>
+          TMN // ARTIST TRANSMISSION
+        </span>
+      </nav>
 
-            <section class="artist-stage">
+      <section class="artist-stage">
 
-                <div class="sprite-area">
+        <div class="sprite-area" aria-label="Jilli character stickers">
 
-                    <img
-                        src="assets/jilli-siren.png"
-                        alt="JILLI 1"
-                        class="artist-sprite"
-                    >
+          <img
+            src="assets/jilli-siren.png"
+            alt="Jilli siren"
+            class="artist-sprite artist-sprite--siren"
+          >
 
-                     <img
-                        src="assets/jilli-performance.png"
-                        alt="JILLI 2"
-                        class="artist-sprite"
-                    >
+          <img
+            src="assets/jilli-performance.png"
+            alt="Jilli performing"
+            class="artist-sprite artist-sprite--performance"
+          >
 
-                     <img
-                        src="assets/jilli-neutral.png"
-                        alt="JILLI 3"
-                        class="artist-sprite"
-                    >
+          <img
+            src="assets/jilli-neutral.png"
+            alt="Jilli neutral"
+            class="artist-sprite artist-sprite--neutral"
+          >
 
-                     <img
-                        src="assets/jilli-worried.png"
-                        alt="JILLI 4"
-                        class="artist-sprite"
-                    >
+          <img
+            src="assets/jilli-worried.png"
+            alt="Jilli worried"
+            class="artist-sprite artist-sprite--worried"
+          >
 
-                     <img
-                        src="assets/fairy-double.png"
-                        alt="JILLI fairy double"
-                        class="artist-sprite"
-                    >
+          <img
+            src="assets/fairy-double.png"
+            alt="Jilli fairy double"
+            class="artist-sprite artist-sprite--fairy"
+          >
 
-                </div>
+        </div>
 
-                <div class="player-card">
+        <div class="player-card">
 
-                    <p class="transmission-label">
-                     NOW TRANSMITTING
-                    </p>
+          <p class="transmission-label">
+            NOW TRANSMITTING
+          </p>
 
-                    <h1>
-                        JILLI
-                    </h1>
+          <h1>
+            JILLI
+          </h1>
 
-                    <p class="artist-location">
-                        HEARTBREAK FAIRYLAND // SOUTH FLORIDA
-                    </p>
+          <p class="artist-location">
+            HEARTBREAK FAIRYLAND // SOUTH FLORIDA
+          </p>
 
-                    <div class="album-frame">
+          <div class="album-frame">
+            <img
+              src="assets/jilli-cover.webp"
+              alt="Jilli song artwork"
+              class="album-art"
+            >
+          </div>
 
-                        <img
-                            src="assets/jilli-cover.webp"
-                            alt="JILLI song artwork"
-                            class="album-art"
-                        >
+          <div class="song-info">
+            <h2 id="songTitle">
+              BALLERINA
+            </h2>
 
-                    </div>
+            <p>
+              JILLIAN!
+            </p>
+          </div>
 
-                    <div class="song-info">
+          <div class="progress-container">
+            <span id="currentTime">0:00</span>
 
-                        <h2 id="songTitle">
-                            BALLERINA
-                        </h2>
+            <input
+              id="progressBar"
+              type="range"
+              min="0"
+              max="100"
+              step="0.1"
+              value="0"
+              aria-label="Song progress"
+            >
 
-                        <p>
-                            JILLIAN!
-                        </p>
+            <span id="duration">0:00</span>
+          </div>
 
-                    </div>
+          <div class="controls">
+            <button
+              id="rewindButton"
+              type="button"
+              aria-label="Rewind 10 seconds"
+              title="Rewind 10 seconds"
+            >
+              ←
+            </button>
 
-                    <div class="progress-container">
+            <button
+              id="playButton"
+              class="play-button"
+              type="button"
+              aria-label="Play"
+            >
+              ▶
+            </button>
 
-                        <span id="currentTime">
-                        0:00
-                        </span>
+            <button
+              id="forwardButton"
+              type="button"
+              aria-label="Forward 10 seconds"
+              title="Forward 10 seconds"
+            >
+              →
+            </button>
+          </div>
 
-                        <input
-                        id="progressBar"
-                        type="range"
-                        min="0"
-                        max="100"
-                        value="3:12"
-                        aria-label="Song progress"
-                        >
+          <div
+            id="equalizer"
+            class="equalizer"
+            aria-hidden="true"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
 
-                        <span id="duration">
-                        3:12
-                        </span>
+          <audio id="audioPlayer" preload="metadata">
+            <source
+              src="assets/jilli-song.mp3"
+              type="audio/mpeg"
+            >
+            
+          </audio>
 
-                    </div>
+          <p
+            id="audioStatus"
+            class="audio-status"
+            aria-live="polite"
+          ></p>
 
-                    <div class="controls">
+          <div class="artist-actions">
+            <a
+              href="../../bubbles-and-flow/jilli/index.html"
+              class="secondary-button"
+            >
+              ♡ REPLAY SLAY OR BE SLAYED
+            </a>
 
-                        <button
-                        id="rewindButton"
-                        aria-label="Rewind 10 seconds"
-                        >
-                        ←
-                        </button>
+            <a
+              href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
+              class="ticket-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🎟 BUBBLES & FLOW
+            </a>
+          </div>
 
-                        <button
-                        id="playButton"
-                        class="play-button"
-                        aria-label="Play"
-                        >
-                        ▶
-                        </button>
+        </div>
 
-                        <button
-                        id="rewindButton"
-                        aria-label="Rewind 10 seconds"
-                        >
-                        →
-                        </button>
+      </section>
 
-                    </div>
+      <footer>
+        <p>
+          TASTE MY NIGHTMARE // MIDNIGHT ARCADE
+        </p>
+      </footer>
 
-                    <div id="equalizer" class="equalizer" aria-hidden="true">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+    </main>
 
-                    <audio id="audioPlayer" preload="metadata">
-                        <source src="assets/jilli-song.mp3" type="audio/mpeg">
-                    </audio>
+    <script src="jilli-music.js"></script>
 
-                    <p id="audioStatus" class="audio-status" aria-live="polite"></p>
-
-                    <div class="artist-actions">
-
-                        <a
-                        href="../../bubbles-and-flow/jilli/index.html"
-                        class="secondary-button"
-                        >
-                        ♡ REPLAY SLAY OR BE SLAYED
-                        </a>
-
-                        <a
-                        href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
-                        class="ticket-button"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >
-                        🎟 BUBBLES & FLOW
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-            <footer>
-                <p>
-                    TASTE MY NIGHTMARE // MIDNIGHT ARCADE
-                </p>
-            </footer>
-
-        </main>
-
-        <script src="jilli-music.js"></script>
-
-    </body>
+  </body>
 </html>
