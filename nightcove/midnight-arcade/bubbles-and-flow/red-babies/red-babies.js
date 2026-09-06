@@ -13,7 +13,7 @@ const ASSETS = {
   },
 
   backgrounds: {
-    transmission: "assets/backgrounds/transmission-room.webp",
+    transmission: "assets/backgrounds/red-babies.png",
     deadAir: "assets/backgrounds/dead-air.webp",
     abandonedRoom: "assets/backgrounds/abandoned-room.webp",
     tapeRoom: "assets/backgrounds/tape-room.webp",
@@ -21,9 +21,9 @@ const ASSETS = {
   },
 
   audio: {
-    ambient: "assets/audio/dead-air-loop.mp3",
+    ambient: "assets/audio/dead-air.mp3",
     click: "assets/audio/ui-click.mp3",
-    glitch: "assets/audio/glitch.mp3",
+    glitch: "assets/audio/glitch.wav",
     fragment: "assets/audio/fragment-unlock.mp3"
   }
 };
