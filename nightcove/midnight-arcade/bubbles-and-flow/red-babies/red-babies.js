@@ -14,10 +14,10 @@ const ASSETS = {
 
   backgrounds: {
     transmission: "assets/backgrounds/red-babies.png",
-    deadAir: "assets/backgrounds/dead-air.webp",
-    abandonedRoom: "assets/backgrounds/abandoned-room.webp",
-    tapeRoom: "assets/backgrounds/tape-room.webp",
-    stage: "assets/backgrounds/red-babies-stage.webp"
+    deadAir: "assets/backgrounds/dead-air.png",
+    abandonedRoom: "assets/backgrounds/abandoned-room.png",
+    tapeRoom: "assets/backgrounds/tape-room.png",
+    stage: "assets/backgrounds/red-babies-stage.png"
   },
 
   audio: {

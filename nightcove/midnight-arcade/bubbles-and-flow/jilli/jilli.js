@@ -16,17 +16,17 @@ const ASSETS = {
   },
 
   backgrounds: {
-    transmission: "assets/backgrounds/transmission-room.webp",
-    fairyland: "assets/backgrounds/heartbreak-fairyland.webp",
-    loveGarden: "assets/backgrounds/love-garden.webp",
-    mirrorStage: "assets/backgrounds/mirror-stage.webp",
-    stage: "assets/backgrounds/jilli-stage.webp"
+    transmission: "assets/backgrounds/jilli-bgr.png",
+    fairyland: "assets/backgrounds/heartbreak-fairyland.png",
+    loveGarden: "assets/backgrounds/love-garden.png",
+    mirrorStage: "assets/backgrounds/mirror-stage.png",
+    stage: "assets/backgrounds/jilli-stage.png"
   },
 
   audio: {
     ambient: "assets/audio/jilli-loop.mp3",
     click: "assets/audio/ui-click.mp3",
-    glitch: "assets/audio/glitch.mp3",
+    glitch: "assets/audio/glitch.wav",
     fragment: "assets/audio/fragment-unlock.mp3"
   }
 

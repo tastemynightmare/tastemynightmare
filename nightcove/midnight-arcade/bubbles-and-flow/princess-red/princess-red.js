@@ -9,25 +9,25 @@ const ASSETS = {
     redWorried: "assets/characters/princess-red-sad.png",
     redNeutral: "assets/characters/princess-red-neutral.png",
     redPerformance: "assets/characters/princess-red-performance.png",
-    judge: "assets/characters/the-judge.webp",
-    destroyer: "assets/characters/the-destroyer.webp",
-    demon: "assets/characters/the-demon.webp",
-    empty: "assets/characters/empty-red.webp",
-    bitty: "assets/characters/bitty.webp"
+    judge: "assets/characters/judge.png",
+    destroyer: "assets/characters/destroyer.png",
+    demon: "assets/characters/demon.png",
+    empty: "assets/characters/empty-red.png",
+    bitty: "assets/characters/bitty.png"
   },
 
   backgrounds: {
-    transmission: "assets/backgrounds/transmission-room.webp",
-    district: "assets/backgrounds/dollhouse-district.webp",
-    street: "assets/backgrounds/dollhouse-street.webp",
-    backstage: "assets/backgrounds/backstage.webp",
-    stage: "assets/backgrounds/princess-red-stage.webp"
+    transmission: "assets/backgrounds/pr-bgr.png",
+    district: "assets/backgrounds/dollhouse-district.png",
+    street: "assets/backgrounds/dollhouse-street.png",
+    backstage: "assets/backgrounds/backstage.png",
+    stage: "assets/backgrounds/princess-red-stage.png"
   },
 
   audio: {
     ambient: "assets/audio/dollhouse-loop.mp3",
     click: "assets/audio/ui-click.mp3",
-    glitch: "assets/audio/glitch.mp3",
+    glitch: "assets/audio/glitch.wav",
     fragment: "assets/audio/fragment-unlock.mp3"
   }
 };
@@ -40,12 +40,12 @@ const story = {
     background: "transmission",
     objective: "Figure out what happened to Princess Red.",
     choices: [
-      { text: "What does that mean?", next: "introExplain" },
-      { text: "Girl WHAT did you do?", next: "introExplain" }
+      { text: "What does that mean?", next: "introExplain1" },
+      { text: "Girl WHAT did you do?", next: "introExplain2" }
     ]
   },
 
-  introExplain: {
+  introExplain1: {
     speaker: "Princess Red",
     text: "I was getting ready for Bubbles & Flow when somebody outside started singing in MY voice. Then another one showed up. Then another...",
     sprite: "redWorried",
@@ -56,9 +56,20 @@ const story = {
     ]
   },
 
+  introExplain2: {
+    speaker: "Princess Red",
+    text: "Girl iddkkk *sighs*. I was getting ready for Bubbles & Flow when somebody outside started singing in MY voice. Then another one showed up. Then another...",
+    sprite: "redWorried",
+    background: "transmission",
+    objective: "Listen to Red's transmission.",
+    choices: [
+      { text: "So there are copies of you?", next: "warning" }
+    ]
+  },
+
   warning: {
     speaker: "??? RED",
-    text: "Don't listen to her.",
+    text: "Don't listen to her!! I'm the real Princess RED",
     sprite: "redNeutral",
     background: "transmission",
     objective: "Enter the Dollhouse District.",
@@ -87,12 +98,23 @@ const story = {
     background: "street",
     objective: "Question The Judge.",
     choices: [
-      { text: "You're not protecting her.", next: "judgeReply" },
-      { text: "Who are you afraid of?", next: "judgeReply" }
+      { text: "You're not protecting her.", next: "judgeReply1" },
+      { text: "Who are you afraid of?", next: "judgeReply2" }
     ]
   },
 
-  judgeReply: {
+  judgeReply1: {
+    speaker: "The Judge",
+    text: "Protect her for what? Isn't she a BIG girl now?",
+    sprite: "judge",
+    background: "street",
+    objective: "Find the next Red.",
+    choices: [
+      { text: "Keep searching", next: "destroyer" }
+    ]
+  },
+
+  judgeReply2: {
     speaker: "The Judge",
     text: "Afraid? I'm the only reason they still like her.",
     sprite: "judge",
@@ -110,14 +132,25 @@ const story = {
     background: "street",
     objective: "Don't let The Destroyer distract you.",
     choices: [
-      { text: "No. Where is she?", next: "destroyerReply" },
-      { text: "You're using her own thoughts against her.", next: "destroyerReply" }
+      { text: "No. Where is she?", next: "destroyerReply1" },
+      { text: "You're using her own thoughts against her.", next: "destroyerReply2" }
     ]
   },
 
-  destroyerReply: {
+  destroyerReply1: {
     speaker: "The Destroyer",
-    text: "Of course I am. Nobody knows how to hurt you like you do.",
+    text: "No.. NO!?! WHO DO YOU THINK YOU ARE?!?",
+    sprite: "destroyer",
+    background: "street",
+    objective: "Find the next Red.",
+    choices: [
+      { text: "Leave", next: "demon" }
+    ]
+  },
+
+  destroyerReply2: {
+    speaker: "The Destroyer",
+    text: "Of course I am. Nobody knows how to hurt her like I do!",
     sprite: "destroyer",
     background: "street",
     objective: "Find the next Red.",
@@ -133,14 +166,25 @@ const story = {
     background: "street",
     objective: "Reject The Demon's shortcut.",
     choices: [
-      { text: "That's not freedom.", next: "demonReply" },
-      { text: "And what happens when she stops feeling everything?", next: "demonReply" }
+      { text: "That's not freedom.", next: "demonReply1" },
+      { text: "And what happens when she stops feeling everything?", next: "demonReply2" }
     ]
   },
 
-  demonReply: {
+  demonReply1: {
     speaker: "The Demon",
-    text: "See? Now you're overthinking too. Cute.",
+    text: "Freedom? Freedom would be the sweet release of *Blurb* *Blurb*",
+    sprite: "demon",
+    background: "street",
+    objective: "Find the final false Red.",
+    choices: [
+      { text: "Keep moving", next: "empty" }
+    ]
+  },
+
+    demonReply2: {
+    speaker: "The Demon",
+    text: "See? Now you're overthinking too. Cute! I love it! Keep going..",
     sprite: "demon",
     background: "street",
     objective: "Find the final false Red.",
