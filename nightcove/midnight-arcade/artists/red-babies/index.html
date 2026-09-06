@@ -1,205 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="theme-color" content="#0B0B0A">
-        <title>RED BABIES | Midnight Arcade</title>
-        <link rel="stylesheet" href="red-babies-music.css">
-    </head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0B0B0A">
 
-    <body>
+    <title>RED BABIES | Midnight Arcade</title>
 
-        <main class="sound-room">
+    <link rel="stylesheet" href="red-babies-music.css">
+    <link rel="stylesheet" href="../shared/sound-room-accessibility.css">
+  </head>
 
-            <div class="ambient-orbs" aria-hidden="true">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+  <body>
 
-            <nav class="sound-nav">
-                <a href="../../games.html">
-                    ← MIDNIGHT ARCADE
-                </a>
+    <main class="sound-room">
 
-                <span>
-                    TMN // ARTIST TRANSMISSION
-                </span>
-            </nav>
+      <div class="ambient-orbs" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
-            <section class="artist-stage">
+      <nav
+        class="sound-nav"
+        aria-label="Sound room navigation"
+      >
+        <a href="../../games.html">
+          ← MIDNIGHT ARCADE
+        </a>
 
-                <div class="sprite-area">
-                    <img
-                    src="assets/red-babies-middle.png"
-                    alt="Red Babies"
-                    class="artist-sprite"
-                    >
+        <span>
+          TMN // ARTIST TRANSMISSION
+        </span>
+      </nav>
 
-                    <img
-                    src="assets/red-babies-performance.png"
-                    alt="Red Babies"
-                    class="artist-sprite"
-                    >
+      <section class="artist-stage">
 
-                    <img
-                    src="assets/red-babies-neutral.png"
-                    alt="Red Babies"
-                    class="artist-sprite"
-                    >
+        <div
+          class="sprite-area"
+          aria-label="Red Babies character stickers"
+        >
 
-                    <img
-                    src="assets/red-babies-tired.png"
-                    alt="Red Babies"
-                    class="artist-sprite"
-                    >
+          <img
+            src="assets/red-babies-middle.png"
+            alt=""
+            aria-hidden="true"
+            class="artist-sprite artist-sprite--middle"
+          >
 
-                    <img
-                    src="assets/red-babies-underdog.png"
-                    alt="Red Babies"
-                    class="artist-sprite"
-                    >
+          <img
+            src="assets/red-babies-performance.png"
+            alt="Red Babies performing"
+            class="artist-sprite artist-sprite--performance"
+          >
 
-                    <img
-                    src="assets/red-babies-logo.png"
-                    alt="Red Babies"
-                    class="artist-sprite"
-                    >
-                </div>
+          <img
+            src="assets/red-babies-neutral.png"
+            alt=""
+            aria-hidden="true"
+            class="artist-sprite artist-sprite--neutral"
+          >
 
-                <div class="player-card">
+          <img
+            src="assets/red-babies-tired.png"
+            alt=""
+            aria-hidden="true"
+            class="artist-sprite artist-sprite--tired"
+          >
 
-                    <p class="transmission-label">
-                        NOW TRANSMITTING
-                    </p>
+          <img
+            src="assets/red-babies-underdog.png"
+            alt=""
+            aria-hidden="true"
+            class="artist-sprite artist-sprite--underdog"
+          >
 
-                    <h1>RED BABIES</h1>
+          <img
+            src="assets/red-babies-logo.png"
+            alt=""
+            aria-hidden="true"
+            class="artist-sprite artist-sprite--logo"
+          >
 
-                    <p class="artist-location">
-                        DEAD AIR // UNDERDOG FREQUENCY
-                    </p>
+        </div>
 
-                    <div class="album-frame">
-                        <img
-                            src="assets/red-babies-cover.webp"
-                            alt="Red Babies song artwork"
-                            class="album-art"
-                        >
-                    </div>
+        <div class="player-card">
 
-                    <div class="song-info">
-                        <h2 id="songTitle">
-                            DEAD OR ALIVE
-                        </h2>
+          <p class="transmission-label">
+            NOW TRANSMITTING
+          </p>
 
-                        <p>RED BABIES</p>
-                    </div>
+          <h1>
+            RED BABIES
+          </h1>
 
-                    <div class="progress-container">
-                        <span id="currentTime">0:00</span>
+          <p class="artist-location">
+            DEAD AIR // UNDERDOG FREQUENCY
+          </p>
 
-                        <input
-                            id="progressBar"
-                            type="range"
-                            min="0"
-                            max="100"
-                            step="0.1"
-                            value="2:28"
-                            aria-label="Song progress"
-                        >
+          <div class="album-frame">
+            <img
+              src="assets/red-babies-cover.webp"
+              alt="Red Babies song artwork"
+              class="album-art"
+            >
+          </div>
 
-                        <span id="duration">2:28</span>
-                    </div>
+          <div class="song-info">
+            <h2 id="songTitle">
+              DEAD OR ALIVE
+            </h2>
 
-                    <div class="controls">
-                        <button
-                            id="rewindButton"
-                            type="button"
-                            aria-label="Rewind 10 seconds"
-                            title="Rewind 10 seconds"
-                        >
-                            ←
-                        </button>
+            <p>
+              RED BABIES
+            </p>
+          </div>
 
-                        <button
-                            id="playButton"
-                            class="play-button"
-                            type="button"
-                            aria-label="Play"
-                        >
-                            ▶
-                        </button>
+          <div class="progress-container">
+            <span id="currentTime">0:00</span>
 
-                        <button
-                            id="forwardButton"
-                            type="button"
-                            aria-label="Forward 10 seconds"
-                            title="Forward 10 seconds"
-                        >
-                            →
-                        </button>
-                    </div>
+            <input
+              id="progressBar"
+              type="range"
+              min="0"
+              max="100"
+              step="0.1"
+              value="0"
+              aria-label="Song progress"
+            >
 
-                    <div
-                        id="equalizer"
-                        class="equalizer"
-                        aria-hidden="true"
-                        >
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+            <span id="duration">0:00</span>
+          </div>
 
-                    <audio id="audioPlayer" preload="metadata">
-                        <source
-                            src="assets/red-babies-song.mp3"
-                            type="audio/mpeg"
-                        >
-                        
-                    </audio>
+          <div class="controls">
+            <button
+              id="rewindButton"
+              type="button"
+              aria-label="Rewind 10 seconds"
+              title="Rewind 10 seconds"
+            >
+              ←
+            </button>
 
-                    <p
-                    id="audioStatus"
-                    class="audio-status"
-                    aria-live="polite"
-                    ></p>
+            <button
+              id="playButton"
+              class="play-button"
+              type="button"
+              aria-label="Play"
+            >
+              ▶
+            </button>
 
-                    <div class="artist-actions">
-                        <a
-                            href="../../bubbles-and-flow/red-babies/index.html"
-                            class="secondary-button"
-                        >
-                            ▣ REPLAY DEAD AIR
-                        </a>
+            <button
+              id="forwardButton"
+              type="button"
+              aria-label="Forward 10 seconds"
+              title="Forward 10 seconds"
+            >
+              →
+            </button>
+          </div>
 
-                        <a
-                            href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
-                            class="ticket-button"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            🎟 BUBBLES & FLOW
-                        </a>
-                    </div>
+          <div
+            id="equalizer"
+            class="equalizer"
+            aria-hidden="true"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
 
-                </div>
+          <audio id="audioPlayer" preload="metadata">
+            <source
+              src="assets/red-babies-song.mp3"
+              type="audio/mpeg"
+            >
+            Your browser does not support audio playback.
+          </audio>
 
-            </section>
+          <p
+            id="audioStatus"
+            class="audio-status"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          ></p>
 
-            <footer>
-                <p>
-                    TASTE MY NIGHTMARE // MIDNIGHT ARCADE
-                </p>
-            </footer>
+          <div class="artist-actions">
+            <a
+              href="../../bubbles-and-flow/red-babies/index.html"
+              class="secondary-button"
+            >
+              ▣ REPLAY DEAD AIR
+            </a>
 
-        </main>
+            <a
+              href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
+              class="ticket-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🎟 BUBBLES & FLOW
+            </a>
+          </div>
 
-        <script src="red-babies-music.js"></script>
+        </div>
 
-    </body>
+      </section>
+
+      <footer>
+        <p>
+          TASTE MY NIGHTMARE // MIDNIGHT ARCADE
+        </p>
+      </footer>
+
+    </main>
+
+    <script src="red-babies-music.js"></script>
+    <script src="../shared/sound-room-accessibility.js"></script>
+
+  </body>
 </html>

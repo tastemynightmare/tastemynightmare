@@ -62,7 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateProgress() {
-    currentTime.textContent = formatTime(audio.currentTime);
+    currentTime.textContent =
+      formatTime(audio.currentTime);
 
     if (!Number.isFinite(audio.duration) || audio.duration <= 0) {
       progressBar.value = "0";
@@ -143,7 +144,10 @@ document.addEventListener("DOMContentLoaded", () => {
     currentTime.textContent = "0:00";
   });
 
-  audio.addEventListener("timeupdate", updateProgress);
+  audio.addEventListener(
+    "timeupdate",
+    updateProgress
+  );
 
   audio.addEventListener("loadedmetadata", () => {
     duration.textContent =
