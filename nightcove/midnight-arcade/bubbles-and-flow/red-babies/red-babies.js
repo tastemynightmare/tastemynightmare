@@ -36,19 +36,30 @@ const story = {
     background: "transmission",
     objective: "Answer the transmission.",
     choices: [
-      { text: "Hear what?", next: "static" },
+      { text: "Hear what?", next: "attention" },
       { text: "Mostly static.", next: "static" }
+    ]
+  },
+
+  attention: {
+    speaker: "Red Babies",
+    text: "Static.. It's been trying to get my attention all day. I'm just high enough now that I can't ignore it anymore. *sighs*",
+    sprite: "redBabiesTired",
+    background: "transmission",
+    objective: "Find what's buried in the signal.",
+    choices: [
+      { text: "Wha--Where are you?", next: "deadAir" }
     ]
   },
 
   static: {
     speaker: "Red Babies",
-    text: "Exactly. It's been doing that all night. Every time I get close to finishing something, the signal eats it.",
+    text: "Exactly.. Static. It's been doing that all night. Every time I get close to finishing something, the signal eats it.",
     sprite: "redBabiesTired",
     background: "transmission",
     objective: "Find what's buried in the signal.",
     choices: [
-      { text: "Where are you?", next: "deadAir" }
+      { text: "Where are you? It's so dark in here", next: "deadAir" }
     ]
   },
 
@@ -83,24 +94,35 @@ const story = {
     objective: "Figure out why the room feels familiar.",
     choices: [
       { text: "You built this place?", next: "familiar" },
-      { text: "Then why come back?", next: "familiar" }
+      { text: "Then why come back?", next: "habit" }
+    ]
+  },
+
+  habit: {
+    speaker: "Red Babies",
+    text: "What can I say.. I'm just a mere speck still swirling the same Cosmos. I have habits I just can't shake..",
+    sprite: "redBabiesTired",
+    background: "abandonedRoom",
+    objective: "Follow what was left behind.",
+    choices: [
+      { text: "Hey--What's moving behind you!?!", next: "underdogAppears" }
     ]
   },
 
   familiar: {
     speaker: "Red Babies",
-    text: "Nah. I left it. That's different.",
+    text: "Nah.. I left it. That's different. It's a lot of things I SHOULD have left behind..",
     sprite: "redBabiesTired",
     background: "abandonedRoom",
     objective: "Follow what was left behind.",
     choices: [
-      { text: "What's moving behind you?", next: "underdogAppears" }
+      { text: "Hey--What's moving behind you!?!", next: "underdogAppears" }
     ]
   },
 
   underdogAppears: {
     speaker: "MIDNIGHT ARCADE",
-    text: "An odd creature crawls out from under a busted couch. Seems like one of Red Babies worst Nightmares.",
+    text: "An odd creature crawls out from under a busted couch. Seems like one of Red Babies' worst Nightmares.",
     sprite: "underdog",
     background: "abandonedRoom",
     objective: "Follow the Underdog.",

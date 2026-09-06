@@ -393,7 +393,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const messages = [
     "Five nightmares are currently broadcasting...",
     "The final transmission remains locked...",
-    "Bubbles & Flow signal detected inside Night Cove...",
+    "Bubbles & Flow signal detected inside the Night Cove...",
     "Fragments may persist between sessions...",
     "Unknown signal repeats: SAY A PRAYER TO SHEEEEEE"
   ];
