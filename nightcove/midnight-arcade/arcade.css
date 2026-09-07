@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght\@400;500&display=swap");
 
-
-
 /* =========================================================
 
    ROOT
@@ -33,8 +31,6 @@
     "Courier New",
     monospace;
 }
-
-
 
 /* =========================================================
 
@@ -190,25 +186,12 @@ a {
 }
 
 .sound-toggle {
-  border:
-
-    1px solid var(--border);
-
-  background:
-
-    transparent;
-
+  border: 1px solid var(--border);
+  background: transparent;
   color: var(--muted);
-
-  padding:
-
-    8px 11px;
-
+  padding: 8px 11px;
   cursor: pointer;
-
 }
-
-
 
 /* =========================================================
 
@@ -217,152 +200,70 @@ a {
 ========================================================= */
 
 .arcade-hero {
-
   position: relative;
-
-  min-height:
-
-    calc(100vh - 72px);
-
+  min-height: calc(100vh - 72px);
   display: grid;
-
-  grid-template-columns:
-
-    minmax(0, 1.05fr)
-
-    minmax(300px, .75fr);
-
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, .75fr);
   align-items: center;
-
-  gap:
-
-    clamp(30px, 7vw, 110px);
-
+  gap: clamp(30px, 7vw, 110px);
   padding:
-
     clamp(70px, 9vw, 130px)
-
     clamp(20px, 7vw, 100px);
-
   overflow: hidden;
-
 }
 
 .hero-grid {
-
   position: absolute;
-
-  inset:
-
-    47% -10% -30%;
-
+  inset: 47% -10% -30%;
   z-index: -1;
-
   opacity: .2;
-
   transform:
-
     perspective(600px)
-
     rotateX(62deg);
-
   transform-origin:
-
     center top;
-
   background-image:
-
     linear-gradient(
-
       rgba(255,35,72,.4) 1px,
-
       transparent 1px
-
     ),
-
     linear-gradient(
-
       90deg,
-
       rgba(255,35,72,.4) 1px,
-
       transparent 1px
-
     );
 
-  background-size:
-
-    42px 42px;
-
+  background-size: 42px 42px;
 }
 
 .hero-copy {
-
   position: relative;
-
   z-index: 2;
-
 }
 
 .eyebrow {
-
-  margin:
-
-    0 0 14px;
-
-  color:
-
-    var(--rose);
-
-  font-size:
-
-    10px;
-
-  letter-spacing:
-
-    .28em;
-
+  margin: 0 0 14px;
+  color: var(--rose);
+  font-size: 10px;
+  letter-spacing: .28em;
 }
 
 .arcade-hero h1 {
-
   margin: 0;
-
-  font-family:
-
-    var(--font-display);
-
-  font-size:
-
-    clamp(68px, 10vw, 158px);
-
-  line-height:
-
-    .77;
-
-  letter-spacing:
-
-    -.06em;
-
+  font-family: var(--font-display);
+  font-size: clamp(68px, 10vw, 158px);
+  line-height: .77;
+  letter-spacing: -.06em;
 }
 
 .arcade-hero h1 span {
-
   display: block;
-
 }
 
 .arcade-hero h1 span:first-child {
-
-  color:
-
-    var(--bone);
-
-  text-shadow:
-
-    5px 5px 0
-
-    var(--blood-dark),
+  color: var(--bone); 
+  text-shadow: 5px 5px 0
+  var(--blood-dark),
 
     0 0 25px
 
@@ -2803,22 +2704,12 @@ a {
   }
 
   .arcade-button {
-
-    width:
-
-      100%;
-
+    width: 100%;
   }
 
   .site-footer {
-
-    align-items:
-
-      flex-start;
-
-    flex-direction:
-
-      column;
+    align-items: flex-start;
+    flex-direction: column;
 
   }
 
