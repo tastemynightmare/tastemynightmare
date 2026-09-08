@@ -1,0 +1,509 @@
+/* =========================================================
+   NIGHTMARE MUNCHIES
+   Kawaii TMN / cute-horror storefront
+   ========================================================= */
+
+:root {
+  --munchies-bg: #120711;
+  --munchies-panel: #1a0a18;
+  --munchies-pink: #ff6fae;
+  --munchies-pink-soft: #ffc4dc;
+  --munchies-purple: #b47cff;
+  --munchies-white: #fff7fb;
+  --munchies-ink: #2b0c23;
+
+  --blossom: #ff4d87;
+  --blossom-soft: #ffd0df;
+
+  --buttercup: #7fff5a;
+  --buttercup-soft: #d9ffd0;
+
+  --bubbles: #70cfff;
+  --bubbles-soft: #d4f3ff;
+
+  --morbucks: #ffd84f;
+  --morbucks-soft: #fff4b8;
+}
+
+.munchies-page {
+  color: var(--munchies-white);
+
+  background:
+    radial-gradient(
+      circle at 15% 12%,
+      rgba(255, 111, 174, 0.16),
+      transparent 24rem
+    ),
+    radial-gradient(
+      circle at 86% 20%,
+      rgba(180, 124, 255, 0.12),
+      transparent 24rem
+    ),
+    linear-gradient(
+      180deg,
+      #120711 0%,
+      #170812 50%,
+      #0b050b 100%
+    );
+}
+
+.munchies-page::selection {
+  color: #2a0820;
+  background: var(--munchies-pink-soft);
+}
+
+/* ---------------------------------------------------------
+   HEADER
+   --------------------------------------------------------- */
+
+.munchies-header {
+  border-bottom-color: rgba(255, 111, 174, 0.22);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(18, 7, 17, 0.94),
+      rgba(28, 8, 21, 0.94)
+    );
+}
+
+.munchies-header .brand-kicker,
+.munchies-header .header-nav a:hover,
+.munchies-header .sound-toggle:hover {
+  color: var(--munchies-pink);
+}
+
+/* ---------------------------------------------------------
+   BACKGROUND DECOR
+   --------------------------------------------------------- */
+
+.kawaii-stars {
+  position: fixed;
+  inset: 0;
+
+  z-index: 0;
+
+  opacity: 0.18;
+
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(circle, #fff 0 1px, transparent 2px),
+    radial-gradient(circle, #ff9fc8 0 1px, transparent 2px),
+    radial-gradient(circle, #b98dff 0 1px, transparent 2px);
+
+  background-position:
+    20px 30px,
+    90px 120px,
+    160px 55px;
+
+  background-size:
+    180px 180px,
+    230px 230px,
+    280px 280px;
+}
+
+/* ---------------------------------------------------------
+   HERO
+   --------------------------------------------------------- */
+
+.munchies-hero {
+  background:
+    radial-gradient(
+      circle at 75% 35%,
+      rgba(255, 111, 174, 0.18),
+      transparent 28rem
+    );
+}
+
+.munchies-hero::before {
+  background-image:
+    linear-gradient(
+      rgba(255, 160, 202, 0.07) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 160, 202, 0.07) 1px,
+      transparent 1px
+    );
+}
+
+.munchies-hero .eyebrow {
+  color: var(--munchies-pink-soft);
+}
+
+.munchies-sticker {
+  display: inline-flex;
+
+  margin-bottom: 18px;
+  padding: 8px 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+
+  color: #361024;
+  background:
+    linear-gradient(
+      135deg,
+      #ffd0e4,
+      #fff7fb
+    );
+
+  box-shadow:
+    0 8px 24px rgba(255, 111, 174, 0.16);
+
+  font-family: "DM Mono", monospace;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+
+  transform: rotate(-1deg);
+}
+
+.munchies-hero h1 {
+  color: var(--munchies-white);
+
+  text-shadow:
+    3px 3px 0 rgba(255, 111, 174, 0.16),
+    0 0 30px rgba(255, 111, 174, 0.14);
+}
+
+.munchies-hero h1 span {
+  display: block;
+
+  color: var(--munchies-pink-soft);
+
+  -webkit-text-stroke:
+    1px rgba(255, 255, 255, 0.25);
+}
+
+.munchies-hero .hero-tagline {
+  color: var(--munchies-pink);
+}
+
+.munchies-cta {
+  border-color: #ff78b4;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff4f98,
+      #c554ff
+    );
+
+  box-shadow:
+    0 0 28px rgba(255, 79, 152, 0.22);
+}
+
+/* ---------------------------------------------------------
+   COOKIE GRID
+   --------------------------------------------------------- */
+
+.cookie-grid {
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+}
+
+.cookie-card {
+  --cookie-color: #ff7aad;
+  --cookie-soft: #ffd7e7;
+
+  min-height: 420px;
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--cookie-color) 50%,
+      transparent
+    );
+
+  border-radius: 28px;
+
+  background:
+    radial-gradient(
+      circle at 86% 12%,
+      color-mix(
+        in srgb,
+        var(--cookie-color) 18%,
+        transparent
+      ),
+      transparent 14rem
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.012)
+    ),
+    #160b14;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.025),
+    0 18px 45px rgba(0, 0, 0, 0.24);
+
+  isolation: isolate;
+}
+
+.cookie-card::before {
+  content: "";
+
+  position: absolute;
+  inset: 10px;
+
+  z-index: -1;
+
+  border:
+    1px dashed
+    color-mix(
+      in srgb,
+      var(--cookie-color) 35%,
+      transparent
+    );
+
+  border-radius: 20px;
+
+  pointer-events: none;
+}
+
+.cookie-card::after {
+  content: "âœ¦  â™¡  âœ§";
+
+  position: absolute;
+  right: 22px;
+  bottom: 18px;
+
+  z-index: 0;
+
+  color:
+    color-mix(
+      in srgb,
+      var(--cookie-color) 55%,
+      white
+    );
+
+  font-size: 1rem;
+  letter-spacing: 0.45em;
+
+  opacity: 0.55;
+}
+
+.cookie-card:hover {
+  transform:
+    translateY(-6px)
+    rotate(-0.4deg);
+
+  border-color: var(--cookie-color);
+
+  box-shadow:
+    0 18px 55px rgba(0, 0, 0, 0.28),
+    0 0 35px
+    color-mix(
+      in srgb,
+      var(--cookie-color) 20%,
+      transparent
+    );
+}
+
+.cookie-icon {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+
+  display: grid;
+  place-items: center;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  color: #20111b;
+
+  background: var(--cookie-soft);
+
+  box-shadow:
+    0 0 24px
+    color-mix(
+      in srgb,
+      var(--cookie-color) 25%,
+      transparent
+    );
+
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.cookie-card .shop-tag {
+  color: var(--cookie-soft);
+}
+
+.cookie-card h3 {
+  max-width: 520px;
+
+  color: var(--cookie-color);
+
+  text-shadow:
+    0 0 22px
+    color-mix(
+      in srgb,
+      var(--cookie-color) 18%,
+      transparent
+    );
+}
+
+.cookie-card p {
+  max-width: 560px;
+
+  color: #d9c7d3;
+}
+
+.flavor-chip {
+  display: inline-flex;
+
+  margin-top: 16px;
+  padding: 8px 10px;
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--cookie-color) 45%,
+      transparent
+    );
+
+  border-radius: 999px;
+
+  color: var(--cookie-soft);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--cookie-color) 8%,
+      transparent
+    );
+
+  font-family: "DM Mono", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+}
+
+.cookie-card .btn {
+  border-color: var(--cookie-color);
+
+  color: var(--cookie-color);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--cookie-color) 5%,
+      transparent
+    );
+}
+
+.cookie-card .btn:hover {
+  color: #111;
+
+  background: var(--cookie-color);
+}
+
+/* ---------------------------------------------------------
+   COOKIE COLOR SYSTEM
+   --------------------------------------------------------- */
+
+.cookie-blossom {
+  --cookie-color: var(--blossom);
+  --cookie-soft: var(--blossom-soft);
+}
+
+.cookie-buttercup {
+  --cookie-color: var(--buttercup);
+  --cookie-soft: var(--buttercup-soft);
+}
+
+.cookie-bubbles {
+  --cookie-color: var(--bubbles);
+  --cookie-soft: var(--bubbles-soft);
+}
+
+.cookie-morbucks {
+  --cookie-color: var(--morbucks);
+  --cookie-soft: var(--morbucks-soft);
+}
+
+/* ---------------------------------------------------------
+   FEATURE AREAS
+   --------------------------------------------------------- */
+
+.munchies-feature,
+.order-window {
+  border-color:
+    rgba(255, 111, 174, 0.26);
+
+  border-radius: 28px;
+
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(180, 124, 255, 0.12),
+      transparent 22rem
+    ),
+    radial-gradient(
+      circle at 8% 90%,
+      rgba(255, 111, 174, 0.12),
+      transparent 20rem
+    ),
+    rgba(24, 10, 21, 0.92);
+}
+
+.munchies-feature h2,
+.order-window h2 {
+  color: var(--munchies-pink-soft);
+}
+
+.munchies-page .list-item {
+  border-radius: 18px;
+
+  border-color:
+    rgba(255, 160, 202, 0.16);
+
+  background:
+    rgba(255, 255, 255, 0.025);
+}
+
+.munchies-page .list-item strong {
+  color: var(--munchies-pink);
+}
+
+.munchies-footer {
+  border-top-color:
+    rgba(255, 111, 174, 0.2);
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .cookie-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .cookie-card {
+    min-height: 390px;
+
+    border-radius: 22px;
+  }
+
+  .cookie-card::before {
+    border-radius: 15px;
+  }
+
+  .munchies-sticker {
+    max-width: 100%;
+
+    white-space: normal;
+  }
+}

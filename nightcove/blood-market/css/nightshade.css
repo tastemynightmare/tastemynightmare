@@ -1,0 +1,1130 @@
+/* =========================================================
+   NIGHTSHADE PRODUCTIONS
+   TSUKUYOMI DA REAPER
+   Blue / Silver / White / Black
+   Grim Reaper + Siren + Greek Chorus + Emo Cinema
+   ========================================================= */
+
+:root {
+  --shade-black: #02050a;
+  --shade-black-soft: #070b12;
+
+  --shade-blue: #2b76ff;
+  --shade-blue-hot: #51a4ff;
+  --shade-blue-deep: #0a2252;
+
+  --shade-silver: #b9c7d9;
+  --shade-silver-dark: #647184;
+
+  --shade-white: #f5f8ff;
+  --shade-muted: #919bad;
+
+  --shade-line: rgba(116, 170, 255, 0.22);
+}
+
+
+/* ---------------------------------------------------------
+   PAGE
+   --------------------------------------------------------- */
+
+.nightshade-page {
+  color: var(--shade-white);
+
+  background:
+    radial-gradient(
+      circle at 78% 15%,
+      rgba(54, 119, 255, 0.14),
+      transparent 27rem
+    ),
+    radial-gradient(
+      circle at 18% 68%,
+      rgba(180, 205, 255, 0.06),
+      transparent 26rem
+    ),
+    linear-gradient(
+      180deg,
+      #02050a 0%,
+      #050912 48%,
+      #010204 100%
+    );
+}
+
+.nightshade-page::selection {
+  color: #02050a;
+  background: #b9dcff;
+}
+
+
+/* ---------------------------------------------------------
+   HEADER
+   --------------------------------------------------------- */
+
+.nightshade-header {
+  border-bottom-color: var(--shade-line);
+
+  background:
+    rgba(2, 5, 10, 0.9);
+}
+
+.nightshade-header .brand-kicker {
+  color: var(--shade-blue-hot);
+}
+
+.nightshade-header .header-nav a:hover,
+.nightshade-header .sound-toggle:hover {
+  color: var(--shade-blue-hot);
+}
+
+
+/* ---------------------------------------------------------
+   AMBIENCE
+   --------------------------------------------------------- */
+
+.moon-glow {
+  position: fixed;
+
+  top: 110px;
+  right: -120px;
+
+  z-index: 0;
+
+  width: 440px;
+  height: 440px;
+
+  border:
+    1px solid
+    rgba(206, 224, 255, 0.08);
+
+  border-radius: 50%;
+
+  opacity: 0.7;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 34% 34%,
+      rgba(236, 244, 255, 0.16),
+      rgba(70, 130, 255, 0.07) 40%,
+      transparent 70%
+    );
+
+  box-shadow:
+    0 0 100px
+    rgba(56, 122, 255, 0.08);
+}
+
+.chorus-lines {
+  position: fixed;
+  inset: 0;
+
+  z-index: 0;
+
+  opacity: 0.05;
+
+  pointer-events: none;
+
+  background:
+    repeating-linear-gradient(
+      115deg,
+      transparent 0 48px,
+      rgba(150, 190, 255, 0.3) 49px,
+      transparent 50px 98px
+    );
+}
+
+
+/* ---------------------------------------------------------
+   HERO
+   --------------------------------------------------------- */
+
+.nightshade-hero {
+  grid-template-columns:
+    minmax(0, 1.35fr)
+    minmax(290px, 0.65fr);
+
+  gap:
+    clamp(40px, 7vw, 90px);
+
+  min-height: 96vh;
+}
+
+.nightshade-hero::before {
+  background-image:
+    linear-gradient(
+      rgba(83, 155, 255, 0.07) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(83, 155, 255, 0.07) 1px,
+      transparent 1px
+    );
+}
+
+.nightshade-hero .eyebrow {
+  color: var(--shade-blue-hot);
+}
+
+.chorus-whisper {
+  display: inline-flex;
+
+  gap: 8px;
+
+  margin-bottom: 24px;
+  padding: 8px 11px;
+
+  border-left:
+    2px solid
+    var(--shade-blue);
+
+  color: var(--shade-muted);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.63rem;
+
+  font-style: italic;
+
+  letter-spacing: 0.04em;
+}
+
+.chorus-whisper span {
+  color: var(--shade-silver);
+}
+
+.nightshade-hero h1 {
+  color: var(--shade-white);
+
+  font-size:
+    clamp(4rem, 8.8vw, 8.5rem);
+
+  text-shadow:
+    2px 0 0
+    rgba(74, 140, 255, 0.2),
+    0 0 48px
+    rgba(36, 101, 255, 0.12);
+}
+
+.nightshade-hero h1 span {
+  display: block;
+
+  color: transparent;
+
+  -webkit-text-stroke:
+    1px
+    var(--shade-silver);
+
+  text-shadow:
+    0 0 22px
+    rgba(122, 178, 255, 0.12);
+}
+
+.nightshade-hero .hero-tagline {
+  color: var(--shade-blue-hot);
+}
+
+.nightshade-hero .hero-copy {
+  color: #a2acbb;
+}
+
+.nightshade-cta {
+  border-color:
+    rgba(83, 155, 255, 0.6);
+
+  background:
+    linear-gradient(
+      135deg,
+      #102d6a,
+      #286ee5
+    );
+
+  box-shadow:
+    0 0 34px
+    rgba(45, 116, 255, 0.18);
+}
+
+
+/* ---------------------------------------------------------
+   REAPER PANEL
+   --------------------------------------------------------- */
+
+.reaper-panel {
+  position: relative;
+
+  z-index: 2;
+
+  align-self: center;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--shade-line);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.02),
+      transparent
+    ),
+    rgba(3, 7, 14, 0.94);
+
+  box-shadow:
+    0 25px 80px
+    rgba(0, 0, 0, 0.4),
+    0 0 60px
+    rgba(42, 106, 255, 0.06);
+}
+
+.reaper-halo {
+  position: absolute;
+
+  top: -75px;
+  right: -65px;
+
+  display: grid;
+  place-items: center;
+
+  width: 200px;
+  height: 200px;
+
+  border:
+    1px solid
+    rgba(197, 218, 255, 0.12);
+
+  border-radius: 50%;
+
+  color:
+    rgba(212, 229, 255, 0.25);
+
+  font-size: 6rem;
+
+  transform: rotate(-14deg);
+}
+
+.reaper-panel__header {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 13px 15px;
+
+  border-bottom:
+    1px solid
+    var(--shade-line);
+
+  color: var(--shade-blue-hot);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.62rem;
+
+  letter-spacing: 0.08em;
+}
+
+.reaper-panel__body {
+  padding: 18px 15px;
+}
+
+.reaper-panel__body p {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 18px;
+
+  margin: 0;
+  padding: 11px 0;
+
+  border-bottom:
+    1px solid
+    rgba(130, 174, 255, 0.1);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.64rem;
+}
+
+.reaper-panel__body span {
+  color: var(--shade-muted);
+}
+
+.reaper-panel__body strong {
+  max-width: 58%;
+
+  color: var(--shade-silver);
+
+  text-align: right;
+}
+
+.reaper-panel blockquote {
+  margin:
+    0 15px 16px;
+
+  padding:
+    20px 18px;
+
+  border:
+    1px solid
+    rgba(204, 221, 255, 0.1);
+
+  color:
+    #c8d1dd;
+
+  background:
+    rgba(255, 255, 255, 0.018);
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 1rem;
+
+  font-style: italic;
+
+  line-height: 1.6;
+}
+
+
+/* ---------------------------------------------------------
+   SERVICE GRID
+   --------------------------------------------------------- */
+
+.nightshade-page .section-heading {
+  border-bottom-color: var(--shade-line);
+}
+
+.nightshade-page .section-heading .eyebrow,
+.nightshade-page .section-code {
+  color: var(--shade-blue-hot);
+}
+
+.service-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.service-card {
+  position: relative;
+
+  min-height: 430px;
+
+  overflow: hidden;
+
+  padding: 27px;
+
+  border:
+    1px solid
+    rgba(118, 170, 255, 0.18);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(65, 128, 255, 0.045),
+      transparent 58%
+    ),
+    rgba(3, 7, 14, 0.9);
+
+  transition:
+    0.22s ease;
+}
+
+.service-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--shade-blue-hot),
+      transparent
+    );
+
+  opacity: 0.6;
+}
+
+.service-card:hover {
+  transform:
+    translateY(-5px);
+
+  border-color:
+    rgba(112, 171, 255, 0.55);
+
+  box-shadow:
+    0 20px 50px
+    rgba(0, 0, 0, 0.3),
+    0 0 30px
+    rgba(53, 119, 255, 0.08);
+}
+
+.service-number {
+  position: absolute;
+
+  top: 15px;
+  right: 20px;
+
+  color:
+    rgba(199, 218, 247, 0.15);
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 4.5rem;
+
+  font-style: italic;
+}
+
+.service-card .shop-tag {
+  color: var(--shade-blue-hot);
+}
+
+.service-card h3 {
+  margin-top: 68px;
+
+  color: var(--shade-silver);
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size:
+    clamp(2rem, 3vw, 3.2rem);
+
+  line-height: 0.92;
+}
+
+.service-card p {
+  color: var(--shade-muted);
+
+  line-height: 1.7;
+}
+
+.service-symbols {
+  position: absolute;
+
+  right: 24px;
+  bottom: 82px;
+
+  color:
+    rgba(141, 188, 255, 0.34);
+
+  font-family:
+    Georgia,
+    serif;
+
+  letter-spacing: 0.25em;
+}
+
+.service-card .btn {
+  border-color:
+    rgba(151, 192, 255, 0.35);
+
+  color: var(--shade-silver);
+}
+
+.service-card .btn:hover {
+  border-color: var(--shade-blue-hot);
+
+  color: #02050a;
+
+  background: var(--shade-silver);
+}
+
+
+/* ---------------------------------------------------------
+   GREEK CHORUS STAGE
+   --------------------------------------------------------- */
+
+.chorus-stage {
+  display: grid;
+
+  grid-template-columns:
+    0.3fr
+    1.25fr
+    0.55fr;
+
+  gap:
+    clamp(25px, 4vw, 60px);
+
+  padding:
+    clamp(30px, 5vw, 68px);
+
+  border:
+    1px solid
+    var(--shade-line);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(36, 91, 180, 0.08),
+      transparent 55%
+    ),
+    #03070d;
+}
+
+.chorus-label {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+  color: var(--shade-blue-hot);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.61rem;
+
+  letter-spacing: 0.09em;
+}
+
+.chorus-copy > p:first-child {
+  margin-bottom: 12px;
+
+  color: var(--shade-muted);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.65rem;
+
+  letter-spacing: 0.1em;
+}
+
+.chorus-copy h2 {
+  margin: 0;
+
+  color: var(--shade-white);
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size:
+    clamp(3rem, 6vw, 6rem);
+
+  line-height: 0.88;
+}
+
+.chorus-copy h2 em {
+  display: block;
+
+  color: transparent;
+
+  -webkit-text-stroke:
+    1px
+    var(--shade-blue-hot);
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-weight: 400;
+}
+
+.chorus-body {
+  max-width: 760px;
+
+  margin-top: 28px;
+
+  color: #9ca7b7;
+
+  line-height: 1.8;
+}
+
+.chorus-response {
+  align-self: end;
+
+  border-left:
+    1px solid
+    var(--shade-line);
+
+  padding-left: 24px;
+}
+
+.chorus-response span {
+  color: var(--shade-blue-hot);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.58rem;
+}
+
+.chorus-response p {
+  margin:
+    5px 0 20px;
+
+  color: var(--shade-silver);
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-style: italic;
+}
+
+
+/* ---------------------------------------------------------
+   PROCESS
+   --------------------------------------------------------- */
+
+.process-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  border:
+    1px solid
+    var(--shade-line);
+}
+
+.process-card {
+  min-height: 270px;
+
+  padding: 25px;
+
+  border-right:
+    1px solid
+    var(--shade-line);
+
+  background:
+    rgba(3, 7, 14, 0.84);
+}
+
+.process-card:last-child {
+  border-right: 0;
+}
+
+.process-card > span {
+  color: var(--shade-blue-hot);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.65rem;
+}
+
+.process-card h3 {
+  margin-top: 58px;
+
+  color: var(--shade-silver);
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size: 1.45rem;
+
+  line-height: 1;
+}
+
+.process-card p {
+  color: var(--shade-muted);
+
+  font-size: 0.88rem;
+
+  line-height: 1.7;
+}
+
+
+/* ---------------------------------------------------------
+   ARCHIVE
+   --------------------------------------------------------- */
+
+.archive-frame {
+  padding:
+    clamp(28px, 5vw, 60px);
+
+  border:
+    1px solid
+    rgba(187, 211, 255, 0.17);
+
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(73, 135, 255, 0.08),
+      transparent 18rem
+    ),
+    #04070d;
+}
+
+.archive-header {
+  display: flex;
+
+  align-items: end;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.archive-header h2 {
+  margin-bottom: 0;
+
+  color: var(--shade-silver);
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size:
+    clamp(2.7rem, 5vw, 5rem);
+
+  line-height: 0.9;
+}
+
+.archive-header > span {
+  color: var(--shade-muted);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.6rem;
+}
+
+.filmstrip {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 10px;
+
+  margin-top: 38px;
+
+  padding:
+    18px 0;
+
+  border-top:
+    6px dotted
+    rgba(191, 214, 255, 0.14);
+
+  border-bottom:
+    6px dotted
+    rgba(191, 214, 255, 0.14);
+}
+
+.film-frame {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  min-height: 230px;
+
+  padding: 18px;
+
+  border:
+    1px solid
+    rgba(169, 201, 255, 0.15);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(57, 122, 255, 0.1),
+      transparent
+    ),
+    #050911;
+}
+
+.film-frame span {
+  color: var(--shade-blue-hot);
+
+  font-family:
+    "DM Mono",
+    monospace;
+}
+
+.film-frame strong {
+  color: var(--shade-silver);
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size: 1.35rem;
+}
+
+.archive-note {
+  margin-bottom: 0;
+
+  color: var(--shade-muted);
+
+  font-size: 0.82rem;
+}
+
+
+/* ---------------------------------------------------------
+   BOOKING GATE
+   --------------------------------------------------------- */
+
+.booking-gate {
+  display: grid;
+
+  grid-template-columns:
+    1.2fr
+    0.8fr;
+
+  gap: 34px;
+
+  padding:
+    clamp(30px, 5vw, 64px);
+
+  border:
+    1px solid
+    var(--shade-line);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(47, 107, 224, 0.07),
+      transparent
+    ),
+    #02060c;
+}
+
+.booking-copy h2 {
+  color: var(--shade-white);
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size:
+    clamp(3rem, 6vw, 6rem);
+
+  line-height: 0.88;
+}
+
+.booking-copy > p:last-child {
+  max-width: 720px;
+
+  color: var(--shade-muted);
+
+  line-height: 1.75;
+}
+
+.booking-status {
+  align-self: end;
+}
+
+.booking-status p {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 18px;
+
+  margin: 0;
+  padding: 11px 0;
+
+  border-bottom:
+    1px solid
+    rgba(120, 170, 255, 0.12);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.63rem;
+}
+
+.booking-status span {
+  color: var(--shade-muted);
+}
+
+.booking-status strong {
+  color: var(--shade-silver);
+
+  text-align: right;
+}
+
+.reaper-button {
+  grid-column:
+    1 / -1;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 18px;
+
+  margin-top: 8px;
+  padding: 19px 24px;
+
+  border:
+    1px solid
+    var(--shade-blue-hot);
+
+  color: var(--shade-silver);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(26, 70, 155, 0.22),
+      rgba(5, 10, 20, 0.94),
+      rgba(26, 70, 155, 0.22)
+    );
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 0.75rem;
+
+  letter-spacing: 0.12em;
+
+  transition:
+    0.22s ease;
+}
+
+.reaper-button:hover {
+  color: #02050a;
+
+  background: var(--shade-silver);
+
+  box-shadow:
+    0 0 40px
+    rgba(130, 181, 255, 0.18);
+}
+
+
+/* ---------------------------------------------------------
+   FOOTER
+   --------------------------------------------------------- */
+
+.nightshade-footer {
+  border-top-color: var(--shade-line);
+}
+
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+   --------------------------------------------------------- */
+
+@media (max-width: 1050px) {
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    min-height: 350px;
+  }
+
+  .process-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .process-card:nth-child(2) {
+    border-right: 0;
+  }
+
+  .process-card:nth-child(-n + 2) {
+    border-bottom:
+      1px solid
+      var(--shade-line);
+  }
+}
+
+
+@media (max-width: 900px) {
+
+  .nightshade-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .reaper-panel {
+    max-width: 640px;
+  }
+
+  .chorus-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .chorus-response {
+    border-left: 0;
+
+    border-top:
+      1px solid
+      var(--shade-line);
+
+    padding:
+      22px 0 0;
+  }
+
+  .booking-gate {
+    grid-template-columns: 1fr;
+  }
+
+  .filmstrip {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 620px) {
+
+  .nightshade-hero h1 {
+    font-size:
+      clamp(3.3rem, 16vw, 5.6rem);
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-card {
+    border-right: 0;
+
+    border-bottom:
+      1px solid
+      var(--shade-line);
+  }
+
+  .process-card:last-child {
+    border-bottom: 0;
+  }
+
+  .archive-header {
+    align-items: start;
+
+    flex-direction: column;
+  }
+
+  .reaper-button {
+    flex-wrap: wrap;
+  }
+}
