@@ -1,0 +1,473 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  --black: #030205;
+  --blood: #e30836;
+  --blood-bright: #ff174d;
+  --rose: #ff3d79;
+  --purple: #7c32ff;
+  --violet: #b565ff;
+  --white: #f8eef5;
+  --gray: #a798a5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+/* WORLD */
+
+.world {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -10;
+}
+
+.background {
+  position: absolute;
+  inset: -3%;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.95) 0%, rgba(0,0,0,.68) 35%, rgba(0,0,0,.12) 70%),
+    linear-gradient(0deg, #020104 0%, transparent 55%),
+    url("assets/night-cove-landing.jpg");
+  background-size: cover;
+  background-position: center;
+  animation: slowZoom 18s ease-in-out infinite alternate;
+}
+
+.ashelic {
+  position: absolute;
+  right: 4vw;
+  bottom: 0;
+  height: 96vh;
+  max-width: 60vw;
+  object-fit: contain;
+  object-position: bottom right;
+  filter: drop-shadow(0 0 40px rgba(255,0,65,.15));
+  animation: characterBreath 6s ease-in-out infinite alternate;
+}
+
+.red-glow {
+  position: absolute;
+  width: 50vw;
+  height: 70vh;
+  right: 0;
+  bottom: -20%;
+  background: radial-gradient(circle, rgba(255,0,55,.28), transparent 65%);
+  filter: blur(30px);
+}
+
+.purple-glow {
+  position: absolute;
+  width: 40vw;
+  height: 50vh;
+  left: 35%;
+  top: 0;
+  background: radial-gradient(circle, rgba(117,44,255,.16), transparent 65%);
+  filter: blur(35px);
+}
+
+/* MAIN */
+
+.landing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(25px, 4vw, 70px);
+  position: relative;
+  z-index: 5;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tmn {
+  color: #d6cad2;
+  font-size: .65rem;
+  letter-spacing: .35em;
+}
+
+/* TITLE */
+
+.title-area {
+  margin-top: clamp(7vh, 12vh, 150px);
+  width: min(750px, 90vw);
+  position: relative;
+}
+
+.chapter {
+  margin: 0 0 12px;
+  color: var(--rose);
+  font-size: .72rem;
+  letter-spacing: .34em;
+}
+
+.game-title {
+  position: relative;
+  margin: 0;
+  font-family: "Cinzel", serif;
+  font-size: clamp(2.7rem, 6.8vw, 7rem);
+  line-height: .82;
+  font-weight: 900;
+  letter-spacing: -.04em;
+  text-shadow: 0 3px 0 #000, 0 0 25px rgba(255,255,255,.08);
+}
+
+.game-title span {
+  color: #e9e2e8;
+}
+
+.title-area h2 {
+  margin: 5px 0 15px 18%;
+  font-family: "Cinzel", serif;
+  font-size: clamp(2rem, 5vw, 5rem);
+  font-style: italic;
+  color: var(--blood-bright);
+  transform: rotate(-4deg);
+  text-shadow: 0 0 8px rgba(255,0,60,.8), 0 0 30px rgba(255,0,60,.35);
+}
+
+.burning-line {
+  width: 75%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--blood), var(--rose), transparent);
+  box-shadow: 0 0 12px var(--blood);
+}
+
+blockquote {
+  margin: 22px 0;
+  color: #bcaeb8;
+  font-family: "Cinzel", serif;
+  font-size: .85rem;
+  line-height: 1.7;
+  letter-spacing: .07em;
+}
+
+/* MENU */
+
+.game-menu {
+  display: flex;
+  flex-direction: column;
+  width: min(360px, 90vw);
+  gap: 3px;
+  margin-top: 12px;
+}
+
+.menu-button {
+  position: relative;
+  padding: 11px 15px;
+  border: 0;
+  border-left: 1px solid transparent;
+  background: transparent;
+  color: #c8bdc5;
+  text-align: left;
+  letter-spacing: .22em;
+  font-size: .76rem;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.menu-button:hover {
+  color: white;
+  padding-left: 25px;
+  border-left-color: var(--blood-bright);
+  background: linear-gradient(90deg, rgba(255,0,55,.15), transparent);
+  text-shadow: 0 0 10px var(--blood);
+}
+
+.menu-button.primary {
+  color: white;
+  border-left: 2px solid var(--blood-bright);
+  background: linear-gradient(90deg, rgba(255,0,55,.22), transparent);
+}
+
+.arrow {
+  margin-right: 10px;
+  color: var(--blood-bright);
+}
+
+/* FRAGMENTS */
+
+.fragment-section {
+  position: absolute;
+  right: 5vw;
+  bottom: 8vh;
+  text-align: center;
+}
+
+.fragment-section > p:first-child {
+  color: #8c7c88;
+  font-size: .58rem;
+  letter-spacing: .35em;
+}
+
+.fragments {
+  display: flex;
+  gap: 13px;
+}
+
+.fragment {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(0,0,0,.55);
+  color: #9d8999;
+  cursor: pointer;
+  filter: grayscale(1);
+  transition: .25s;
+}
+
+.fragment:hover {
+  filter: grayscale(0);
+  transform: translateY(-5px) scale(1.1);
+  border-color: var(--rose);
+  box-shadow: 0 0 25px rgba(255,50,120,.35);
+}
+
+.fragment-name {
+  min-height: 20px;
+  color: var(--rose);
+  font-size: .6rem;
+  letter-spacing: .2em;
+}
+
+/* FOOTER */
+
+footer {
+  margin-top: auto;
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.hand-counter {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #736873;
+  font-size: .6rem;
+  letter-spacing: .25em;
+}
+
+.hand-counter strong {
+  color: #a2929f;
+  cursor: pointer;
+}
+
+.nightware {
+  color: #625864;
+  font-size: .55rem;
+  letter-spacing: .22em;
+}
+
+/* MODALS */
+
+dialog {
+  width: min(580px, 90vw);
+  padding: 35px;
+  border: 1px solid rgba(255,50,100,.25);
+  background: linear-gradient(145deg, #10070e, #050307);
+  color: #ddd2db;
+  box-shadow: 0 0 80px rgba(255,0,70,.18);
+}
+
+dialog::backdrop {
+  background: rgba(0,0,0,.82);
+  backdrop-filter: blur(8px);
+}
+
+dialog h3 {
+  font-family: "Cinzel", serif;
+  color: white;
+  font-size: 1.8rem;
+}
+
+dialog p {
+  line-height: 1.7;
+}
+
+.modal-eyebrow {
+  color: var(--rose);
+  font-size: .65rem;
+  letter-spacing: .3em;
+}
+
+.red-text {
+  color: var(--blood-bright);
+  font-family: "Cinzel", serif;
+  letter-spacing: .08em;
+}
+
+.close {
+  float: right;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 1.7rem;
+  cursor: pointer;
+}
+
+.extra-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.extra-grid div {
+  border: 1px solid rgba(255,255,255,.1);
+  padding: 20px;
+  color: #9d9099;
+}
+
+.extra-grid span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--rose);
+}
+
+/* EMBERS */
+
+.ember {
+  position: fixed;
+  bottom: -20px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #ff315e;
+  box-shadow: 0 0 7px #ff174d;
+  z-index: 2;
+  pointer-events: none;
+  animation: rise linear forwards;
+}
+
+/* SCREEN FX */
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  box-shadow: inset 0 0 180px 80px rgba(0,0,0,.85);
+}
+
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 51;
+  opacity: .07;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2px,
+    white 3px
+  );
+}
+
+#flash {
+  position: fixed;
+  inset: 0;
+  background: #ff003c;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.glitching {
+  animation: glitch .15s steps(2) 4;
+}
+
+/* ANIMATIONS */
+
+@keyframes slowZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}
+
+@keyframes characterBreath {
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateY(5px) scale(1.006); }
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-105vh) translateX(50px);
+    opacity: 0;
+  }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  25% { transform: translate(-4px, 2px); }
+  50% {
+    transform: translate(5px, -2px);
+    filter: hue-rotate(80deg);
+  }
+  75% { transform: translate(-2px, -3px); }
+  100% { transform: translate(0); }
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+  .landing {
+    padding: 25px;
+  }
+
+  .title-area {
+    margin-top: 12vh;
+  }
+
+  .ashelic {
+    opacity: .42;
+    right: -25vw;
+    max-width: none;
+  }
+
+  .background {
+    background-position: 65% center;
+  }
+
+  .fragment-section {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    text-align: left;
+    margin-top: 45px;
+  }
+
+  .fragments {
+    flex-wrap: wrap;
+  }
+
+  footer {
+    margin-top: 50px;
+  }
+}

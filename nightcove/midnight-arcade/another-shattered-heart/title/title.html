@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Another Shattered Heart: Set Ablaze</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;600&display=swap"
+            rel="stylesheet"
+        >
+        <link rel="stylesheet" href="title.css">
+    </head>
+
+    <body>
+
+        <!-- CINEMATIC BACKGROUND -->
+        <div class="world">
+
+            <div class="background"></div>
+
+            <!-- Optional Ashelic PNG -->
+            <img
+            class="ashelic"
+            src="assets/images/ashelic-hero.png"
+            alt=""
+            >
+
+            <div class="red-glow"></div>
+            <div class="purple-glow"></div>
+
+        </div>
+
+
+        <!-- FX -->
+        <div class="fog fog-one"></div>
+        <div class="fog fog-two"></div>
+
+        <div id="embers"></div>
+
+        <div class="vignette"></div>
+        <div class="scanlines"></div>
+        <div id="flash"></div>
+
+
+        <!-- MAIN PAGE -->
+        <main class="landing">
+
+            <!-- BRAND -->
+            <header>
+
+                <span class="tmn">
+                    A TASTE MY NIGHTMARE GAME
+                </span>
+
+            </header>
+
+
+            <!-- TITLE -->
+            <section class="title-area">
+
+                <div class="moon"></div>
+
+                <p class="chapter">
+                    AN ASHELIC ROSE STORY
+                </p>
+
+                <h1 class="game-title glitch" data-text="ANOTHER SHATTERED HEART">
+
+                    ANOTHER
+                    <br>
+
+                    <span>SHATTERED HEART</span>
+
+                </h1>
+
+
+                <h2>
+                    SET ABLAZE
+                </h2>
+
+
+                <div class="burning-line"></div>
+
+
+                <blockquote>
+                    “Some parts of you want to be found.
+                    <br>
+                    Some parts would rather burn.”
+                </blockquote>
+
+            </section>
+
+
+            <!-- MENU -->
+            <nav class="game-menu">
+
+                <button
+                    class="menu-button primary"
+                    id="newGame"
+                >
+                    <span class="arrow">▶</span>
+                    NEW GAME
+                </button>
+
+
+                <button
+                    class="menu-button"
+                    id="continueGame"
+                >
+                    CONTINUE
+                </button>
+
+
+                <button
+                    class="menu-button"
+                    id="storyButton"
+                >
+                    THE STORY
+                </button>
+
+
+                <button
+                    class="menu-button"
+                    id="extrasButton"
+                >
+                    EXTRAS
+                </button>
+
+
+                <button
+                    class="menu-button"
+                    onclick="window.location.href='../../games.html'"
+                >
+                    RETURN TO MIDNIGHT ARCADE
+                </button>
+
+            </nav>
+
+
+            <!-- FRAGMENT SYMBOLS -->
+            <section class="fragment-section">
+
+                <p>
+                    FIVE FRAGMENTS
+                </p>
+
+
+                <div class="fragments">
+
+                    <button
+                    class="fragment"
+                    data-name="THE WOUNDED"
+                    >
+                    🥀
+                    </button>
+
+
+                    <button
+                    class="fragment"
+                    data-name="FALSE ROSE"
+                    >
+                    🪞
+                    </button>
+
+
+                    <button
+                    class="fragment"
+                    data-name="THE VAMPIRE"
+                    >
+                    🦇
+                    </button>
+
+
+                    <button
+                    class="fragment"
+                    data-name="THE SUCCUBUS"
+                    >
+                    ♡
+                    </button>
+
+
+                    <button
+                    class="fragment"
+                    data-name="THE QUEEN"
+                    >
+                    ♛
+                    </button>
+
+                </div>
+
+
+                <p
+                    class="fragment-name"
+                    id="fragmentName"
+                >
+                    ONE MORE HAND.
+                </p>
+
+            </section>
+
+
+            <!-- BOTTOM SECRET -->
+            <footer>
+
+                <div class="hand-counter">
+
+                    <span>HAND</span>
+
+                    <strong id="handCount">
+                    -- / 26
+                    </strong>
+
+                </div>
+
+
+                <span class="nightware">
+                    DEVELOPED BY NIGHTWARE
+                </span>
+
+            </footer>
+
+        </main>
+
+
+        <!-- STORY MODAL -->
+        <dialog id="storyModal">
+
+            <button
+            class="close"
+            data-close
+            >
+            ×
+            </button>
+
+
+            <p class="modal-eyebrow">
+                CASE FILE 00
+            </p>
+
+            <h3>
+                ANOTHER SHATTERED HEART
+            </h3>
+
+
+            <p>
+                Three nights before the beginning of her new era,
+                Ashelic Rose receives an invitation written in her
+                own handwriting.
+            </p>
+
+            <p>
+                It leads her into Night Cove and to an exclusive
+                gathering inside The Inferno.
+            </p>
+
+            <p>
+                Twenty-five strangers are waiting.
+            </p>
+
+            <p>
+                They believe Ashelic is exactly what their ritual
+                requires:
+            </p>
+
+            <p class="red-text">
+                an unclaimed woman.
+            <br>
+                an empty vessel.
+            </p>
+
+            <p>
+                They are wrong.
+            </p>
+
+            <p>
+                Their ritual doesn't find one Ashelic.
+            </p>
+
+            <p>
+                It finds five.
+            </p>
+
+        </dialog>
+
+
+        <!-- EXTRAS MODAL -->
+        <dialog id="extrasModal">
+
+            <button
+            class="close"
+            data-close
+            >
+            ×
+            </button>
+
+
+            <p class="modal-eyebrow">
+                NIGHT COVE ARCHIVES
+            </p>
+
+            <h3>
+                EXTRAS
+            </h3>
+
+
+            <div class="extra-grid">
+
+                <div>
+                    <span>?</span>
+                    CHARACTER FILES
+                </div>
+
+                <div>
+                    <span>?</span>
+                    SOUNDTRACK
+                </div>
+
+                <div>
+                    <span>?</span>
+                    CONCEPT ART
+                </div>
+
+                <div>
+                    <span>?</span>
+                    26TH HAND
+                </div>
+
+            </div>
+
+        </dialog>
+
+
+        <script src="title.js"></script>
+
+    </body>
+</html>

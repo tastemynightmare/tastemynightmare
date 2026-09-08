@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Another Shattered Heart: Set Ablaze</title>
+    <link rel="stylesheet" href="shattered.css">
+  </head>
+  <body>
+    <div class="crt"></div>
+
+    <main id="game-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">A TASTE MY NIGHTMARE EXPERIENCE</p>
+          <h1>ANOTHER SHATTERED HEART <span>SET ABLAZE</span></h1>
+        </div>
+
+        <div class="hud">
+          <div class="hud-item">
+            <span>NIGHT CODE</span>
+            <strong id="nightCode">000</strong>
+          </div>
+          <div class="hud-item">
+            <span>FRAGMENTS</span>
+            <strong id="fragmentCount">0/5</strong>
+          </div>
+          <div class="hud-item">
+            <span>CONTROL</span>
+            <strong id="controlStat">50</strong>
+          </div>
+        </div>
+      </header>
+
+      <section id="stage">
+        <div id="sceneImage" class="scene-image scene-title"></div>
+
+        <div id="overlayText" class="overlay-text">
+          <p id="chapterLabel" class="chapter-label">PROLOGUE</p>
+          <h2 id="sceneTitle">THE INVITATION</h2>
+          <p id="storyText"></p>
+        </div>
+
+        <div id="qtePanel" class="qte-panel hidden">
+          <div class="qte-ring">
+            <button id="qteButton">ACT</button>
+          </div>
+          <p id="qtePrompt">MOVE.</p>
+          <div class="qte-meter">
+            <span id="qteFill"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="control-panel">
+        <div class="status-line">
+          <span id="objective">OBJECTIVE: Enter the Night Cove.</span>
+          <span id="message"></span>
+        </div>
+
+        <div id="choices" class="choices"></div>
+
+        <nav class="utility-buttons">
+          <button id="inventoryBtn">INVENTORY</button>
+          <button id="journalBtn">JOURNAL</button>
+          <button id="saveBtn">SAVE</button>
+          <button id="resetBtn">RESET</button>
+        </nav>
+      </section>
+    </main>
+
+    <dialog id="modal">
+      <button id="closeModal" class="close-modal">×</button>
+      <div id="modalContent"></div>
+    </dialog>
+
+    <script src="game-engine.js"></script>
+  </body>
+</html>
