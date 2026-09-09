@@ -204,12 +204,15 @@
   grid-template-columns:
     repeat(2, minmax(0, 1fr));
 }
-
 .cookie-card {
   --cookie-color: #ff7aad;
   --cookie-soft: #ffd7e7;
 
-  min-height: 420px;
+  min-height: 450px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
   border:
     1px solid
@@ -267,7 +270,7 @@
 }
 
 .cookie-card::after {
-  content: "âœ¦  â™¡  âœ§";
+  content: "";
 
   position: absolute;
   right: 22px;
@@ -361,7 +364,12 @@
 .flavor-chip {
   display: inline-flex;
 
+  width: fit-content;
+  max-width: 100%;
+
   margin-top: 16px;
+  margin-bottom: 24px;
+
   padding: 8px 10px;
 
   border:
@@ -385,10 +393,15 @@
 
   font-family: "DM Mono", monospace;
   font-size: 0.58rem;
+  line-height: 1.4;
   letter-spacing: 0.06em;
+
+  white-space: normal;
 }
 
 .cookie-card .btn {
+  margin-top: auto;
+
   border-color: var(--cookie-color);
 
   color: var(--cookie-color);
@@ -506,4 +519,70 @@
 
     white-space: normal;
   }
+}
+
+/* =========================================================
+   COOKIE CARD LAYOUT FIX
+   Keep chips + CTA inside normal document flow
+   ========================================================= */
+
+.cookie-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  min-height: 460px;
+
+  /* Give the content predictable breathing room */
+  gap: 0;
+}
+
+/* Description */
+.cookie-card > p:not(.shop-tag) {
+  margin-bottom: 0;
+}
+
+/* Flavor chip */
+.cookie-card .flavor-chip {
+  position: static !important;
+  inset: auto !important;
+
+  display: inline-flex;
+
+  width: fit-content;
+  max-width: 100%;
+
+  margin-top: 24px;
+  margin-bottom: 18px;
+
+  white-space: normal;
+
+  line-height: 1.4;
+}
+
+/* CTA
+   This specifically neutralizes anything inherited from base.css
+*/
+.cookie-card .btn {
+  position: static !important;
+
+  inset: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+
+  transform: none;
+
+  width: fit-content;
+  max-width: 100%;
+
+  margin-top: auto;
+
+  flex-shrink: 0;
+}
+
+/* Keep hover from fighting the card layout */
+.cookie-card .btn:hover {
+  transform: none;
 }
