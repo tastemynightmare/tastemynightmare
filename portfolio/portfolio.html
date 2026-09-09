@@ -3,221 +3,588 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ashelic Rose | Portfolio</title>
-
-        <link rel="stylesheet" href="css/style.css">
+        <meta name="theme-color" content="#070003">
+        <meta
+            name="description"
+            content="Ashelic Rose — multidisciplinary designer, developer, 3D artist and creator of Taste My Nightmare."
+        >
+        <title>Ashelic Rose // Taste My Nightmare Portfolio</title>
+        <link rel="stylesheet" href="css/portfolio.css">
     </head>
 
-    <body class="portfolio">
+    <body class="tmn-portfolio">
+        <div class="page-noise" aria-hidden="true"></div>
+        <div class="scanlines" aria-hidden="true"></div>
+        <div class="cursor-glow" aria-hidden="true"></div>
+        <div class="blood-orbit blood-orbit-one" aria-hidden="true"></div>
+        <div class="blood-orbit blood-orbit-two" aria-hidden="true"></div>
 
-        <!-- ========================= -->
-        <!-- HERO / HEADER -->
-        <!-- ========================= -->
-
-        <header class="hero">
-
-            <nav class="navbar">
-
-                <a href="../nightcove/home.html" class="logo"></a>
-
-                <ul class="nav-bar">
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-
-            </nav>
-
-            <div class="hero-content">
-
-                <h1>Ashelic Rose</h1>
-
-                <h3>Web Designer • Graphic Designer • 3D Artist</h3>
-
-                <p>
-                    My name is Ashelic Watson, a multidisciplinary creative with 
-                    a passion for web design, graphic design, branding, and 3D 
-                    art. This portfolio showcases projects completed throughout
-                    my Graphic Design and Web Development coursework, along with
-                    personal Blender creations inspired by my brand,
-                    <span>Taste My Nightmare.</span>
-                </p>
-
-                <a href="#projects" class="button">View My Work</a>
-
+        <aside class="progress-rail" aria-label="Portfolio progress">
+            <span class="progress-label">NIGHT COVE ARCHIVE</span>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
             </div>
+            <span class="progress-value" id="progressValue">00%</span>
+        </aside>
 
+        <header class="site-header">
+            <a class="brand-lockup" href="../nightcove/home.html">
+                <span class="brand-kicker">TASTE MY NIGHTMARE</span>
+                <span class="brand-name">ASHELIC ROSE // ARCHIVE</span>
+            </a>
+
+            <nav class="header-nav" aria-label="Primary">
+                <a href="#featured">FEATURED</a>
+                <a href="#archive">ARCHIVE</a>
+                <a href="#about">ABOUT</a>
+                <button class="nightmare-toggle" id="nightmareToggle" type="button">
+                    NIGHTMARE: SLEEPING
+                </button>
+            </nav>
         </header>
 
         <main>
-
-            <!-- ========================= -->
-            <!-- PROJECTS -->
-            <!-- ========================= -->
-
-            <section id="projects">
-
-                <h2>Featured Projects</h2>
-
-                <div class="project-container">
-
-                    <!-- Card One -->
-
-                    <section class="project-card">
-
-                        <h3>Book Cover Process Page</h3>
-
-                        <img src="images/final-cover.png" alt="Book cover">
-
-                        <div class="card-content">
-
-                            <p>
-                                A responsive webpage documenting my creative
-                                process while designing the cover for
-                                <span>Strange Case of Dr Jekyll & Mr Hyde</span>
-                                The page highlights my design decisions,
-                                inspiration, and final outcome using HTML 
-                                and CSS.
-                            </p>
-
-                        </div>
-
-                        <a
-                            href="../process-page/index.html"
-                            class="button">View Project
-                        </a>
-
-                    </section>
-
-                    <!-- Card Two -->
-
-                    <section class="project-card">
-
-                        <h3>Product Showcase</h3>
-
-                        <img src="images/camera.jpg" alt="camera image">
-
-                        <div class="card-content">
-
-                            <p>
-                                A clean product landing page built using 
-                                semantic HTML and CSS. This project demonstrates
-                                layout design, typography, spacing, Google 
-                                Fonts, and responsive design while showcasing a 
-                                wonderful Sony product.
-                            </p>
-
-                        </div>
-
-                        <a
-                            href="../../projects/product-showcase/index.html"
-                            class="button">View Project
-                        </a>
-
-                    </section>
-
-                    <!-- Card Three -->
-
-                    <section class="project-card">
-
-                        <h3>Blender Renders</h3>
-
-                        <div class="blender-gallery">
-                            <img src="images/tmn-rocket.png" alt="3D Rocket">
-                        </div>
-
-                        <div class="card-content">
-
-                            <p>
-                                A collection of original Blender projects 
-                                exploring surreal environments, dark fantasy, 
-                                and futuristic design concepts. These renders 
-                                reflect my creative identity through my brand,
-                                <span>Taste My Nightmare.</span>
-                            </p>
-
-                            <a
-                            href="../../exercises/blender/index.html"
-                            class="button">View Project
-                            </a>
-
-                        </div>
-
-                    </section>
-
-                </div>
-
-            </section>
-
-            <!-- ========================= -->
-            <!-- ABOUT -->
-            <!-- ========================= -->
-
-            <section id="about">
-
-                <div class="about-container">
-
-                    <h2>About Me</h2>
-
-                    <h4>Designing Nightmares Into Sweet Dreams</h4>
-
-                    <p>
-
-                        My name is Ashelic Rose, and I am a multidisciplinary
-                        creative passionate about combining storytelling, 
-                        design, and immersive digital experiences. As a Web & 
-                        Graphic Design student, I enjoy creating projects that 
-                        balance strong aesthetics with practical usability 
-                        while continually expanding my technical skills. I look
-                        forward to my future in 3D modeling and so much more!
-                    </p>
-
-                    <p>
-
-                        My creative style is inspired by dark fantasy,
-                        surrealism, horror, and futuristic visuals. Through
-                        graphic design, web development, and 3D modeling, I 
-                        enjoy building unique experiences that encourage 
-                        curiosity and imagination. Every project is an 
-                        opportunity to experiment, improve my craft, and bring 
-                        ideas to life through design. So.. 
-                    </p>
-
-                    <h4>Welcome to MY NIGHTMARE</h4>
-
-                </div>
-
-            </section>
-
-            <!-- ========================= -->
-            <!-- CONTACT -->
-            <!-- ========================= -->
-
-            <section id="contact">
-
-                <h2>Contact</h2>
-
-                <p>
-                    Interested in my work or want to connect? 
+            <!-- =====================================================
+                HERO
+                ===================================================== -->
+            <section class="hero" id="top">
+            <div class="hero-copy">
+                <p class="eyebrow">
+                    NIGHT COVE SYSTEM // CREATOR FILE 08.10
                 </p>
 
-                <p>
-                    Feel free to reach out through email or my linkedin below.
+                <div class="transmission-strip">
+                    <span>TRANSMISSION RECEIVED</span>
+                    <span>DESIGN / WEB / 3D / MOTION / WORLDBUILDING</span>
+                </div>
+
+                <h1>
+                    NOW
+                    <span>SCREENING</span>
+                    MY
+                    <em>NIGHTMARE</em>
+                </h1>
+
+                <p class="hero-intro">
+                    I’m Ashelic Rose — a multidisciplinary creative building 
+                    across web design, graphic design, branding, motion and 3D. 
+                    This archive documents the work, experiments and strange 
+                    little systems growing around 
+                    <strong>Taste My Nightmare.</strong>
                 </p>
 
-                <div class="contact-links">
-
-                   <a href="mailto:ashelicrosebookings@gmail.com">Email</a>
-
-                    <a
-                        href="https://www.linkedin.com/in/ashelic-watson-158b72332/"
-                        target="_blank">LinkedIn
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#featured">
+                        ENTER THE ARCHIVE ›
                     </a>
 
+                    <button class="btn btn-ghost" id="randomProject" type="button">
+                        SUMMON A RANDOM PROJECT
+                    </button>
+                </div>
+            </div>
+
+                <div class="hero-sigil" aria-hidden="true">
+                    <div class="sigil-ring sigil-ring-one"></div>
+                    <div class="sigil-ring sigil-ring-two"></div>
+                    <div class="sigil-heart">♥</div>
+                    <span>WE ARE SHEE</span>
                 </div>
 
+                <div class="hero-index">
+                    <span>PORTFOLIO FILE</span>
+                    <strong>2026</strong>
+                </div>
             </section>
 
+
+            <!-- =====================================================
+                FEATURED INTERACTIVE PROJECT
+                ===================================================== -->
+            <section class="featured" id="featured">
+                <div class="featured-copy">
+                    <p class="eyebrow">
+                        MIDNIGHT ARCADE // FEATURED BUILD
+                    </p>
+
+                    <h2>
+                    BUBBLES
+                    <span>&amp; FLOW</span>
+                    </h2>
+
+                    <p>
+                        A playable artist-promo experience built as part of the
+                        Taste My Nightmare universe. It combines front-end design,
+                        game logic, visual storytelling and branded worldbuilding.
+                    </p>
+
+                    <div class="credit-grid">
+                        <div>
+                            <span>ROLE</span>
+                            <strong>CONCEPT / DESIGN / FRONT-END</strong>
+                        </div>
+
+                        <div>
+                            <span>WORLD</span>
+                            <strong>MIDNIGHT ARCADE</strong>
+                        </div>
+
+                        <div>
+                            <span>FORMAT</span>
+                            <strong>INTERACTIVE WEB GAME</strong>
+                        </div>
+                    </div>
+
+                    <div class="featured-actions">
+                        <a
+                            class="arcade-launch"
+                            href="../nightcove/midnight-arcade/bubbles-and-flow/index.html">
+                            <span>INSERT SOUL</span>
+                            PLAY BUBBLES &amp; FLOW ↗
+                        </a>
+
+                        <button class="text-button" id="bootArcade" type="button">
+                            BOOT PREVIEW TERMINAL
+                        </button>
+                    </div>
+                </div>
+
+                <div class="arcade-terminal" id="arcadeTerminal">
+                    <div class="terminal-topline">
+                        <span>MIDNIGHT_ARCADE.EXE</span>
+                        <span>SECTOR 04</span>
+                        </div>
+
+                        <div class="terminal-screen">
+                        <div class="terminal-stars" aria-hidden="true"></div>
+
+                        <div class="terminal-copy">
+                            <p class="terminal-status" id="terminalStatus">
+                            SYSTEM IDLE
+                            </p>
+
+                            <h3>
+                            BUBBLES
+                            <em>&amp;</em>
+                            FLOW
+                            </h3>
+
+                            <p id="terminalText">
+                            PRESS BOOT TO LOAD TRANSMISSION.
+                            </p>
+                        </div>
+
+                        <div class="terminal-orbit orbit-a"></div>
+                        <div class="terminal-orbit orbit-b"></div>
+                    </div>
+
+                    <div class="terminal-command">
+                        &gt; <span id="terminalCommand">awaiting_input</span><span class="cursor-blink">_</span>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- =====================================================
+                FILTERS
+                ===================================================== -->
+            <section class="filter-bar" aria-label="Project filters">
+                <span>FILTER ARCHIVE:</span>
+
+                <div class="filter-buttons">
+                    <button class="filter active" type="button" data-filter="all">ALL</button>
+                    <button class="filter" type="button" data-filter="design">DESIGN</button>
+                    <button class="filter" type="button" data-filter="motion">MOTION</button>
+                    <button class="filter" type="button" data-filter="3d">3D</button>
+                    <button class="filter" type="button" data-filter="brand">BRANDING</button>
+                </div>
+            </section>
+
+
+            <!-- =====================================================
+                ARCHIVE
+                ===================================================== -->
+            <section class="archive" id="archive">
+            <header class="section-heading">
+                <div>
+                <p class="eyebrow">NIGHT COVE // PROJECT FILES 01—08</p>
+                <h2>THE <span>ARCHIVE</span></h2>
+                </div>
+
+                <p>
+                    Each file is treated like evidence from a different 
+                    corner of the same nightmare: packaging, print, compositing,
+                    motion, illustration and 3D.
+                </p>
+            </header>
+
+            <div class="project-stack">
+                <article class="project-card project-card-wide" data-category="design brand" data-project="cereal">
+                <div class="project-media">
+                    <img
+                    src="assets/images/cereal-box.png"
+                    alt="Sweetheart Cheerios cereal packaging design">
+                    <div class="media-overlay">
+                    <span>CASE 01</span>
+                    <strong>OPEN FILE</strong>
+                    </div>
+                </div>
+
+                <div class="project-copy">
+                    <p class="project-id">01 // PACKAGING + BRANDING</p>
+                    <h3>SWEETHEART <span>CHEERIOS</span></h3>
+                    <p>
+                        A full cereal-box concept exploring illustrated 
+                        character branding, hierarchy and multi-panel 
+                        packaging design.
+                    </p>
+
+                    <button class="project-open" type="button" data-project="cereal">
+                    VIEW CASE FILE ›
+                    </button>
+                </div>
+                </article>
+
+
+                <article class="project-card project-card-tall" data-category="design" data-project="matte">
+                    <div class="project-media">
+                        <img
+                        src="assets/images/matte-painting.jpg"
+                        alt="Surreal dark fantasy matte painting">
+                        <div class="media-overlay">
+                            <span>CASE 02</span>
+                            <strong>OPEN FILE</strong>
+                        </div>
+                    </div>
+
+                    <div class="project-copy">
+                        <p class="project-id">02 // COMPOSITING</p>
+                        <h3>NIGHTMARE <span>MATTE</span></h3>
+                        <p>
+                            Surreal environmental compositing built around 
+                            dark-fantasy mood, atmosphere and visual 
+                            storytelling.
+                        </p>
+
+                        <button class="project-open" type="button" data-project="matte">
+                        VIEW CASE FILE ›
+                        </button>
+                    </div>
+                </article>
+
+
+                <article class="project-card project-card-poster" data-category="design" data-project="parks">
+                    <div class="project-copy">
+                        <p class="project-id">03 // POSTER DESIGN</p>
+                        <h3>HAWAIʻI <span>VOLCANOES</span></h3>
+                        <p>
+                            A national-park poster study using silhouette,
+                            saturated contrast and simplified visual 
+                            storytelling.
+                        </p>
+
+                        <button class="project-open" type="button" data-project="parks">
+                        VIEW CASE FILE ›
+                        </button>
+                    </div>
+
+                    <div class="project-media">
+                        <img
+                        src="assets/images/national-parks.png"
+                        alt="Hawaiʻi Volcanoes National Park poster">
+                        <div class="media-overlay">
+                            <span>CASE 03</span>
+                            <strong>OPEN FILE</strong>
+                        </div>
+                    </div>
+                </article>
+
+
+                <article class="project-card project-card-banner" data-category="design brand" data-project="banner">
+                    <div class="project-media">
+                        <img
+                        src="assets/images/banner-mockup.jpg"
+                        alt="Orlando prom banner mockup">
+                        <div class="media-overlay">
+                        <span>CASE 04</span>
+                        <strong>OPEN FILE</strong>
+                        </div>
+                    </div>
+
+                    <div class="project-copy">
+                        <p class="project-id">04 // LARGE FORMAT</p>
+                        <h3>ORLANDO <span>PROM</span></h3>
+                        <p>
+                            Event banner design extended into an environmental 
+                            mockup to test scale, readability and physical
+                            presentation.
+                        </p>
+
+                        <button class="project-open" type="button" data-project="banner">
+                        VIEW CASE FILE ›
+                        </button>
+                    </div>
+                </article>
+
+
+                <article class="project-card motion-card" data-category="motion brand" data-project="ocean">
+                    <div class="motion-player">
+                        <video
+                        src="assets/video/106_FinalEval_AWatson.mp4"
+                        poster="assets/images/ocean-utopia.jpg"
+                        muted
+                        loop
+                        playsinline
+                        controls>
+                        </video>
+
+                        <span class="video-stamp">PLAYBACK // MOTION FILE</span>
+                    </div>
+
+                    <div class="project-copy">
+                        <p class="project-id">05 // MOTION DESIGN</p>
+                        <h3>OCEAN <span>UTOPIA</span></h3>
+                        <p>
+                            Animated identity and atmosphere work exploring 
+                            motion, pacing, texture and presentation.
+                        </p>
+
+                        <button class="project-open" type="button" data-project="ocean">
+                        VIEW CASE FILE ›
+                        </button>
+                    </div>
+                </article>
+
+
+                <article class="project-card project-card-stickers" data-category="design brand" data-project="stickers">
+                    <div class="project-copy">
+                        <p class="project-id">06 // ILLUSTRATION + MERCH</p>
+                        <h3>KAWAII <span>PICNIC</span></h3>
+                        <p>
+                            Character-driven sticker graphics built as a cohesive
+                            cute-food visual system.
+                        </p>
+
+                        <button class="project-open" type="button" data-project="stickers">
+                        VIEW CASE FILE ›
+                        </button>
+                    </div>
+
+                    <div class="project-media">
+                        <img
+                        src="assets/images/stickers.png"
+                        alt="Kawaii picnic sticker illustrations">
+                        <div class="media-overlay">
+                            <span>CASE 06</span>
+                            <strong>OPEN FILE</strong>
+                        </div>
+                    </div>
+                    </article>
+
+
+                    <article class="project-card project-card-ads" data-category="design brand" data-project="ads">
+                        <div class="project-media">
+                            <img
+                            src="assets/images/print-web-ad.png"
+                            alt="Print and web advertisement set">
+                            <div class="media-overlay">
+                                <span>CASE 07</span>
+                                <strong>OPEN FILE</strong>
+                            </div>
+                        </div>
+
+                        <div class="project-copy">
+                            <p class="project-id">07 // ADVERTISING SYSTEM</p>
+                            <h3>PRINT + <span>WEB ADS</span></h3>
+                            <p>
+                                A campaign adapted across several ad dimensions 
+                                while preserving hierarchy, CTA visibility and 
+                                brand consistency.
+                            </p>
+
+                            <button class="project-open" type="button" data-project="ads">
+                            VIEW CASE FILE ›
+                            </button>
+                        </div>
+                    </article>
+
+
+                    <article class="project-card motion-card scene-card" data-category="3d motion" data-project="scene">
+                    <div class="project-copy">
+                        <p class="project-id">08 // 3D ENVIRONMENT</p>
+                        <h3>DIGITAL <span>SCENE STUDY</span></h3>
+                        <p>
+                            A 3D environment focused on spatial composition,
+                            atmosphere and camera presentation.
+                        </p>
+
+                        <button class="project-open" type="button" data-project="scene">
+                        VIEW CASE FILE ›
+                        </button>
+                    </div>
+
+                    <div class="motion-player">
+                        <video
+                        src="assets/video/106_3DSceneProject_AWatson.mp4"
+                        poster="assets/images/3d-scene.jpg"
+                        muted
+                        loop
+                        playsinline
+                        controls>
+                        </video>
+
+                        <span class="video-stamp">PLAYBACK // 3D FILE</span>
+                    </div>
+                </article>
+            </div>
+            </section>
+
+
+            <!-- =====================================================
+                ABOUT
+                ===================================================== -->
+            <section class="about" id="about">
+                <div class="about-mark">
+                    <span>CREATOR FILE</span>
+                    <strong>AR</strong>
+                </div>
+
+                <div class="about-copy">
+                    <p class="eyebrow">
+                        ASHELIC ROSE // MULTIDISCIPLINARY CREATIVE
+                    </p>
+
+                    <h2>
+                        I DON’T JUST
+                        <span>DESIGN THINGS.</span>
+                        I BUILD THE
+                        <em>WORLD AROUND THEM.</em>
+                    </h2>
+
+                    <p>
+                        My work crosses web development, graphic design, 
+                        branding, motion, compositing and 3D. I’m especially 
+                        interested in projects where storytelling, interface 
+                        design and atmosphere can become one experience.
+                    </p>
+
+                    <p>
+                        Taste My Nightmare is where those disciplines collide:
+                        websites become locations, games become promotion, 
+                        visuals become lore, and design becomes part of the 
+                        story.
+                    </p>
+                </div>
+
+                <div class="skill-terminal">
+                    <div class="terminal-topline">
+                        <span>SKILL_INDEX</span>
+                        <span>ONLINE</span>
+                    </div>
+
+                    <ul>
+                        <li>HTML / CSS / JAVASCRIPT</li>
+                        <li>GRAPHIC DESIGN</li>
+                        <li>BRANDING</li>
+                        <li>PHOTOSHOP</li>
+                        <li>ILLUSTRATOR</li>
+                        <li>AFTER EFFECTS</li>
+                        <li>BLENDER / 3D</li>
+                        <li>VISUAL STORYTELLING</li>
+                    </ul>
+                </div>
+            </section>
+
+
+            <!-- =====================================================
+                CONTACT
+                ===================================================== -->
+            <section class="contact" id="contact">
+                <p class="eyebrow">FINAL TRANSMISSION // CONTACT</p>
+
+                <h2>
+                    HAVE SOMETHING
+                    <span>STRANGE</span>
+                    TO BUILD?
+                </h2>
+
+                <div class="contact-links">
+                    <a href="mailto:ashelicrosebookings@gmail.com">
+                    EMAIL ME ↗
+                    </a>
+
+                    <a
+                    href="https://www.linkedin.com/in/ashelic-watson-158b72332/"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    LINKEDIN ↗
+                    </a>
+
+                    <a href="../nightcove/blood-market/rendering-room/nightware.html">
+                    ENTER RENDERING ROOM ↗
+                    </a>
+                </div>
+            </section>
         </main>
 
-        <!-- ========================= -->
+
+        <!-- =====================================================
+            CASE FILE MODAL
+            ===================================================== -->
+        <dialog class="case-dialog" id="caseDialog">
+            <button
+            class="dialog-close"
+            id="dialogClose"
+            type="button"
+            aria-label="Close project case file">
+            ×
+            </button>
+
+            <div class="dialog-side">
+                <span id="dialogIndex">CASE FILE // 01</span>
+                <strong>TASTE MY NIGHTMARE</strong>
+                </div>
+
+                <div class="dialog-content">
+                <p class="eyebrow" id="dialogType">PROJECT TYPE</p>
+                <h2 id="dialogTitle">PROJECT TITLE</h2>
+                <p id="dialogDescription"></p>
+
+                <div class="dialog-skills">
+                    <span>TOOLS / SKILLS</span>
+                    <strong id="dialogSkills"></strong>
+                </div>
+            </div>
+
+            <div class="dialog-image-wrap">
+                <img id="dialogImage" src="assets/images/cereal-box.png" alt="">
+                <div class="dialog-glitch" aria-hidden="true"></div>
+            </div>
+        </dialog>
+
+
+        <!-- =====================================================
+            SECRET TRANSMISSION
+            ===================================================== -->
+        <div class="secret-transmission" id="secretTransmission" aria-hidden="true">
+            <span>TRANSMISSION 13</span>
+            <strong>THE NIGHTMARE IS A PORTFOLIO TOO.</strong>
+            <p>
+            You found the corrupted layer.
+            </p>
+        </div>
+
+
+        <footer class="site-footer">
+            <span>
+            © <span data-year></span> ASHELIC ROSE // TASTE MY NIGHTMARE
+            </span>
+
+            <a href="#top">
+            RETURN TO SIGNAL ↑
+            </a>
+        </footer>
+
+        <script src="js/portfolio.js"></script>
+    </body>
+</html>
