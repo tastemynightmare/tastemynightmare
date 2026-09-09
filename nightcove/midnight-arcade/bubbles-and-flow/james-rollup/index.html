@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#04110a">
+        <title>DJ James Roll Up: Ten-Pound Booty Protocol | Midnight Arcade</title>
+
+        <meta
+            name="description"
+            content="Enter DJ James Roll Up's Louisiana party nightmare in Bubbles & Flow."
+        >
+
+        <link rel="stylesheet" href="james-rollup.css">
+
+        <script>
+            window.JAMES_GAME_BOOTED = false;
+
+            window.addEventListener("DOMContentLoaded", () => {
+                window.setTimeout(() => {
+                    if (window.JAMES_GAME_BOOTED) return;
+
+                    const dialogue = document.getElementById("dialogueText");
+                    const choices = document.getElementById("choices");
+
+                    if (dialogue) {
+                        dialogue.textContent =
+                            "SYSTEM ERROR: James-rollup.js did not initialize. " +
+                            "Make sure index.html, James-rollup.css, and James-rollup.js " +
+                            "are saved in the SAME folder.";
+                    }
+
+                    if (choices) {
+                        choices.innerHTML = "";
+                    }
+                }, 700);
+            });
+        </script>
+
+        <script src="james-rollup.js" defer></script>
+    </head>
+
+    <body>
+        <a class="skip-link" href="#dialoguePanel">Skip to game dialogue</a>
+
+        <main id="game" class="game-shell">
+            <section id="scene" class="scene" aria-live="polite">
+                <div id="sceneBackground" class="scene__background"></div>
+                <div class="scene__overlay"></div>
+                <div class="scene__scanlines"></div>
+
+                <header class="topbar">
+                    <a class="brand" href="../../games.html" aria-label="Back to Midnight Arcade">
+                        <span class="brand__eyebrow">Taste My Nightmare</span>
+                        <span class="brand__title">MIDNIGHT ARCADE</span>
+                    </a>
+
+                    <div class="status">
+                        <span id="chapterLabel">CARTRIDGE 001 // SIGNAL 007</span>
+                        <span class="status__dot" aria-hidden="true">●</span>
+
+                        <button
+                            id="soundToggle"
+                            class="icon-button"
+                            type="button"
+                            aria-label="Toggle sound"
+                            aria-pressed="true"
+                        >
+                            SOUND: ON
+                        </button>
+                    </div>
+                </header>
+
+                <section class="stage">
+                    <div id="glitchMessage" class="glitch-message" hidden></div>
+
+                    <div id="characterLayer" class="character-layer">
+                        <img
+                            id="characterSprite"
+                            class="character-sprite"
+                            src=""
+                            alt=""
+                            hidden
+                        >
+                    </div>
+
+                    <div
+                        id="bootyLayer"
+                        class="booty-layer"
+                        aria-hidden="true"
+                    >
+                        <img
+                            id="goldenBootySprite"
+                            class="golden-booty-sprite"
+                            src="assets/characters/golden-booty.png"
+                            alt=""
+                            hidden
+                        >
+                    </div>
+
+                    <aside id="objectiveCard" class="objective-card">
+                        <span class="objective-card__label">CURRENT OBJECTIVE</span>
+                        <strong id="objectiveText">Answer the transmission.</strong>
+                    </aside>
+
+                    <aside class="gigawatt-card" aria-label="Booty Core Gigawatt Meter">
+                        <div class="gigawatt-card__header">
+                            <span>BOOTY CORE</span>
+                            <span id="gigawattReadout">17 GW</span>
+                        </div>
+
+                        <progress
+                            id="gigawattMeter"
+                            class="gigawatt-meter"
+                            max="100"
+                            value="17"
+                            aria-label="Booty Core gigawatt output"
+                        >
+                            17%
+                        </progress>
+
+                        <div class="gigawatt-card__stats">
+                            <span>
+                                MASS
+                                <strong id="bootyMassReadout">1.7 LB</strong>
+                            </span>
+
+                            <span>
+                                TARGET
+                                <strong>10.0 LB</strong>
+                            </span>
+                        </div>
+
+                        <span id="gigawattWarning" class="gigawatt-warning">
+                            PARTY DEATH IMMINENT
+                        </span>
+                    </aside>
+
+                    <section
+                        id="qtePanel"
+                        class="qte-panel"
+                        hidden
+                        aria-labelledby="qteTitle"
+                    >
+                        <p class="qte-panel__eyebrow">QUICK TIME EVENT</p>
+
+                        <h2 id="qteTitle" tabindex="-1">SHAKE PRESSURE</h2>
+
+                        <p
+                            id="qteInstructions"
+                            class="qte-panel__instructions"
+                        ></p>
+
+                        <div
+                            id="qteStatus"
+                            class="qte-status"
+                            role="status"
+                            aria-live="polite"
+                            aria-atomic="true"
+                        ></div>
+
+                        <div
+                            id="qteVisual"
+                            class="qte-visual"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div id="qteControls" class="qte-controls"></div>
+                    </section>
+                </section>
+
+                <section id="dialoguePanel" class="dialogue-panel">
+                    <div class="dialogue-panel__header">
+                        <span id="speakerName" class="speaker-name">MIDNIGHT ARCADE</span>
+                        <span id="sceneCounter" class="scene-counter">01</span>
+                    </div>
+
+                    <p id="dialogueText" class="dialogue-text">
+                        Loading transmission...
+                    </p>
+
+                    <div id="choices" class="choices"></div>
+                </section>
+
+                <section id="fragmentScreen" class="fragment-screen" hidden>
+                    <div class="fragment-screen__inner">
+                        <div class="fragment-icon" aria-hidden="true">⚡</div>
+
+                        <p class="eyebrow">FRAGMENT 07 ACQUIRED</p>
+
+                        <h2>ENERGY</h2>
+
+                        <p>CROWD COMMAND // CREATIVE FORCE</p>
+
+                        <div class="fragment-readout">
+                            <span>BOOTY CORE: 10.0 LB</span>
+                            <span>OUTPUT: 100 GIGAWATTS</span>
+                        </div>
+
+                        <button
+                            id="fragmentContinue"
+                            class="primary-button"
+                            type="button"
+                        >
+                            CONTINUE
+                        </button>
+                    </div>
+                </section>
+
+                <section id="festivalScreen" class="festival-screen" hidden>
+                    <div class="festival-card">
+                        <div class="festival-card__copy">
+                            <p class="eyebrow">TRANSMISSION COMPLETE</p>
+
+                            <h1>BUBBLES &amp; FLOW</h1>
+
+                            <p>
+                                DJ James Roll Up restored the Ten-Pound Booty
+                                Protocol, defeated the Vibe Killer, and somehow
+                                saved Louisiana. The function is alive again.
+                            </p>
+
+                            <div class="festival-actions">
+                                <a
+                                    id="ticketLink"
+                                    class="primary-button"
+                                    href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    🎟 GET TICKETS
+                                </a>
+
+                                <a
+                                    id="page-link"
+                                    class="secondary-button"
+                                    href="../../artists/james-rollup/index.html"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    🎧 ENTER DJ JAMES ROLL UP'S SOUND ROOM
+                                </a>
+
+                                <a
+                                    class="secondary-button"
+                                    href="../../games.html"
+                                >
+                                    🕹 MIDNIGHT ARCADE
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="festival-card__poster">
+                            <img
+                                id="festivalPoster"
+                                src="assets/backgrounds/james-flyer.png"
+                                alt="Bubbles and Flow festival flyer featuring DJ James Roll Up"
+                            >
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </main>
+
+        <audio id="musicPlayer" loop preload="auto"></audio>
+        <audio id="sfxPlayer" preload="auto"></audio>
+    </body>
+</html>
