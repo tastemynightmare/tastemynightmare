@@ -1,6 +1,7 @@
 /* =========================================================
    NIGHTMARE MUNCHIES
    Kawaii TMN / cute-horror storefront
+   Clean rebuild with equal card layout + accessibility
    ========================================================= */
 
 :root {
@@ -25,26 +26,17 @@
   --morbucks-soft: #fff4b8;
 }
 
+/* =========================================================
+   PAGE
+   ========================================================= */
+
 .munchies-page {
   color: var(--munchies-white);
 
   background:
-    radial-gradient(
-      circle at 15% 12%,
-      rgba(255, 111, 174, 0.16),
-      transparent 24rem
-    ),
-    radial-gradient(
-      circle at 86% 20%,
-      rgba(180, 124, 255, 0.12),
-      transparent 24rem
-    ),
-    linear-gradient(
-      180deg,
-      #120711 0%,
-      #170812 50%,
-      #0b050b 100%
-    );
+    radial-gradient(circle at 15% 12%, rgba(255, 111, 174, 0.16), transparent 24rem),
+    radial-gradient(circle at 86% 20%, rgba(180, 124, 255, 0.12), transparent 24rem),
+    linear-gradient(180deg, #120711 0%, #170812 50%, #0b050b 100%);
 }
 
 .munchies-page::selection {
@@ -52,19 +44,42 @@
   background: var(--munchies-pink-soft);
 }
 
-/* ---------------------------------------------------------
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 9999;
+  padding: 12px 16px;
+  color: var(--munchies-ink);
+  background: var(--munchies-white);
+  font-family: "DM Mono", monospace;
+  font-weight: 700;
+  transform: translateY(-200%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.munchies-page a:focus-visible,
+.munchies-page button:focus-visible {
+  outline: 3px solid var(--munchies-white);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 6px rgba(255, 111, 174, 0.4);
+}
+
+/* =========================================================
    HEADER
-   --------------------------------------------------------- */
+   ========================================================= */
 
 .munchies-header {
   border-bottom-color: rgba(255, 111, 174, 0.22);
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(18, 7, 17, 0.94),
-      rgba(28, 8, 21, 0.94)
-    );
+  background: linear-gradient(90deg, rgba(18, 7, 17, 0.94), rgba(28, 8, 21, 0.94));
 }
 
 .munchies-header .brand-kicker,
@@ -73,60 +88,36 @@
   color: var(--munchies-pink);
 }
 
-/* ---------------------------------------------------------
+/* =========================================================
    BACKGROUND DECOR
-   --------------------------------------------------------- */
+   ========================================================= */
 
 .kawaii-stars {
   position: fixed;
   inset: 0;
-
   z-index: 0;
-
   opacity: 0.18;
-
   pointer-events: none;
-
   background-image:
     radial-gradient(circle, #fff 0 1px, transparent 2px),
     radial-gradient(circle, #ff9fc8 0 1px, transparent 2px),
     radial-gradient(circle, #b98dff 0 1px, transparent 2px);
-
-  background-position:
-    20px 30px,
-    90px 120px,
-    160px 55px;
-
-  background-size:
-    180px 180px,
-    230px 230px,
-    280px 280px;
+  background-position: 20px 30px, 90px 120px, 160px 55px;
+  background-size: 180px 180px, 230px 230px, 280px 280px;
 }
 
-/* ---------------------------------------------------------
+/* =========================================================
    HERO
-   --------------------------------------------------------- */
+   ========================================================= */
 
 .munchies-hero {
-  background:
-    radial-gradient(
-      circle at 75% 35%,
-      rgba(255, 111, 174, 0.18),
-      transparent 28rem
-    );
+  background: radial-gradient(circle at 75% 35%, rgba(255, 111, 174, 0.18), transparent 28rem);
 }
 
 .munchies-hero::before {
   background-image:
-    linear-gradient(
-      rgba(255, 160, 202, 0.07) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 160, 202, 0.07) 1px,
-      transparent 1px
-    );
+    linear-gradient(rgba(255, 160, 202, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 160, 202, 0.07) 1px, transparent 1px);
 }
 
 .munchies-hero .eyebrow {
@@ -135,35 +126,22 @@
 
 .munchies-sticker {
   display: inline-flex;
-
   margin-bottom: 18px;
   padding: 8px 12px;
-
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
-
   color: #361024;
-  background:
-    linear-gradient(
-      135deg,
-      #ffd0e4,
-      #fff7fb
-    );
-
-  box-shadow:
-    0 8px 24px rgba(255, 111, 174, 0.16);
-
+  background: linear-gradient(135deg, #ffd0e4, #fff7fb);
+  box-shadow: 0 8px 24px rgba(255, 111, 174, 0.16);
   font-family: "DM Mono", monospace;
   font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.08em;
-
   transform: rotate(-1deg);
 }
 
 .munchies-hero h1 {
   color: var(--munchies-white);
-
   text-shadow:
     3px 3px 0 rgba(255, 111, 174, 0.16),
     0 0 30px rgba(255, 111, 174, 0.14);
@@ -171,11 +149,8 @@
 
 .munchies-hero h1 span {
   display: block;
-
   color: var(--munchies-pink-soft);
-
-  -webkit-text-stroke:
-    1px rgba(255, 255, 255, 0.25);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
 }
 
 .munchies-hero .hero-tagline {
@@ -184,61 +159,54 @@
 
 .munchies-cta {
   border-color: #ff78b4;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff4f98,
-      #c554ff
-    );
-
-  box-shadow:
-    0 0 28px rgba(255, 79, 152, 0.22);
+  background: linear-gradient(135deg, #ff4f98, #c554ff);
+  box-shadow: 0 0 28px rgba(255, 79, 152, 0.22);
 }
 
-/* ---------------------------------------------------------
+/* =========================================================
    COOKIE GRID
-   --------------------------------------------------------- */
+   ========================================================= */
 
 .cookie-grid {
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
 }
+
+/* =========================================================
+   COOKIE CARD
+   Equal internal rows across every card
+   ========================================================= */
+
 .cookie-card {
   --cookie-color: #ff7aad;
   --cookie-soft: #ffd7e7;
 
-  min-height: 450px;
+  position: relative;
+  display: grid;
+  grid-template-rows:
+    auto
+    minmax(76px, auto)
+    minmax(84px, 1fr)
+    auto
+    auto;
+  align-items: start;
+  min-width: 0;
+  min-height: 470px;
+  padding: 30px;
+  row-gap: 18px;
 
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  border:
-    1px solid
-    color-mix(
-      in srgb,
-      var(--cookie-color) 50%,
-      transparent
-    );
-
+  border: 1px solid color-mix(in srgb, var(--cookie-color) 50%, transparent);
   border-radius: 28px;
 
   background:
     radial-gradient(
       circle at 86% 12%,
-      color-mix(
-        in srgb,
-        var(--cookie-color) 18%,
-        transparent
-      ),
+      color-mix(in srgb, var(--cookie-color) 18%, transparent),
       transparent 14rem
     ),
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.045),
-      rgba(255, 255, 255, 0.012)
-    ),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012)),
     #160b14;
 
   box-shadow:
@@ -246,183 +214,135 @@
     0 18px 45px rgba(0, 0, 0, 0.24);
 
   isolation: isolate;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .cookie-card::before {
   content: "";
-
   position: absolute;
   inset: 10px;
-
   z-index: -1;
-
-  border:
-    1px dashed
-    color-mix(
-      in srgb,
-      var(--cookie-color) 35%,
-      transparent
-    );
-
+  border: 1px dashed color-mix(in srgb, var(--cookie-color) 35%, transparent);
   border-radius: 20px;
-
   pointer-events: none;
 }
 
-.cookie-card::after {
-  content: "";
-
-  position: absolute;
-  right: 22px;
-  bottom: 18px;
-
-  z-index: 0;
-
-  color:
-    color-mix(
-      in srgb,
-      var(--cookie-color) 55%,
-      white
-    );
-
-  font-size: 1rem;
-  letter-spacing: 0.45em;
-
-  opacity: 0.55;
-}
-
 .cookie-card:hover {
-  transform:
-    translateY(-6px)
-    rotate(-0.4deg);
-
+  transform: translateY(-6px) rotate(-0.4deg);
   border-color: var(--cookie-color);
-
   box-shadow:
     0 18px 55px rgba(0, 0, 0, 0.28),
-    0 0 35px
-    color-mix(
-      in srgb,
-      var(--cookie-color) 20%,
-      transparent
-    );
+    0 0 35px color-mix(in srgb, var(--cookie-color) 20%, transparent);
 }
+
+/* =========================================================
+   COOKIE ICON
+   ========================================================= */
 
 .cookie-icon {
   position: absolute;
   top: 20px;
   right: 22px;
-
   display: grid;
   place-items: center;
-
   width: 42px;
   height: 42px;
-
   border-radius: 50%;
-
   color: #20111b;
-
   background: var(--cookie-soft);
-
-  box-shadow:
-    0 0 24px
-    color-mix(
-      in srgb,
-      var(--cookie-color) 25%,
-      transparent
-    );
-
+  box-shadow: 0 0 24px color-mix(in srgb, var(--cookie-color) 25%, transparent);
   font-size: 1.1rem;
   font-weight: 800;
 }
 
+/* =========================================================
+   COOKIE TEXT
+   ========================================================= */
+
 .cookie-card .shop-tag {
+  margin: 0;
+  padding-right: 70px;
   color: var(--cookie-soft);
 }
 
 .cookie-card h3 {
-  max-width: 520px;
-
+  margin: 0;
+  max-width: 100%;
   color: var(--cookie-color);
-
-  text-shadow:
-    0 0 22px
-    color-mix(
-      in srgb,
-      var(--cookie-color) 18%,
-      transparent
-    );
+  font-size: 40px;
+  line-height: 0.95;
+  text-wrap: balance;
+  text-shadow: 0 0 22px color-mix(in srgb, var(--cookie-color) 18%, transparent);
 }
 
-.cookie-card p {
-  max-width: 560px;
-
+.cookie-card > p:not(.shop-tag) {
+  margin: 0;
+  max-width: 100%;
   color: #d9c7d3;
+  line-height: 1.65;
 }
+
+/* Keep Birthday Massacre + Monsters Delight on one line on desktop */
+.cookie-buttercup h3,
+.cookie-bubbles h3 {
+  white-space: nowrap;
+  font-size: 40px;
+  letter-spacing: -0.035em;
+}
+
+/* =========================================================
+   FLAVOR CHIP
+   ========================================================= */
 
 .flavor-chip {
+  position: static !important;
+  inset: auto !important;
   display: inline-flex;
-
+  align-items: center;
   width: fit-content;
   max-width: 100%;
-
-  margin-top: 16px;
-  margin-bottom: 24px;
-
+  margin: 0;
   padding: 8px 10px;
-
-  border:
-    1px solid
-    color-mix(
-      in srgb,
-      var(--cookie-color) 45%,
-      transparent
-    );
-
+  border: 1px solid color-mix(in srgb, var(--cookie-color) 45%, transparent);
   border-radius: 999px;
-
   color: var(--cookie-soft);
-
-  background:
-    color-mix(
-      in srgb,
-      var(--cookie-color) 8%,
-      transparent
-    );
-
+  background: color-mix(in srgb, var(--cookie-color) 8%, transparent);
   font-family: "DM Mono", monospace;
   font-size: 0.58rem;
-  line-height: 1.4;
+  line-height: 1.35;
   letter-spacing: 0.06em;
-
   white-space: normal;
 }
 
+/* =========================================================
+   COOKIE BUTTON
+   ========================================================= */
+
 .cookie-card .btn {
-  margin-top: auto;
-
+  position: static !important;
+  inset: auto !important;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  transform: none !important;
   border-color: var(--cookie-color);
-
   color: var(--cookie-color);
-
-  background:
-    color-mix(
-      in srgb,
-      var(--cookie-color) 5%,
-      transparent
-    );
+  background: color-mix(in srgb, var(--cookie-color) 5%, transparent);
 }
 
 .cookie-card .btn:hover {
   color: #111;
-
   background: var(--cookie-color);
+  transform: none !important;
 }
 
-/* ---------------------------------------------------------
+/* =========================================================
    COOKIE COLOR SYSTEM
-   --------------------------------------------------------- */
+   ========================================================= */
 
 .cookie-blossom {
   --cookie-color: var(--blossom);
@@ -444,28 +364,17 @@
   --cookie-soft: var(--morbucks-soft);
 }
 
-/* ---------------------------------------------------------
+/* =========================================================
    FEATURE AREAS
-   --------------------------------------------------------- */
+   ========================================================= */
 
 .munchies-feature,
 .order-window {
-  border-color:
-    rgba(255, 111, 174, 0.26);
-
+  border-color: rgba(255, 111, 174, 0.26);
   border-radius: 28px;
-
   background:
-    radial-gradient(
-      circle at 90% 10%,
-      rgba(180, 124, 255, 0.12),
-      transparent 22rem
-    ),
-    radial-gradient(
-      circle at 8% 90%,
-      rgba(255, 111, 174, 0.12),
-      transparent 20rem
-    ),
+    radial-gradient(circle at 90% 10%, rgba(180, 124, 255, 0.12), transparent 22rem),
+    radial-gradient(circle at 8% 90%, rgba(255, 111, 174, 0.12), transparent 20rem),
     rgba(24, 10, 21, 0.92);
 }
 
@@ -476,12 +385,8 @@
 
 .munchies-page .list-item {
   border-radius: 18px;
-
-  border-color:
-    rgba(255, 160, 202, 0.16);
-
-  background:
-    rgba(255, 255, 255, 0.025);
+  border-color: rgba(255, 160, 202, 0.16);
+  background: rgba(255, 255, 255, 0.025);
 }
 
 .munchies-page .list-item strong {
@@ -489,100 +394,88 @@
 }
 
 .munchies-footer {
-  border-top-color:
-    rgba(255, 111, 174, 0.2);
+  border-top-color: rgba(255, 111, 174, 0.2);
 }
 
-/* ---------------------------------------------------------
+/* =========================================================
    RESPONSIVE
-   --------------------------------------------------------- */
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .cookie-buttercup h3,
+  .cookie-bubbles h3 {
+    font-size: clamp(1.7rem, 2.9vw, 2.65rem);
+  }
+}
 
 @media (max-width: 900px) {
   .cookie-grid {
     grid-template-columns: 1fr;
   }
+
+  .cookie-card {
+    min-height: 440px;
+  }
+
+  .cookie-buttercup h3,
+  .cookie-bubbles h3 {
+    white-space: normal;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+  }
 }
 
 @media (max-width: 620px) {
   .cookie-card {
-    min-height: 390px;
-
+    min-height: 420px;
+    padding: 24px;
     border-radius: 22px;
+    grid-template-rows: auto auto auto auto auto;
   }
 
   .cookie-card::before {
     border-radius: 15px;
   }
 
+  .cookie-card::after {
+    display: none;
+  }
+
   .munchies-sticker {
     max-width: 100%;
-
     white-space: normal;
+  }
+
+  .cookie-card h3,
+  .cookie-buttercup h3,
+  .cookie-bubbles h3 {
+    white-space: normal;
+    font-size: clamp(2.25rem, 12vw, 3.5rem);
+  }
+
+  .flavor-chip {
+    border-radius: 16px;
   }
 }
 
 /* =========================================================
-   COOKIE CARD LAYOUT FIX
-   Keep chips + CTA inside normal document flow
+   REDUCED MOTION
    ========================================================= */
 
-.cookie-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+@media (prefers-reduced-motion: reduce) {
+  .munchies-page *,
+  .munchies-page *::before,
+  .munchies-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 
-  min-height: 460px;
+  .cookie-card:hover {
+    transform: none;
+  }
 
-  /* Give the content predictable breathing room */
-  gap: 0;
-}
-
-/* Description */
-.cookie-card > p:not(.shop-tag) {
-  margin-bottom: 0;
-}
-
-/* Flavor chip */
-.cookie-card .flavor-chip {
-  position: static !important;
-  inset: auto !important;
-
-  display: inline-flex;
-
-  width: fit-content;
-  max-width: 100%;
-
-  margin-top: 24px;
-  margin-bottom: 18px;
-
-  white-space: normal;
-
-  line-height: 1.4;
-}
-
-/* CTA
-   This specifically neutralizes anything inherited from base.css
-*/
-.cookie-card .btn {
-  position: static !important;
-
-  inset: auto !important;
-  top: auto !important;
-  right: auto !important;
-  bottom: auto !important;
-  left: auto !important;
-
-  transform: none;
-
-  width: fit-content;
-  max-width: 100%;
-
-  margin-top: auto;
-
-  flex-shrink: 0;
-}
-
-/* Keep hover from fighting the card layout */
-.cookie-card .btn:hover {
-  transform: none;
+  .munchies-sticker {
+    transform: none;
+  }
 }

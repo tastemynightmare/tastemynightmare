@@ -11,6 +11,11 @@
         <link rel="stylesheet" href="css/blood-market.css">
     </head>
     <body>
+
+        <a class="skip-link" href="#main-content">
+            Skip to main content
+        </a>
+
         <div class="noise" aria-hidden="true"></div>
         <div class="scanlines" aria-hidden="true"></div>
 
@@ -21,125 +26,137 @@
             </a>
 
             <nav class="header-nav" aria-label="Primary">
-            <a href="../home.html">HOME</a>
-            <a href="#vendors">VENDORS</a>
-            <button id="soundToggle" class="sound-toggle" type="button">
-                SOUND: OFF
-            </button>
+                <a href="../home.html">HOME</a>
+                <a href="#vendors">VENDORS</a>
+                <button
+                    id="soundToggle"
+                    class="sound-toggle"
+                    type="button"
+                    aria-pressed="false"
+                    aria-label="Turn ambient sound on">
+                    SOUND: OFF  
+                </button>
             </nav>
         </header>
 
-        <main>
+        <main id="main-content">
             <section class="page-hero market-hero">
-            <div class="hero-inner">
-                <p class="eyebrow">NIGHT COVE // DISTRICT 06</p>
+                <div class="hero-inner">
+                    <p class="eyebrow">NIGHT COVE // DISTRICT 06</p>
 
-                <h1>
-                <span>BLOOD</span>
-                <span>MARKET</span>
-                </h1>
+                    <h1>
+                    <span>BLOOD</span>
+                    <span>MARKET</span>
+                    </h1>
 
-                <p class="hero-tagline">EVERYTHING HAS A PRICE.</p>
+                    <p class="hero-tagline">EVERYTHING HAS A PRICE.</p>
 
-                <p class="hero-copy">
-                    Goods, services, commissions and strange little 
-                    offerings traded beneath Night Cove.
-                    Pick a vendor. 
-                    Ask what it costs.
-                    Try not to owe the market anything.
-                </p>
+                    <p class="hero-copy">
+                        Goods, services, commissions and strange little 
+                        offerings traded beneath Night Cove.
+                        Pick a vendor. 
+                        Ask what it costs.
+                        Try not to owe the market anything.
+                    </p>
 
-                <div class="actions">
-                <a class="btn btn-primary" href="#vendors">ENTER THE MARKET ›</a>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="#vendors">
+                            ENTER THE MARKET ›
+                        </a>
+                    </div>
                 </div>
-            </div>
             </section>
 
             <section class="section" id="vendors">
-            <div class="section-heading">
-                <div>
-                <p class="eyebrow">MARKET DIRECTORY</p>
-                <h2>SELECT A VENDOR</h2>
-                </div>
-                <span class="section-code">03 STALLS OPEN</span>
-            </div>
-
-            <div class="card-grid">
-                <article class="card vendor-card munchies-card">
-                <p class="shop-tag">STALL 01 // EDIBLE OFFERINGS</p>
-
-                <div class="vendor-status">
-                    <span>STATUS</span>
-                    <strong>OPEN</strong>
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">
+                            MARKET DIRECTORY
+                        </p>
+                        <h2>SELECT A VENDOR</h2>
+                    </div>
+                    <span class="section-code">03 STALLS OPEN</span>
                 </div>
 
-                <h3>NIGHTMARE MUNCHIES</h3>
-                <p>
-                    Stuffed desserts, limited drops, event treats and 
-                    edible nightmares.
-                </p>
+                <div class="card-grid">
+                    <article class="card vendor-card munchies-card"
+                        aria-labelledby="munchies-title">
+                        <p class="shop-tag">
+                            STALL 01 // EDIBLE OFFERINGS
+                        </p>
 
-                <a class="btn btn-primary" href="nightmare-munchies/munchies.html">
-                    ENTER SHOP ›
-                </a>
-                </article>
+                        <div class="vendor-status">
+                            <span>STATUS</span>
+                            <strong>OPEN</strong>
+                        </div>
 
-                <article class="card vendor-card production-card">
-                <p class="shop-tag">STALL 02 // VISUAL CAPTURE</p>
+                        <h3 id="munchies-title">NIGHTMARE MUNCHIES</h3>
+                        <p id="vendor-copy">
+                            Stuffed desserts, limited drops, event treats and 
+                            edible nightmares.
+                        </p>
 
-                 <div class="vendor-status">
-                    <span>STATUS</span>
-                    <strong>BOOKING</strong>
+                        <a class="btn btn-primary" href="nightmare-munchies/munchies.html">
+                            ENTER SHOP ›
+                        </a>
+                    </article>
+
+                    <article class="card vendor-card production-card">
+                        <p class="shop-tag">STALL 02 // VISUAL CAPTURE</p>
+
+                        <div class="vendor-status">
+                            <span>STATUS</span>
+                            <strong>BOOKING</strong>
+                        </div>
+
+                        <h3 id="munchies-title">NIGHTSHADE PRODUCTIONS</h3>
+                        <p id="vendor-copy">
+                            Videography, creative direction, and performance 
+                            visual productions.
+                        </p>
+
+                        <a class="btn btn-primary" href="nightshade-productions/nightshade.html">
+                            ENTER STUDIO ›
+                        </a>
+                    </article>
+
+                    <article class="card vendor-card rendering-card">
+                        <p class="shop-tag">STALL 03 // DIGITAL FABRICATION</p>
+
+                        <div class="vendor-status">
+                            <span>OPERATOR</span>
+                            <strong>NIGHTWARE</strong>
+                        </div>
+
+                        <h3 id="munchies-title">RENDERING ROOM</h3>
+                        <p id="vendor-copy">
+                            Home of Nightware: graphic design, websites, print, 
+                            packaging and digital worlds.
+                        </p>
+
+                        <a class="btn btn-primary" href="rendering-room/nightware.html">
+                            ENTER ROOM ›
+                        </a>
+                    </article>
                 </div>
-
-                <h3>NIGHTSHADE PRODUCTIONS</h3>
-                <p>
-                    Videography, creative direction, and performance 
-                    visual productions.
-                </p>
-
-                <a class="btn btn-primary" href="nightshade-productions/nightshade.html">
-                    ENTER STUDIO ›
-                </a>
-                </article>
-
-                <article class="card vendor-card rendering-card">
-                <p class="shop-tag">STALL 03 // DIGITAL FABRICATION</p>
-
-                <div class="vendor-status">
-                    <span>OPERATOR</span>
-                    <strong>NIGHTWARE</strong>
-                </div>
-
-                <h3>RENDERING ROOM</h3>
-                <p>
-                    Home of Nightware: graphic design, websites, print, 
-                    packaging and digital worlds.
-                </p>
-
-                <a class="btn btn-primary" href="rendering-room/nightware.html">
-                    ENTER ROOM ›
-                </a>
-                </article>
-            </div>
             </section>
 
             <section class="section">
-            <div class="feature">
-                <p class="eyebrow">MARKET TRANSMISSION</p>
-                <h2>NEW STOCK. OPEN BOOKS. LIMITED DROPS.</h2>
-                <p>
-                    Use this board for cookie drops, booking availability, 
-                    Nightware commissions, merch, festival specials and 
-                    future vendors.
-                </p>
+                <div class="feature">
+                    <p class="eyebrow">MARKET TRANSMISSION</p>
+                    <h2>NEW STOCK. OPEN BOOKS. LIMITED DROPS.</h2>
+                    <p>
+                        Use this board for cookie drops, booking availability, 
+                        Nightware commissions, merch, festival specials and 
+                        future vendors.
+                    </p>
 
-                <div class="ticker">
-                <span>NIGHTMARE MUNCHIES // LIMITED DROPS</span>
-                <span>NIGHTSHADE PRODUCTIONS // BOOKINGS</span>
-                <span>NIGHTWARE // COMMISSIONS</span>
+                    <div class="ticker">
+                        <span>NIGHTMARE MUNCHIES // LIMITED DROPS</span>
+                        <span>NIGHTSHADE PRODUCTIONS // BOOKINGS</span>
+                        <span>NIGHTWARE // COMMISSIONS</span>
+                    </div>
                 </div>
-            </div>
             </section>
         </main>
 
@@ -149,8 +166,6 @@
         </footer>
 
         <audio id="ambientAudio" src="assets/audio/blood-market-loop.mp3" loop preload="none"></audio>
-
-        <script src="market.js"></script>
         <script src="market.js"></script>
     </body>
 </html>

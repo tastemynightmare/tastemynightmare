@@ -198,8 +198,7 @@
 .nightshade-hero h1 {
   color: var(--shade-white);
 
-  font-size:
-    clamp(4rem, 8.8vw, 8.5rem);
+  font-size: 70px;
 
   text-shadow:
     2px 0 0
