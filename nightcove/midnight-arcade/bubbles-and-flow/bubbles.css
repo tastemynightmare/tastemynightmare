@@ -55,6 +55,25 @@ img {
 }
 
 
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 200;
+  padding: 10px 14px;
+  transform: translateY(-160%);
+  border: 2px solid var(--white);
+  background: var(--yellow);
+  color: #150b1c;
+  font-family: var(--font-display);
+  font-size: 10px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 /* =====================================================
    GLOBAL ATMOSPHERE
 ===================================================== */
@@ -188,7 +207,7 @@ img {
 }
 
 .sound-toggle {
-  min-height: 36px;
+  min-height: 44px;
   padding: 0 11px;
 
   border: 1px solid var(--border);
@@ -1053,6 +1072,18 @@ img {
 }
 
 
+
+.character-card--james {
+  --card-accent: #4dff76;
+  --card-secondary: #58ccff;
+  --card-bg: #040b07;
+  --card-image: url("assets/artists/james-rollup.webp");
+
+  /* 7 cards on a 3-column desktop grid:
+     make Signal 007 an intentional centered finale row. */
+  grid-column: 2;
+}
+
 /* =====================================================
    SIGNAL FOOTER
 ===================================================== */
@@ -1262,6 +1293,14 @@ body.modal-open {
   --preview-secondary: #f3ece7;
   --preview-bg: #100306;
   --preview-muted: #d9b9bd;
+}
+
+
+#previewModal[data-artist="james-rollup"] {
+  --preview-accent: #4dff76;
+  --preview-secondary: #58ccff;
+  --preview-bg: #040b07;
+  --preview-muted: #d8eadc;
 }
 
 #previewModal .modal__window {
@@ -1477,6 +1516,12 @@ a:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .character-card--james {
+    grid-column: 1 / -1;
+    width: calc((100% - 22px) / 2);
+    justify-self: center;
+  }
+
   .festival-strip {
     grid-template-columns: 1fr auto;
   }
@@ -1487,8 +1532,19 @@ a:focus-visible {
 }
 
 @media (max-width: 700px) {
+  .topbar {
+    flex-wrap: wrap;
+  }
+
+  .topbar__nav {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px 14px;
+  }
+
   .topbar__nav a:not(:last-of-type) {
-    display: none;
+    display: inline-flex;
   }
 
   .hero {
@@ -1517,6 +1573,12 @@ a:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .character-card--james {
+    grid-column: auto;
+    width: 100%;
+    justify-self: stretch;
+  }
+
   .character-card {
     min-height: 610px;
   }
@@ -1534,6 +1596,14 @@ a:focus-visible {
 @media (max-width: 450px) {
   .topbar {
     align-items: flex-start;
+  }
+
+  .topbar__nav {
+    align-items: stretch;
+  }
+
+  .sound-toggle {
+    min-height: 44px;
   }
 
   .tmn-brand strong {
@@ -1568,12 +1638,27 @@ a:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .star,
-  .bubble {
-    animation: none;
-  }
-
   html {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+
+  .star,
+  .bubble,
+  .cursor {
+    animation: none !important;
+  }
+
+  .character-card:hover,
+  .character-card:nth-child(even):hover {
+    transform: none;
   }
 }

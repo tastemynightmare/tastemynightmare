@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#020704">
+
+    <title>DJ James Roll Up | Midnight Arcade</title>
+
+    <meta
+      name="description"
+      content="Enter DJ James Roll Up's sound room inside the Midnight Arcade."
+    >
+
+    <link rel="stylesheet" href="james-rollup-music.css">
+    <link rel="stylesheet" href="../shared/sound-room-accessibility.css">
+  </head>
+
+  <body>
+
+    <main class="sound-room">
+
+      <div class="ambient-orbs" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav
+        class="sound-nav"
+        aria-label="Sound room navigation"
+      >
+        <a href="../../games.html">
+          ← MIDNIGHT ARCADE
+        </a>
+
+        <span>
+          TMN // ARTIST TRANSMISSION
+        </span>
+      </nav>
+
+      <section class="artist-stage">
+
+        <div
+          class="sprite-area"
+          aria-label="DJ James Roll Up character stickers"
+        >
+
+          <img
+            src="assets/james-hype.png"
+            alt=""
+            aria-hidden="true"
+            class="artist-sprite artist-sprite--hype"
+          >
+
+          <img
+            src="assets/james-money.png"
+            alt=""
+            aria-hidden="true"
+            class="artist-sprite artist-sprite--money"
+          >
+
+          <img
+            src="assets/james-performance.png"
+            alt="DJ James Roll Up performing at his DJ booth"
+            class="artist-sprite artist-sprite--performance"
+          >
+
+          <img
+            src="assets/james-rollup.png"
+            alt=""
+            aria-hidden="true"
+            class="artist-sprite artist-sprite--rollup"
+          >
+
+          <img
+            src="assets/james-shocked.png"
+            alt=""
+            aria-hidden="true"
+            class="artist-sprite artist-sprite--shocked"
+          >
+
+          <img
+            src="assets/james-logo.png"
+            alt=""
+            aria-hidden="true"
+            class="artist-sprite artist-sprite--logo"
+          >
+
+        </div>
+
+        <div class="player-card">
+
+          <p class="transmission-label">
+            NOW TRANSMITTING
+          </p>
+
+          <h1>
+            DJ JAMES
+            <span>ROLL UP</span>
+          </h1>
+
+          <p class="artist-location">
+            ROLL UP PARISH // 100 GIGAWATT FREQUENCY
+          </p>
+
+          <div class="album-frame">
+            <img
+              src="assets/james-flyer.png"
+              alt="Bubbles and Flow artwork featuring DJ James Roll Up"
+              class="album-art"
+            >
+          </div>
+
+          <div class="song-info">
+            <h2 id="songTitle">
+              TPP
+            </h2>
+
+            <p>
+              DJ JAMES ROLL UP
+            </p>
+          </div>
+
+          <div class="progress-container">
+            <span id="currentTime">0:00</span>
+
+            <input
+              id="progressBar"
+              type="range"
+              min="0"
+              max="100"
+              step="0.1"
+              value="0"
+              aria-label="Song progress"
+            >
+
+            <span id="duration">0:00</span>
+          </div>
+
+          <div class="controls">
+            <button
+              id="rewindButton"
+              type="button"
+              aria-label="Rewind 10 seconds"
+              title="Rewind 10 seconds"
+            >
+              ←
+            </button>
+
+            <button
+              id="playButton"
+              class="play-button"
+              type="button"
+              aria-label="Play"
+            >
+              ▶
+            </button>
+
+            <button
+              id="forwardButton"
+              type="button"
+              aria-label="Forward 10 seconds"
+              title="Forward 10 seconds"
+            >
+              →
+            </button>
+          </div>
+
+          <div
+            id="equalizer"
+            class="equalizer"
+            aria-hidden="true"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <audio id="audioPlayer" preload="metadata">
+            <source
+              src="assets/james-song.mp3"
+              type="audio/mpeg"
+            >
+          </audio>
+
+          <p
+            id="audioStatus"
+            class="audio-status"
+            aria-live="polite"
+          ></p>
+
+          <div class="artist-actions">
+            <a
+              href="../../bubbles-and-flow/james-rollup/index.html"
+              class="secondary-button"
+            >
+              ⚡ REPLAY TEN-POUND BOOTY PROTOCOL
+            </a>
+
+            <a
+              href="https://shotgun.live/en/festivals/bubbles-flow-music-festival"
+              class="ticket-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🎟 BUBBLES &amp; FLOW
+            </a>
+          </div>
+
+        </div>
+
+      </section>
+
+      <footer>
+        <p>
+          TASTE MY NIGHTMARE // MIDNIGHT ARCADE
+        </p>
+      </footer>
+
+    </main>
+
+    <script src="james-rollup-music.js"></script>
+    <script src="../shared/sound-room-accessibility.js"></script>
+
+  </body>
+</html>

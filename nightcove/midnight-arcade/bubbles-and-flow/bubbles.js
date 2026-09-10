@@ -8,8 +8,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const $ = (selector, scope = document) => scope.querySelector(selector);
   const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
 
+  let modalReturnFocus = null;
+
+  function getFocusableElements(scope) {
+    return $$(
+      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), ' +
+      'textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      scope
+    ).filter((element) => !element.hidden && element.getAttribute("aria-hidden") !== "true");
+  }
+
   function openModal(modal) {
     if (!modal) return;
+
+    modalReturnFocus = document.activeElement;
 
     modal.hidden = false;
     modal.setAttribute("aria-hidden", "false");
@@ -33,6 +45,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if ($$(".modal:not([hidden])").length === 0) {
       document.body.classList.remove("modal-open");
     }
+
+    if (modalReturnFocus instanceof HTMLElement) {
+      requestAnimationFrame(() => modalReturnFocus.focus());
+    }
+
+    modalReturnFocus = null;
   }
 
   /* =====================================================
@@ -142,6 +160,16 @@ document.addEventListener("DOMContentLoaded", () => {
         "The final transmission has been detected inside Night Cove, but access has not been authorized yet.",
       href: "",
       locked: true
+    },
+
+    "james-rollup": {
+      title: "DJ JAMES ROLL UP",
+      route: "THE TEN-POUND BOOTY PROTOCOL",
+      zone: "ROLL UP PARISH // LOUISIANA",
+      copy:
+        "The function is losing power, the Booty Core is underweight, and the parish needs 100 gigawatts before the Vibe Killer shuts everything down.",
+      href: "james-rollup/index.html", 
+      locked: false
     }
   };
 
@@ -230,14 +258,34 @@ document.addEventListener("DOMContentLoaded", () => {
   ====================================================== */
 
   document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape") return;
+    const openModalElement = $(".modal:not([hidden])");
 
-    if (previewModal && !previewModal.hidden) {
-      closeModal(previewModal);
+    if (!openModalElement) return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeModal(openModalElement);
+      return;
     }
 
-    if (loreModal && !loreModal.hidden) {
-      closeModal(loreModal);
+    if (event.key !== "Tab") return;
+
+    const focusable = getFocusableElements(openModalElement);
+
+    if (focusable.length === 0) {
+      event.preventDefault();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
     }
   });
 
@@ -252,7 +300,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "ram",
     "jilli",
     "m1h1",
-    "red-babies"
+    "red-babies",
+    "ashelic-rose",
+    "james-rollup"
   ];
 
   function readProgress() {
@@ -345,7 +395,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `${missing} FRAGMENT${missing === 1 ? "" : "S"} STILL MISSING.`;
     } else {
       fragmentStatus.textContent =
-        "FIVE FRAGMENTS RECOVERED. FINAL SIGNAL REMAINS LOCKED.";
+        "ALL SEVEN FRAGMENTS RECOVERED. THE PATTERN IS COMPLETE.";
     }
   }
 
@@ -366,6 +416,11 @@ document.addEventListener("DOMContentLoaded", () => {
         ambientAudio.pause();
         soundOn = false;
         soundToggle.textContent = "SOUND: OFF";
+        soundToggle.setAttribute("aria-pressed", "false");
+        soundToggle.setAttribute(
+          "aria-label",
+          "Turn Bubbles and Flow ambient sound on"
+        );
         return;
       }
 
@@ -375,9 +430,14 @@ document.addEventListener("DOMContentLoaded", () => {
         await ambientAudio.play();
         soundOn = true;
         soundToggle.textContent = "SOUND: ON";
+        soundToggle.setAttribute("aria-pressed", "true");
+        soundToggle.setAttribute(
+          "aria-label",
+          "Turn Bubbles and Flow ambient sound off"
+        );
       } catch (error) {
         console.warn(
-          "Ambient audio could not play. Check assets/audio/bubbles-flow-loop.mp3",
+          "assets/audio/bubbles-flow-loop.mp3",
           error
         );
       }
@@ -391,9 +451,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const signalMessage = $("#signalMessage");
 
   const messages = [
-    "Five nightmares are currently broadcasting...",
-    "The final transmission remains locked...",
-    "Bubbles & Flow signal detected inside the Night Cove...",
+    "Six nightmares are currently broadcasting...",
+    "One transmission remains locked...",
+    "SIGNAL 007 is bending Louisiana physics...",
     "Fragments may persist between sessions...",
     "Unknown signal repeats: SAY A PRAYER TO SHEEEEEE"
   ];

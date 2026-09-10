@@ -1,0 +1,845 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --black: #020704;
+  --deep: #07140b;
+
+  --primary: #4dff76;
+  --secondary: #2b8cff;
+  --accent: #f2c14d;
+
+  --green-glow: rgba(77,255,118,.22);
+  --blue-glow: rgba(43,140,255,.18);
+  --gold-glow: rgba(242,193,77,.16);
+
+  --white: #f8f4dc;
+  --muted: #c7ccb9;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 14% 15%,
+      rgba(77,255,118,.18),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 84% 30%,
+      rgba(43,140,255,.16),
+      transparent 31%
+    ),
+    radial-gradient(
+      circle at 55% 92%,
+      rgba(242,193,77,.11),
+      transparent 34%
+    ),
+    linear-gradient(
+      145deg,
+      #020403,
+      #07140b 50%,
+      #010302
+    );
+
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+button,
+a,
+input {
+  font: inherit;
+}
+
+.sound-room {
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+}
+
+
+/* =====================================================
+   AMBIENT BACKGROUND
+===================================================== */
+
+.ambient-orbs {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient-orbs span {
+  position: absolute;
+
+  width: 240px;
+  height: 240px;
+
+  border:
+    1px solid
+    rgba(77,255,118,.27);
+
+  border-radius: 50%;
+
+  opacity: .18;
+  filter: blur(1px);
+
+  box-shadow:
+    inset 0 0 30px rgba(43,140,255,.05),
+    0 0 30px rgba(242,193,77,.08);
+
+  animation:
+    drift 10s ease-in-out infinite alternate;
+}
+
+.ambient-orbs span:nth-child(1) {
+  top: 8%;
+  left: 3%;
+}
+
+.ambient-orbs span:nth-child(2) {
+  width: 340px;
+  height: 340px;
+
+  right: -90px;
+  top: 35%;
+
+  border-color:
+    rgba(43,140,255,.24);
+
+  animation-delay: -3s;
+}
+
+.ambient-orbs span:nth-child(3) {
+  width: 180px;
+  height: 180px;
+
+  bottom: 4%;
+  left: 36%;
+
+  border-color:
+    rgba(242,193,77,.24);
+
+  animation-delay: -6s;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.sound-nav {
+  position: relative;
+  z-index: 10;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  padding: 20px 6%;
+
+  border-bottom:
+    1px solid
+    color-mix(in srgb, var(--primary) 45%, transparent);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--black) 78%,
+      transparent
+    );
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.sound-nav a {
+  color: var(--primary);
+
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.sound-nav span {
+  color: var(--accent);
+
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+
+/* =====================================================
+   MAIN STAGE
+===================================================== */
+
+.artist-stage {
+  width: min(1100px, 92%);
+  min-height: 80vh;
+
+  margin: auto;
+  padding: 50px 0;
+
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 50px;
+}
+
+
+/* =====================================================
+   DESKTOP STICKER FIELD
+===================================================== */
+
+.sprite-area {
+  position: relative;
+
+  min-width: 0;
+  min-height: 680px;
+
+  align-self: stretch;
+}
+
+.artist-sprite {
+  position: absolute;
+
+  display: block;
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 20px 30px rgba(0,0,0,.58))
+    drop-shadow(0 0 18px rgba(77,255,118,.20))
+    drop-shadow(0 0 26px rgba(43,140,255,.10));
+
+  animation:
+    float 3s ease-in-out infinite;
+}
+
+/* DJ James Roll Up scattered desktop composition */
+
+.artist-sprite--performance {
+  width: min(380px, 95%);
+  left: 8%;
+  top: 14%;
+  z-index: 5;
+
+  transform: rotate(-2deg);
+}
+
+.artist-sprite--hype {
+  width: min(290px, 72%);
+  left: 0;
+  top: 0;
+  z-index: 4;
+
+  transform: rotate(-8deg);
+  animation-delay: -.9s;
+}
+
+.artist-sprite--money {
+  width: min(280px, 68%);
+  right: 0;
+  top: 4%;
+  z-index: 4;
+
+  transform: rotate(7deg);
+  animation-delay: -1.8s;
+}
+
+.artist-sprite--rollup {
+  width: min(260px, 64%);
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+
+  transform: rotate(7deg);
+  animation-delay: -2.4s;
+}
+
+.artist-sprite--shocked {
+  width: min(245px, 62%);
+  right: 0;
+  bottom: 3%;
+  z-index: 4;
+
+  transform: rotate(-7deg);
+  animation-delay: -1.3s;
+}
+
+.artist-sprite--logo {
+  width: min(505px, 95%);
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+
+  transform: translate(-50%, -50%);
+  animation-delay: -2s;
+}
+
+
+/* =====================================================
+   PLAYER CARD
+===================================================== */
+
+.player-card {
+  position: relative;
+  min-width: 0;
+
+  padding: 35px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(77,255,118,.075),
+      rgba(43,140,255,.045)
+    );
+
+  border:
+    1px solid
+    color-mix(in srgb, var(--primary) 58%, transparent);
+
+  border-radius: 25px;
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 0 50px var(--green-glow),
+    0 0 90px rgba(43,140,255,.05);
+}
+
+.transmission-label {
+  color: var(--accent);
+
+  letter-spacing: 4px;
+  font-size: 10px;
+}
+
+.player-card h1 {
+  margin: 12px 0;
+
+  color: var(--primary);
+
+  font-size: clamp(34px, 6vw, 70px);
+  line-height: .86;
+
+  text-shadow:
+    0 0 20px rgba(77,255,118,.28);
+}
+
+.player-card h1 span {
+  display: block;
+  color: var(--secondary);
+
+  text-shadow:
+    0 0 20px rgba(43,140,255,.25);
+}
+
+.artist-location {
+  margin-bottom: 25px;
+
+  color: var(--accent);
+
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   ALBUM ART + SONG INFO
+===================================================== */
+
+.album-frame {
+  padding: 8px;
+
+  border:
+    1px solid
+    var(--secondary);
+
+  background:
+    rgba(0,0,0,.4);
+
+  box-shadow:
+    0 0 18px rgba(43,140,255,.10);
+}
+
+.album-art {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  display: block;
+  object-fit: cover;
+}
+
+.song-info {
+  margin-top: 20px;
+}
+
+.song-info h2 {
+  color: var(--white);
+  letter-spacing: 2px;
+}
+
+.song-info p {
+  margin-top: 5px;
+
+  color: var(--primary);
+}
+
+
+/* =====================================================
+   AUDIO PROGRESS
+===================================================== */
+
+.progress-container {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+
+  margin: 20px 0;
+
+  font-size: 11px;
+}
+
+#progressBar {
+  width: 100%;
+  min-width: 0;
+
+  accent-color: var(--primary);
+
+  cursor: pointer;
+}
+
+
+/* =====================================================
+   CONTROLS
+===================================================== */
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.controls button {
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  min-height: 45px;
+
+  display: grid;
+  place-items: center;
+
+  border:
+    1px solid
+    rgba(255,255,255,.2);
+
+  border-radius: 50%;
+
+  background: transparent;
+  color: var(--white);
+
+  cursor: pointer;
+
+  transition:
+    transform .15s ease,
+    border-color .15s ease,
+    color .15s ease;
+}
+
+.controls button:hover {
+  transform: translateY(-2px);
+
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.controls .play-button {
+  width: 70px;
+  height: 70px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--secondary)
+    );
+
+  color: var(--black);
+
+  border-color: var(--primary);
+
+  font-size: 25px;
+
+  box-shadow:
+    0 0 24px rgba(77,255,118,.15),
+    0 0 28px rgba(43,140,255,.10);
+}
+
+
+/* =====================================================
+   EQUALIZER + AUDIO STATUS
+===================================================== */
+
+.equalizer {
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  margin: 20px 0 10px;
+}
+
+.equalizer span {
+  width: 5px;
+  height: 8px;
+
+  background:
+    linear-gradient(
+      to top,
+      var(--primary),
+      var(--secondary),
+      var(--accent)
+    );
+
+  border-radius: 5px;
+}
+
+.equalizer.playing span {
+  animation:
+    equalize
+    .6s
+    ease-in-out
+    infinite alternate;
+}
+
+.equalizer span:nth-child(2) {
+  animation-delay: .1s;
+}
+
+.equalizer span:nth-child(3) {
+  animation-delay: .2s;
+}
+
+.equalizer span:nth-child(4) {
+  animation-delay: .3s;
+}
+
+.equalizer span:nth-child(5) {
+  animation-delay: .15s;
+}
+
+.equalizer span:nth-child(6) {
+  animation-delay: .25s;
+}
+
+.equalizer span:nth-child(7) {
+  animation-delay: .05s;
+}
+
+.audio-status {
+  min-height: 1.2em;
+
+  margin: 0 0 14px;
+
+  text-align: center;
+
+  color: var(--accent);
+
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.artist-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.artist-actions a {
+  min-height: 48px;
+  padding: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 12px;
+
+  transition:
+    transform .15s ease,
+    opacity .15s ease;
+}
+
+.artist-actions a:hover {
+  transform: translateY(-2px);
+}
+
+.secondary-button {
+  border:
+    1px solid
+    var(--secondary);
+
+  color: var(--white);
+}
+
+.ticket-button {
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--accent)
+    );
+
+  color: var(--black);
+}
+
+
+/* =====================================================
+   PLAYING STATE
+===================================================== */
+
+body.james-playing .player-card {
+  border-color:
+    color-mix(in srgb, var(--primary) 78%, var(--secondary));
+
+  box-shadow:
+    0 0 60px rgba(77,255,118,.18),
+    0 0 90px rgba(43,140,255,.08),
+    0 0 110px rgba(242,193,77,.035);
+}
+
+body.james-playing .album-frame {
+  box-shadow:
+    0 0 20px rgba(43,140,255,.14),
+    0 0 28px rgba(242,193,77,.06);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+  padding: 25px;
+
+  text-align: center;
+
+  color: var(--accent);
+
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline:
+    2px solid
+    var(--accent);
+
+  outline-offset: 3px;
+}
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+@keyframes float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -12px;
+  }
+}
+
+@keyframes equalize {
+  from {
+    height: 6px;
+  }
+
+  to {
+    height: 35px;
+  }
+}
+
+@keyframes drift {
+  from {
+    transform:
+      translate3d(0,0,0)
+      scale(1);
+  }
+
+  to {
+    transform:
+      translate3d(28px,-22px,0)
+      scale(1.08);
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+   Same master Sound Room template:
+   one hero sticker above player card
+===================================================== */
+
+@media (max-width: 750px) {
+
+  .artist-stage {
+    width: min(680px, 92%);
+
+    grid-template-columns: 1fr;
+    gap: 0;
+
+    padding-top: 30px;
+  }
+
+  .sprite-area {
+    min-height: 0;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    margin-bottom: -58px;
+
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .artist-sprite {
+    display: none;
+    position: static;
+  }
+
+  .artist-sprite--performance {
+    display: block;
+
+    width: min(330px, 80vw);
+    max-height: 360px;
+
+    margin: 0 auto;
+
+    transform: none;
+
+    z-index: 6;
+  }
+
+  .player-card {
+    z-index: 2;
+
+    padding:
+      84px
+      25px
+      25px;
+
+    border-radius: 25px;
+  }
+
+  .sound-nav span {
+    display: none;
+  }
+
+  .artist-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 430px) {
+
+  .sound-nav {
+    padding-inline: 18px;
+  }
+
+  .artist-stage {
+    width: min(94%, 420px);
+  }
+
+  .sprite-area {
+    margin-bottom: -48px;
+  }
+
+  .artist-sprite--performance {
+    width: min(285px, 78vw);
+    max-height: 320px;
+  }
+
+  .player-card {
+    padding:
+      72px
+      20px
+      20px;
+
+    border-radius: 18px;
+  }
+
+  .progress-container {
+    gap: 7px;
+  }
+
+  .controls {
+    gap: 14px;
+  }
+
+  .song-info h2 {
+    font-size: 18px;
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .artist-sprite,
+  .ambient-orbs span,
+  .equalizer.playing span {
+    animation: none;
+  }
+}

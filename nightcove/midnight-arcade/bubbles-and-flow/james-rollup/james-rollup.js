@@ -5,8 +5,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const CONFIG = {
         ticketUrl: "https://shotgun.live/en/festivals/bubbles-flow-music-festival",
-        jamesPageUrl: "../../artists/dj-james-roll-up/index.html",
+        jamesPageUrl: "../../artists/james-rollup/index.html",
         musicEnabled: true
+    };
+
+    const QTE_TIMING = {
+        shakeSeconds: 14,
+        crowdSeconds: 18,
+        finalHypeMs: 8000,
+        finalCheekMs: 10000,
+        countdownSeconds: 3
     };
 
     const ASSETS = {
@@ -33,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
 
         audio: {
-            ambient: "assets/audio/james-rollup-song.mp3",
+            ambient: "assets/audio/james-song.mp3",
             click: "assets/audio/ui-click.mp3",
             glitch: "assets/audio/glitch.wav",
             fragment: "assets/audio/fragment-unlock.mp3",
@@ -41,6 +49,17 @@ document.addEventListener("DOMContentLoaded", () => {
             fail: "assets/audio/qte-fail.mp3",
             success: "assets/audio/qte-success.mp3"
         }
+    };
+
+
+    const CHARACTER_ALT = {
+        jamesPerformance: "DJ James Roll Up performing at the party.",
+        jamesHype: "DJ James Roll Up hyping and controlling the crowd.",
+        jamesMoney: "DJ James Roll Up surrounded by cash.",
+        jamesRollup: "DJ James Roll Up holding a roll-up.",
+        jamesShocked: "DJ James Roll Up reacting in disbelief.",
+        bagMan: "The Bag Man, a sentient money bag wearing shades and a gold grill.",
+        vibeKiller: "The Vibe Killer, a hostile party-draining figure."
     };
 
     const story = {
@@ -325,6 +344,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "A sentient money bag in sunglasses crawls out of it.\n\n" +
                 "Bag Man: James. My boy. Forget these people. Take the money.",
             sprite: "bagMan",
+            coSprite: "jamesMoney",
             background: "cashout",
             objective: "Decide whether to cash out or protect the function.",
             choices: [
@@ -354,6 +374,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "YOU SOLD THE FUNCTION.\n" +
                 "THERE IS NO FUNCTION NOW.",
             sprite: "jamesShocked",
+            coSprite: "bagMan",
             background: "cashout",
             objective: "Rewind the cash-out event.",
             mass: 2.6,
@@ -376,6 +397,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "James: NIGGA WHAT?!\n\n" +
                 "The Bag Man disappears before anybody can ask questions.",
             sprite: "jamesShocked",
+            coSprite: "bagMan",
             background: "cashout",
             objective: "Rewind the terrible financial decision.",
             effect: "glitch",
@@ -414,6 +436,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Money spills out of him and rains over the crowd.\n\n" +
                 "MIDNIGHT ARCADE: PROFIT GENERATED THROUGH VIBES.",
             sprite: "jamesMoney",
+            coSprite: "bagMan",
             background: "cashout",
             objective: "Keep the party alive.",
             mass: 7.2,
@@ -504,6 +527,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "and unpaid invoices.\n\n" +
                 "ENTITY IDENTIFIED: THE VIBE KILLER.",
             sprite: "vibeKiller",
+            coSprite: "jamesShocked",
             background: "vibeKiller",
             objective: "Stop the Vibe Killer from draining the crowd.",
             mass: 7.0,
@@ -527,6 +551,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "It's over.\n\n" +
                 "James: Oh, you one of THEM niggas.",
             sprite: "vibeKiller",
+            coSprite: "jamesHype",
             background: "vibeKiller",
             objective: "Retake control of the crowd.",
             choices: [
@@ -570,6 +595,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "from stolen party energy.\n\n" +
                 "James: Nah. Run that back.",
             sprite: "jamesShocked",
+            coSprite: "vibeKiller",
             background: "vibeKiller",
             objective: "Retake the crowd.",
             effect: "glitch",
@@ -592,6 +618,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "No speakers.\n\n" +
                 "Vibe Killer: No music. No party.",
             sprite: "vibeKiller",
+            coSprite: "jamesHype",
             background: "finalParty",
             objective: "Find another way to generate the final 0.6 pounds.",
             choices: [
@@ -719,7 +746,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const sceneEl = document.getElementById("scene");
     const backgroundEl = document.getElementById("sceneBackground");
+    const stageEl = document.querySelector(".stage");
+    const characterLayerEl = document.getElementById("characterLayer");
     const spriteEl = document.getElementById("characterSprite");
+    const secondarySpriteEl = document.getElementById("secondaryCharacterSprite");
     const speakerEl = document.getElementById("speakerName");
     const dialogueEl = document.getElementById("dialogueText");
     const choicesEl = document.getElementById("choices");
@@ -744,6 +774,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const qteStatusEl = document.getElementById("qteStatus");
     const qteVisualEl = document.getElementById("qteVisual");
     const qteControlsEl = document.getElementById("qteControls");
+    const gameStatusEl = document.getElementById("gameStatus");
 
     const bootyLayerEl = document.getElementById("bootyLayer");
     const goldenBootyEl = document.getElementById("goldenBootySprite");
@@ -754,7 +785,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const requiredElements = {
         sceneEl,
         backgroundEl,
+        stageEl,
+        characterLayerEl,
         spriteEl,
+        secondarySpriteEl,
         speakerEl,
         dialogueEl,
         choicesEl,
@@ -777,6 +811,7 @@ document.addEventListener("DOMContentLoaded", () => {
         qteStatusEl,
         qteVisualEl,
         qteControlsEl,
+        gameStatusEl,
         bootyLayerEl,
         goldenBootyEl
     };
@@ -854,6 +889,13 @@ document.addEventListener("DOMContentLoaded", () => {
             String(gameState.soundOn)
         );
 
+        soundToggleBtn.setAttribute(
+            "aria-label",
+            gameState.soundOn
+                ? "Turn DJ James Roll Up game sound off"
+                : "Turn DJ James Roll Up game sound on"
+        );
+
         if (gameState.soundOn) {
             startAmbient();
         } else {
@@ -874,48 +916,102 @@ document.addEventListener("DOMContentLoaded", () => {
             `linear-gradient(rgba(2,7,4,0.06), rgba(2,7,4,0.34)), url("${src}")`;
     }
 
-    function setSprite(key, effect) {
-        spriteEl.className = "character-sprite";
+    function applyCharacterSprite(element, key, effect = null) {
+        element.className =
+            element === secondarySpriteEl
+                ? "character-sprite character-sprite--secondary"
+                : "character-sprite character-sprite--primary";
 
         if (!key) {
-            spriteEl.hidden = true;
-            spriteEl.removeAttribute("src");
-            spriteEl.alt = "";
+            element.hidden = true;
+            element.removeAttribute("src");
+            element.removeAttribute("data-character");
+            element.alt = "";
             return;
         }
 
         const src = asset("characters", key);
 
-        spriteEl.hidden = false;
-        spriteEl.src = src;
-        spriteEl.alt =
+        element.hidden = false;
+        element.src = src;
+        element.dataset.character = key;
+        element.alt =
+            CHARACTER_ALT[key] ||
             key.replace(/([A-Z])/g, " $1").trim();
 
         requestAnimationFrame(() => {
-            spriteEl.classList.add("enter");
+            element.classList.add("enter");
 
             if (effect === "shake") {
-                spriteEl.classList.add("shake");
+                element.classList.add("shake");
             }
 
             if (effect === "glitch") {
-                spriteEl.classList.add("glitch");
+                element.classList.add("glitch");
             }
         });
+    }
+
+    function setSceneCharacters(primaryKey, secondaryKey = null, effect = null) {
+        const hasDuo = Boolean(primaryKey && secondaryKey);
+
+        characterLayerEl.classList.toggle(
+            "has-duo",
+            hasDuo
+        );
+
+        applyCharacterSprite(
+            spriteEl,
+            primaryKey,
+            effect
+        );
+
+        applyCharacterSprite(
+            secondarySpriteEl,
+            secondaryKey,
+            effect
+        );
+    }
+
+    function hideSceneCharacters() {
+        spriteEl.hidden = true;
+        secondarySpriteEl.hidden = true;
     }
 
     spriteEl.addEventListener("error", () => {
         spriteEl.hidden = true;
     });
 
+    secondarySpriteEl.addEventListener("error", () => {
+        secondarySpriteEl.hidden = true;
+    });
+
     goldenBootyEl.addEventListener("error", () => {
         goldenBootyEl.hidden = true;
     });
 
-    function setGoldenBooty(mode = null) {
+    function setGoldenBooty(mode = null, context = "scene") {
         goldenBootyEl.className = "golden-booty-sprite";
 
-        if (!mode) {
+        const visible = Boolean(mode);
+        const isQte = visible && context === "qte";
+
+        stageEl.classList.toggle(
+            "has-booty",
+            visible
+        );
+
+        stageEl.classList.toggle(
+            "qte-mode",
+            isQte
+        );
+
+        bootyLayerEl.classList.toggle(
+            "booty-layer--qte",
+            isQte
+        );
+
+        if (!visible) {
             goldenBootyEl.hidden = true;
             return;
         }
@@ -930,7 +1026,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function pulseGoldenBooty() {
         if (goldenBootyEl.hidden) {
-            setGoldenBooty("idle");
+            setGoldenBooty("idle", "qte");
         }
 
         goldenBootyEl.classList.remove("is-pulsing");
@@ -942,7 +1038,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function jiggleGoldenBooty(side) {
         if (goldenBootyEl.hidden) {
-            setGoldenBooty("idle");
+            setGoldenBooty("idle", "qte");
         }
 
         const jiggleClass =
@@ -1091,6 +1187,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         fragmentScreenEl.hidden = false;
 
+        document.getElementById("fragmentTitle")?.focus();
+        gameStatusEl.textContent = "Fragment 07 acquired: Energy.";
+
         playSfx("fragment");
     }
 
@@ -1098,6 +1197,9 @@ document.addEventListener("DOMContentLoaded", () => {
         clearQte();
 
         festivalScreenEl.hidden = false;
+
+        document.getElementById("festivalTitle")?.focus();
+        gameStatusEl.textContent = "Transmission complete. Bubbles and Flow festival information is now available.";
 
         musicPlayer.pause();
     }
@@ -1146,7 +1248,11 @@ document.addEventListener("DOMContentLoaded", () => {
             String(gameState.scenesVisited).padStart(2, "0");
 
         setBackground(scene.background);
-        setSprite(scene.sprite, scene.effect);
+        setSceneCharacters(
+            scene.sprite,
+            scene.coSprite || null,
+            scene.effect
+        );
         setGoldenBooty(scene.booty || null);
 
         if (typeof scene.mass === "number") {
@@ -1154,6 +1260,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         typeText(scene.text || "");
+
+        gameStatusEl.textContent =
+            `${scene.speaker || "MIDNIGHT ARCADE"}. ` +
+            (scene.text || "").replace(/\s+/g, " ").trim();
+
         renderChoices(scene.choices);
 
         if (scene.glitchText) {
@@ -1223,6 +1334,8 @@ document.addEventListener("DOMContentLoaded", () => {
         qteStatusEl.textContent = "";
 
         setGoldenBooty(null);
+        stageEl.classList.remove("qte-mode");
+        bootyLayerEl.classList.remove("booty-layer--qte");
     }
 
     function createQteButton(label, className = "") {
@@ -1334,7 +1447,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function runQteCountdown(onComplete) {
         clearQteTimersOnly();
 
-        let count = 3;
+        let count = QTE_TIMING.countdownSeconds;
 
         qteStatusEl.textContent =
             `STARTING IN ${count}...`;
@@ -1386,7 +1499,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "Alternate LEFT CHEEK and RIGHT CHEEK. Desktop players can also use the arrow keys.";
 
         qteStatusEl.textContent =
-            "12 SEC // 0 OF 16 HITS";
+            `${QTE_TIMING.shakeSeconds} SEC // 0 OF 16 HITS`;
 
         qteVisualEl.innerHTML =
             '<div class="qte-counter" id="shakeCounter">0 / 16</div>';
@@ -1402,12 +1515,12 @@ document.addEventListener("DOMContentLoaded", () => {
             rightButton
         );
 
-        spriteEl.hidden = true;
-        setGoldenBooty("idle");
+        hideSceneCharacters();
+        setGoldenBooty("idle", "qte");
 
         let expectedSide = "left";
         let hits = 0;
-        let seconds = 12;
+        let seconds = QTE_TIMING.shakeSeconds;
 
         const counter =
             document.getElementById("shakeCounter");
@@ -1509,7 +1622,7 @@ document.addEventListener("DOMContentLoaded", () => {
         registerQteTimer(
             window.setTimeout(() => {
                 finish(false);
-            }, 12000)
+            }, QTE_TIMING.shakeSeconds * 1000)
         );
     }
 
@@ -1552,8 +1665,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 "timingMarker"
             );
 
-        spriteEl.hidden = true;
-        setGoldenBooty("idle");
+        hideSceneCharacters();
+        setGoldenBooty("idle", "qte");
 
         let position = 0;
         let direction = 1;
@@ -1692,7 +1805,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "Respond to the section that is losing energy. Ignore the distractions. Get six correct calls before time runs out.";
 
         qteStatusEl.textContent =
-            "16 SEC // 0 OF 6 CROWD CALLS";
+            `${QTE_TIMING.crowdSeconds} SEC // 0 OF 6 CROWD CALLS`;
 
         qteVisualEl.innerHTML =
             '<div class="qte-counter" id="crowdPrompt">WAIT...</div>';
@@ -1752,7 +1865,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let currentTarget = "left";
         let correct = 0;
-        let seconds = 16;
+        let seconds = QTE_TIMING.crowdSeconds;
 
         function finish(success) {
             if (!gameState.qteActive) return;
@@ -1998,7 +2111,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     playSfx("fail");
                     goToScene("crowdFail");
                 }
-            }, 7000)
+            }, QTE_TIMING.finalHypeMs)
         );
     }
 
@@ -2038,8 +2151,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 "finalCheekCounter"
             );
 
-        spriteEl.hidden = true;
-        setGoldenBooty("idle");
+        hideSceneCharacters();
+        setGoldenBooty("idle", "qte");
 
         let expectedSide = "left";
         let hits = 0;
@@ -2127,7 +2240,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     playSfx("fail");
                     goToScene("crowdFail");
                 }
-            }, 8500)
+            }, QTE_TIMING.finalCheekMs)
         );
     }
 
@@ -2149,8 +2262,8 @@ document.addEventListener("DOMContentLoaded", () => {
         qteVisualEl.innerHTML =
             '<div class="qte-counter">99 GW</div>';
 
-        spriteEl.hidden = true;
-        setGoldenBooty("pulse");
+        hideSceneCharacters();
+        setGoldenBooty("pulse", "qte");
 
         qteControlsEl.replaceChildren();
 

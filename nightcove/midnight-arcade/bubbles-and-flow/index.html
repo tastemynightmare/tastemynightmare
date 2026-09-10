@@ -5,11 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#08020d">
         <title>Bubbles & Flow | Midnight Arcade</title>
-        <meta name="description" content="Choose a transmission and enter one of six Bubbles & Flow nightmares inside the Midnight Arcade.">
+        <meta name="description" content="Choose a transmission and enter one of seven Bubbles & Flow nightmares inside the Midnight Arcade.">
         <link rel="stylesheet" href="bubbles.css">
     </head>
 
     <body>
+
+        <a class="skip-link" href="#transmissions">Skip to transmissions</a>
 
         <div class="starfield" id="starfield" aria-hidden="true"></div>
         <div class="scanlines" aria-hidden="true"></div>
@@ -31,7 +33,13 @@
                 >
                     TICKETS
                 </a>
-                <button id="soundToggle" class="sound-toggle" type="button">
+                <button
+                    id="soundToggle"
+                    class="sound-toggle"
+                    type="button"
+                    aria-label="Turn Bubbles and Flow ambient sound on"
+                    aria-pressed="false"
+                >
                     SOUND: OFF
                 </button>
             </nav>
@@ -72,8 +80,8 @@
                     </h1>
 
                     <p class="hero__intro">
-                        Six signals entered Night Cove.
-                        Six nightmares answered back.
+                        Seven signals entered Night Cove.
+                        Seven nightmares answered back.
                         Choose whose transmission you want to enter first.
                     </p>
 
@@ -103,46 +111,55 @@
                     </div>
 
                     <div class="fragment-count">
-                        <strong id="fragmentCount">0</strong>
-                        <span>/ 6</span>
+                        <strong id="fragmentCount" aria-live="polite">0</strong>
+                        <span>/ 7</span>
                     </div>
 
-                    <div class="fragment-list">
+                    <div class="fragment-list" role="list">
 
-                        <div data-fragment="princess-red">
-                            <span class="fragment-dot"></span>
+                        <div data-fragment="princess-red" role="listitem">
+                            <span class="fragment-dot" aria-hidden="true"></span>
                             HEART
                         </div>
 
-                        <div data-fragment="ram">
-                            <span class="fragment-dot"></span>
+                        <div data-fragment="ram" role="listitem">
+                            <span class="fragment-dot" aria-hidden="true"></span>
                             WORD
                         </div>
 
-                        <div data-fragment="jilli">
-                            <span class="fragment-dot"></span>
+                        <div data-fragment="jilli" role="listitem">
+                            <span class="fragment-dot" aria-hidden="true"></span>
                             CHOICE
                         </div>
 
-                        <div data-fragment="m1h1">
-                            <span class="fragment-dot"></span>
+                        <div data-fragment="m1h1" role="listitem">
+                            <span class="fragment-dot" aria-hidden="true"></span>
                             WILL
                         </div>
 
-                        <div data-fragment="red-babies">
-                            <span class="fragment-dot"></span>
+                        <div data-fragment="red-babies" role="listitem">
+                            <span class="fragment-dot" aria-hidden="true"></span>
                             MEMORY
                         </div>
 
-                        <div data-fragment="ashelic-rose">
-                            <span class="fragment-dot"></span>
+                        <div data-fragment="ashelic-rose" role="listitem">
+                            <span class="fragment-dot" aria-hidden="true"></span>
                             SELF
+                        </div>
+
+
+                        <div data-fragment="james-rollup" role="listitem">
+                            <span class="fragment-dot" aria-hidden="true"></span>
+                            ENERGY
                         </div>
 
                     </div>
 
-                        <p class="monitor__status" id="fragmentStatus">
-                        SIGNAL INCOMPLETE.
+                        <p 
+                        class="monitor__status" 
+                        id="fragmentStatus" role="status" 
+                        aria-live="polite">
+                            SIGNAL INCOMPLETE.
                         </p>
 
                 </aside>
@@ -255,7 +272,10 @@
 
                         <div class="card-actions">
 
-                            <a class="play-link" href="princess-red/index.html">
+                            <a class="play-link" 
+                            href="princess-red/index.html" 
+                            aria-label="Answer Princess Red signal"
+                            >
                                 ANSWER SIGNAL
                                 <span>&gt;</span>
                             </a>
@@ -264,6 +284,7 @@
                                 class="preview-link"
                                 type="button"
                                 data-preview="princess-red"
+                                aria-label="Preview Princess Red transmission"
                             >
                                 PREVIEW
                             </button>
@@ -325,7 +346,10 @@
 
                             <div class="card-actions">
 
-                                <a class="play-link" href="ram/index.html">
+                                <a class="play-link" 
+                                href="ram/index.html" 
+                                aria-label="Answer Ram the Pharaoh signal"
+                                >
                                     ANSWER SIGNAL
                                     <span>&gt;</span>
                                 </a>
@@ -334,6 +358,7 @@
                                     class="preview-link"
                                     type="button"
                                     data-preview="ram"
+                                aria-label="Preview Ram the Pharaoh transmission"
                                 >
                                     PREVIEW
                                 </button>
@@ -376,7 +401,7 @@
                             </p>
 
                             <h3>
-                            JILLIAN!
+                                JILLIAN!
                             </h3>
 
                             <p class="route-title">
@@ -394,7 +419,10 @@
 
                             <div class="card-actions">
 
-                                <a class="play-link" href="jilli/index.html">
+                                <a class="play-link" 
+                                href="jilli/index.html" 
+                                aria-label="Answer Jillian signal"
+                                >
                                     ANSWER SIGNAL
                                     <span>&gt;</span>
                                 </a>
@@ -403,6 +431,7 @@
                                     class="preview-link"
                                     type="button"
                                     data-preview="jilli"
+                                aria-label="Preview Jillian transmission"
                                 >
                                     PREVIEW
                                 </button>
@@ -435,7 +464,7 @@
                             />
 
                             <div class="portrait-fallback">
-                            M1
+                                M1
                             </div>
 
                         </div>
@@ -443,20 +472,20 @@
                         <div class="character-card__content">
 
                             <p class="route-label">
-                            THE NEVERENDING MOSHPIT
+                                THE NEVERENDING MOSHPIT
                             </p>
 
                             <h3>
-                            M1H1
+                                M1H1
                             </h3>
 
                             <p class="route-title">
-                            RAGE FOREVER
+                                RAGE FOREVER
                             </p>
 
                             <p class="route-copy">
-                            The show keeps restarting.
-                            Every exit leads back to the pit...
+                                The show keeps restarting.
+                                Every exit leads back to the pit...
                             </p>
 
                             <div class="fragment-badge">
@@ -465,7 +494,10 @@
 
                             <div class="card-actions">
 
-                                <a class="play-link" href="m1h1/index.html">
+                                <a class="play-link" 
+                                href="m1h1/index.html" 
+                                aria-label="Answer M1H1 signal"
+                                >
                                     ANSWER SIGNAL
                                     <span>&gt;</span>
                                 </a>
@@ -474,6 +506,7 @@
                                     class="preview-link"
                                     type="button"
                                     data-preview="m1h1"
+                                aria-label="Preview M1H1 transmission"
                                 >
                                     PREVIEW
                                 </button>
@@ -532,7 +565,10 @@
 
                             <div class="card-actions">
 
-                                <a class="play-link" href="red-babies/index.html">
+                                <a class="play-link" 
+                                href="red-babies/index.html" 
+                                aria-label="Answer Red Babies signal"
+                                >
                                     ANSWER SIGNAL
                                     <span>&gt;</span>
                                 </a>
@@ -541,6 +577,7 @@
                                     class="preview-link"
                                     type="button"
                                     data-preview="red-babies"
+                                aria-label="Preview Red Babies transmission"
                                 >
                                     PREVIEW
                                 </button>
@@ -617,6 +654,86 @@
                                     class="preview-link"
                                     type="button"
                                     data-preview="ashelic-rose"
+                                aria-label="Preview Ashelic Rose transmission"
+                                >
+                                    PREVIEW
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- DJ JAMES ROLL UP -->
+                    <article
+                        class="character-card character-card--james"
+                        data-character="james-rollup"
+                    >
+
+                        <div class="card-noise" aria-hidden="true"></div>
+
+                        <div class="card-status">
+                            <span>07</span>
+                            SIGNAL FOUND
+                        </div>
+
+                        <div class="portrait-frame">
+
+                            <img
+                                src="assets/artists/james-rollup.webp"
+                                alt="DJ James Roll Up"
+                                onerror="this.classList.add('missing')"
+                            />
+
+                            <div class="portrait-fallback">
+                                JR
+                            </div>
+
+                        </div>
+
+                        <div class="character-card__content">
+
+                            <p class="route-label">
+                                ROLL UP PARISH // LOUISIANA
+                            </p>
+
+                            <h3>
+                                DJ JAMES ROLL UP
+                            </h3>
+
+                            <p class="route-title">
+                                THE TEN-POUND BOOTY PROTOCOL
+                            </p>
+
+                            <p class="route-copy">
+                                The function is dying. 
+                                Louisiana needs 100 gigawatts.
+                                Unfortunately, municipal ass infrastructure 
+                                is now involved.
+                            </p>
+
+                            <div class="fragment-badge">
+                                FRAGMENT // ENERGY
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a
+                                    class="play-link"
+                                    href="james-rollup/index.html"
+                                    aria-label="Answer DJ James Roll Up signal"
+                                >
+                                    ANSWER SIGNAL
+                                    <span>&gt;</span>
+                                </a>
+
+                                <button
+                                    class="preview-link"
+                                    type="button"
+                                    data-preview="james-rollup"
+                                    aria-label="Preview DJ James Roll Up transmission"
                                 >
                                     PREVIEW
                                 </button>
@@ -777,7 +894,7 @@
                     </h2>
 
                     <p>
-                        Six performers were separated into corrupted 
+                        Seven performers were separated into corrupted 
                         pocket-realities shaped by their own music, fears, 
                         instincts, and memories.
                     </p>
@@ -790,7 +907,7 @@
                     </p>
 
                     <div class="modal__warning">
-                        HEART // WORD // CHOICE // WILL // MEMORY // SELF
+                        HEART // WORD // CHOICE // WILL // MEMORY // SELF // ENERGY
                     </div>
 
                     <a class="primary-button" href="#transmissions" data-close-lore>
