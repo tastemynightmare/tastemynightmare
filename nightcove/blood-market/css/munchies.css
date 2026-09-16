@@ -479,3 +479,233 @@
     transform: none;
   }
 }
+/* =========================================================
+   SQUARE CART
+   Added only for Nightmare Munchies checkout.
+   Everything above this section is the original design.
+   ========================================================= */
+
+.square-cart {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 111, 174, 0.2);
+}
+
+.square-cart[hidden] {
+  display: none;
+}
+
+.square-cart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.square-cart-header .eyebrow {
+  margin-bottom: 8px;
+}
+
+.square-cart-header h3 {
+  margin: 0;
+  color: var(--munchies-pink-soft);
+}
+
+.square-cart-count {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 111, 174, 0.28);
+  border-radius: 999px;
+  color: var(--munchies-pink-soft);
+  background: rgba(255, 111, 174, 0.05);
+  font-family: "DM Mono", monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.square-cart-empty {
+  margin: 0;
+  padding: 18px;
+  border: 1px dashed rgba(255, 160, 202, 0.18);
+  border-radius: 16px;
+  color: #d9c7d3;
+  background: rgba(255, 255, 255, 0.02);
+  text-align: center;
+}
+
+.square-cart-empty[hidden] {
+  display: none;
+}
+
+.square-cart-items {
+  display: grid;
+  gap: 0;
+}
+
+.square-cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 160, 202, 0.12);
+}
+
+.square-cart-item:first-child {
+  border-top: 1px solid rgba(255, 160, 202, 0.12);
+}
+
+.square-cart-info {
+  display: grid;
+  gap: 5px;
+}
+
+.square-cart-info strong {
+  color: var(--munchies-pink-soft);
+}
+
+.square-cart-info span {
+  color: #d9c7d3;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.square-cart-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.square-quantity-button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid rgba(255, 111, 174, 0.28);
+  border-radius: 10px;
+  color: var(--munchies-white);
+  background: rgba(255, 111, 174, 0.04);
+  cursor: pointer;
+}
+
+.square-quantity-button:hover {
+  border-color: var(--munchies-pink);
+  background: rgba(255, 111, 174, 0.1);
+}
+
+.square-quantity {
+  min-width: 22px;
+  color: var(--munchies-white);
+  font-family: "DM Mono", monospace;
+  font-weight: 700;
+  text-align: center;
+}
+
+.square-line-total {
+  min-width: 68px;
+  color: var(--munchies-pink-soft);
+  font-family: "DM Mono", monospace;
+  font-weight: 700;
+  text-align: right;
+}
+
+.square-remove-button {
+  padding: 5px;
+  border: 0;
+  color: #d9c7d3;
+  background: transparent;
+  font-family: "DM Mono", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  opacity: 0.55;
+  cursor: pointer;
+}
+
+.square-remove-button:hover {
+  color: var(--munchies-pink);
+  opacity: 1;
+}
+
+.square-cart-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 111, 174, 0.2);
+}
+
+.square-cart-summary > div {
+  display: grid;
+  gap: 4px;
+}
+
+.square-cart-summary span {
+  color: #d9c7d3;
+  font-family: "DM Mono", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+.square-cart-summary strong {
+  color: var(--munchies-pink-soft);
+  font-family: "DM Mono", monospace;
+  font-size: 1.6rem;
+}
+
+.square-cart-status {
+  min-height: 20px;
+  margin: 14px 0 0;
+  color: var(--munchies-pink-soft);
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+}
+
+.square-cart-status.is-error {
+  color: #ff8aa4;
+}
+
+.square-checkout-note {
+  margin: 6px 0 0;
+  color: #d9c7d3;
+  font-family: "DM Mono", monospace;
+  font-size: 0.58rem;
+  opacity: 0.5;
+}
+
+#checkoutButton:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+@media (max-width: 720px) {
+  .square-cart-header,
+  .square-cart-item,
+  .square-cart-summary {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .square-cart-count {
+    width: fit-content;
+  }
+
+  .square-cart-controls {
+    flex-wrap: wrap;
+  }
+
+  .square-line-total {
+    margin-left: auto;
+  }
+
+  .square-cart-summary .btn {
+    width: 100%;
+  }
+}

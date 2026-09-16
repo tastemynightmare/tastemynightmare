@@ -43,12 +43,12 @@
             <span>MUNCHIES</span>
           </h1>
 
-          <p class="hero-tagline">EAT SOMETHING STRANGE. ♡</p>
+          <p class="hero-tagline">EAT SOMETHING STRANGE ♡</p>
 
           <p class="hero-copy">
             Stuffed cheesecake cookies, event treats, limited drops and
             sugar-coated nightmares from the 'Rose & Cleaver,' 
-            the Night Coves official kitchen.
+            the Night Coves' official kitchen.
           </p>
 
           <div class="actions">
@@ -79,11 +79,15 @@
             <p>
               Red velvet stuffed cheesecake cookie.
               Dramatic, rich, soft in the middle and messy on purpose.
+              Inspired by Blossom!
             </p>
 
             <span class="flavor-chip">RED VELVET + CHEESECAKE</span>
 
-            <a class="btn btn-ghost" href="#order">
+            <a
+              class="btn btn-ghost add-to-cart"
+              href="#order"
+              data-product-id="blood-velvet">
               CLAIM THIS COOKIE
             </a>
           </article>
@@ -97,11 +101,15 @@
             <p>
               Birthday cake cookie stuffed with circus animal cheesecake.
               Loud, chaotic, colorful and absolutely not subtle.
+              Inspired by Buttercup!
             </p>
 
             <span class="flavor-chip">BIRTHDAY CAKE + CIRCUS COOKIE</span>
 
-            <a class="btn btn-ghost" href="#order">
+            <a
+              class="btn btn-ghost add-to-cart"
+              href="#order"
+              data-product-id="birthday-massacre">
               CLAIM THIS COOKIE
             </a>
           </article>
@@ -115,11 +123,15 @@
             <p>
               Blue monster-style cookie with Oreo cheesecake filling
               and chaotic sweetness hiding under a cute face.
+              Inspired by Bubbles!
             </p>
 
             <span class="flavor-chip">OREO + CHEESECAKE</span>
 
-            <a class="btn btn-ghost" href="#order">
+            <a
+              class="btn btn-ghost add-to-cart"
+              href="#order"
+              data-product-id="monsters-delight">
               CLAIM THIS COOKIE
             </a>
           </article>
@@ -133,11 +145,15 @@
             <p>
               Banana pudding-inspired cookie stuffed with Nilla cheesecake.
               Sweet, spoiled, rich and made to feel expensive.
+              Inspired by Princess Morbucks!
             </p>
 
             <span class="flavor-chip">BANANA PUDDING + NILLA</span>
 
-            <a class="btn btn-ghost" href="#order">
+            <a
+              class="btn btn-ghost add-to-cart"
+              href="#order"
+              data-product-id="forbidden-nana">
               CLAIM THIS COOKIE
             </a>
           </article>
@@ -152,7 +168,7 @@
 
           <p>
             Nightmare Munchies lives on limited drops, themed menus,
-            event specials and custom edible concepts that feel like
+            event specials, and custom edible concepts that feel like
             they came straight out of the TMN universe.
           </p>
 
@@ -169,12 +185,13 @@
 
             <div class="list-item">
               <strong>CUSTOM THEMES</strong>
-              <span>Visual dessert concepts for artists, shoots and events.</span>
+              <span>Visual dessert concepts for artists, shoots, and events.</span>
             </div>
 
             <div class="list-item">
               <strong>PICKUP / DELIVERY</strong>
-              <span>Add your actual service area and fulfillment rules here.</span>
+              <span>PICKUPS can be scheduled. 
+                DELIVERIES MUST be requested.</span>
             </div>
           </div>
         </div>
@@ -186,15 +203,66 @@
             <p class="eyebrow">ORDER WINDOW</p>
             <h2>FEED THE NIGHTMARE. ♡</h2>
             <p>
-              Connect this button to your Square checkout,
-              order form or dedicated menu when you're ready.
+              Claim your cookies above, review your order here,
+              then check out securely with Square.
             </p>
           </div>
 
           <div class="actions">
-            <a class="btn btn-primary munchies-cta" href="#">
+            <a
+              id="openCartButton"
+              class="btn btn-primary munchies-cta"
+              href="#squareCart">
               ORDER / VIEW MENU ›
             </a>
+          </div>
+
+          <div id="squareCart" class="square-cart" hidden>
+            <div class="square-cart-header">
+              <div>
+                <p class="eyebrow">YOUR NIGHTMARE HAUL</p>
+                <h3>COOKIE CART</h3>
+              </div>
+
+              <span class="square-cart-count">
+                <span id="cartCount">0</span> ITEMS
+              </span>
+            </div>
+
+            <p id="cartEmpty" class="square-cart-empty">
+              Your nightmare haul is empty.
+            </p>
+
+            <div
+              id="cartItems"
+              class="square-cart-items"
+              aria-live="polite">
+            </div>
+
+            <div class="square-cart-summary">
+              <div>
+                <span>SUBTOTAL</span>
+                <strong id="cartTotal">$0.00</strong>
+              </div>
+
+              <button
+                id="checkoutButton"
+                class="btn btn-primary munchies-cta"
+                type="button"
+                disabled>
+                CHECK OUT WITH SQUARE ›
+              </button>
+            </div>
+
+            <p
+              id="cartStatus"
+              class="square-cart-status"
+              aria-live="polite">
+            </p>
+
+            <p class="square-checkout-note">
+              Secure checkout powered by Square.
+            </p>
           </div>
         </div>
       </section>
@@ -217,5 +285,6 @@
     </audio>
 
     <script src="../js/site.js"></script>
+    <script src="../js/munchies.js"></script>
   </body>
 </html>

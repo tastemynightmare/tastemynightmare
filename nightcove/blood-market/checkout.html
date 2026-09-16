@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050505">
+    <meta
+      name="description"
+      content="Secure Blood Market checkout for Taste My Nightmare."
+    >
+    <!--
+      Square Web Payments SDK runs in HTTPS secure contexts.
+      This policy allows the Sandbox SDK plus the TMN Worker API.
+      When we switch to Production, checkout.js automatically loads
+      Square's production SDK URL from the Worker environment.
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self' https:;
+        script-src 'self' https://sandbox.web.squarecdn.com https://web.squarecdn.com;
+        frame-src 'self' https://sandbox.web.squarecdn.com https://web.squarecdn.com;
+        connect-src 'self'
+          https://sandbox.web.squarecdn.com
+          https://web.squarecdn.com
+          https://tmn-square-api.tastemynightmare.workers.dev
+          https://api.tastemynightmare.com;
+        style-src 'self' 'unsafe-inline' https:;
+        font-src 'self' https: data:;
+        img-src 'self' https: data:;
+        media-src 'self' https:;
+      "
+    >
+    <title>Blood Market Checkout | Taste My Nightmare</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/checkout.css">
+  </head>
+
+
+  <body class="tmn-checkout-page">
+
+    <div class="checkout-noise" aria-hidden="true"></div>
+
+    <div class="checkout-scanlines" aria-hidden="true"></div>
+
+
+    <header class="site-header checkout-header">
+
+      <a class="brand-lockup" href="market.html">
+        <span class="brand-kicker">
+          TASTE MY NIGHTMARE
+        </span>
+
+        <span class="brand-name">
+          BLOOD MARKET
+        </span>
+      </a>
+
+
+      <nav class="header-nav" aria-label="Checkout navigation">
+        <a href="market.html">
+          ← BACK TO MARKET
+        </a>
+      </nav>
+
+    </header>
+
+
+    <main class="checkout-main">
+
+      <section class="checkout-intro">
+
+        <p class="checkout-kicker">
+          BLOOD MARKET // SECURE CHECKOUT
+        </p>
+
+        <h1>
+          SEAL THE
+          <span>TRANSACTION.</span>
+        </h1>
+
+        <p>
+          Review your nightmare haul, enter your information,
+          and complete payment without leaving the TMN universe.
+        </p>
+
+      </section>
+
+
+      <div class="checkout-layout">
+
+
+        <!-- ===============================================
+             LEFT: ORDER SUMMARY
+        ================================================ -->
+
+        <section
+          class="checkout-panel order-panel"
+          aria-labelledby="order-heading"
+        >
+
+          <div class="panel-heading">
+
+            <div>
+              <p class="panel-code">
+                ORDER // 01
+              </p>
+
+              <h2 id="order-heading">
+                YOUR NIGHTMARE HAUL
+              </h2>
+            </div>
+
+            <span
+              id="checkoutItemCount"
+              class="checkout-item-count"
+            >
+              0 ITEMS
+            </span>
+
+          </div>
+
+
+          <div id="checkoutItems" class="checkout-items"></div>
+
+
+          <p id="checkoutEmpty" class="checkout-empty" hidden>
+            Your Blood Market cart is empty.
+          </p>
+
+
+          <div class="checkout-total-row">
+
+            <span>
+              SUBTOTAL
+            </span>
+
+            <strong id="checkoutTotal">
+              $0.00
+            </strong>
+
+          </div>
+
+
+          <a
+            class="checkout-edit-link"
+            href="vendors/munchies.html#order"
+          >
+            ← EDIT MUNCHIES ORDER
+          </a>
+
+        </section>
+
+
+        <!-- ===============================================
+             RIGHT: CUSTOMER + PAYMENT
+        ================================================ -->
+
+        <section
+          class="checkout-panel payment-panel"
+          aria-labelledby="payment-heading"
+        >
+
+          <div class="panel-heading">
+
+            <div>
+              <p class="panel-code">
+                PAYMENT // 02
+              </p>
+
+              <h2 id="payment-heading">
+                BUYER DETAILS
+              </h2>
+            </div>
+
+          </div>
+
+
+          <form
+            id="tmnPaymentForm"
+            novalidate
+          >
+
+            <div class="checkout-field-grid">
+
+              <label class="checkout-field">
+                <span>
+                  FIRST NAME
+                </span>
+
+                <input
+                  id="firstName"
+                  name="firstName"
+                  type="text"
+                  autocomplete="given-name"
+                  required
+                >
+              </label>
+
+
+              <label class="checkout-field">
+                <span>
+                  LAST NAME
+                </span>
+
+                <input
+                  id="lastName"
+                  name="lastName"
+                  type="text"
+                  autocomplete="family-name"
+                  required
+                >
+              </label>
+
+            </div>
+
+
+            <label class="checkout-field">
+
+              <span>
+                EMAIL
+              </span>
+
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+              >
+
+            </label>
+
+
+            <div class="card-section">
+
+              <div class="card-section-heading">
+
+                <div>
+                  <span class="card-label">
+                    CARD PAYMENT
+                  </span>
+
+                  <small>
+                    Card details are handled securely by Square.
+                  </small>
+                </div>
+
+                <span class="square-badge">
+                  SQUARE SECURE
+                </span>
+
+              </div>
+
+
+              <div
+                id="card-container"
+                class="square-card-container"
+              ></div>
+
+            </div>
+
+
+            <button
+              id="payButton"
+              class="tmn-pay-button"
+              type="submit"
+              disabled
+            >
+              <span>
+                SEAL THE TRANSACTION
+              </span>
+
+              <strong id="payButtonTotal">
+                $0.00
+              </strong>
+            </button>
+
+
+            <p
+              id="paymentStatus"
+              class="payment-status"
+              aria-live="polite"
+            ></p>
+
+
+            <p class="payment-fine-print">
+              Secure payment processing by Square.
+              Taste My Nightmare does not receive or store your full card number.
+            </p>
+
+          </form>
+
+
+          <!-- =============================================
+               SUCCESS STATE
+          ============================================== -->
+
+          <div
+            id="paymentSuccess"
+            class="payment-success"
+            hidden
+          >
+
+            <p class="success-symbol">
+              ✓
+            </p>
+
+            <p class="panel-code">
+              TRANSACTION ACCEPTED
+            </p>
+
+            <h2>
+              THE BLOOD MARKET HAS YOUR ORDER.
+            </h2>
+
+            <p id="successMessage">
+              Payment complete.
+            </p>
+
+
+            <div class="success-actions">
+
+              <a
+                id="squareReceiptLink"
+                class="tmn-secondary-button"
+                href="#"
+                target="_blank"
+                rel="noopener"
+                hidden
+              >
+                VIEW SQUARE RECEIPT
+              </a>
+
+              <a
+                class="tmn-primary-link"
+                href="market.html"
+              >
+                RETURN TO BLOOD MARKET ›
+              </a>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </main>
+
+
+    <footer class="site-footer checkout-footer">
+
+      <a href="../home.html">
+        NIGHT COVE
+      </a>
+
+      <span>
+        TASTE MY NIGHTMARE // BLOOD MARKET
+      </span>
+
+    </footer>
+
+
+    <script src="js/checkout.js"></script>
+
+  </body>
+</html>
