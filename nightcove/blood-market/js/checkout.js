@@ -13,8 +13,37 @@
   TMN black / red / white Blood Market theme.
 */
 
-const TMN_API_BASE =
-  "https://tmn-square-api.tastemynightmare.workers.dev";
+const TMN_API_BASES = [
+  "https://api.tastemynightmare.com",
+  "https://tmn-square-api.tastemynightmare.workers.dev"
+];
+
+
+async function fetchFromTmnApi(path, options = {}) {
+  let lastError = null;
+
+  for (const baseUrl of TMN_API_BASES) {
+    try {
+      const response = await fetch(
+        `${baseUrl}${path}`,
+        options
+      );
+
+      return response;
+    } catch (error) {
+      console.warn(
+        `TMN API fetch failed for ${baseUrl}${path}`,
+        error
+      );
+
+      lastError = error;
+    }
+  }
+
+  throw new Error(
+    "Could not reach the TMN checkout server. Please try again in a moment."
+  );
+}
 
 const MUNCHIES_CART_KEY =
   "tmnMunchiesCart";
@@ -684,8 +713,8 @@ function applyTheme() {
 
   setLink(
     "checkoutBackLink",
-    "← BACK TO MARKET",
-    "market.html"
+    activeTheme.backText,
+    activeTheme.backHref
   );
 
   setLink(
@@ -944,8 +973,8 @@ function setStatus(
 
 async function fetchSquareConfig() {
   const response =
-    await fetch(
-      `${TMN_API_BASE}/config`
+    await fetchFromTmnApi(
+      "/config"
     );
 
   const data =
@@ -1283,8 +1312,8 @@ async function createPayment(
 
 
   const response =
-    await fetch(
-      `${TMN_API_BASE}/create-payment`,
+    await fetchFromTmnApi(
+      "/create-payment",
       {
         method:
           "POST",
