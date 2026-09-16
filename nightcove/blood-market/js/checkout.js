@@ -214,7 +214,7 @@ const CHECKOUT_THEMES = {
       "FEED THE",
 
     headlineAccent:
-      "NIGHTMARE. ♡",
+      "NIGHTMARE ♡",
 
     intro:
       "Your edible nightmares are almost yours. Review the drop, enter your details, and check out securely with Square.",
@@ -238,22 +238,22 @@ const CHECKOUT_THEMES = {
       "← EDIT MUNCHIES ORDER",
 
     editHref:
-      "vendors/munchies.html#order",
+      "nightshade-munchies/munchies.html#order",
 
     backText:
-      "← BACK TO MARKET",
+      "← BACK TO MUNCHIES",
 
     backHref:
-      "market.html",
+      "nightshade-munchies/munchies.html",
 
     footer:
       "TASTE MY NIGHTMARE // NIGHTMARE MUNCHIES",
 
     returnText:
-      "RETURN TO NIGHTMARE MUNCHIES ›",
+      "RETURN TO MUNCHIES ›",
 
     returnHref:
-      "vendors/munchies.html",
+      "nightshade-munchies/munchies.html",
 
     metaThemeColor:
       "#120711",
