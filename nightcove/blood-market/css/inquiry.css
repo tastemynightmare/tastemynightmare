@@ -1,0 +1,598 @@
+/* =========================================================
+   BLOOD MARKET â€” SHARED INQUIRY SYSTEM
+   Rendering Room / Nightware + Nightshade Productions
+   ========================================================= */
+
+.inquiry-page {
+  min-height: 100vh;
+}
+
+.inquiry-shell {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 76px 0 100px;
+}
+
+.inquiry-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  gap: 34px;
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+.inquiry-hero h1 {
+  margin: 12px 0 20px;
+  font-size: clamp(3.6rem, 9vw, 8rem);
+  line-height: 0.82;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+}
+
+.inquiry-hero h1 span {
+  display: block;
+}
+
+.inquiry-lede {
+  max-width: 720px;
+  margin: 0;
+  line-height: 1.75;
+  opacity: 0.8;
+}
+
+.inquiry-sidecard {
+  padding: 24px;
+}
+
+.inquiry-code {
+  margin: 0 0 18px;
+  font-family: "DM Mono", monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+}
+
+.inquiry-sidecard dl {
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+
+.inquiry-sidecard dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 13px 0;
+}
+
+.inquiry-sidecard dt,
+.inquiry-sidecard dd {
+  margin: 0;
+  font-family: "DM Mono", monospace;
+  font-size: 0.63rem;
+}
+
+.inquiry-sidecard dt {
+  opacity: 0.54;
+}
+
+.inquiry-sidecard dd {
+  text-align: right;
+  font-weight: 800;
+}
+
+.inquiry-panel {
+  overflow: hidden;
+}
+
+.inquiry-panel-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 28px 30px;
+}
+
+.inquiry-panel-head h2 {
+  margin: 0;
+  font-size: clamp(1.9rem, 4vw, 3.4rem);
+  line-height: 0.95;
+}
+
+.form-required-note {
+  flex-shrink: 0;
+  font-family: "DM Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+}
+
+.tmn-inquiry-form {
+  display: grid;
+}
+
+.form-section {
+  display: grid;
+  gap: 19px;
+  padding: 30px;
+}
+
+.form-section-title {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 2px;
+}
+
+.form-section-title > span {
+  display: grid;
+  place-items: center;
+  flex: 0 0 38px;
+  min-height: 38px;
+  font-family: "DM Mono", monospace;
+  font-weight: 800;
+}
+
+.form-section-title p {
+  margin: 0;
+  font-family: "DM Mono", monospace;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.form-section-title small {
+  display: block;
+  margin-top: 4px;
+  opacity: 0.62;
+  line-height: 1.5;
+}
+
+.field-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.field-grid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.field > span,
+.choice-fieldset > legend {
+  font-family: "DM Mono", monospace;
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 14px 15px;
+  font: inherit;
+  resize: vertical;
+}
+
+.field input,
+.field select {
+  min-height: 50px;
+}
+
+.field textarea {
+  line-height: 1.6;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.character-count {
+  justify-self: end;
+  font-family: "DM Mono", monospace;
+  font-size: 0.58rem;
+  opacity: 0.54;
+}
+
+.choice-fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.choice-fieldset > legend {
+  margin-bottom: 11px;
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.choice-grid.three {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.choice-card {
+  position: relative;
+  display: grid;
+  gap: 7px;
+  padding: 18px;
+  cursor: pointer;
+  transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+}
+
+.choice-card:hover {
+  transform: translateY(-2px);
+}
+
+.choice-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.choice-mark {
+  font-family: "DM Mono", monospace;
+  font-size: 0.57rem;
+  letter-spacing: 0.1em;
+}
+
+.choice-card strong {
+  font-size: 0.95rem;
+}
+
+.choice-card small {
+  line-height: 1.55;
+  opacity: 0.68;
+}
+
+.pill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.pill-grid label {
+  cursor: pointer;
+}
+
+.pill-grid input {
+  position: absolute;
+  opacity: 0;
+}
+
+.pill-grid span {
+  display: inline-flex;
+  padding: 9px 11px;
+  font-family: "DM Mono", monospace;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+}
+
+.field-error {
+  min-height: 1em;
+  margin: 8px 0 0;
+  font-family: "DM Mono", monospace;
+  font-size: 0.6rem;
+}
+
+.consent-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  line-height: 1.6;
+}
+
+.consent-row input {
+  margin-top: 4px;
+}
+
+.consent-row span {
+  font-size: 0.82rem;
+  opacity: 0.8;
+}
+
+.form-submit-zone {
+  display: grid;
+  gap: 16px;
+  padding: 30px;
+}
+
+.submission-note,
+.inquiry-status {
+  margin: 0;
+  font-family: "DM Mono", monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  line-height: 1.6;
+}
+
+.inquiry-submit {
+  width: 100%;
+  min-height: 60px;
+  padding: 15px 20px;
+  border: 0;
+  font-family: "DM Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  cursor: pointer;
+  transition: transform 0.16s ease, filter 0.16s ease, box-shadow 0.16s ease;
+}
+
+.inquiry-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.inquiry-submit:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.hp-field {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+}
+
+.inquiry-status.is-error {
+  color: #ff6363;
+}
+
+.inquiry-status.is-success {
+  font-weight: 800;
+}
+
+/* =========================================================
+   NIGHTWARE
+   ========================================================= */
+
+.inquiry-nightware .inquiry-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.08;
+  background-image:
+    linear-gradient(rgba(99, 255, 73, 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 255, 73, 0.2) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+.inquiry-nightware .inquiry-hero h1 span,
+.inquiry-nightware .inquiry-code,
+.inquiry-nightware .form-required-note,
+.inquiry-nightware .form-section-title p,
+.inquiry-nightware .choice-mark,
+.inquiry-nightware .field > span,
+.inquiry-nightware .choice-fieldset > legend {
+  color: #75ff52;
+}
+
+.inquiry-nightware .inquiry-sidecard,
+.inquiry-nightware .inquiry-panel {
+  border: 1px solid rgba(117, 255, 82, 0.28);
+  background: rgba(3, 8, 3, 0.9);
+  box-shadow: 0 0 40px rgba(117, 255, 82, 0.06);
+}
+
+.inquiry-nightware .inquiry-sidecard dl div,
+.inquiry-nightware .inquiry-panel-head,
+.inquiry-nightware .form-section,
+.inquiry-nightware .form-submit-zone {
+  border-bottom: 1px solid rgba(117, 255, 82, 0.12);
+}
+
+.inquiry-nightware .form-section-title > span {
+  border: 1px solid rgba(117, 255, 82, 0.36);
+  color: #75ff52;
+  background: rgba(117, 255, 82, 0.05);
+}
+
+.inquiry-nightware .field input,
+.inquiry-nightware .field select,
+.inquiry-nightware .field textarea {
+  border: 1px solid rgba(117, 255, 82, 0.18);
+  border-radius: 0;
+  color: #f2fff0;
+  background: #050a05;
+}
+
+.inquiry-nightware .field input:focus,
+.inquiry-nightware .field select:focus,
+.inquiry-nightware .field textarea:focus {
+  outline-color: #75ff52;
+  border-color: #75ff52;
+}
+
+.inquiry-nightware .choice-card {
+  border: 1px solid rgba(117, 255, 82, 0.17);
+  background: rgba(117, 255, 82, 0.025);
+}
+
+.inquiry-nightware .choice-card:has(input:checked) {
+  border-color: #75ff52;
+  background: rgba(117, 255, 82, 0.09);
+  box-shadow: inset 3px 0 #75ff52;
+}
+
+.inquiry-nightware .pill-grid span {
+  border: 1px solid rgba(117, 255, 82, 0.18);
+  color: #a8ff92;
+  background: rgba(117, 255, 82, 0.03);
+}
+
+.inquiry-nightware .pill-grid input:checked + span {
+  border-color: #75ff52;
+  color: #041002;
+  background: #75ff52;
+}
+
+.inquiry-nightware .execute-submit {
+  border: 1px solid #75ff52;
+  color: #061005;
+  background: #75ff52;
+  box-shadow: 0 0 32px rgba(117, 255, 82, 0.13);
+}
+
+.inquiry-nightware .inquiry-status.is-success {
+  color: #75ff52;
+}
+
+/* =========================================================
+   NIGHTSHADE PRODUCTIONS
+   ========================================================= */
+
+.inquiry-nightshade .inquiry-hero h1 span,
+.inquiry-nightshade .inquiry-code,
+.inquiry-nightshade .form-required-note,
+.inquiry-nightshade .form-section-title p,
+.inquiry-nightshade .choice-mark,
+.inquiry-nightshade .field > span,
+.inquiry-nightshade .choice-fieldset > legend {
+  color: #9bd3ff;
+}
+
+.inquiry-nightshade .inquiry-sidecard,
+.inquiry-nightshade .inquiry-panel {
+  border: 1px solid rgba(155, 211, 255, 0.24);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.025), transparent),
+    rgba(4, 10, 17, 0.9);
+  box-shadow: 0 0 44px rgba(93, 172, 238, 0.07);
+}
+
+.inquiry-nightshade .inquiry-sidecard dl div,
+.inquiry-nightshade .inquiry-panel-head,
+.inquiry-nightshade .form-section,
+.inquiry-nightshade .form-submit-zone {
+  border-bottom: 1px solid rgba(207, 227, 244, 0.12);
+}
+
+.inquiry-nightshade .form-section-title > span {
+  border: 1px solid rgba(207, 227, 244, 0.28);
+  color: #e5f3ff;
+  background: rgba(106, 185, 255, 0.055);
+}
+
+.inquiry-nightshade .field input,
+.inquiry-nightshade .field select,
+.inquiry-nightshade .field textarea {
+  border: 1px solid rgba(207, 227, 244, 0.16);
+  border-radius: 5px;
+  color: #f7fbff;
+  background: #07101a;
+}
+
+.inquiry-nightshade .field input:focus,
+.inquiry-nightshade .field select:focus,
+.inquiry-nightshade .field textarea:focus {
+  outline-color: #9bd3ff;
+  border-color: #9bd3ff;
+}
+
+.inquiry-nightshade .choice-card {
+  border: 1px solid rgba(207, 227, 244, 0.15);
+  border-radius: 6px;
+  background: rgba(106, 185, 255, 0.025);
+}
+
+.inquiry-nightshade .choice-card:has(input:checked) {
+  border-color: #9bd3ff;
+  background: rgba(106, 185, 255, 0.09);
+  box-shadow: inset 3px 0 #9bd3ff;
+}
+
+.inquiry-nightshade .pill-grid span {
+  border: 1px solid rgba(207, 227, 244, 0.18);
+  border-radius: 999px;
+  color: #dcecff;
+  background: rgba(106, 185, 255, 0.035);
+}
+
+.inquiry-nightshade .pill-grid input:checked + span {
+  border-color: #e5f3ff;
+  color: #06131f;
+  background: #e5f3ff;
+}
+
+.inquiry-nightshade .reaper-submit {
+  border: 1px solid #dcecff;
+  border-radius: 5px;
+  color: #06131f;
+  background: linear-gradient(135deg, #e5f3ff, #80c3ff);
+  box-shadow: 0 0 34px rgba(106, 185, 255, 0.14);
+}
+
+.inquiry-nightshade .inquiry-status.is-success {
+  color: #9bd3ff;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 850px) {
+  .inquiry-hero {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .choice-grid,
+  .choice-grid.three {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .inquiry-shell {
+    width: min(100% - 22px, 1180px);
+    padding-top: 52px;
+  }
+
+  .field-grid.two {
+    grid-template-columns: 1fr;
+  }
+
+  .inquiry-panel-head,
+  .form-section,
+  .form-submit-zone {
+    padding: 22px;
+  }
+
+  .inquiry-panel-head {
+    flex-direction: column;
+  }
+
+  .inquiry-sidecard {
+    padding: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inquiry-page *,
+  .inquiry-page *::before,
+  .inquiry-page *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

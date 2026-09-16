@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#02050a">
+        <meta
+            name="description"
+            content="Submit a project inquiry to Nightshade Productions."
+        >
+        <title>Request a Shoot | Nightshade Productions | Taste My Nightmare</title>
+
+        <link rel="stylesheet" href="../css/base.css">
+        <link rel="stylesheet" href="../css/nightshade.css">
+        <link rel="stylesheet" href="../css/inquiry.css">
+    </head>
+
+    <body class="nightshade-page inquiry-page inquiry-nightshade">
+        <div class="noise" aria-hidden="true"></div>
+        <div class="scanlines" aria-hidden="true"></div>
+        <div class="moon-glow" aria-hidden="true"></div>
+        <div class="chorus-lines" aria-hidden="true"></div>
+
+        <header class="site-header nightshade-header">
+            <a class="brand-lockup" href="../market.html">
+            <span class="brand-kicker">TASTE MY NIGHTMARE</span>
+            <span class="brand-name">BLOOD MARKET</span>
+            </a>
+
+            <nav class="header-nav" aria-label="Primary">
+            <a href="nightshade.html">NIGHTSHADE PROD</a>
+            <a href="../market.html">MARKET</a>
+            <a href="../../home.html">NIGHT COVE</a>
+            </nav>
+        </header>
+
+        <main class="inquiry-shell">
+            <section class="inquiry-hero">
+            <div>
+                <p class="eyebrow">NIGHTSHADE PRODUCTIONS // BOOKING INTAKE</p>
+
+                <div class="chorus-whisper">
+                    <span>CHORUS:</span>
+                    Tell us what the audience is supposed to remember.
+                </div>
+
+                <h1>
+                STEP INTO
+                <span>FRAME.</span>
+                </h1>
+
+                <p class="inquiry-lede">
+                    Bring the song, concept, date, location and the feeling
+                    you want the audience to leave with.
+                </p>
+            </div>
+
+            <aside class="inquiry-sidecard">
+                <p class="inquiry-code">NSP // ARCHIVE TERMINAL</p>
+                <dl>
+                <div><dt>HOUSE</dt><dd>NIGHTSHADE PRODUCTIONS</dd></div>
+                <div><dt>MODE</dt><dd>CINEMATIC</dd></div>
+                <div><dt>BOOKINGS</dt><dd>OPEN</dd></div>
+                <div><dt>DOMAIN</dt><dd>ORLANDO + SELECT TRAVEL</dd></div>
+                </dl>
+            </aside>
+            </section>
+
+            <section class="inquiry-panel">
+            <div class="inquiry-panel-head">
+                <div>
+                <p class="eyebrow">BOOKING WINDOW // FINAL ACT</p>
+                <h2>REQUEST A SHOOT.</h2>
+                </div>
+                <span class="form-required-note">* REQUIRED</span>
+            </div>
+
+            <form
+                id="nightshadeInquiryForm"
+                class="tmn-inquiry-form"
+                data-inquiry-type="nightshade-productions"
+                novalidate
+            >
+                <div class="form-section">
+                <div class="form-section-title">
+                    <span>I</span>
+                    <div>
+                    <p>CLIENT / ARTIST</p>
+                    <small>Who is stepping into frame?</small>
+                    </div>
+                </div>
+
+                <div class="field-grid two">
+                    <label class="field">
+                    <span>YOUR NAME *</span>
+                    <input type="text" name="name" autocomplete="name" required>
+                    </label>
+
+                    <label class="field">
+                    <span>ARTIST / PROJECT NAME *</span>
+                    <input type="text" name="artistName" required>
+                    </label>
+                </div>
+
+                <div class="field-grid two">
+                    <label class="field">
+                    <span>EMAIL *</span>
+                    <input type="email" name="email" autocomplete="email" required>
+                    </label>
+
+                    <label class="field">
+                    <span>PHONE</span>
+                    <input type="tel" name="phone" autocomplete="tel">
+                    </label>
+                </div>
+
+                <label class="field">
+                    <span>PREFERRED CONTACT METHOD *</span>
+                    <select name="contactMethod" required>
+                    <option value="">SELECT CHANNEL</option>
+                    <option>Email</option>
+                    <option>Text</option>
+                    <option>Phone call</option>
+                    </select>
+                </label>
+                </div>
+
+                <div class="form-section">
+                <div class="form-section-title">
+                    <span>II</span>
+                    <div>
+                    <p>CHOOSE THE SERVICE</p>
+                    <small>What are we capturing?</small>
+                    </div>
+                </div>
+
+                <fieldset class="choice-fieldset">
+                    <legend>SERVICE TYPE *</legend>
+
+                    <div class="choice-grid three">
+                    <label class="choice-card">
+                        <input type="checkbox" name="projectType" value="Music Visuals">
+                        <span class="choice-mark">THE SIREN</span>
+                        <strong>MUSIC VISUALS</strong>
+                        <small>Music videos, performance films, visualizers and 
+                            artist content.</small>
+                    </label>
+
+                    <label class="choice-card">
+                        <input type="checkbox" name="projectType" value="Event Coverage">
+                        <span class="choice-mark">THE WITNESS</span>
+                        <strong>EVENT COVERAGE</strong>
+                        <small>Concerts, showcases, pop-ups, backstage and 
+                            documentation.</small>
+                    </label>
+
+                    <label class="choice-card">
+                        <input type="checkbox" name="projectType" value="Creative Direction">
+                        <span class="choice-mark">THE CHORUS</span>
+                        <strong>CREATIVE DIRECTION</strong>
+                        <small>Concept development, shot planning and narrative 
+                            direction.</small>
+                    </label>
+
+                    <label class="choice-card">
+                        <input type="checkbox" name="projectType" value="Other / Hybrid">
+                        <span class="choice-mark">OTHER</span>
+                        <strong>HYBRID PROJECT</strong>
+                        <small>A production that crosses categories.</small>
+                    </label>
+                    </div>
+
+                    <p class="field-error" data-error-for="projectType"></p>
+                </fieldset>
+                </div>
+
+                <div class="form-section">
+                <div class="form-section-title">
+                    <span>III</span>
+                    <div>
+                    <p>THE PROJECT</p>
+                    <small>Give Nightshade the bones of the production.</small>
+                    </div>
+                </div>
+
+                <label class="field">
+                    <span>SONG / PROJECT / EVENT TITLE *</span>
+                    <input type="text" name="projectTitle" required>
+                </label>
+
+                <label class="field">
+                    <span>WHAT ARE WE MAKING? *</span>
+                    <textarea
+                    name="projectBrief"
+                    rows="8"
+                    maxlength="2500"
+                    data-count-target="nightshadeBriefCount"
+                    required
+                    placeholder="Tell us the concept, story, tone, performance idea, event purpose or creative problem."
+                    ></textarea>
+                    <small class="character-count"><span id="nightshadeBriefCount">0</span>/2500</small>
+                </label>
+
+                <label class="field">
+                    <span>WHAT SHOULD THE AUDIENCE FEEL / REMEMBER? *</span>
+                    <textarea
+                    name="audienceFeeling"
+                    rows="4"
+                    maxlength="1200"
+                    required
+                    placeholder="Desire, grief, rage, obsession, rebirth, adrenaline, intimacy, chaos..."
+                    ></textarea>
+                </label>
+
+                <div class="field-grid two">
+                    <label class="field">
+                    <span>SHOOT / EVENT DATE *</span>
+                    <input type="date" name="shootDate" required>
+                    </label>
+
+                    <label class="field">
+                    <span>FINAL DELIVERY DEADLINE</span>
+                    <input type="date" name="deadline">
+                    </label>
+                </div>
+
+                <div class="field-grid two">
+                    <label class="field">
+                    <span>LOCATION / CITY *</span>
+                    <input
+                        type="text"
+                        name="location"
+                        placeholder="Orlando, FL / venue / TBD"
+                        required
+                    >
+                    </label>
+
+                    <label class="field">
+                    <span>TRAVEL</span>
+                    <select name="travel">
+                        <option value="">SELECT</option>
+                        <option>Orlando / local</option>
+                        <option>Florida travel</option>
+                        <option>Out-of-state travel</option>
+                        <option>Location is still TBD</option>
+                    </select>
+                    </label>
+                </div>
+                </div>
+
+                <div class="form-section">
+                <div class="form-section-title">
+                    <span>IV</span>
+                    <div>
+                    <p>PRODUCTION DETAILS</p>
+                    <small>What does the shoot need to become?</small>
+                    </div>
+                </div>
+
+                <label class="field">
+                    <span>EXPECTED DELIVERABLES</span>
+                    <textarea
+                    name="deliverables"
+                    rows="4"
+                    maxlength="1200"
+                    placeholder="Example: 1 music video, 3 vertical clips, event recap, performance edit, raw selects..."
+                    ></textarea>
+                </label>
+
+                <div class="field-grid two">
+                    <label class="field">
+                    <span>BUDGET RANGE *</span>
+                    <select name="budget" required>
+                        <option value="">SELECT RANGE</option>
+                        <option>Under $250</option>
+                        <option>$250–$500</option>
+                        <option>$500–$1,000</option>
+                        <option>$1,000–$2,500</option>
+                        <option>$2,500+</option>
+                        <option>I need help defining the budget</option>
+                    </select>
+                    </label>
+
+                    <label class="field">
+                    <span>PROJECT STAGE *</span>
+                    <select name="projectStage" required>
+                        <option value="">SELECT STAGE</option>
+                        <option>Idea only</option>
+                        <option>Concept / treatment started</option>
+                        <option>Song / project complete</option>
+                        <option>Date / venue already booked</option>
+                        <option>Ready to schedule immediately</option>
+                    </select>
+                    </label>
+                </div>
+
+                <label class="field">
+                    <span>SONG / DEMO / EVENT LINK</span>
+                    <input
+                    type="url"
+                    name="mediaLink"
+                    placeholder="https://"
+                    >
+                </label>
+
+                <label class="field">
+                    <span>REFERENCE / MOODBOARD LINKS</span>
+                    <textarea
+                    name="referenceLinks"
+                    rows="4"
+                    placeholder="Music videos, films, stills, Pinterest, Drive folders, visual references..."
+                    ></textarea>
+                </label>
+                </div>
+
+                <div class="form-section">
+                <div class="form-section-title">
+                    <span>V</span>
+                    <div>
+                    <p>CAST / CREW / CONDITIONS</p>
+                    <small>Anything that changes how production needs to be planned.</small>
+                    </div>
+                </div>
+
+                <label class="field">
+                    <span>WHO WILL BE ON CAMERA / ON SITE?</span>
+                    <textarea
+                    name="people"
+                    rows="3"
+                    placeholder="Artist, performers, dancers, guests, client team, venue staff..."
+                    ></textarea>
+                </label>
+
+                <label class="field">
+                    <span>SPECIAL REQUIREMENTS / ACCESS / VENUE NOTES</span>
+                    <textarea
+                    name="specialRequirements"
+                    rows="4"
+                    maxlength="1400"
+                    placeholder="Venue restrictions, accessibility needs, permits, lighting limits, performance schedule, travel..."
+                    ></textarea>
+                </label>
+
+                <label class="field">
+                    <span>FINAL NOTES</span>
+                    <textarea
+                    name="notes"
+                    rows="4"
+                    maxlength="1400"
+                    placeholder="Anything else Nightshade should know before reviewing the inquiry."
+                    ></textarea>
+                </label>
+
+                <label class="consent-row">
+                    <input type="checkbox" name="confirmation" required>
+                    <span>
+                    I understand this is an inquiry, not a confirmed booking.
+                    Scope, availability, travel and pricing are finalized after 
+                    review. *
+                    </span>
+                </label>
+                </div>
+
+                <div class="form-submit-zone">
+                <p class="submission-note">
+                    NIGHTSHADE WILL REVIEW AVAILABILITY, SCOPE AND PRODUCTION 
+                    NEEDS BEFORE CONFIRMING A BOOKING.
+                </p>
+
+                <button class="inquiry-submit reaper-submit" type="submit">
+                    <span>☾</span>
+                    SUBMIT SHOOT INQUIRY
+                    <span>†</span>
+                </button>
+
+                <p class="inquiry-status" aria-live="polite"></p>
+                </div>
+
+                <input
+                class="hp-field"
+                type="text"
+                name="companyWebsite"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+                >
+            </form>
+            </section>
+        </main>
+
+        <footer class="site-footer nightshade-footer">
+            <a href="nightshade.html">← RETURN TO NIGHTSHADE PRODUCTIONS</a>
+            <span>© <span data-year></span> TASTE MY NIGHTMARE // NIGHTSHADE PRODUCTIONS</span>
+        </footer>
+
+        <script src="../js/inquiry-config.js"></script>
+        <script src="../js/inquiry.js"></script>
+        <script src="../js/site.js"></script>
+    </body>
+</html>

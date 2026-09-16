@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#020402">
+    <meta
+      name="description"
+      content="Submit a project inquiry to Nightware's Rendering Room."
+    >
+    <title>Request a Render | Nightware | Taste My Nightmare</title>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/nightware.css">
+    <link rel="stylesheet" href="../css/inquiry.css">
+  </head>
+
+  <body class="nightware-page inquiry-page inquiry-nightware">
+    <div class="noise" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="matrix-grid" aria-hidden="true"></div>
+    <div class="inquiry-grid" aria-hidden="true"></div>
+
+    <header class="site-header nightware-header">
+      <a class="brand-lockup" href="../market.html">
+        <span class="brand-kicker">TASTE MY NIGHTMARE</span>
+        <span class="brand-name">BLOOD MARKET</span>
+      </a>
+
+      <nav class="header-nav" aria-label="Primary">
+        <a href="nightware.html">RENDERING ROOM</a>
+        <a href="../market.html">MARKET</a>
+        <a href="../../home.html">NIGHT COVE</a>
+      </nav>
+    </header>
+
+    <main class="inquiry-shell">
+      <section class="inquiry-hero">
+        <div>
+          <p class="eyebrow">NIGHTWARE // COMMISSION TERMINAL</p>
+
+          <div class="system-status">
+            <span class="status-dot"></span>
+            INTAKE CHANNEL OPEN // ACEYY PROTOCOL ACTIVE
+          </div>
+
+          <h1>
+            REQUEST
+            <span class="glitch-title" data-text="A RENDER">A RENDER</span>
+          </h1>
+
+          <p class="inquiry-lede">
+            Send the unfinished thing: the idea, problem, references,
+            deadline and what the final result needs to do.
+          </p>
+        </div>
+
+        <aside class="inquiry-sidecard">
+          <p class="inquiry-code">NIGHTWARE_OS // INTAKE</p>
+          <dl>
+            <div><dt>SECTOR</dt><dd>RENDERING ROOM</dd></div>
+            <div><dt>MODE</dt><dd>CYBER-OCCULT</dd></div>
+            <div><dt>STATUS</dt><dd>ACCEPTING WORK</dd></div>
+            <div><dt>TYPE</dt><dd>CUSTOM QUOTE</dd></div>
+          </dl>
+        </aside>
+      </section>
+
+      <section class="inquiry-panel">
+        <div class="inquiry-panel-head">
+          <div>
+            <p class="eyebrow">PROJECT INPUT // NW-REQ</p>
+            <h2>BRING US SOMETHING UNFINISHED.</h2>
+          </div>
+          <span class="form-required-note">* REQUIRED</span>
+        </div>
+
+        <form
+          id="renderingInquiryForm"
+          class="tmn-inquiry-form"
+          data-inquiry-type="rendering-room"
+          novalidate
+        >
+          <div class="form-section">
+            <div class="form-section-title">
+              <span>01</span>
+              <div>
+                <p>CLIENT IDENTITY</p>
+                <small>Who is entering the system?</small>
+              </div>
+            </div>
+
+            <div class="field-grid two">
+              <label class="field">
+                <span>YOUR NAME *</span>
+                <input type="text" name="name" autocomplete="name" required>
+              </label>
+
+              <label class="field">
+                <span>ARTIST / BRAND / BUSINESS</span>
+                <input type="text" name="brandName" autocomplete="organization">
+              </label>
+            </div>
+
+            <div class="field-grid two">
+              <label class="field">
+                <span>EMAIL *</span>
+                <input type="email" name="email" autocomplete="email" required>
+              </label>
+
+              <label class="field">
+                <span>PHONE</span>
+                <input type="tel" name="phone" autocomplete="tel">
+              </label>
+            </div>
+
+            <label class="field">
+              <span>PREFERRED CONTACT METHOD *</span>
+              <select name="contactMethod" required>
+                <option value="">SELECT CHANNEL</option>
+                <option>Email</option>
+                <option>Text</option>
+                <option>Phone call</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">
+              <span>02</span>
+              <div>
+                <p>CHOOSE A MODULE</p>
+                <small>Select everything the project may need.</small>
+              </div>
+            </div>
+
+            <fieldset class="choice-fieldset">
+              <legend>PROJECT TYPE *</legend>
+
+              <div class="choice-grid">
+                <label class="choice-card">
+                  <input type="checkbox" name="projectType" value="Brand & Graphic Design">
+                  <span class="choice-mark">NW-01</span>
+                  <strong>BRAND & GRAPHIC DESIGN</strong>
+                  <small>Identity, cover art, flyers, campaigns, social systems.</small>
+                </label>
+
+                <label class="choice-card">
+                  <input type="checkbox" name="projectType" value="Web Experiences">
+                  <span class="choice-mark">NW-02</span>
+                  <strong>WEB EXPERIENCES</strong>
+                  <small>Artist sites, landing pages, microsites, interactive builds.</small>
+                </label>
+
+                <label class="choice-card">
+                  <input type="checkbox" name="projectType" value="Print & Packaging">
+                  <span class="choice-mark">NW-03</span>
+                  <strong>PRINT & PACKAGING</strong>
+                  <small>Posters, labels, stickers, inserts and packaging concepts.</small>
+                </label>
+
+                <label class="choice-card">
+                  <input type="checkbox" name="projectType" value="Digital Worldbuilding">
+                  <span class="choice-mark">NW-04</span>
+                  <strong>DIGITAL WORLDBUILDING</strong>
+                  <small>Lore systems, interfaces, fictional directories and worlds.</small>
+                </label>
+
+                <label class="choice-card">
+                  <input type="checkbox" name="projectType" value="Other">
+                  <span class="choice-mark">NW-X</span>
+                  <strong>OTHER / HYBRID</strong>
+                  <small>Something strange that does not fit one module.</small>
+                </label>
+              </div>
+
+              <p class="field-error" data-error-for="projectType"></p>
+            </fieldset>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">
+              <span>03</span>
+              <div>
+                <p>PROJECT PARAMETERS</p>
+                <small>What exists now and what needs to exist after Nightware touches it?</small>
+              </div>
+            </div>
+
+            <label class="field">
+              <span>PROJECT TITLE / WORKING NAME *</span>
+              <input type="text" name="projectTitle" required>
+            </label>
+
+            <label class="field">
+              <span>WHAT ARE YOU TRYING TO BUILD OR FIX? *</span>
+              <textarea
+                name="projectBrief"
+                rows="8"
+                maxlength="2500"
+                data-count-target="renderBriefCount"
+                required
+                placeholder="Tell us what exists, what is not working, what you want to make, and what the final thing needs to do."
+              ></textarea>
+              <small class="character-count"><span id="renderBriefCount">0</span>/2500</small>
+            </label>
+
+            <label class="field">
+              <span>DELIVERABLES YOU THINK YOU NEED</span>
+              <textarea
+                name="deliverables"
+                rows="4"
+                maxlength="1200"
+                placeholder="Example: logo system, 5-page website, landing page, poster series, packaging files..."
+              ></textarea>
+            </label>
+
+            <div class="field-grid two">
+              <label class="field">
+                <span>TARGET DATE / LAUNCH DATE *</span>
+                <input type="date" name="deadline" required>
+              </label>
+
+              <label class="field">
+                <span>BUDGET RANGE *</span>
+                <select name="budget" required>
+                  <option value="">SELECT RANGE</option>
+                  <option>Under $250</option>
+                  <option>$250–$500</option>
+                  <option>$500–$1,000</option>
+                  <option>$1,000–$2,500</option>
+                  <option>$2,500+</option>
+                  <option>I need help defining the budget</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">
+              <span>04</span>
+              <div>
+                <p>ASSET INVENTORY</p>
+                <small>What are we starting with?</small>
+              </div>
+            </div>
+
+            <fieldset class="choice-fieldset compact">
+              <legend>EXISTING ASSETS</legend>
+              <div class="pill-grid">
+                <label><input type="checkbox" name="assets" value="Logo"><span>LOGO</span></label>
+                <label><input type="checkbox" name="assets" value="Brand guide"><span>BRAND GUIDE</span></label>
+                <label><input type="checkbox" name="assets" value="Copy / text"><span>COPY / TEXT</span></label>
+                <label><input type="checkbox" name="assets" value="Photos / video"><span>PHOTOS / VIDEO</span></label>
+                <label><input type="checkbox" name="assets" value="Domain / hosting"><span>DOMAIN / HOSTING</span></label>
+                <label><input type="checkbox" name="assets" value="None yet"><span>NONE YET</span></label>
+              </div>
+            </fieldset>
+
+            <label class="field">
+              <span>REFERENCE / MOODBOARD / CURRENT SITE LINKS</span>
+              <textarea
+                name="referenceLinks"
+                rows="4"
+                placeholder="Paste URLs. One per line is perfect."
+              ></textarea>
+            </label>
+
+            <label class="field">
+              <span>FILE / DRIVE LINKS</span>
+              <textarea
+                name="assetLinks"
+                rows="3"
+                placeholder="Google Drive, Dropbox, WeTransfer, etc."
+              ></textarea>
+            </label>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">
+              <span>05</span>
+              <div>
+                <p>FINAL NOTES</p>
+                <small>
+                    Anything the Rendering Room should know before quoting.
+                </small>
+              </div>
+            </div>
+
+            <label class="field">
+              <span>OTHER CONTEXT</span>
+              <textarea
+                name="notes"
+                rows="5"
+                maxlength="1600"
+                placeholder="Constraints, must-haves, things you hate, accessibility needs, launch plans, collaborators..."
+              ></textarea>
+            </label>
+
+            <label class="consent-row">
+              <input type="checkbox" name="confirmation" required>
+              <span>
+                I understand this is an inquiry, not a confirmed booking.
+                Scope, timeline and pricing are finalized after review. *
+              </span>
+            </label>
+          </div>
+
+          <div class="form-submit-zone">
+            <p class="submission-note">
+              NIGHTWARE WILL REVIEW THE PROJECT BEFORE A QUOTE OR START DATE IS CONFIRMED.
+            </p>
+
+            <button class="inquiry-submit execute-submit" type="submit">
+              <span>[ EXECUTE ]</span>
+              SUBMIT RENDER REQUEST
+            </button>
+
+            <p class="inquiry-status" aria-live="polite"></p>
+          </div>
+
+          <input
+            class="hp-field"
+            type="text"
+            name="companyWebsite"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          >
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer nightware-footer">
+      <a href="nightware.html">← RETURN TO THE RENDERING ROOM</a>
+      <span>© <span data-year></span> TASTE MY NIGHTMARE // NIGHTWARE // THE RENDERING ROOM</span>
+    </footer>
+
+    <script src="../js/inquiry-config.js"></script>
+    <script src="../js/inquiry.js"></script>
+    <script src="../js/site.js"></script>
+  </body>
+</html>
+
