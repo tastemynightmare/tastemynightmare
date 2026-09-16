@@ -238,13 +238,13 @@ const CHECKOUT_THEMES = {
       "← EDIT MUNCHIES ORDER",
 
     editHref:
-      "nightshade-munchies/munchies.html#order",
+      "nightmare-munchies/munchies.html#order",
 
     backText:
-      "← BACK TO MUNCHIES",
+      "← BACK TO BLOOD MARKET",
 
     backHref:
-      "nightshade-munchies/munchies.html",
+      "market.html",
 
     footer:
       "TASTE MY NIGHTMARE // NIGHTMARE MUNCHIES",
