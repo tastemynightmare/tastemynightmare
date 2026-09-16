@@ -2,18 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#050505">
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+      name="theme-color"
+      content="#050505"
+    >
+
     <meta
       name="description"
       content="Secure Blood Market checkout for Taste My Nightmare."
     >
-    <!--
-      Square Web Payments SDK runs in HTTPS secure contexts.
-      This policy allows the Sandbox SDK plus the TMN Worker API.
-      When we switch to Production, checkout.js automatically loads
-      Square's production SDK URL from the Worker environment.
-    -->
+
     <meta
       http-equiv="Content-Security-Policy"
       content="
@@ -31,7 +35,13 @@
         media-src 'self' https:;
       "
     >
-    <title>Blood Market Checkout | Taste My Nightmare</title>
+
+    <title>
+      Blood Market Checkout | Taste My Nightmare
+    </title>
+
+    <script src="js/checkout-theme.js"></script>
+
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/checkout.css">
   </head>
@@ -40,25 +50,20 @@
   <body class="tmn-checkout-page">
 
     <div class="checkout-noise" aria-hidden="true"></div>
-
     <div class="checkout-scanlines" aria-hidden="true"></div>
+    <div class="checkout-theme-decor" aria-hidden="true"></div>
 
 
     <header class="site-header checkout-header">
 
       <a class="brand-lockup" href="market.html">
-        <span class="brand-kicker">
-          TASTE MY NIGHTMARE
-        </span>
-
-        <span class="brand-name">
-          BLOOD MARKET
-        </span>
+        <span class="brand-kicker">TASTE MY NIGHTMARE</span>
+        <span class="brand-name" id="checkoutBrandName">BLOOD MARKET</span>
       </a>
 
 
       <nav class="header-nav" aria-label="Checkout navigation">
-        <a href="market.html">
+        <a id="checkoutBackLink" href="market.html">
           ← BACK TO MARKET
         </a>
       </nav>
@@ -70,16 +75,16 @@
 
       <section class="checkout-intro">
 
-        <p class="checkout-kicker">
+        <p class="checkout-kicker" id="checkoutKicker">
           BLOOD MARKET // SECURE CHECKOUT
         </p>
 
-        <h1>
+        <h1 id="checkoutHeadline">
           SEAL THE
           <span>TRANSACTION.</span>
         </h1>
 
-        <p>
+        <p id="checkoutIntroCopy">
           Review your nightmare haul, enter your information,
           and complete payment without leaving the TMN universe.
         </p>
@@ -90,10 +95,6 @@
       <div class="checkout-layout">
 
 
-        <!-- ===============================================
-             LEFT: ORDER SUMMARY
-        ================================================ -->
-
         <section
           class="checkout-panel order-panel"
           aria-labelledby="order-heading"
@@ -102,7 +103,7 @@
           <div class="panel-heading">
 
             <div>
-              <p class="panel-code">
+              <p class="panel-code" id="orderPanelCode">
                 ORDER // 01
               </p>
 
@@ -111,10 +112,7 @@
               </h2>
             </div>
 
-            <span
-              id="checkoutItemCount"
-              class="checkout-item-count"
-            >
+            <span id="checkoutItemCount" class="checkout-item-count">
               0 ITEMS
             </span>
 
@@ -131,9 +129,7 @@
 
           <div class="checkout-total-row">
 
-            <span>
-              SUBTOTAL
-            </span>
+            <span>SUBTOTAL</span>
 
             <strong id="checkoutTotal">
               $0.00
@@ -144,17 +140,14 @@
 
           <a
             class="checkout-edit-link"
+            id="checkoutEditLink"
             href="vendors/munchies.html#order"
           >
-            ← EDIT MUNCHIES ORDER
+            ← EDIT ORDER
           </a>
 
         </section>
 
-
-        <!-- ===============================================
-             RIGHT: CUSTOMER + PAYMENT
-        ================================================ -->
 
         <section
           class="checkout-panel payment-panel"
@@ -164,7 +157,7 @@
           <div class="panel-heading">
 
             <div>
-              <p class="panel-code">
+              <p class="panel-code" id="paymentPanelCode">
                 PAYMENT // 02
               </p>
 
@@ -176,17 +169,12 @@
           </div>
 
 
-          <form
-            id="tmnPaymentForm"
-            novalidate
-          >
+          <form id="tmnPaymentForm" novalidate>
 
             <div class="checkout-field-grid">
 
               <label class="checkout-field">
-                <span>
-                  FIRST NAME
-                </span>
+                <span>FIRST NAME</span>
 
                 <input
                   id="firstName"
@@ -199,9 +187,7 @@
 
 
               <label class="checkout-field">
-                <span>
-                  LAST NAME
-                </span>
+                <span>LAST NAME</span>
 
                 <input
                   id="lastName"
@@ -217,9 +203,7 @@
 
             <label class="checkout-field">
 
-              <span>
-                EMAIL
-              </span>
+              <span>EMAIL</span>
 
               <input
                 id="email"
@@ -267,7 +251,7 @@
               type="submit"
               disabled
             >
-              <span>
+              <span id="payButtonLabel">
                 SEAL THE TRANSACTION
               </span>
 
@@ -292,25 +276,19 @@
           </form>
 
 
-          <!-- =============================================
-               SUCCESS STATE
-          ============================================== -->
-
           <div
             id="paymentSuccess"
             class="payment-success"
             hidden
           >
 
-            <p class="success-symbol">
-              ✓
-            </p>
+            <p class="success-symbol">✓</p>
 
-            <p class="panel-code">
+            <p class="panel-code" id="successCode">
               TRANSACTION ACCEPTED
             </p>
 
-            <h2>
+            <h2 id="successHeading">
               THE BLOOD MARKET HAS YOUR ORDER.
             </h2>
 
@@ -334,6 +312,7 @@
 
               <a
                 class="tmn-primary-link"
+                id="successReturnLink"
                 href="market.html"
               >
                 RETURN TO BLOOD MARKET ›
@@ -356,7 +335,7 @@
         NIGHT COVE
       </a>
 
-      <span>
+      <span id="checkoutFooterBrand">
         TASTE MY NIGHTMARE // BLOOD MARKET
       </span>
 

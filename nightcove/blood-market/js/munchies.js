@@ -1,11 +1,13 @@
 /*
   NIGHTMARE MUNCHIES
-  Cart behavior only.
+  Cart + custom TMN checkout routing
 
-  IMPORTANT:
-  - site.js stays untouched.
-  - The page design stays untouched.
-  - Checkout now goes to the custom TMN checkout page.
+  This file DOES NOT change your page design.
+  It only:
+  - adds/removes cookie items
+  - updates the existing cart
+  - saves the cart in localStorage
+  - opens the custom TMN checkout page in the Munchies theme
 */
 
 const MUNCHIES_PRODUCTS = {
@@ -32,17 +34,38 @@ const MUNCHIES_PRODUCTS = {
 
 const CART_STORAGE_KEY = "tmnMunchiesCart";
 
+const CHECKOUT_URL = new URL(
+  "../checkout.html?vendor=munchies",
+  window.location.href
+).href;
+
+
+// ---------------------------------------------------------
+// ELEMENTS
+// ---------------------------------------------------------
+
 const squareCart = document.getElementById("squareCart");
 const openCartButton = document.getElementById("openCartButton");
-const cartItems = document.getElementById("cartItems");
-const cartEmpty = document.getElementById("cartEmpty");
-const cartCount = document.getElementById("cartCount");
-const cartTotal = document.getElementById("cartTotal");
-const cartStatus = document.getElementById("cartStatus");
+
+const cartItemsElement = document.getElementById("cartItems");
+const cartEmptyElement = document.getElementById("cartEmpty");
+const cartCountElement = document.getElementById("cartCount");
+const cartTotalElement = document.getElementById("cartTotal");
+const cartStatusElement = document.getElementById("cartStatus");
+
 const checkoutButton = document.getElementById("checkoutButton");
+
+
+// ---------------------------------------------------------
+// CART STATE
+// ---------------------------------------------------------
 
 let cart = loadCart();
 
+
+// ---------------------------------------------------------
+// STORAGE
+// ---------------------------------------------------------
 
 function loadCart() {
   try {
@@ -54,9 +77,11 @@ function loadCart() {
 
     const parsedCart = JSON.parse(savedCart);
 
-    return parsedCart && typeof parsedCart === "object"
-      ? parsedCart
-      : {};
+    if (!parsedCart || typeof parsedCart !== "object") {
+      return {};
+    }
+
+    return parsedCart;
   } catch (error) {
     console.error("Could not load Nightmare Munchies cart:", error);
     return {};
@@ -65,12 +90,20 @@ function loadCart() {
 
 
 function saveCart() {
-  localStorage.setItem(
-    CART_STORAGE_KEY,
-    JSON.stringify(cart)
-  );
+  try {
+    localStorage.setItem(
+      CART_STORAGE_KEY,
+      JSON.stringify(cart)
+    );
+  } catch (error) {
+    console.error("Could not save Nightmare Munchies cart:", error);
+  }
 }
 
+
+// ---------------------------------------------------------
+// HELPERS
+// ---------------------------------------------------------
 
 function formatMoney(cents) {
   return new Intl.NumberFormat("en-US", {
@@ -80,22 +113,28 @@ function formatMoney(cents) {
 }
 
 
+function getValidEntries() {
+  return Object.entries(cart).filter(
+    ([productId, quantity]) =>
+      MUNCHIES_PRODUCTS[productId] &&
+      Number.isInteger(quantity) &&
+      quantity > 0
+  );
+}
+
+
 function getCartCount() {
-  return Object.values(cart).reduce(
-    (total, quantity) => total + quantity,
+  return getValidEntries().reduce(
+    (total, [, quantity]) => total + quantity,
     0
   );
 }
 
 
 function getCartTotal() {
-  return Object.entries(cart).reduce(
+  return getValidEntries().reduce(
     (total, [productId, quantity]) => {
       const product = MUNCHIES_PRODUCTS[productId];
-
-      if (!product) {
-        return total;
-      }
 
       return total + product.price * quantity;
     },
@@ -103,6 +142,24 @@ function getCartTotal() {
   );
 }
 
+
+function setStatus(message = "", isError = false) {
+  if (!cartStatusElement) {
+    return;
+  }
+
+  cartStatusElement.textContent = message;
+
+  cartStatusElement.classList.toggle(
+    "is-error",
+    isError
+  );
+}
+
+
+// ---------------------------------------------------------
+// CART VISIBILITY
+// ---------------------------------------------------------
 
 function showCart() {
   if (!squareCart) {
@@ -113,28 +170,29 @@ function showCart() {
 }
 
 
-function scrollToCart() {
-  showCart();
+function scrollToOrderWindow() {
+  const orderSection = document.getElementById("order");
 
-  squareCart?.scrollIntoView({
+  if (!orderSection) {
+    return;
+  }
+
+  orderSection.scrollIntoView({
     behavior: "smooth",
     block: "start"
   });
 }
 
 
-function setCartStatus(message = "", isError = false) {
-  if (!cartStatus) {
-    return;
-  }
-
-  cartStatus.textContent = message;
-  cartStatus.classList.toggle("is-error", isError);
-}
-
+// ---------------------------------------------------------
+// CART ACTIONS
+// ---------------------------------------------------------
 
 function addToCart(productId) {
-  if (!MUNCHIES_PRODUCTS[productId]) {
+  const product = MUNCHIES_PRODUCTS[productId];
+
+  if (!product) {
+    console.warn("Unknown product:", productId);
     return;
   }
 
@@ -144,8 +202,8 @@ function addToCart(productId) {
   renderCart();
   showCart();
 
-  setCartStatus(
-    `${MUNCHIES_PRODUCTS[productId].name} added to your nightmare haul. ♡`
+  setStatus(
+    `${product.name} added to your nightmare haul. ♡`
   );
 }
 
@@ -167,6 +225,10 @@ function changeQuantity(productId, amount) {
 
 
 function removeFromCart(productId) {
+  if (!cart[productId]) {
+    return;
+  }
+
   delete cart[productId];
 
   saveCart();
@@ -174,47 +236,57 @@ function removeFromCart(productId) {
 }
 
 
+// ---------------------------------------------------------
+// RENDER CART
+// ---------------------------------------------------------
+
 function renderCart() {
   if (
-    !cartItems ||
-    !cartEmpty ||
-    !cartCount ||
-    !cartTotal ||
+    !cartItemsElement ||
+    !cartEmptyElement ||
+    !cartCountElement ||
+    !cartTotalElement ||
     !checkoutButton
   ) {
+    console.warn(
+      "Nightmare Munchies cart elements are missing from the HTML."
+    );
     return;
   }
 
-  cartItems.innerHTML = "";
+  const entries = getValidEntries();
 
-  const entries = Object.entries(cart).filter(
-    ([productId, quantity]) =>
-      MUNCHIES_PRODUCTS[productId] &&
-      Number.isInteger(quantity) &&
-      quantity > 0
+  cartItemsElement.innerHTML = "";
+
+  cartEmptyElement.hidden = entries.length > 0;
+
+  cartCountElement.textContent = getCartCount();
+
+  cartTotalElement.textContent = formatMoney(
+    getCartTotal()
   );
 
-  const hasItems = entries.length > 0;
+  checkoutButton.disabled = entries.length === 0;
 
-  cartEmpty.hidden = hasItems;
-  checkoutButton.disabled = !hasItems;
-
-  cartCount.textContent = getCartCount();
-  cartTotal.textContent = formatMoney(getCartTotal());
 
   entries.forEach(([productId, quantity]) => {
     const product = MUNCHIES_PRODUCTS[productId];
 
     const item = document.createElement("div");
+
     item.className = "square-cart-item";
 
     item.innerHTML = `
       <div class="square-cart-info">
         <strong>${product.name}</strong>
-        <span>${formatMoney(product.price)} each</span>
+
+        <span>
+          ${formatMoney(product.price)} each
+        </span>
       </div>
 
       <div class="square-cart-controls">
+
         <button
           class="square-quantity-button"
           type="button"
@@ -248,99 +320,156 @@ function renderCart() {
           data-product-id="${productId}">
           REMOVE
         </button>
+
       </div>
     `;
 
-    cartItems.appendChild(item);
+    cartItemsElement.appendChild(item);
   });
 }
 
 
-function beginCustomCheckout() {
+// ---------------------------------------------------------
+// OPEN CUSTOM CHECKOUT
+// ---------------------------------------------------------
+
+function openCustomCheckout() {
   const itemCount = getCartCount();
 
-  if (itemCount < 1) {
-    setCartStatus("Your nightmare haul is empty.", true);
+  if (itemCount === 0) {
+    setStatus(
+      "Your nightmare haul is empty.",
+      true
+    );
+
     return;
   }
 
-  setCartStatus("Opening the Blood Market checkout...");
+  saveCart();
 
-  /*
-    This page is assumed to live at:
-    blood-market/vendors/munchies.html
+  setStatus(
+    "Opening the Nightmare Munchies checkout..."
+  );
 
-    Custom checkout lives at:
-    blood-market/checkout.html
-  */
-  window.location.href = "../checkout.html";
+  window.location.assign(
+    CHECKOUT_URL
+  );
 }
 
+
+// ---------------------------------------------------------
+// COOKIE BUTTONS
+// ---------------------------------------------------------
 
 document
   .querySelectorAll(".add-to-cart")
   .forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.preventDefault();
 
-      const productId = button.dataset.productId;
+    button.addEventListener(
+      "click",
+      (event) => {
 
-      addToCart(productId);
+        event.preventDefault();
 
-      document
-        .getElementById("order")
-        ?.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-    });
+        const productId =
+          button.dataset.productId;
+
+        addToCart(productId);
+
+        scrollToOrderWindow();
+      }
+    );
+
   });
 
 
-openCartButton?.addEventListener(
-  "click",
-  (event) => {
-    event.preventDefault();
+// ---------------------------------------------------------
+// ORIGINAL ORDER / VIEW MENU BUTTON
+// ---------------------------------------------------------
 
-    scrollToCart();
-  }
-);
+if (openCartButton) {
+  openCartButton.addEventListener(
+    "click",
+    (event) => {
+      event.preventDefault();
 
-
-cartItems?.addEventListener(
-  "click",
-  (event) => {
-    const button = event.target.closest(
-      "[data-cart-action]"
-    );
-
-    if (!button) {
-      return;
+      showCart();
+      scrollToOrderWindow();
     }
+  );
+}
 
-    const productId = button.dataset.productId;
-    const action = button.dataset.cartAction;
 
-    if (action === "increase") {
-      changeQuantity(productId, 1);
+// ---------------------------------------------------------
+// + / - / REMOVE BUTTONS
+// ---------------------------------------------------------
+
+if (cartItemsElement) {
+  cartItemsElement.addEventListener(
+    "click",
+    (event) => {
+
+      const button =
+        event.target.closest(
+          "[data-cart-action]"
+        );
+
+      if (!button) {
+        return;
+      }
+
+      const productId =
+        button.dataset.productId;
+
+      const action =
+        button.dataset.cartAction;
+
+
+      if (action === "increase") {
+        changeQuantity(
+          productId,
+          1
+        );
+      }
+
+
+      if (action === "decrease") {
+        changeQuantity(
+          productId,
+          -1
+        );
+      }
+
+
+      if (action === "remove") {
+        removeFromCart(
+          productId
+        );
+      }
     }
+  );
+}
 
-    if (action === "decrease") {
-      changeQuantity(productId, -1);
+
+// ---------------------------------------------------------
+// CHECKOUT BUTTON
+// ---------------------------------------------------------
+
+if (checkoutButton) {
+  checkoutButton.addEventListener(
+    "click",
+    (event) => {
+      event.preventDefault();
+
+      openCustomCheckout();
     }
-
-    if (action === "remove") {
-      removeFromCart(productId);
-    }
-  }
-);
+  );
+}
 
 
-checkoutButton?.addEventListener(
-  "click",
-  beginCustomCheckout
-);
-
+// ---------------------------------------------------------
+// INITIAL PAGE LOAD
+// ---------------------------------------------------------
 
 renderCart();
 

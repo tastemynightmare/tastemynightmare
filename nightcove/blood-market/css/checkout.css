@@ -1,24 +1,160 @@
 /* =========================================================
    TASTE MY NIGHTMARE
-   BLOOD MARKET CUSTOM CHECKOUT
+   ONE CHECKOUT ENGINE / MULTIPLE VISUAL SKINS
 
-   BRAND PALETTE:
-   BLACK + RED + WHITE
+   DEFAULT / MIXED CART:
+   TMN = BLACK + RED + WHITE
+
+   MUNCHIES:
+   KAWAII CUTE-HORROR
+
+   NIGHTWARE:
+   BLACK + TOXIC GREEN GLITCH
+
+   NIGHTSHADE PRODUCTIONS:
+   MIDNIGHT BLUE + SILVER + WHITE
+   ========================================================= */
+
+
+/* =========================================================
+   CORE VARIABLES â€” DEFAULT TMN
    ========================================================= */
 
 :root {
-  --tmn-black: #050505;
-  --tmn-black-soft: #0d0d0d;
-  --tmn-panel: #111111;
-  --tmn-panel-2: #171717;
+  --checkout-bg: #050505;
+  --checkout-bg-2: #090909;
+  --checkout-panel: #101010;
+  --checkout-panel-2: #171717;
 
-  --tmn-red: #e10600;
-  --tmn-red-bright: #ff241c;
-  --tmn-red-dark: #6f0000;
+  --checkout-accent: #e10600;
+  --checkout-accent-bright: #ff241c;
+  --checkout-accent-soft: #ffb4b1;
+  --checkout-accent-dark: #6f0000;
 
-  --tmn-white: #f7f7f7;
-  --tmn-muted: #aaaaaa;
-  --tmn-border: rgba(255, 255, 255, 0.13);
+  --checkout-text: #f7f7f7;
+  --checkout-muted: #aaaaaa;
+
+  --checkout-border: rgba(255, 255, 255, 0.13);
+  --checkout-border-accent: rgba(225, 6, 0, 0.34);
+
+  --checkout-radius: 0px;
+  --checkout-small-radius: 0px;
+
+  --checkout-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.34);
+
+  --checkout-glow:
+    0 0 50px rgba(225, 6, 0, 0.055);
+
+  --checkout-button-text: #ffffff;
+}
+
+
+/* =========================================================
+   THEME: NIGHTMARE MUNCHIES
+   Mirrors the cute-horror / kawaii storefront language.
+   ========================================================= */
+
+html[data-checkout-theme="munchies"] {
+
+  --checkout-bg: #120711;
+  --checkout-bg-2: #0b050b;
+  --checkout-panel: #180a15;
+  --checkout-panel-2: #1f0d1b;
+
+  --checkout-accent: #ff6fae;
+  --checkout-accent-bright: #ff8fc0;
+  --checkout-accent-soft: #ffc4dc;
+  --checkout-accent-dark: #922d61;
+
+  --checkout-text: #fff7fb;
+  --checkout-muted: #d9c7d3;
+
+  --checkout-border: rgba(255, 160, 202, 0.18);
+  --checkout-border-accent: rgba(255, 111, 174, 0.45);
+
+  --checkout-radius: 28px;
+  --checkout-small-radius: 16px;
+
+  --checkout-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.28);
+
+  --checkout-glow:
+    0 0 38px rgba(255, 111, 174, 0.13);
+
+  --checkout-button-text: #2a0820;
+}
+
+
+/* =========================================================
+   THEME: NIGHTWARE
+   Toxic green / terminal / glitch
+   ========================================================= */
+
+html[data-checkout-theme="nightware"] {
+
+  --checkout-bg: #020402;
+  --checkout-bg-2: #050905;
+  --checkout-panel: #050805;
+  --checkout-panel-2: #081108;
+
+  --checkout-accent: #62ff3a;
+  --checkout-accent-bright: #8cff6c;
+  --checkout-accent-soft: #cbffc0;
+  --checkout-accent-dark: #123d0a;
+
+  --checkout-text: #f4fff1;
+  --checkout-muted: #9fc397;
+
+  --checkout-border: rgba(98, 255, 58, 0.17);
+  --checkout-border-accent: rgba(98, 255, 58, 0.48);
+
+  --checkout-radius: 2px;
+  --checkout-small-radius: 2px;
+
+  --checkout-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.52);
+
+  --checkout-glow:
+    0 0 42px rgba(98, 255, 58, 0.09);
+
+  --checkout-button-text: #021001;
+}
+
+
+/* =========================================================
+   THEME: NIGHTSHADE PRODUCTIONS
+   Blue / silver / white cinematic
+   ========================================================= */
+
+html[data-checkout-theme="nightshade"] {
+
+  --checkout-bg: #03070c;
+  --checkout-bg-2: #07111b;
+  --checkout-panel: #07101a;
+  --checkout-panel-2: #0c1825;
+
+  --checkout-accent: #6ab9ff;
+  --checkout-accent-bright: #9bd3ff;
+  --checkout-accent-soft: #e5f3ff;
+  --checkout-accent-dark: #173d5d;
+
+  --checkout-text: #f7fbff;
+  --checkout-muted: #aebdca;
+
+  --checkout-border: rgba(207, 227, 244, 0.18);
+  --checkout-border-accent: rgba(106, 185, 255, 0.45);
+
+  --checkout-radius: 8px;
+  --checkout-small-radius: 5px;
+
+  --checkout-shadow:
+    0 26px 72px rgba(0, 0, 0, 0.45);
+
+  --checkout-glow:
+    0 0 48px rgba(106, 185, 255, 0.10);
+
+  --checkout-button-text: #03111d;
 }
 
 
@@ -28,34 +164,43 @@
 
 .tmn-checkout-page {
   min-height: 100vh;
-  color: var(--tmn-white);
+  color: var(--checkout-text);
 
   background:
     radial-gradient(
       circle at 82% 12%,
-      rgba(225, 6, 0, 0.16),
+      color-mix(
+        in srgb,
+        var(--checkout-accent) 16%,
+        transparent
+      ),
       transparent 28rem
     ),
     radial-gradient(
       circle at 10% 75%,
-      rgba(120, 0, 0, 0.12),
+      color-mix(
+        in srgb,
+        var(--checkout-accent-dark) 18%,
+        transparent
+      ),
       transparent 26rem
     ),
     linear-gradient(
       180deg,
-      #050505 0%,
-      #090909 55%,
+      var(--checkout-bg) 0%,
+      var(--checkout-bg-2) 55%,
       #020202 100%
     );
 }
 
 .tmn-checkout-page::selection {
-  color: #ffffff;
-  background: var(--tmn-red);
+  color: var(--checkout-button-text);
+  background: var(--checkout-accent);
 }
 
 .checkout-noise,
-.checkout-scanlines {
+.checkout-scanlines,
+.checkout-theme-decor {
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -64,21 +209,131 @@
 .checkout-noise {
   z-index: 9996;
   opacity: 0.045;
+
   background-image:
     url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
 }
 
 .checkout-scanlines {
   z-index: 9995;
-  opacity: 0.06;
+  opacity: 0.05;
+
   background:
     repeating-linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.09) 0,
-      rgba(255, 255, 255, 0.09) 1px,
+      rgba(255, 255, 255, 0.08) 0,
+      rgba(255, 255, 255, 0.08) 1px,
       transparent 1px,
       transparent 4px
     );
+}
+
+.checkout-theme-decor {
+  z-index: 0;
+}
+
+
+/* =========================================================
+   MUNCHIES DECOR
+   ========================================================= */
+
+html[data-checkout-theme="munchies"] .checkout-theme-decor {
+
+  opacity: 0.18;
+
+  background-image:
+    radial-gradient(circle, #ffffff 0 1px, transparent 2px),
+    radial-gradient(circle, #ff9fc8 0 1px, transparent 2px),
+    radial-gradient(circle, #b98dff 0 1px, transparent 2px);
+
+  background-position:
+    20px 30px,
+    90px 120px,
+    160px 55px;
+
+  background-size:
+    180px 180px,
+    230px 230px,
+    280px 280px;
+}
+
+html[data-checkout-theme="munchies"] .checkout-scanlines {
+
+  opacity: 0.018;
+}
+
+
+/* =========================================================
+   NIGHTWARE DECOR
+   ========================================================= */
+
+html[data-checkout-theme="nightware"] .checkout-theme-decor {
+
+  opacity: 0.11;
+
+  background-image:
+    linear-gradient(
+      rgba(98, 255, 58, 0.22) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(98, 255, 58, 0.13) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    44px 44px;
+}
+
+html[data-checkout-theme="nightware"] .checkout-intro h1,
+html[data-checkout-theme="nightware"] .panel-heading h2 {
+
+  text-shadow:
+    2px 0 0 rgba(98, 255, 58, 0.22),
+    -2px 0 0 rgba(255, 255, 255, 0.07);
+}
+
+html[data-checkout-theme="nightware"] .checkout-panel {
+
+  clip-path:
+    polygon(
+      0 0,
+      calc(100% - 13px) 0,
+      100% 13px,
+      100% 100%,
+      13px 100%,
+      0 calc(100% - 13px)
+    );
+}
+
+
+/* =========================================================
+   NIGHTSHADE DECOR
+   ========================================================= */
+
+html[data-checkout-theme="nightshade"] .checkout-theme-decor {
+
+  opacity: 0.12;
+
+  background:
+    radial-gradient(
+      circle at 78% 17%,
+      rgba(229, 243, 255, 0.18),
+      transparent 19rem
+    ),
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(106, 185, 255, 0.08) 48%,
+      transparent 51%
+    );
+}
+
+html[data-checkout-theme="nightshade"] .checkout-panel {
+
+  backdrop-filter:
+    blur(10px);
 }
 
 
@@ -87,15 +342,27 @@
    ========================================================= */
 
 .checkout-header {
-  border-bottom-color: rgba(225, 6, 0, 0.34);
+  position: relative;
+  z-index: 10;
+
+  border-bottom-color:
+    var(--checkout-border-accent);
+
   background:
-    rgba(5, 5, 5, 0.92);
-  backdrop-filter: blur(16px);
+    color-mix(
+      in srgb,
+      var(--checkout-bg) 92%,
+      transparent
+    );
+
+  backdrop-filter:
+    blur(16px);
 }
 
 .checkout-header .brand-kicker,
 .checkout-header .header-nav a:hover {
-  color: var(--tmn-red-bright);
+  color:
+    var(--checkout-accent-bright);
 }
 
 
@@ -107,9 +374,16 @@
   position: relative;
   z-index: 2;
 
-  width: min(1180px, calc(100% - 40px));
+  width:
+    min(
+      1180px,
+      calc(100% - 40px)
+    );
+
   margin: 0 auto;
-  padding: 84px 0 90px;
+
+  padding:
+    84px 0 90px;
 }
 
 
@@ -126,40 +400,109 @@
 .panel-code {
   margin: 0 0 12px;
 
-  color: var(--tmn-red-bright);
+  color:
+    var(--checkout-accent-bright);
 
-  font-family: "DM Mono", monospace;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.14em;
 }
 
 .checkout-intro h1 {
   margin: 0;
 
-  color: var(--tmn-white);
+  color:
+    var(--checkout-text);
 
-  font-size: clamp(3.2rem, 8vw, 7rem);
-  line-height: 0.86;
-  letter-spacing: -0.055em;
+  font-size:
+    clamp(
+      3.2rem,
+      8vw,
+      7rem
+    );
 
-  text-transform: uppercase;
+  line-height:
+    0.86;
+
+  letter-spacing:
+    -0.055em;
+
+  text-transform:
+    uppercase;
 }
 
 .checkout-intro h1 span {
   display: block;
-  color: var(--tmn-red-bright);
+
+  color:
+    var(--checkout-accent-bright);
 
   text-shadow:
-    0 0 32px rgba(225, 6, 0, 0.24);
+    0 0 32px
+    color-mix(
+      in srgb,
+      var(--checkout-accent) 24%,
+      transparent
+    );
 }
 
 .checkout-intro > p:last-child {
   max-width: 650px;
-  margin: 24px 0 0;
 
-  color: #c4c4c4;
-  line-height: 1.7;
+  margin:
+    24px 0 0;
+
+  color:
+    var(--checkout-muted);
+
+  line-height:
+    1.7;
+}
+
+
+/* Munchies intro gets softer / cuter */
+html[data-checkout-theme="munchies"] .checkout-intro h1 {
+
+  text-shadow:
+    3px 3px 0
+    rgba(255, 111, 174, 0.12);
+}
+
+html[data-checkout-theme="munchies"] .checkout-kicker {
+
+  display: inline-flex;
+
+  padding:
+    8px 12px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.18);
+
+  border-radius:
+    999px;
+
+  color:
+    #361024;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffd0e4,
+      #fff7fb
+    );
+
+  transform:
+    rotate(-1deg);
 }
 
 
@@ -169,11 +512,13 @@
 
 .checkout-layout {
   display: grid;
+
   grid-template-columns:
     minmax(0, 0.9fr)
     minmax(0, 1.1fr);
 
   gap: 22px;
+
   align-items: start;
 }
 
@@ -184,11 +529,15 @@
 
 .checkout-panel {
   min-width: 0;
+
   padding: 30px;
 
   border:
     1px solid
-    var(--tmn-border);
+    var(--checkout-border);
+
+  border-radius:
+    var(--checkout-radius);
 
   background:
     linear-gradient(
@@ -196,58 +545,95 @@
       rgba(255, 255, 255, 0.035),
       rgba(255, 255, 255, 0.008)
     ),
-    rgba(10, 10, 10, 0.95);
+    color-mix(
+      in srgb,
+      var(--checkout-panel) 96%,
+      transparent
+    );
 
   box-shadow:
-    0 24px 70px rgba(0, 0, 0, 0.34);
+    var(--checkout-shadow);
 }
 
 .payment-panel {
   border-color:
-    rgba(225, 6, 0, 0.32);
+    var(--checkout-border-accent);
 
   box-shadow:
-    0 24px 70px rgba(0, 0, 0, 0.34),
-    0 0 50px rgba(225, 6, 0, 0.055);
+    var(--checkout-shadow),
+    var(--checkout-glow);
 }
 
 .panel-heading {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+
+  align-items:
+    flex-start;
+
+  justify-content:
+    space-between;
+
   gap: 20px;
 
   padding-bottom: 20px;
 
   border-bottom:
     1px solid
-    var(--tmn-border);
+    var(--checkout-border);
 }
 
 .panel-heading h2 {
   margin: 0;
 
-  color: var(--tmn-white);
+  color:
+    var(--checkout-text);
 
-  font-size: clamp(1.5rem, 3vw, 2.4rem);
-  line-height: 1;
+  font-size:
+    clamp(
+      1.5rem,
+      3vw,
+      2.4rem
+    );
+
+  line-height:
+    1;
 }
 
 .checkout-item-count {
   flex-shrink: 0;
 
-  padding: 8px 10px;
+  padding:
+    8px 10px;
 
   border:
     1px solid
-    rgba(225, 6, 0, 0.34);
+    var(--checkout-border-accent);
 
-  color: var(--tmn-red-bright);
+  border-radius:
+    var(--checkout-small-radius);
 
-  font-family: "DM Mono", monospace;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  color:
+    var(--checkout-accent-bright);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--checkout-accent) 5%,
+      transparent
+    );
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    0.62rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.08em;
 }
 
 
@@ -262,17 +648,19 @@
 
 .checkout-line-item {
   display: grid;
+
   grid-template-columns:
     minmax(0, 1fr)
     auto;
 
   gap: 20px;
 
-  padding: 18px 0;
+  padding:
+    18px 0;
 
   border-bottom:
     1px solid
-    rgba(255, 255, 255, 0.08);
+    var(--checkout-border);
 }
 
 .checkout-line-copy {
@@ -281,32 +669,51 @@
 }
 
 .checkout-line-copy strong {
-  color: var(--tmn-white);
+  color:
+    var(--checkout-text);
 }
 
 .checkout-line-copy span {
-  color: var(--tmn-muted);
+  color:
+    var(--checkout-muted);
 
-  font-family: "DM Mono", monospace;
-  font-size: 0.68rem;
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    0.68rem;
 }
 
 .checkout-line-total {
-  color: var(--tmn-white);
+  color:
+    var(--checkout-text);
 
-  font-family: "DM Mono", monospace;
-  font-weight: 700;
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-weight:
+    700;
 }
 
 .checkout-empty {
-  margin: 22px 0 0;
-  color: var(--tmn-muted);
+  margin:
+    22px 0 0;
+
+  color:
+    var(--checkout-muted);
 }
 
 .checkout-total-row {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+
+  align-items:
+    flex-end;
+
+  justify-content:
+    space-between;
+
   gap: 20px;
 
   margin-top: 24px;
@@ -314,38 +721,63 @@
 
   border-top:
     1px solid
-    rgba(225, 6, 0, 0.32);
+    var(--checkout-border-accent);
 }
 
 .checkout-total-row span {
-  color: var(--tmn-muted);
+  color:
+    var(--checkout-muted);
 
-  font-family: "DM Mono", monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    0.7rem;
+
+  letter-spacing:
+    0.12em;
 }
 
 .checkout-total-row strong {
-  color: var(--tmn-red-bright);
+  color:
+    var(--checkout-accent-bright);
 
-  font-family: "DM Mono", monospace;
-  font-size: 2rem;
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    2rem;
 }
 
 .checkout-edit-link {
-  display: inline-flex;
-  margin-top: 22px;
+  display:
+    inline-flex;
 
-  color: var(--tmn-muted);
+  margin-top:
+    22px;
 
-  font-family: "DM Mono", monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-  text-decoration: none;
+  color:
+    var(--checkout-muted);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    0.65rem;
+
+  letter-spacing:
+    0.08em;
+
+  text-decoration:
+    none;
 }
 
 .checkout-edit-link:hover {
-  color: var(--tmn-red-bright);
+  color:
+    var(--checkout-accent-bright);
 }
 
 
@@ -356,13 +788,19 @@
 #tmnPaymentForm {
   display: grid;
   gap: 18px;
+
   margin-top: 24px;
 }
 
 .checkout-field-grid {
   display: grid;
+
   grid-template-columns:
-    repeat(2, minmax(0, 1fr));
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
   gap: 14px;
 }
 
@@ -373,32 +811,48 @@
 
 .checkout-field > span,
 .card-label {
-  color: var(--tmn-muted);
+  color:
+    var(--checkout-muted);
 
-  font-family: "DM Mono", monospace;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    0.62rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.1em;
 }
 
 .checkout-field input {
   width: 100%;
   min-height: 50px;
 
-  padding: 12px 14px;
+  padding:
+    12px 14px;
 
   border:
     1px solid
-    rgba(255, 255, 255, 0.16);
+    var(--checkout-border);
 
-  border-radius: 0;
+  border-radius:
+    var(--checkout-small-radius);
 
-  outline: 0;
+  outline:
+    0;
 
-  color: var(--tmn-white);
-  background: #0b0b0b;
+  color:
+    var(--checkout-text);
 
-  font: inherit;
+  background:
+    var(--checkout-panel);
+
+  font:
+    inherit;
 
   transition:
     border-color 0.2s ease,
@@ -406,11 +860,16 @@
 }
 
 .checkout-field input:focus {
-  border-color: var(--tmn-red-bright);
+  border-color:
+    var(--checkout-accent-bright);
 
   box-shadow:
     0 0 0 3px
-    rgba(225, 6, 0, 0.11);
+    color-mix(
+      in srgb,
+      var(--checkout-accent) 11%,
+      transparent
+    );
 }
 
 
@@ -424,13 +883,18 @@
 
   border-top:
     1px solid
-    var(--tmn-border);
+    var(--checkout-border);
 }
 
 .card-section-heading {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+
+  align-items:
+    flex-start;
+
+  justify-content:
+    space-between;
+
   gap: 18px;
 
   margin-bottom: 14px;
@@ -442,20 +906,31 @@
 }
 
 .card-section-heading small {
-  color: var(--tmn-muted);
-  line-height: 1.5;
+  color:
+    var(--checkout-muted);
+
+  line-height:
+    1.5;
 }
 
 .square-badge {
   flex-shrink: 0;
 
-  color: var(--tmn-white);
+  color:
+    var(--checkout-text);
 
-  font-family: "DM Mono", monospace;
-  font-size: 0.56rem;
-  letter-spacing: 0.1em;
+  font-family:
+    "DM Mono",
+    monospace;
 
-  opacity: 0.65;
+  font-size:
+    0.56rem;
+
+  letter-spacing:
+    0.1em;
+
+  opacity:
+    0.65;
 }
 
 .square-card-container {
@@ -469,38 +944,61 @@
 
 .tmn-pay-button {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
   gap: 16px;
 
   width: 100%;
   min-height: 60px;
 
-  padding: 16px 18px;
+  padding:
+    16px 18px;
 
   border:
     1px solid
-    var(--tmn-red-bright);
+    var(--checkout-accent-bright);
 
-  color: #ffffff;
+  border-radius:
+    var(--checkout-small-radius);
+
+  color:
+    var(--checkout-button-text);
 
   background:
     linear-gradient(
       135deg,
-      #8c0000,
-      #e10600
+      var(--checkout-accent-dark),
+      var(--checkout-accent)
     );
 
   box-shadow:
     0 0 32px
-    rgba(225, 6, 0, 0.16);
+    color-mix(
+      in srgb,
+      var(--checkout-accent) 16%,
+      transparent
+    );
 
-  font-family: "DM Mono", monospace;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.09em;
+  font-family:
+    "DM Mono",
+    monospace;
 
-  cursor: pointer;
+  font-size:
+    0.72rem;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    0.09em;
+
+  cursor:
+    pointer;
 
   transition:
     transform 0.2s ease,
@@ -509,18 +1007,16 @@
 }
 
 .tmn-pay-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-
-  background:
-    linear-gradient(
-      135deg,
-      #a90000,
-      #ff241c
-    );
+  transform:
+    translateY(-2px);
 
   box-shadow:
     0 0 42px
-    rgba(225, 6, 0, 0.25);
+    color-mix(
+      in srgb,
+      var(--checkout-accent) 25%,
+      transparent
+    );
 }
 
 .tmn-pay-button:disabled {
@@ -529,7 +1025,8 @@
 }
 
 .tmn-pay-button strong {
-  color: #ffffff;
+  color:
+    var(--checkout-button-text);
 }
 
 
@@ -538,27 +1035,44 @@
    ========================================================= */
 
 .payment-status {
-  min-height: 22px;
+  min-height:
+    22px;
+
   margin: 0;
 
-  color: #d6d6d6;
+  color:
+    var(--checkout-muted);
 
-  font-family: "DM Mono", monospace;
-  font-size: 0.68rem;
-  line-height: 1.5;
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    0.68rem;
+
+  line-height:
+    1.5;
 }
 
 .payment-status.is-error {
-  color: #ff514b;
+  color:
+    #ff514b;
 }
 
 .payment-fine-print {
   margin: 0;
 
-  color: #7d7d7d;
+  color:
+    var(--checkout-muted);
 
-  font-size: 0.7rem;
-  line-height: 1.55;
+  font-size:
+    0.7rem;
+
+  line-height:
+    1.55;
+
+  opacity:
+    0.72;
 }
 
 
@@ -567,12 +1081,15 @@
    ========================================================= */
 
 .payment-success {
-  margin-top: 26px;
-  padding: 28px 0 4px;
+  margin-top:
+    26px;
+
+  padding:
+    28px 0 4px;
 
   border-top:
     1px solid
-    rgba(225, 6, 0, 0.32);
+    var(--checkout-border-accent);
 }
 
 .payment-success[hidden] {
@@ -586,75 +1103,117 @@
   width: 52px;
   height: 52px;
 
-  margin: 0 0 18px;
+  margin:
+    0 0 18px;
 
   border:
     1px solid
-    var(--tmn-red-bright);
+    var(--checkout-accent-bright);
 
-  color: var(--tmn-white);
+  border-radius:
+    var(--checkout-small-radius);
+
+  color:
+    var(--checkout-button-text);
 
   background:
-    var(--tmn-red-dark);
+    var(--checkout-accent-dark);
 
-  font-size: 1.5rem;
+  font-size:
+    1.5rem;
 }
 
 .payment-success h2 {
   max-width: 560px;
   margin: 0;
 
-  color: var(--tmn-white);
+  color:
+    var(--checkout-text);
 
-  font-size: clamp(1.8rem, 4vw, 3.4rem);
-  line-height: 0.98;
+  font-size:
+    clamp(
+      1.8rem,
+      4vw,
+      3.4rem
+    );
+
+  line-height:
+    0.98;
 }
 
 .payment-success > p:not(.success-symbol):not(.panel-code) {
-  color: #c1c1c1;
-  line-height: 1.65;
+  color:
+    var(--checkout-muted);
+
+  line-height:
+    1.65;
 }
 
 .success-actions {
   display: flex;
   flex-wrap: wrap;
+
   gap: 12px;
 
-  margin-top: 24px;
+  margin-top:
+    24px;
 }
 
 .tmn-secondary-button,
 .tmn-primary-link {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
 
-  min-height: 44px;
-  padding: 10px 14px;
+  align-items:
+    center;
 
-  font-family: "DM Mono", monospace;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  justify-content:
+    center;
 
-  text-decoration: none;
+  min-height:
+    44px;
+
+  padding:
+    10px 14px;
+
+  border-radius:
+    var(--checkout-small-radius);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size:
+    0.62rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.08em;
+
+  text-decoration:
+    none;
 }
 
 .tmn-secondary-button {
   border:
     1px solid
-    rgba(255, 255, 255, 0.2);
+    var(--checkout-border);
 
-  color: var(--tmn-white);
+  color:
+    var(--checkout-text);
 }
 
 .tmn-primary-link {
   border:
     1px solid
-    var(--tmn-red-bright);
+    var(--checkout-accent-bright);
 
-  color: #ffffff;
-  background: var(--tmn-red-dark);
+  color:
+    var(--checkout-button-text);
+
+  background:
+    var(--checkout-accent-dark);
 }
 
 
@@ -664,7 +1223,7 @@
 
 .checkout-footer {
   border-top-color:
-    rgba(225, 6, 0, 0.24);
+    var(--checkout-border-accent);
 }
 
 
@@ -675,7 +1234,8 @@
 @media (max-width: 900px) {
 
   .checkout-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
   }
 
 }
@@ -690,31 +1250,41 @@
         1180px
       );
 
-    padding-top: 58px;
+    padding-top:
+      58px;
   }
 
   .checkout-panel {
-    padding: 22px;
+    padding:
+      22px;
   }
 
   .checkout-field-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
   }
 
   .panel-heading,
   .card-section-heading {
-    align-items: stretch;
-    flex-direction: column;
+    align-items:
+      stretch;
+
+    flex-direction:
+      column;
   }
 
   .checkout-item-count,
   .square-badge {
-    width: fit-content;
+    width:
+      fit-content;
   }
 
   .tmn-pay-button {
-    align-items: flex-start;
-    flex-direction: column;
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
   }
 
 }
@@ -735,4 +1305,131 @@
     transition-duration: 0.01ms !important;
   }
 
+}
+
+
+/* =========================================================
+   HARD THEME OVERRIDES
+   These are intentionally explicit so base.css cannot leave
+   the Munchies checkout in the core TMN red skin.
+   ========================================================= */
+
+html[data-checkout-theme="munchies"] body.tmn-checkout-page {
+  color: #fff7fb;
+  background:
+    radial-gradient(circle at 15% 12%, rgba(255, 111, 174, 0.18), transparent 24rem),
+    radial-gradient(circle at 86% 20%, rgba(180, 124, 255, 0.15), transparent 24rem),
+    linear-gradient(180deg, #120711 0%, #170812 50%, #0b050b 100%);
+}
+
+html[data-checkout-theme="munchies"] .checkout-header {
+  border-bottom-color: rgba(255, 111, 174, 0.24);
+  background: linear-gradient(
+    90deg,
+    rgba(18, 7, 17, 0.95),
+    rgba(28, 8, 21, 0.95)
+  );
+}
+
+html[data-checkout-theme="munchies"] .checkout-header .brand-kicker,
+html[data-checkout-theme="munchies"] .checkout-header .header-nav a:hover,
+html[data-checkout-theme="munchies"] .checkout-kicker,
+html[data-checkout-theme="munchies"] .panel-code,
+html[data-checkout-theme="munchies"] .checkout-total-row strong,
+html[data-checkout-theme="munchies"] .checkout-edit-link:hover {
+  color: #ff8fc0;
+}
+
+html[data-checkout-theme="munchies"] .checkout-intro h1 span,
+html[data-checkout-theme="munchies"] .panel-heading h2 {
+  color: #ffc4dc;
+}
+
+html[data-checkout-theme="munchies"] .checkout-panel {
+  border-color: rgba(255, 111, 174, 0.30);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(180, 124, 255, 0.10), transparent 22rem),
+    radial-gradient(circle at 8% 90%, rgba(255, 111, 174, 0.10), transparent 20rem),
+    rgba(24, 10, 21, 0.94);
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.28),
+    0 0 34px rgba(255, 111, 174, 0.08);
+}
+
+html[data-checkout-theme="munchies"] .payment-panel {
+  border-color: rgba(255, 111, 174, 0.42);
+}
+
+html[data-checkout-theme="munchies"] .checkout-item-count {
+  border-color: rgba(255, 111, 174, 0.42);
+  border-radius: 999px;
+  color: #ffc4dc;
+  background: rgba(255, 111, 174, 0.07);
+}
+
+html[data-checkout-theme="munchies"] .checkout-field input {
+  border-color: rgba(255, 160, 202, 0.20);
+  border-radius: 16px;
+  color: #fff7fb;
+  background: #160b14;
+}
+
+html[data-checkout-theme="munchies"] .checkout-field input:focus {
+  border-color: #ff8fc0;
+  box-shadow: 0 0 0 3px rgba(255, 111, 174, 0.13);
+}
+
+html[data-checkout-theme="munchies"] .tmn-pay-button {
+  border-color: #ff78b4;
+  border-radius: 16px;
+  color: #2a0820;
+  background: linear-gradient(135deg, #ff6fae, #c554ff);
+  box-shadow: 0 0 30px rgba(255, 79, 152, 0.22);
+}
+
+html[data-checkout-theme="munchies"] .tmn-pay-button strong {
+  color: #2a0820;
+}
+
+html[data-checkout-theme="munchies"] .tmn-pay-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #ff87bc, #d275ff);
+  box-shadow: 0 0 42px rgba(255, 111, 174, 0.28);
+}
+
+html[data-checkout-theme="munchies"] .checkout-total-row,
+html[data-checkout-theme="munchies"] .payment-success,
+html[data-checkout-theme="munchies"] .card-section {
+  border-color: rgba(255, 111, 174, 0.26);
+}
+
+html[data-checkout-theme="munchies"] .success-symbol {
+  border-color: #ff8fc0;
+  border-radius: 50%;
+  color: #2a0820;
+  background: #ffc4dc;
+}
+
+html[data-checkout-theme="munchies"] .tmn-primary-link {
+  border-color: #ff78b4;
+  border-radius: 999px;
+  color: #2a0820;
+  background: #ffc4dc;
+}
+
+html[data-checkout-theme="munchies"] .tmn-secondary-button {
+  border-radius: 999px;
+  border-color: rgba(255, 160, 202, 0.25);
+}
+
+html[data-checkout-theme="nightware"] body.tmn-checkout-page {
+  background:
+    radial-gradient(circle at 85% 15%, rgba(98, 255, 58, 0.12), transparent 24rem),
+    linear-gradient(180deg, #020402 0%, #050905 55%, #010201 100%);
+}
+
+html[data-checkout-theme="nightshade"] body.tmn-checkout-page {
+  background:
+    radial-gradient(circle at 82% 14%, rgba(106, 185, 255, 0.15), transparent 26rem),
+    linear-gradient(180deg, #03070c 0%, #07111b 58%, #02050a 100%);
 }
