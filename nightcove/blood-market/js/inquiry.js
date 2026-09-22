@@ -1,250 +1,461 @@
 /*
-  TASTE MY NIGHTMARE — SHARED INQUIRY FORM LOGIC
+  TASTE MY NIGHTMARE — FORMSPREE INQUIRY SYSTEM
 
-  - validates required fields
-  - requires at least one service/project type
-  - displays character counters
-  - blocks basic bot honeypot submissions
-  - POSTs JSON when an endpoint is configured
-  - if no endpoint is configured yet, saves the completed inquiry
-    as a .txt draft instead of pretending it was submitted
+  Uses Vanilla JS + fetch() because the site is static GitHub Pages
+  and already has custom form state / validation.
+
+  Formspree receives normal multipart form fields rather than a nested
+  JSON object so each field appears cleanly in the Formspree dashboard
+  and notification emails.
 */
 
 (function () {
-  const forms = document.querySelectorAll(".tmn-inquiry-form");
+  const forms =
+    document.querySelectorAll(
+      ".tmn-inquiry-form"
+    );
 
-  if (!forms.length) return;
-
-  document.querySelectorAll("textarea[data-count-target]").forEach((field) => {
-    const target = document.getElementById(field.dataset.countTarget);
-
-    const updateCount = () => {
-      if (target) target.textContent = field.value.length;
-    };
-
-    field.addEventListener("input", updateCount);
-    updateCount();
-  });
-
-  function getCheckedValues(form, name) {
-    return [...form.querySelectorAll(`input[name="${name}"]:checked`)]
-      .map((input) => input.value);
+  if (!forms.length) {
+    return;
   }
 
-  function collectFormData(form) {
-    const data = {};
-    const formData = new FormData(form);
 
-    for (const [key, value] of formData.entries()) {
-      if (key === "companyWebsite") continue;
+  /* =========================================================
+     CHARACTER COUNTERS
+     ========================================================= */
 
-      if (data[key] !== undefined) {
-        data[key] = Array.isArray(data[key])
-          ? [...data[key], value]
-          : [data[key], value];
-      } else {
-        data[key] = value;
+  document
+    .querySelectorAll(
+      "textarea[data-count-target]"
+    )
+    .forEach(
+      (field) => {
+        const target =
+          document.getElementById(
+            field.dataset.countTarget
+          );
+
+        const updateCount =
+          () => {
+            if (target) {
+              target.textContent =
+                field.value.length;
+            }
+          };
+
+        field.addEventListener(
+          "input",
+          updateCount
+        );
+
+        updateCount();
       }
+    );
+
+
+  /* =========================================================
+     HELPERS
+     ========================================================= */
+
+  function getCheckedValues(
+    form,
+    name
+  ) {
+    return [
+      ...form.querySelectorAll(
+        `input[name="${name}"]:checked`
+      )
+    ].map(
+      (input) =>
+        input.value
+    );
+  }
+
+
+  function setStatus(
+    form,
+    message,
+    type = ""
+  ) {
+    const status =
+      form.querySelector(
+        ".inquiry-status"
+      );
+
+    if (!status) {
+      return;
     }
 
-    data.projectType = getCheckedValues(form, "projectType");
-    data.assets = getCheckedValues(form, "assets");
+    status.textContent =
+      message;
+
+    status.classList.remove(
+      "is-error",
+      "is-success"
+    );
+
+    if (type) {
+      status.classList.add(
+        `is-${type}`
+      );
+    }
+  }
+
+
+  function validateProjectTypes(
+    form
+  ) {
+    const checked =
+      getCheckedValues(
+        form,
+        "projectType"
+      );
+
+    const error =
+      form.querySelector(
+        '[data-error-for="projectType"]'
+      );
+
+    if (!checked.length) {
+      if (error) {
+        error.textContent =
+          "SELECT AT LEAST ONE PROJECT / SERVICE TYPE.";
+      }
+
+      return false;
+    }
+
+    if (error) {
+      error.textContent =
+        "";
+    }
+
+    return true;
+  }
+
+
+  function getServiceMeta(
+    type
+  ) {
+    if (
+      type ===
+      "rendering-room"
+    ) {
+      return {
+        service:
+          "Nightware // The Rendering Room",
+
+        subject:
+          "Nightware // Rendering Room Inquiry",
+
+        success:
+          "RENDER REQUEST RECEIVED. NIGHTWARE WILL REVIEW THE PROJECT."
+      };
+    }
+
+    return {
+      service:
+        "Nightshade Productions",
+
+      subject:
+        "Nightshade Productions // Shoot Inquiry",
+
+      success:
+        "SHOOT INQUIRY RECEIVED. NIGHTSHADE WILL REVIEW AVAILABILITY AND SCOPE."
+    };
+  }
+
+
+  function getFormspreeError(
+    data,
+    fallback
+  ) {
+    if (
+      Array.isArray(
+        data?.errors
+      ) &&
+      data.errors.length
+    ) {
+      return (
+        data.errors[0]
+          ?.message ||
+        fallback
+      );
+    }
+
+    return (
+      data?.error ||
+      data?.message ||
+      fallback
+    );
+  }
+
+
+  /* =========================================================
+     FORMSPREE SUBMISSION
+     ========================================================= */
+
+  async function submitToFormspree(
+    endpoint,
+    form,
+    type
+  ) {
+    const meta =
+      getServiceMeta(
+        type
+      );
+
+    const formData =
+      new FormData(
+        form
+      );
+
+    formData.delete(
+      "companyWebsite"
+    );
+
+    formData.set(
+      "subject",
+      meta.subject
+    );
+
+    formData.set(
+      "service",
+      meta.service
+    );
+
+    formData.set(
+      "inquiryType",
+      type
+    );
+
+    formData.set(
+      "submittedAt",
+      new Date()
+        .toISOString()
+    );
+
+    formData.set(
+      "pageUrl",
+      window.location.href
+    );
+
+
+    const response =
+      await fetch(
+        endpoint,
+        {
+          method:
+            "POST",
+
+          body:
+            formData,
+
+          headers: {
+            "Accept":
+              "application/json"
+          }
+        }
+      );
+
+
+    let data =
+      null;
+
+    try {
+      data =
+        await response.json();
+    } catch (_) {
+      data =
+        null;
+    }
+
+
+    if (!response.ok) {
+      throw new Error(
+        getFormspreeError(
+          data,
+          `Submission failed (${response.status}).`
+        )
+      );
+    }
+
 
     return data;
   }
 
-  function humanizeKey(key) {
-    return key
-      .replace(/([A-Z])/g, " $1")
-      .replace(/^./, (char) => char.toUpperCase());
-  }
 
-  function makeTextDraft(type, data) {
-    const heading =
-      type === "rendering-room"
-        ? "NIGHTWARE // RENDERING ROOM INQUIRY"
-        : "NIGHTSHADE PRODUCTIONS // SHOOT INQUIRY";
+  /* =========================================================
+     FORM EVENTS
+     ========================================================= */
 
-    const lines = [
-      heading,
-      "=".repeat(heading.length),
-      "",
-      `Submitted: ${new Date().toLocaleString()}`,
-      ""
-    ];
+  forms.forEach(
+    (form) => {
 
-    Object.entries(data).forEach(([key, value]) => {
-      if (value === "" || value == null) return;
-      if (Array.isArray(value) && value.length === 0) return;
+      form.addEventListener(
+        "change",
+        () => {
+          validateProjectTypes(
+            form
+          );
+        }
+      );
 
-      lines.push(`${humanizeKey(key)}:`);
-      lines.push(Array.isArray(value) ? value.join(", ") : String(value));
-      lines.push("");
-    });
 
-    return lines.join("\n");
-  }
+      form.addEventListener(
+        "submit",
+        async (
+          event
+        ) => {
 
-  function downloadDraft(type, data) {
-    const content = makeTextDraft(type, data);
-    const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const anchor = document.createElement("a");
+          event.preventDefault();
 
-    const stamp = new Date().toISOString().slice(0, 10);
-    const fileName =
-      type === "rendering-room"
-        ? `nightware-inquiry-${stamp}.txt`
-        : `nightshade-inquiry-${stamp}.txt`;
 
-    anchor.href = url;
-    anchor.download = fileName;
-    document.body.appendChild(anchor);
-    anchor.click();
-    anchor.remove();
+          const type =
+            form.dataset
+              .inquiryType;
 
-    setTimeout(() => URL.revokeObjectURL(url), 500);
-  }
 
-  function setStatus(form, message, type = "") {
-    const status = form.querySelector(".inquiry-status");
+          const endpoint =
+            window
+              .TMN_INQUIRY_ENDPOINTS
+              ?.[type]
+              ?.trim() ||
+            "";
 
-    if (!status) return;
 
-    status.textContent = message;
-    status.classList.remove("is-error", "is-success");
+          const button =
+            form.querySelector(
+              ".inquiry-submit"
+            );
 
-    if (type) {
-      status.classList.add(`is-${type}`);
-    }
-  }
 
-  function validateProjectTypes(form) {
-    const checked = getCheckedValues(form, "projectType");
-    const error = form.querySelector('[data-error-for="projectType"]');
+          const honeypot =
+            form.querySelector(
+              'input[name="companyWebsite"]'
+            );
 
-    if (!checked.length) {
-      if (error) error.textContent = "SELECT AT LEAST ONE PROJECT / SERVICE TYPE.";
-      return false;
-    }
 
-    if (error) error.textContent = "";
-    return true;
-  }
+          setStatus(
+            form,
+            ""
+          );
 
-  async function submitToEndpoint(endpoint, payload) {
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
 
-    let responseBody = null;
+          if (
+            honeypot?.value
+          ) {
+            form.reset();
+            return;
+          }
 
-    try {
-      responseBody = await response.json();
-    } catch (_) {
-      responseBody = null;
-    }
 
-    if (!response.ok) {
-      throw new Error(
-        responseBody?.error ||
-        responseBody?.message ||
-        `Submission failed (${response.status}).`
+          const hasProjectType =
+            validateProjectTypes(
+              form
+            );
+
+
+          if (
+            !form.checkValidity() ||
+            !hasProjectType
+          ) {
+            form.reportValidity();
+
+            setStatus(
+              form,
+              "CHECK THE REQUIRED FIELDS BEFORE SUBMITTING.",
+              "error"
+            );
+
+            return;
+          }
+
+
+          if (!endpoint) {
+            setStatus(
+              form,
+              "FORM DELIVERY IS NOT CONFIGURED.",
+              "error"
+            );
+
+            return;
+          }
+
+
+          try {
+            if (button) {
+              button.disabled =
+                true;
+            }
+
+
+            setStatus(
+              form,
+              "TRANSMITTING INQUIRY..."
+            );
+
+
+            await submitToFormspree(
+              endpoint,
+              form,
+              type
+            );
+
+
+            form.reset();
+
+
+            form
+              .querySelectorAll(
+                "textarea[data-count-target]"
+              )
+              .forEach(
+                (field) => {
+                  field.dispatchEvent(
+                    new Event(
+                      "input"
+                    )
+                  );
+                }
+              );
+
+
+            setStatus(
+              form,
+              getServiceMeta(
+                type
+              ).success,
+              "success"
+            );
+
+
+          } catch (error) {
+
+            console.error(
+              "TMN Formspree submission error:",
+              error
+            );
+
+
+            setStatus(
+              form,
+              error.message ||
+              "THE INQUIRY COULD NOT BE SENT. PLEASE TRY AGAIN.",
+              "error"
+            );
+
+
+          } finally {
+
+            if (button) {
+              button.disabled =
+                false;
+            }
+
+          }
+        }
       );
     }
-
-    return responseBody;
-  }
-
-  forms.forEach((form) => {
-    form.addEventListener("change", () => {
-      validateProjectTypes(form);
-    });
-
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-
-      const type = form.dataset.inquiryType;
-      const button = form.querySelector(".inquiry-submit");
-      const honeypot = form.querySelector('input[name="companyWebsite"]');
-
-      setStatus(form, "");
-
-      if (honeypot?.value) {
-        form.reset();
-        return;
-      }
-
-      const hasProjectType = validateProjectTypes(form);
-
-      if (!form.checkValidity() || !hasProjectType) {
-        form.reportValidity();
-        setStatus(
-          form,
-          "CHECK THE REQUIRED FIELDS BEFORE SUBMITTING.",
-          "error"
-        );
-        return;
-      }
-
-      const data = collectFormData(form);
-
-      const payload = {
-        inquiryType: type,
-        submittedAt: new Date().toISOString(),
-        pageUrl: window.location.href,
-        data
-      };
-
-      const endpoint =
-        window.TMN_INQUIRY_ENDPOINTS?.[type]?.trim() || "";
-
-      if (!endpoint) {
-        downloadDraft(type, data);
-
-        setStatus(
-          form,
-          "FORM DESIGN IS WORKING. DELIVERY IS NOT CONNECTED YET, SO THIS INQUIRY WAS SAVED AS A TEXT DRAFT.",
-          "success"
-        );
-        return;
-      }
-
-      try {
-        if (button) button.disabled = true;
-
-        setStatus(form, "TRANSMITTING INQUIRY...");
-
-        await submitToEndpoint(endpoint, payload);
-
-        form.reset();
-
-        form.querySelectorAll("textarea[data-count-target]").forEach((field) => {
-          field.dispatchEvent(new Event("input"));
-        });
-
-        setStatus(
-          form,
-          type === "rendering-room"
-            ? "RENDER REQUEST RECEIVED. NIGHTWARE WILL REVIEW THE PROJECT."
-            : "SHOOT INQUIRY RECEIVED. NIGHTSHADE WILL REVIEW AVAILABILITY AND SCOPE.",
-          "success"
-        );
-      } catch (error) {
-        console.error("TMN inquiry submission error:", error);
-
-        setStatus(
-          form,
-          error.message || "THE INQUIRY COULD NOT BE SENT. PLEASE TRY AGAIN.",
-          "error"
-        );
-      } finally {
-        if (button) button.disabled = false;
-      }
-    });
-  });
+  );
 })();

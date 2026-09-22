@@ -1,21 +1,21 @@
 /*
-  TMN INQUIRY DELIVERY CONFIG
-  ===========================
+  TASTE MY NIGHTMARE
+  FORMSPREE INQUIRY DELIVERY
 
-  Leave these blank while you are only testing the form design.
+  Site stack:
+  - GitHub Pages
+  - static HTML/CSS
+  - Vanilla JavaScript
 
-  When you are ready to receive real submissions, these should point
-  to endpoints that accept a JSON POST.
-
-  Example future paths:
-  https://api.tastemynightmare.com/inquiry/rendering-room
-  https://api.tastemynightmare.com/inquiry/nightshade-productions
-
-  I intentionally did NOT invent an email address or third-party form
-  account for you.
+  Both inquiry forms currently use the same Formspree form.
+  inquiry.js adds service metadata so submissions remain easy
+  to distinguish.
 */
 
 window.TMN_INQUIRY_ENDPOINTS = {
-  "rendering-room": "",
-  "nightshade-productions": ""
+  "rendering-room":
+    "https://formspree.io/f/mgavknrl",
+
+  "nightshade-productions":
+    "https://formspree.io/f/mgavknrl"
 };
