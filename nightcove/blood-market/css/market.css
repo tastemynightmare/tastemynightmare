@@ -1,6 +1,41 @@
+/* =========================================================
+   BLOOD MARKET â€” MARKET DIRECTORY
+   Desktop card fix + preserved tablet/mobile responsiveness
+   ========================================================= */
+
 
 /* ---------------------------------------------------------
-   THE ACTUAL BOX FIX
+   MARKET DIRECTORY WIDTH / GRID
+   --------------------------------------------------------- */
+
+#vendors.vendor-section,
+#vendors.section {
+  width: min(94vw, 1600px) !important;
+  max-width: 1600px !important;
+
+  margin-inline: auto !important;
+
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+#vendors .vendor-grid,
+#vendors .card-grid {
+  display: grid !important;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr)) !important;
+
+  gap: 24px !important;
+
+  align-items: stretch !important;
+
+  width: 100% !important;
+}
+
+
+/* ---------------------------------------------------------
+   VENDOR CARD BOX
    --------------------------------------------------------- */
 
 #vendors .vendor-card.card {
@@ -10,12 +45,17 @@
   flex-direction: column !important;
 
   width: 100% !important;
+  min-width: 0 !important;
 
-  /* HARD HEIGHT so base.css cannot shrink these */
-  min-height: 700px !important;
-  height: 700px !important;
+  /*
+    Let CSS Grid equalize the row naturally.
+    No hard 700px height â€” that was creating unnecessary empty
+    space and made overflow problems harder to manage.
+  */
+  min-height: 570px !important;
+  height: auto !important;
 
-  padding: 38px 34px 34px !important;
+  padding: 34px 30px 30px !important;
 
   overflow: hidden !important;
 
@@ -30,19 +70,19 @@
 #vendors .vendor-card .shop-tag {
   flex: 0 0 auto !important;
 
-  margin: 0 0 34px !important;
+  margin: 0 0 28px !important;
 
   min-height: 18px !important;
 
-  color: var(--muted);
+  color: var(--muted) !important;
 
-  font-family: "DM Mono", monospace;
+  font-family: "DM Mono", monospace !important;
 
   font-size: 0.64rem !important;
 
   line-height: 1.4 !important;
 
-  letter-spacing: 0.08em;
+  letter-spacing: 0.08em !important;
 }
 
 
@@ -62,59 +102,64 @@
 
   width: 100% !important;
 
-  margin: 0 0 30px !important;
+  margin: 0 0 24px !important;
 
   padding-top: 16px !important;
 
   border-top: 1px solid var(--line) !important;
 
-  font-family: "DM Mono", monospace;
+  font-family: "DM Mono", monospace !important;
 
   font-size: 0.66rem !important;
 }
 
 #vendors .vendor-card .vendor-status span,
 #vendors .vendor-card .vendor-status strong {
+  min-width: 0 !important;
+
   white-space: nowrap !important;
 }
 
 
 /* ---------------------------------------------------------
    TITLES
-   Give the titles their own reserved area
    --------------------------------------------------------- */
 
 #vendors .vendor-card h3 {
   flex: 0 0 auto !important;
 
   width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
 
-  /* Reserve consistent title space */
-  min-height: 150px !important;
+  min-height: 118px !important;
 
-  margin: 0 0 30px !important;
+  margin: 0 0 24px !important;
 
   color: var(--ink) !important;
 
   font-family: "Archivo Black", sans-serif !important;
 
-  font-size: clamp(2.8rem, 3.35vw, 4.6rem) !important;
+  /*
+    This is intentionally smaller than the old 3.35vw / 4.6rem.
+    At desktop card widths that old value was large enough for the
+    Nightshade title to run into the next card.
+  */
+  font-size: clamp(2.35rem, 2.55vw, 3.35rem) !important;
 
-  line-height: 0.88 !important;
+  line-height: 0.9 !important;
 
-  letter-spacing: -0.045em !important;
-
-  /* THIS prevents Nightshade from blowing outside the card */
-  overflow-wrap: normal !important;
-  word-break: normal !important;
+  letter-spacing: -0.05em !important;
 
   white-space: normal !important;
+
+  overflow-wrap: normal !important;
+  word-break: normal !important;
 }
 
-
-/* Nightshade is the longest name — give it a slightly smaller fit */
+/* Longest vendor name */
 #vendors .production-card h3 {
-  font-size: clamp(2.55rem, 3vw, 4.15rem) !important;
+  font-size: clamp(2.15rem, 2.3vw, 3rem) !important;
 }
 
 
@@ -129,15 +174,15 @@
   width: 100% !important;
   max-width: 100% !important;
 
-  min-height: 110px !important;
+  min-height: 88px !important;
 
-  margin: 0 0 34px !important;
+  margin: 0 0 28px !important;
 
   color: var(--muted) !important;
 
   font-size: 1rem !important;
 
-  line-height: 1.7 !important;
+  line-height: 1.65 !important;
 
   overflow: visible !important;
 }
@@ -172,6 +217,8 @@
 
   align-items: center !important;
   justify-content: center !important;
+
+  z-index: 2 !important;
 }
 
 
@@ -224,6 +271,87 @@
 }
 
 
+
+
+/* ---------------------------------------------------------
+   VENDOR-SPECIFIC CTA COLORS
+   --------------------------------------------------------- */
+
+#vendors .munchies-card .vendor-cta,
+#vendors .munchies-card > .btn {
+  border-color: #ff426e !important;
+  color: #ffffff !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #a90f3b,
+      #ff426e
+    ) !important;
+
+  box-shadow:
+    0 0 26px
+    rgba(255, 66, 110, 0.28) !important;
+}
+
+#vendors .munchies-card .vendor-cta:hover,
+#vendors .munchies-card > .btn:hover {
+  box-shadow:
+    0 0 34px
+    rgba(255, 66, 110, 0.45) !important;
+}
+
+
+#vendors .production-card .vendor-cta,
+#vendors .production-card > .btn {
+  border-color: #6fa4ff !important;
+  color: #ffffff !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #315ea8,
+      #6fa4ff
+    ) !important;
+
+  box-shadow:
+    0 0 26px
+    rgba(105, 150, 255, 0.26) !important;
+}
+
+#vendors .production-card .vendor-cta:hover,
+#vendors .production-card > .btn:hover {
+  box-shadow:
+    0 0 34px
+    rgba(105, 150, 255, 0.42) !important;
+}
+
+
+#vendors .rendering-card .vendor-cta,
+#vendors .rendering-card > .btn {
+  border-color: #9cff55 !important;
+  color: #071007 !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4d8d14,
+      #9cff55
+    ) !important;
+
+  box-shadow:
+    0 0 26px
+    rgba(156, 255, 85, 0.24) !important;
+}
+
+#vendors .rendering-card .vendor-cta:hover,
+#vendors .rendering-card > .btn:hover {
+  box-shadow:
+    0 0 34px
+    rgba(156, 255, 85, 0.40) !important;
+}
+
+
 /* ---------------------------------------------------------
    ACCESSIBILITY
    --------------------------------------------------------- */
@@ -268,10 +396,52 @@ body button:focus-visible {
 
 
 /* ---------------------------------------------------------
+   LARGE DESKTOP
+   Keep the three cards roomy without allowing title overflow.
+   --------------------------------------------------------- */
+
+@media (min-width: 1450px) {
+  #vendors .vendor-card.card {
+    min-height: 590px !important;
+
+    padding:
+      38px
+      34px
+      34px !important;
+  }
+
+  #vendors .vendor-card h3 {
+    font-size:
+      clamp(
+        2.55rem,
+        2.5vw,
+        3.55rem
+      ) !important;
+  }
+
+  #vendors .production-card h3 {
+    font-size:
+      clamp(
+        2.3rem,
+        2.2vw,
+        3.05rem
+      ) !important;
+  }
+}
+
+
+/* ---------------------------------------------------------
    TABLET
+   IMPORTANT: these media queries stay AFTER the desktop grid rules
+   so the desktop 3-column rule cannot override them.
    --------------------------------------------------------- */
 
 @media (max-width: 1150px) {
+  #vendors.vendor-section,
+  #vendors.section {
+    width: min(92vw, 980px) !important;
+  }
+
   #vendors .vendor-grid,
   #vendors .card-grid {
     grid-template-columns:
@@ -279,8 +449,28 @@ body button:focus-visible {
   }
 
   #vendors .vendor-card.card {
-    min-height: 640px !important;
-    height: 640px !important;
+    min-height: 590px !important;
+    height: auto !important;
+  }
+
+  #vendors .vendor-card h3 {
+    min-height: 112px !important;
+
+    font-size:
+      clamp(
+        2.3rem,
+        4.3vw,
+        3.35rem
+      ) !important;
+  }
+
+  #vendors .production-card h3 {
+    font-size:
+      clamp(
+        2.1rem,
+        4vw,
+        3rem
+      ) !important;
   }
 }
 
@@ -297,20 +487,39 @@ body button:focus-visible {
 
   #vendors .vendor-grid,
   #vendors .card-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns:
+      1fr !important;
   }
 
   #vendors .vendor-card.card {
-    min-height: 580px !important;
+    min-height: 0 !important;
     height: auto !important;
 
-    padding: 28px 24px !important;
+    padding:
+      28px
+      24px !important;
   }
 
-  #vendors .vendor-card h3 {
+  #vendors .vendor-card .shop-tag {
+    margin-bottom:
+      24px !important;
+  }
+
+  #vendors .vendor-card .vendor-status {
+    margin-bottom:
+      24px !important;
+  }
+
+  #vendors .vendor-card h3,
+  #vendors .production-card h3 {
     min-height: auto !important;
 
-    font-size: clamp(2.8rem, 11vw, 4.2rem) !important;
+    font-size:
+      clamp(
+        2.5rem,
+        11vw,
+        4rem
+      ) !important;
   }
 
   #vendors .vendor-card .vendor-copy,
@@ -320,7 +529,35 @@ body button:focus-visible {
 
   #vendors .vendor-card .vendor-cta,
   #vendors .vendor-card > .btn {
-    margin-top: 28px !important;
+    margin-top:
+      28px !important;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   SMALL MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 430px) {
+  #vendors .vendor-card.card {
+    padding:
+      24px
+      20px !important;
+  }
+
+  #vendors .vendor-card h3,
+  #vendors .production-card h3 {
+    font-size:
+      clamp(
+        2.2rem,
+        10.8vw,
+        3.25rem
+      ) !important;
+  }
+
+  #vendors .vendor-card .vendor-status {
+    align-items: flex-start !important;
   }
 }
 
@@ -332,6 +569,7 @@ body button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   #vendors .vendor-card.card,
   #vendors .vendor-card.card::before,
+  #vendors .vendor-card.card::after,
   #vendors .vendor-card .btn {
     animation: none !important;
 
@@ -339,36 +577,4 @@ body button:focus-visible {
 
     transform: none !important;
   }
-}
-
-/* =========================================================
-   BLOOD MARKET — VENDOR CARD HARD FIX
-   Put this at the VERY BOTTOM of blood-market.css
-   ========================================================= */
-
-/* Make the directory itself substantially wider */
-#vendors.vendor-section,
-#vendors.section {
-  width: min(94vw, 1500px) !important;
-  max-width: 1500px !important;
-
-  margin-inline: auto !important;
-
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-/* Force a roomy 3-column storefront layout */
-#vendors .vendor-grid,
-#vendors .card-grid {
-  display: grid !important;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr)) !important;
-
-  gap: 26px !important;
-
-  align-items: stretch !important;
-
-  width: 100% !important;
 }
