@@ -4,12 +4,11 @@
   Uses Vanilla JS + fetch() because the site is static GitHub Pages
   and already has custom form state / validation.
 
-  Formspree receives normal multipart form fields rather than a nested
-  JSON object so each field appears cleanly in the Formspree dashboard
-  and notification emails.
+  Formspree receives the questionnaire as normal form fields.
 
-  This version also adds multiple real file uploads to BOTH inquiry
-  forms without replacing or redesigning the HTML pages.
+  Actual project files are collected separately through Dropbox File
+  Requests. This avoids Formspree's paid attachment feature while still
+  giving clients a direct upload button inside the branded inquiry flow.
 */
 
 (function () {
@@ -24,31 +23,70 @@
 
 
   /* =========================================================
-     FILE UPLOADS
+     CLIENT FILE DELIVERY — DROPBOX FILE REQUESTS
 
-     Formspree limits:
-     - up to 10 files per submission
-     - up to 25 MB per file
-     - up to 100 MB total request size
+     Formspree handles the questionnaire.
+     Dropbox File Requests handle actual project files.
 
-     The file field is injected here so your existing inquiry HTML
-     does not have to be replaced or redesigned.
+     Visitors do NOT need a Dropbox account to upload through a
+     Dropbox File Request.
+
+     The request URLs live in inquiry-config.js so they can be changed
+     later without touching either inquiry page.
      ========================================================= */
 
-  const MAX_FILES =
-    10;
+  function getUploadConfig(
+    type
+  ) {
+    const urls =
+      window.TMN_FILE_REQUEST_URLS ||
+      {};
 
-  const MAX_FILE_BYTES =
-    25 * 1024 * 1024;
+    if (
+      type ===
+      "rendering-room"
+    ) {
+      return {
+        title:
+          "UPLOAD PROJECT FILES",
 
-  const MAX_TOTAL_FILE_BYTES =
-    100 * 1024 * 1024;
+        button:
+          "OPEN SECURE FILE UPLOAD ↗",
+
+        copy:
+          "Upload logos, business cards, menus, photos, PDFs, documents, design files, ZIPs, references, and other project assets.",
+
+        url:
+          (
+            urls["rendering-room"] ||
+            ""
+          ).trim()
+      };
+    }
+
+    return {
+      title:
+        "UPLOAD PRODUCTION FILES",
+
+      button:
+        "OPEN SECURE FILE UPLOAD ↗",
+
+      copy:
+        "Upload moodboards, treatments, shot lists, artwork, reference images, documents, demos, and other production assets.",
+
+      url:
+        (
+          urls["nightshade-productions"] ||
+          ""
+        ).trim()
+    };
+  }
 
 
   function installUploadStyles() {
     if (
       document.getElementById(
-        "tmnInquiryUploadStyles"
+        "tmnDropboxUploadStyles"
       )
     ) {
       return;
@@ -60,61 +98,118 @@
       );
 
     style.id =
-      "tmnInquiryUploadStyles";
+      "tmnDropboxUploadStyles";
 
     style.textContent = `
-      .tmn-file-upload-field {
-        margin-top: 2px;
+      .tmn-external-upload {
+        display: grid;
+        gap: 12px;
+        padding: 18px;
       }
 
-      .tmn-file-upload-field > small {
-        display: block;
-        line-height: 1.55;
-        opacity: 0.68;
-      }
-
-      .tmn-file-upload-field input[type="file"] {
-        min-height: 58px;
-        padding: 9px 10px;
-        cursor: pointer;
-      }
-
-      .tmn-file-upload-field input[type="file"]::file-selector-button {
-        min-height: 38px;
-        margin-right: 12px;
-        padding: 8px 12px;
-        border: 1px solid currentColor;
-        border-radius: inherit;
-        color: inherit;
-        background: transparent;
-        font: 700 0.63rem/1 "DM Mono", monospace;
-        letter-spacing: 0.07em;
-        cursor: pointer;
-      }
-
-      .tmn-file-upload-summary,
-      .tmn-file-upload-error {
+      .tmn-external-upload__label {
         margin: 0;
-        font: 0.6rem/1.6 "DM Mono", monospace;
-        letter-spacing: 0.035em;
+        font: 800 0.63rem/1.4 "DM Mono", monospace;
+        letter-spacing: 0.1em;
       }
 
-      .tmn-file-upload-summary {
+      .tmn-external-upload__copy,
+      .tmn-external-upload__note {
+        margin: 0;
+        line-height: 1.6;
         opacity: 0.72;
       }
 
-      .tmn-file-upload-error {
-        color: #ff6363;
+      .tmn-external-upload__copy {
+        font-size: 0.82rem;
       }
 
-      .inquiry-nightware .tmn-file-upload-field input[type="file"]::file-selector-button {
-        border-color: #75ff52;
+      .tmn-external-upload__note {
+        font: 0.6rem/1.6 "DM Mono", monospace;
+        letter-spacing: 0.04em;
+      }
+
+      .tmn-external-upload__button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 52px;
+        padding: 12px 16px;
+        text-decoration: none;
+        font: 900 0.68rem/1 "DM Mono", monospace;
+        letter-spacing: 0.08em;
+        transition: transform .16s ease, filter .16s ease;
+      }
+
+      .tmn-external-upload__button:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.07);
+      }
+
+      .tmn-external-upload__button.is-disabled {
+        pointer-events: none;
+        opacity: 0.42;
+      }
+
+      .tmn-upload-status {
+        display: grid;
+        gap: 10px;
+        margin: 2px 0 0;
+        padding: 0;
+        border: 0;
+      }
+
+      .tmn-upload-status legend {
+        margin-bottom: 2px;
+        font: 800 0.63rem/1.4 "DM Mono", monospace;
+        letter-spacing: 0.1em;
+      }
+
+      .tmn-upload-status label {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        cursor: pointer;
+        line-height: 1.45;
+      }
+
+      .tmn-upload-status input {
+        margin-top: 3px;
+      }
+
+      .inquiry-nightware .tmn-external-upload {
+        border: 1px solid rgba(117,255,82,.22);
+        background: rgba(117,255,82,.035);
+      }
+
+      .inquiry-nightware .tmn-external-upload__label,
+      .inquiry-nightware .tmn-upload-status legend {
         color: #75ff52;
       }
 
-      .inquiry-nightshade .tmn-file-upload-field input[type="file"]::file-selector-button {
-        border-color: #9bd3ff;
-        color: #dcecff;
+      .inquiry-nightware .tmn-external-upload__button {
+        border: 1px solid #75ff52;
+        color: #061005;
+        background: #75ff52;
+      }
+
+      .inquiry-nightshade .tmn-external-upload {
+        border: 1px solid rgba(155,211,255,.22);
+        border-radius: 6px;
+        background: rgba(106,185,255,.035);
+      }
+
+      .inquiry-nightshade .tmn-external-upload__label,
+      .inquiry-nightshade .tmn-upload-status legend {
+        color: #9bd3ff;
+      }
+
+      .inquiry-nightshade .tmn-external-upload__button {
+        border: 1px solid #dcecff;
+        border-radius: 5px;
+        color: #06131f;
+        background: linear-gradient(135deg, #e5f3ff, #80c3ff);
       }
     `;
 
@@ -124,285 +219,105 @@
   }
 
 
-  function formatFileSize(
-    bytes
-  ) {
-    if (
-      bytes >=
-      1024 * 1024
-    ) {
-      return `${(
-        bytes /
-        (1024 * 1024)
-      ).toFixed(1)} MB`;
-    }
-
-    return `${Math.max(
-      1,
-      Math.round(
-        bytes / 1024
-      )
-    )} KB`;
-  }
-
-
-  function getUploadCopy(
-    type
-  ) {
-    if (
-      type ===
-      "rendering-room"
-    ) {
-      return {
-        label:
-          "UPLOAD PROJECT FILES",
-
-        help:
-          "Upload logos, business cards, service menus, photos, PDFs, documents, design files, ZIPs, references, or other project assets. You can choose multiple files.",
-
-        empty:
-          "NO FILES SELECTED // LINKS BELOW ARE STILL OPTIONAL"
-      };
-    }
-
-    return {
-      label:
-        "UPLOAD PRODUCTION FILES",
-
-      help:
-        "Upload moodboards, treatments, shot lists, artwork, reference images, documents, demos, or other production assets. You can choose multiple files.",
-
-      empty:
-        "NO FILES SELECTED // LINKS BELOW ARE STILL OPTIONAL"
-    };
-  }
-
-
-  function getUploadInput(
-    form
-  ) {
-    return form.querySelector(
-      'input[name="projectFiles"]'
-    );
-  }
-
-
-  function getSelectedFiles(
-    form
-  ) {
-    const input =
-      getUploadInput(
-        form
-      );
-
-    return input
-      ? [...input.files]
-      : [];
-  }
-
-
-  function updateFileSummary(
-    form
-  ) {
-    const files =
-      getSelectedFiles(
-        form
-      );
-
-    const summary =
-      form.querySelector(
-        "[data-file-summary]"
-      );
-
-    const type =
-      form.dataset
-        .inquiryType;
-
-    if (!summary) {
-      return;
-    }
-
-    if (!files.length) {
-      summary.textContent =
-        getUploadCopy(
-          type
-        ).empty;
-
-      return;
-    }
-
-    const totalBytes =
-      files.reduce(
-        (
-          total,
-          file
-        ) =>
-          total +
-          file.size,
-        0
-      );
-
-    summary.textContent =
-      `${files.length} FILE${
-        files.length === 1
-          ? ""
-          : "S"
-      } SELECTED // ${formatFileSize(
-        totalBytes
-      )} TOTAL // ${files
-        .map(
-          (file) =>
-            file.name
-        )
-        .join(" • ")}`;
-  }
-
-
-  function setFileError(
-    form,
-    message = ""
-  ) {
-    const error =
-      form.querySelector(
-        "[data-file-error]"
-      );
-
-    if (error) {
-      error.textContent =
-        message;
-    }
-  }
-
-
-  function validateFiles(
-    form
-  ) {
-    const files =
-      getSelectedFiles(
-        form
-      );
-
-    setFileError(
-      form,
-      ""
-    );
-
-    if (
-      files.length >
-      MAX_FILES
-    ) {
-      setFileError(
-        form,
-        `MAXIMUM ${MAX_FILES} FILES PER INQUIRY.`
-      );
-
-      return false;
-    }
-
-    const oversized =
-      files.find(
-        (file) =>
-          file.size >
-          MAX_FILE_BYTES
-      );
-
-    if (oversized) {
-      setFileError(
-        form,
-        `${oversized.name} IS OVER THE 25 MB PER-FILE LIMIT.`
-      );
-
-      return false;
-    }
-
-    const totalBytes =
-      files.reduce(
-        (
-          total,
-          file
-        ) =>
-          total +
-          file.size,
-        0
-      );
-
-    if (
-      totalBytes >
-      MAX_TOTAL_FILE_BYTES
-    ) {
-      setFileError(
-        form,
-        "THE SELECTED FILES EXCEED THE 100 MB TOTAL UPLOAD LIMIT."
-      );
-
-      return false;
-    }
-
-    return true;
-  }
-
-
-  function installFileUpload(
+  function installExternalUpload(
     form
   ) {
     const type =
       form.dataset
         .inquiryType;
 
-    const copy =
-      getUploadCopy(
+    const config =
+      getUploadConfig(
         type
       );
 
-    form.enctype =
-      "multipart/form-data";
-
-    const field =
+    const wrapper =
       document.createElement(
-        "label"
+        "div"
       );
 
-    field.className =
-      "field tmn-file-upload-field";
+    wrapper.className =
+      "tmn-external-upload";
 
-    field.innerHTML = `
-      <span>${copy.label}</span>
 
-      <small>
-        ${copy.help}
-        Maximum 10 files, 25 MB each.
-      </small>
+    const isConnected =
+      /^https:\/\/(www\.)?dropbox\.com\/request\//i
+        .test(
+          config.url
+        );
 
-      <input
-        type="file"
-        name="projectFiles"
-        multiple
-      >
 
-      <p
-        class="tmn-file-upload-summary"
-        data-file-summary
-      >
-        ${copy.empty}
+    wrapper.innerHTML = `
+      <p class="tmn-external-upload__label">
+        ${config.title}
       </p>
 
-      <p
-        class="tmn-file-upload-error"
-        data-file-error
-        aria-live="polite"
-      ></p>
+      <p class="tmn-external-upload__copy">
+        ${config.copy}
+      </p>
+
+      <a
+        class="tmn-external-upload__button${isConnected ? "" : " is-disabled"}"
+        ${isConnected
+          ? `href="${config.url}" target="_blank" rel="noopener"`
+          : `href="#" aria-disabled="true"`}
+      >
+        ${isConnected
+          ? config.button
+          : "FILE REQUEST LINK NOT CONNECTED"}
+      </a>
+
+      <p class="tmn-external-upload__note">
+        The upload opens in a new tab. Return here after the files finish uploading.
+      </p>
+
+      <fieldset class="tmn-upload-status">
+        <legend>FILE STATUS *</legend>
+
+        <label>
+          <input
+            type="radio"
+            name="fileStatus"
+            value="Files uploaded through Dropbox"
+            required
+          >
+          <span>I uploaded my project files.</span>
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            name="fileStatus"
+            value="No files to upload yet"
+            required
+          >
+          <span>I do not have files to upload yet.</span>
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            name="fileStatus"
+            value="Files will be sent later"
+            required
+          >
+          <span>I will send the files later.</span>
+        </label>
+      </fieldset>
     `;
 
 
     /*
       Rendering Room:
-      put real uploads directly before the existing file/Drive links.
+      place the Dropbox uploader before the existing File / Drive Links.
 
       Nightshade:
-      put uploads directly before the reference/moodboard links.
+      place it before Reference / Moodboard Links.
+
+      Existing link fields stay as OPTIONAL backup methods.
     */
 
-    const preferredAnchor =
+    const anchor =
       type ===
       "rendering-room"
         ? form
@@ -421,24 +336,9 @@
             );
 
 
-    const fallbackAnchor =
-      form
-        .querySelector(
-          'textarea[name="referenceLinks"]'
-        )
-        ?.closest(
-          "label"
-        );
-
-
-    const anchor =
-      preferredAnchor ||
-      fallbackAnchor;
-
-
     if (anchor) {
       anchor.before(
-        field
+        wrapper
       );
     } else {
       const sections =
@@ -446,39 +346,18 @@
           ".form-section"
         );
 
-      const lastSection =
+      const target =
         sections[
-          sections.length - 1
+          Math.max(
+            0,
+            sections.length - 2
+          )
         ];
 
-      lastSection?.appendChild(
-        field
+      target?.appendChild(
+        wrapper
       );
     }
-
-
-    const input =
-      getUploadInput(
-        form
-      );
-
-    input?.addEventListener(
-      "change",
-      () => {
-        updateFileSummary(
-          form
-        );
-
-        validateFiles(
-          form
-        );
-      }
-    );
-
-
-    updateFileSummary(
-      form
-    );
   }
 
 
@@ -486,7 +365,7 @@
 
   forms.forEach(
     (form) => {
-      installFileUpload(
+      installExternalUpload(
         form
       );
     }
@@ -643,48 +522,15 @@
     data,
     fallback
   ) {
-    const firstError =
+    if (
       Array.isArray(
         data?.errors
-      )
-        ? data.errors[0]
-        : null;
-
-    const code =
-      firstError?.code ||
-      data?.code ||
-      "";
-
-    if (
-      code ===
-      "NO_FILE_UPLOADS"
+      ) &&
+      data.errors.length
     ) {
       return (
-        "FILE UPLOADS ARE NOT ENABLED FOR THIS FORMSPREE FORM / PLAN."
-      );
-    }
-
-    if (
-      code ===
-      "TOO_MANY_FILES"
-    ) {
-      return (
-        "TOO MANY FILES WERE ATTACHED. THE LIMIT IS 10 FILES PER INQUIRY."
-      );
-    }
-
-    if (
-      code ===
-      "FILES_TOO_BIG"
-    ) {
-      return (
-        "ONE OR MORE FILES ARE TOO LARGE. THE LIMIT IS 25 MB PER FILE."
-      );
-    }
-
-    if (firstError) {
-      return (
-        firstError.message ||
+        data.errors[0]
+          ?.message ||
         fallback
       );
     }
@@ -862,16 +708,9 @@
             );
 
 
-          const filesAreValid =
-            validateFiles(
-              form
-            );
-
-
           if (
             !form.checkValidity() ||
-            !hasProjectType ||
-            !filesAreValid
+            !hasProjectType
           ) {
             form.reportValidity();
 

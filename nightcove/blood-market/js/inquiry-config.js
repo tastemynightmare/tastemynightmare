@@ -1,15 +1,18 @@
 /*
   TASTE MY NIGHTMARE
-  FORMSPREE INQUIRY DELIVERY
+  INQUIRY DELIVERY CONFIG
 
-  Site stack:
-  - GitHub Pages
-  - static HTML/CSS
-  - Vanilla JavaScript
+  Formspree handles the questionnaire.
+  Dropbox File Requests handle actual client files.
 
-  Both inquiry forms currently use the same Formspree form.
-  inquiry.js adds service metadata so submissions remain easy
-  to distinguish.
+  Create TWO Dropbox File Requests:
+  1. Nightware / Rendering Room Client Files
+  2. Nightshade Productions Client Files
+
+  Then paste the two Dropbox request links below.
+
+  A Dropbox File Request link normally looks like:
+  https://www.dropbox.com/request/xxxxxxxxxxxxxxxx
 */
 
 window.TMN_INQUIRY_ENDPOINTS = {
@@ -18,4 +21,13 @@ window.TMN_INQUIRY_ENDPOINTS = {
 
   "nightshade-productions":
     "https://formspree.io/f/mgavknrl"
+};
+
+
+window.TMN_FILE_REQUEST_URLS = {
+  "rendering-room":
+    "",
+
+  "nightshade-productions":
+    ""
 };
