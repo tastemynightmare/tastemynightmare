@@ -1,18 +1,15 @@
 /*
   TASTE MY NIGHTMARE
-  INQUIRY DELIVERY CONFIG
+  FINAL INQUIRY DELIVERY CONFIG
 
-  Formspree handles the questionnaire.
-  Dropbox File Requests handle actual client files.
+  Questionnaire:
+  -> Formspree
 
-  Create TWO Dropbox File Requests:
-  1. Nightware / Rendering Room Client Files
-  2. Nightshade Productions Client Files
+  Client file uploads:
+  -> Dropbox File Request
 
-  Then paste the two Dropbox request links below.
-
-  A Dropbox File Request link normally looks like:
-  https://www.dropbox.com/request/xxxxxxxxxxxxxxxx
+  Both Nightware and Nightshade Productions use the same
+  Taste My Nightmare client upload request.
 */
 
 window.TMN_INQUIRY_ENDPOINTS = {
@@ -26,8 +23,8 @@ window.TMN_INQUIRY_ENDPOINTS = {
 
 window.TMN_FILE_REQUEST_URLS = {
   "rendering-room":
-    "",
+    "https://www.dropbox.com/request/vcxf1c07dt7w15fcewk3",
 
   "nightshade-productions":
-    ""
+    "https://www.dropbox.com/request/vcxf1c07dt7w15fcewk3"
 };
