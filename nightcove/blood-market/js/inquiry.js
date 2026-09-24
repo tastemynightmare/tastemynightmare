@@ -1,14 +1,18 @@
 /*
-  TASTE MY NIGHTMARE — FORMSPREE INQUIRY SYSTEM
+  TASTE MY NIGHTMARE — INQUIRY SYSTEM
+  ====================================
 
-  Uses Vanilla JS + fetch() because the site is static GitHub Pages
-  and already has custom form state / validation.
+  FINAL CLIENT INTAKE FLOW:
 
-  Formspree receives the questionnaire as normal form fields.
+  STEP 1
+  -> Questionnaire submits to Formspree.
 
-  Actual project files are collected separately through Dropbox File
-  Requests. This avoids Formspree's paid attachment feature while still
-  giving clients a direct upload button inside the branded inquiry flow.
+  STEP 2
+  -> Only AFTER Formspree confirms receipt does the Dropbox
+     File Request button unlock.
+
+  This prevents a client from uploading files to Dropbox and leaving
+  before Taste My Nightmare receives the actual project inquiry.
 */
 
 (function () {
@@ -23,16 +27,7 @@
 
 
   /* =========================================================
-     CLIENT FILE DELIVERY — DROPBOX FILE REQUESTS
-
-     Formspree handles the questionnaire.
-     Dropbox File Requests handle actual project files.
-
-     Visitors do NOT need a Dropbox account to upload through a
-     Dropbox File Request.
-
-     The request URLs live in inquiry-config.js so they can be changed
-     later without touching either inquiry page.
+     DROPBOX FILE-REQUEST CONFIG
      ========================================================= */
 
   function getUploadConfig(
@@ -48,13 +43,19 @@
     ) {
       return {
         title:
-          "UPLOAD PROJECT FILES",
+          "STEP 2 // UPLOAD PROJECT FILES",
 
-        button:
+        lockedButton:
+          "SUBMIT INQUIRY TO UNLOCK FILE UPLOAD",
+
+        unlockedButton:
           "OPEN SECURE FILE UPLOAD ↗",
 
-        copy:
-          "Upload logos, business cards, menus, photos, PDFs, documents, design files, ZIPs, references, and other project assets.",
+        lockedCopy:
+          "Complete and submit the inquiry first. Once the inquiry is received, your secure project-file upload will unlock here.",
+
+        unlockedCopy:
+          "Inquiry received. Now upload logos, business cards, menus, photos, PDFs, documents, design files, ZIPs, references, and other project assets.",
 
         url:
           (
@@ -64,15 +65,22 @@
       };
     }
 
+
     return {
       title:
-        "UPLOAD PRODUCTION FILES",
+        "STEP 2 // UPLOAD PRODUCTION FILES",
 
-      button:
+      lockedButton:
+        "SUBMIT INQUIRY TO UNLOCK FILE UPLOAD",
+
+      unlockedButton:
         "OPEN SECURE FILE UPLOAD ↗",
 
-      copy:
-        "Upload moodboards, treatments, shot lists, artwork, reference images, documents, demos, and other production assets.",
+      lockedCopy:
+        "Complete and submit the inquiry first. Once the inquiry is received, your secure production-file upload will unlock here.",
+
+      unlockedCopy:
+        "Inquiry received. Now upload moodboards, treatments, shot lists, artwork, reference images, documents, demos, and other production assets.",
 
       url:
         (
@@ -82,6 +90,22 @@
     };
   }
 
+
+  function isDropboxRequestConnected(
+    url
+  ) {
+    return (
+      /^https:\/\/(www\.)?dropbox\.com\/request\//i
+        .test(
+          url
+        )
+    );
+  }
+
+
+  /* =========================================================
+     DROPBOX GATE STYLES
+     ========================================================= */
 
   function installUploadStyles() {
     if (
@@ -104,6 +128,7 @@
       .tmn-external-upload {
         display: grid;
         gap: 12px;
+        margin-top: 18px;
         padding: 18px;
       }
 
@@ -139,43 +164,21 @@
         text-decoration: none;
         font: 900 0.68rem/1 "DM Mono", monospace;
         letter-spacing: 0.08em;
-        transition: transform .16s ease, filter .16s ease;
+        transition:
+          transform .16s ease,
+          filter .16s ease,
+          opacity .16s ease;
       }
 
-      .tmn-external-upload__button:hover {
+      .tmn-external-upload__button:hover:not(.is-disabled) {
         transform: translateY(-2px);
         filter: brightness(1.07);
       }
 
       .tmn-external-upload__button.is-disabled {
         pointer-events: none;
+        cursor: not-allowed;
         opacity: 0.42;
-      }
-
-      .tmn-upload-status {
-        display: grid;
-        gap: 10px;
-        margin: 2px 0 0;
-        padding: 0;
-        border: 0;
-      }
-
-      .tmn-upload-status legend {
-        margin-bottom: 2px;
-        font: 800 0.63rem/1.4 "DM Mono", monospace;
-        letter-spacing: 0.1em;
-      }
-
-      .tmn-upload-status label {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        cursor: pointer;
-        line-height: 1.45;
-      }
-
-      .tmn-upload-status input {
-        margin-top: 3px;
       }
 
       .inquiry-nightware .tmn-external-upload {
@@ -183,8 +186,7 @@
         background: rgba(117,255,82,.035);
       }
 
-      .inquiry-nightware .tmn-external-upload__label,
-      .inquiry-nightware .tmn-upload-status legend {
+      .inquiry-nightware .tmn-external-upload__label {
         color: #75ff52;
       }
 
@@ -200,8 +202,7 @@
         background: rgba(106,185,255,.035);
       }
 
-      .inquiry-nightshade .tmn-external-upload__label,
-      .inquiry-nightshade .tmn-upload-status legend {
+      .inquiry-nightshade .tmn-external-upload__label {
         color: #9bd3ff;
       }
 
@@ -209,7 +210,12 @@
         border: 1px solid #dcecff;
         border-radius: 5px;
         color: #06131f;
-        background: linear-gradient(135deg, #e5f3ff, #80c3ff);
+        background:
+          linear-gradient(
+            135deg,
+            #e5f3ff,
+            #80c3ff
+          );
       }
     `;
 
@@ -218,6 +224,10 @@
     );
   }
 
+
+  /* =========================================================
+     INSTALL LOCKED STEP 2
+     ========================================================= */
 
   function installExternalUpload(
     form
@@ -239,174 +249,198 @@
     wrapper.className =
       "tmn-external-upload";
 
-
-    const isConnected =
-      /^https:\/\/(www\.)?dropbox\.com\/request\//i
-        .test(
-          config.url
-        );
-
+    wrapper.dataset.uploadGate =
+      type;
 
     wrapper.innerHTML = `
       <p class="tmn-external-upload__label">
         ${config.title}
       </p>
 
-      <p class="tmn-external-upload__copy">
-        ${config.copy}
+      <p
+        class="tmn-external-upload__copy"
+        data-upload-copy
+      >
+        ${config.lockedCopy}
       </p>
 
       <a
-        class="tmn-external-upload__button${isConnected ? "" : " is-disabled"}"
-        ${isConnected
-          ? `href="${config.url}" target="_blank" rel="noopener"`
-          : `href="#" aria-disabled="true"`}
+        class="tmn-external-upload__button is-disabled"
+        href="#"
+        aria-disabled="true"
+        tabindex="-1"
+        data-upload-button
       >
-        ${isConnected
-          ? config.button
-          : "FILE REQUEST LINK NOT CONNECTED"}
+        ${config.lockedButton}
       </a>
 
       <p class="tmn-external-upload__note">
-        The upload opens in a new tab. Return here after the files finish uploading.
+        Your questionnaire is sent first. File upload is the second step.
       </p>
-
-      <fieldset class="tmn-upload-status">
-        <legend>FILE STATUS *</legend>
-
-        <label>
-          <input
-            type="radio"
-            name="fileStatus"
-            value="Files uploaded through Dropbox"
-            required
-          >
-          <span>I uploaded my project files.</span>
-        </label>
-
-        <label>
-          <input
-            type="radio"
-            name="fileStatus"
-            value="No files to upload yet"
-            required
-          >
-          <span>I do not have files to upload yet.</span>
-        </label>
-
-        <label>
-          <input
-            type="radio"
-            name="fileStatus"
-            value="Files will be sent later"
-            required
-          >
-          <span>I will send the files later.</span>
-        </label>
-      </fieldset>
     `;
 
 
     /*
-      Rendering Room:
-      place the Dropbox uploader before the existing File / Drive Links.
-
-      Nightshade:
-      place it before Reference / Moodboard Links.
-
-      Existing link fields stay as OPTIONAL backup methods.
+      Place STEP 2 directly AFTER the submit area.
+      Dropbox is not available earlier in the form.
     */
 
-    const anchor =
-      type ===
-      "rendering-room"
-        ? form
-            .querySelector(
-              'textarea[name="assetLinks"]'
-            )
-            ?.closest(
-              "label"
-            )
-        : form
-            .querySelector(
-              'textarea[name="referenceLinks"]'
-            )
-            ?.closest(
-              "label"
-            );
+    const submitZone =
+      form.querySelector(
+        ".form-submit-zone"
+      );
 
-
-    if (anchor) {
-      anchor.before(
+    if (submitZone) {
+      submitZone.after(
         wrapper
       );
     } else {
-      const sections =
-        form.querySelectorAll(
-          ".form-section"
-        );
-
-      const target =
-        sections[
-          Math.max(
-            0,
-            sections.length - 2
-          )
-        ];
-
-      target?.appendChild(
+      form.appendChild(
         wrapper
       );
     }
   }
 
 
-  installUploadStyles();
+  function unlockExternalUpload(
+    form
+  ) {
+    const type =
+      form.dataset
+        .inquiryType;
 
-  forms.forEach(
-    (form) => {
-      installExternalUpload(
-        form
+    const config =
+      getUploadConfig(
+        type
       );
+
+    const wrapper =
+      form.querySelector(
+        `[data-upload-gate="${type}"]`
+      );
+
+    const button =
+      wrapper?.querySelector(
+        "[data-upload-button]"
+      );
+
+    const copy =
+      wrapper?.querySelector(
+        "[data-upload-copy]"
+      );
+
+    if (
+      !wrapper ||
+      !button
+    ) {
+      return;
     }
-  );
+
+
+    if (
+      !isDropboxRequestConnected(
+        config.url
+      )
+    ) {
+      if (copy) {
+        copy.textContent =
+          "Your inquiry was received, but the file-upload destination is temporarily unavailable. Please contact Taste My Nightmare.";
+      }
+
+      button.textContent =
+        "FILE UPLOAD TEMPORARILY UNAVAILABLE";
+
+      return;
+    }
+
+
+    if (copy) {
+      copy.textContent =
+        config.unlockedCopy;
+    }
+
+    button.textContent =
+      config.unlockedButton;
+
+    button.href =
+      config.url;
+
+    button.target =
+      "_blank";
+
+    button.rel =
+      "noopener";
+
+    button.removeAttribute(
+      "aria-disabled"
+    );
+
+    button.removeAttribute(
+      "tabindex"
+    );
+
+    button.classList.remove(
+      "is-disabled"
+    );
+
+
+    /*
+      Make STEP 2 obvious immediately after Formspree succeeds.
+    */
+
+    setTimeout(
+      () => {
+        wrapper.scrollIntoView({
+          behavior:
+            "smooth",
+          block:
+            "center"
+        });
+
+        button.focus();
+      },
+      120
+    );
+  }
 
 
   /* =========================================================
      CHARACTER COUNTERS
      ========================================================= */
 
-  document
-    .querySelectorAll(
-      "textarea[data-count-target]"
-    )
-    .forEach(
-      (field) => {
-        const target =
-          document.getElementById(
-            field.dataset.countTarget
+  function installCharacterCounters() {
+    document
+      .querySelectorAll(
+        "textarea[data-count-target]"
+      )
+      .forEach(
+        (field) => {
+          const target =
+            document.getElementById(
+              field.dataset.countTarget
+            );
+
+          const updateCount =
+            () => {
+              if (target) {
+                target.textContent =
+                  field.value.length;
+              }
+            };
+
+          field.addEventListener(
+            "input",
+            updateCount
           );
 
-        const updateCount =
-          () => {
-            if (target) {
-              target.textContent =
-                field.value.length;
-            }
-          };
-
-        field.addEventListener(
-          "input",
-          updateCount
-        );
-
-        updateCount();
-      }
-    );
+          updateCount();
+        }
+      );
+  }
 
 
   /* =========================================================
-     HELPERS
+     FORM HELPERS
      ========================================================= */
 
   function getCheckedValues(
@@ -501,7 +535,7 @@
           "Nightware // Rendering Room Inquiry",
 
         success:
-          "RENDER REQUEST RECEIVED. NIGHTWARE WILL REVIEW THE PROJECT."
+          "RENDER REQUEST RECEIVED. NOW UPLOAD YOUR PROJECT FILES BELOW."
       };
     }
 
@@ -513,7 +547,7 @@
         "Nightshade Productions // Shoot Inquiry",
 
       success:
-        "SHOOT INQUIRY RECEIVED. NIGHTSHADE WILL REVIEW AVAILABILITY AND SCOPE."
+        "SHOOT INQUIRY RECEIVED. NOW UPLOAD YOUR PRODUCTION FILES BELOW."
     };
   }
 
@@ -544,7 +578,7 @@
 
 
   /* =========================================================
-     FORMSPREE SUBMISSION
+     FORMSPREE
      ========================================================= */
 
   async function submitToFormspree(
@@ -562,9 +596,19 @@
         form
       );
 
+
+    /*
+      Local bot trap should not clutter Formspree.
+    */
+
     formData.delete(
       "companyWebsite"
     );
+
+
+    /*
+      Formspree metadata.
+    */
 
     formData.set(
       "subject",
@@ -632,7 +676,6 @@
       );
     }
 
-
     return data;
   }
 
@@ -641,172 +684,214 @@
      FORM EVENTS
      ========================================================= */
 
-  forms.forEach(
-    (form) => {
+  function installForm(
+    form
+  ) {
+    form.addEventListener(
+      "change",
+      () => {
+        validateProjectTypes(
+          form
+        );
+      }
+    );
 
-      form.addEventListener(
-        "change",
-        () => {
+
+    form.addEventListener(
+      "submit",
+      async (
+        event
+      ) => {
+        event.preventDefault();
+
+
+        const type =
+          form.dataset
+            .inquiryType;
+
+
+        const endpoint =
+          window
+            .TMN_INQUIRY_ENDPOINTS
+            ?.[type]
+            ?.trim() ||
+          "";
+
+
+        const button =
+          form.querySelector(
+            ".inquiry-submit"
+          );
+
+
+        const honeypot =
+          form.querySelector(
+            'input[name="companyWebsite"]'
+          );
+
+
+        setStatus(
+          form,
+          ""
+        );
+
+
+        /*
+          Silent bot rejection.
+        */
+
+        if (
+          honeypot?.value
+        ) {
+          form.reset();
+          return;
+        }
+
+
+        const hasProjectType =
           validateProjectTypes(
             form
           );
+
+
+        if (
+          !form.checkValidity() ||
+          !hasProjectType
+        ) {
+          form.reportValidity();
+
+          setStatus(
+            form,
+            "CHECK THE REQUIRED FIELDS BEFORE SUBMITTING.",
+            "error"
+          );
+
+          return;
         }
-      );
 
 
-      form.addEventListener(
-        "submit",
-        async (
-          event
-        ) => {
+        if (!endpoint) {
+          setStatus(
+            form,
+            "FORM DELIVERY IS NOT CONFIGURED.",
+            "error"
+          );
 
-          event.preventDefault();
-
-
-          const type =
-            form.dataset
-              .inquiryType;
+          return;
+        }
 
 
-          const endpoint =
-            window
-              .TMN_INQUIRY_ENDPOINTS
-              ?.[type]
-              ?.trim() ||
-            "";
+        try {
+          if (button) {
+            button.disabled =
+              true;
+          }
 
 
-          const button =
-            form.querySelector(
-              ".inquiry-submit"
-            );
+          setStatus(
+            form,
+            "TRANSMITTING INQUIRY..."
+          );
 
 
-          const honeypot =
-            form.querySelector(
-              'input[name="companyWebsite"]'
+          /*
+            STEP 1:
+            Formspree must succeed first.
+          */
+
+          await submitToFormspree(
+            endpoint,
+            form,
+            type
+          );
+
+
+          /*
+            Formspree has confirmed receipt.
+            We can now clear the questionnaire.
+          */
+
+          form.reset();
+
+
+          form
+            .querySelectorAll(
+              "textarea[data-count-target]"
+            )
+            .forEach(
+              (field) => {
+                field.dispatchEvent(
+                  new Event(
+                    "input"
+                  )
+                );
+              }
             );
 
 
           setStatus(
             form,
-            ""
+            getServiceMeta(
+              type
+            ).success,
+            "success"
           );
 
 
-          if (
-            honeypot?.value
-          ) {
-            form.reset();
-            return;
-          }
+          /*
+            STEP 2:
+            Dropbox unlocks ONLY after Formspree success.
+          */
 
-
-          const hasProjectType =
-            validateProjectTypes(
-              form
-            );
-
-
-          if (
-            !form.checkValidity() ||
-            !hasProjectType
-          ) {
-            form.reportValidity();
-
-            setStatus(
-              form,
-              "CHECK THE REQUIRED FIELDS BEFORE SUBMITTING.",
-              "error"
-            );
-
-            return;
-          }
-
-
-          if (!endpoint) {
-            setStatus(
-              form,
-              "FORM DELIVERY IS NOT CONFIGURED.",
-              "error"
-            );
-
-            return;
-          }
-
-
-          try {
-            if (button) {
-              button.disabled =
-                true;
-            }
-
-
-            setStatus(
-              form,
-              "TRANSMITTING INQUIRY..."
-            );
-
-
-            await submitToFormspree(
-              endpoint,
-              form,
-              type
-            );
-
-
-            form.reset();
-
-
+          unlockExternalUpload(
             form
-              .querySelectorAll(
-                "textarea[data-count-target]"
-              )
-              .forEach(
-                (field) => {
-                  field.dispatchEvent(
-                    new Event(
-                      "input"
-                    )
-                  );
-                }
-              );
+          );
 
 
-            setStatus(
-              form,
-              getServiceMeta(
-                type
-              ).success,
-              "success"
-            );
+        } catch (error) {
+
+          console.error(
+            "TMN Formspree submission error:",
+            error
+          );
 
 
-          } catch (error) {
-
-            console.error(
-              "TMN Formspree submission error:",
-              error
-            );
-
-
-            setStatus(
-              form,
-              error.message ||
-              "THE INQUIRY COULD NOT BE SENT. PLEASE TRY AGAIN.",
-              "error"
-            );
+          setStatus(
+            form,
+            error.message ||
+            "THE INQUIRY COULD NOT BE SENT. PLEASE TRY AGAIN.",
+            "error"
+          );
 
 
-          } finally {
+        } finally {
 
-            if (button) {
-              button.disabled =
-                false;
-            }
-
+          if (button) {
+            button.disabled =
+              false;
           }
+
         }
+      }
+    );
+  }
+
+
+  /* =========================================================
+     START
+     ========================================================= */
+
+  installUploadStyles();
+  installCharacterCounters();
+
+  forms.forEach(
+    (form) => {
+      installExternalUpload(
+        form
+      );
+
+      installForm(
+        form
       );
     }
   );
