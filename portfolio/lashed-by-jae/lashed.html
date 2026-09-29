@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffcae1">
+    <meta name="description" content="Lashed by Jae portfolio concept: lash sets and a playful booking demo.">
+    <title>Lashed by Jolly | Lashes, but make it art</title>
+    <link rel="stylesheet" href="lashed.css">
+    <script src="lashed.js" defer></script>
+  </head>
+  <body>
+    <div class="topline">Kissimmee, FL 
+        <span aria-hidden="true">✦</span> 
+        Certified lash artist
+         <span aria-hidden="true">✦</span> 
+         An appointment worth dressing up for
+    </div>
+
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="wordmark" href="#home" aria-label="Lashed by Jolly home">
+            lashed <small>BY JOLLY</small>
+        </a>
+        <button class="menu-button" 
+            type="button" 
+            aria-expanded="false" aria-controls="primary-nav">Menu 
+            <span aria-hidden="true">☰</span>
+        </button>
+        <nav id="primary-nav" aria-label="Main navigation">
+          <a href="#sets">The sets</a>
+          <a href="#work">The work</a>
+          <a href="#booking-info">Booking info</a>
+          <a class="pill pill-dark" href="#play-checkout">Book me</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="overline">The pretty is in the details</p>
+            <h1>Lashes,<br>but make<br><em>it art.</em></h1>
+            <p>
+                For looks you feel before you even look in the mirror. 
+                Made by Jolly, in Kissimmee.
+            </p>
+            <div class="hero-actions">
+              <a class="pill pill-dark" href="#play-checkout">Book your look ↗</a>
+              <a class="pill pill-pink" href="#sets">Explore sets</a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <span class="sparkle sparkle-one" aria-hidden="true">✦</span>
+            <div class="hero-portrait">
+                <img src="assets/hero.webp" 
+                alt="Lash client showing her finished look">
+            </div>
+            <div class="artist-tag">KISSIMMEE<br>
+                <strong>LASH ARTIST</strong>
+                <br>
+                <i>by Jolly</i>
+            </div>
+            <figure class="polaroid hero-polaroid">
+                <img src="assets/classic.webp" 
+                alt="Client with a soft lash look">
+            </figure>
+            <span class="sparkle sparkle-two" aria-hidden="true">✦</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="ticker" aria-hidden="true">
+        <div>
+            Book the look ✦ Lashed by Jolly ✦ Book the look ✦ 
+            Lashed by Jolly ✦ Book the look ✦
+        </div>
+      </div>
+
+      <section class="sets-section container" id="sets">
+        <div class="section-top">
+          <div>
+                <p class="overline">The edit / 01</p>
+                <h2>The lash menu</h2>
+                <p>Four ways to make them look twice.</p>
+            </div>
+          <p class="accent-script">pick your energy. <span aria-hidden="true">✦</span></p>
+        </div>
+        <div class="set-grid">
+          <article class="set-card blush">
+            <div class="set-copy">
+                <p class="eyebrow">The set / 01</p>
+                <h3>Classic</h3>
+                <p>clean, pretty, forever flattering</p>
+                <div class="prices">
+                    <span>Full set <b>$80</b></span>
+                    <span>Refill <b>$60</b></span></div>
+                    <button 
+                        class="text-link 
+                        select-set" data-set="classic" 
+                        type="button">
+                        Find your time ↗
+                    </button>
+                </div>
+            <img src="assets/classic.webp" alt="Classic lash look">
+          </article>
+          <article class="set-card dark">
+            <div class="set-copy">
+                <p class="eyebrow">The set / 02</p>
+                <h3>Hybrid</h3><p>the sweet spot between soft &amp; full</p>
+                <div class="prices">
+                    <span>Full set <b>$100</b></span>
+                    <span>Refill <b>$80</b></span>
+                </div>
+                <button 
+                    class="text-link select-set" 
+                    data-set="hybrid" 
+                    type="button">
+                    Find your time ↗
+                </button>
+            </div>
+            <img src="assets/hybrid.webp" alt="Hybrid lash look">
+          </article>
+          <article class="set-card dark">
+            <div class="set-copy"><p class="eyebrow">The set / 03</p><h3>Volume</h3><p>fuller, fluffier, impossible to miss</p><div class="prices"><span>Full set <b>$120</b></span><span>Refill <b>$100</b></span></div><button class="text-link select-set" data-set="volume" type="button">Find your time ↗</button></div>
+            <img src="assets/volume.webp" alt="Volume lash look">
+          </article>
+          <article class="set-card blush">
+            <div class="set-copy"><p class="eyebrow">The set / 04</p><h3>Mega Volume</h3><p>the whole entrance</p><div class="prices"><span>Full set <b>$140</b></span><span>Refill <b>$120</b></span></div><button class="text-link select-set" data-set="mega" type="button">Find your time ↗</button></div>
+            <img src="assets/mega.webp" alt="Mega volume lash look">
+          </article>
+        </div>
+        <div class="extras"><h3>The little extras</h3><div><span>Bottom lashes <b>$15</b></span><span>Lash removal <b>$20</b></span><span>Lash bath <b>$20</b></span></div><p>The details that finish the look.</p></div>
+      </section>
+
+      <section class="work-section" id="work">
+        <div class="container work-grid">
+          <div>
+            <p class="overline">The edit / 02</p>
+            <h2>Looks that<br><em>speak up.</em></h2>
+            <p>A little proof from Jae's chair.</p>
+          </div>
+          <div class="gallery">
+            <figure class="polaroid">
+                <img src="assets/gallery-one.webp" 
+                alt="Lash client holding a sparkling heart">
+            </figure>
+            <figure class="polaroid">
+                <img src="assets/gallery-two.webp" 
+                alt="Close view of a finished lash look">
+            </figure>
+            <figure class="polaroid">
+                <img src="assets/gallery-three.webp" 
+                alt="Client showing her lash set">
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="policies" id="booking-info">
+        <div class="container">
+            <p class="overline">A few things before you book</p>
+            <div class="policy-grid">
+                <div>
+                    <div class="policy-heading">
+                        <strong>$35</strong>
+                        <b>To reserve a full set</b>
+                    </div>
+                    <p>
+                        Non-refundable deposit due at booking. It is credited 
+                        toward your full-set total.
+                    </p>
+                </div>
+                <div>
+                    <div class="policy-heading">
+                        <strong>+$40</strong>
+                        <b>Outside regular hours</b>
+                    </div>
+                    <p>
+                        Request the time with Jae first. 
+                        The extra fee applies if she approves it.
+                    </p>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <section class="checkout-section" id="play-checkout" aria-labelledby="checkout-title">
+        <div class="container">
+          <p class="overline">The booking studio / play-play</p>
+          <div class="checkout-heading"><div>
+            <h2 id="checkout-title">Try the booking flow.</h2>
+            <p>Pick a look, try a sample time, and review the total.</p>
+          </div>
+          <span class="demo-badge">DEMO ONLY · NO PAYMENT</span>
+        </div>
+          <div class="checkout-grid">
+            <form id="demo-form" class="booking-panel">
+              <h3><span>01</span> Make it yours</h3>
+              <label for="service">Your set</label>
+              <select id="service" name="service" required>
+                <option value="classic">Classic</option>
+                <option value="hybrid">Hybrid</option>
+                <option value="volume">Volume</option>
+                <option value="mega">Mega Volume</option>
+              </select>
+              <fieldset class="choice-group">
+                <legend>Appointment type</legend>
+                <label><input type="radio" name="type" value="full" checked> 
+                    Full set
+                </label>
+                <label><input type="radio" name="type" value="refill"> 
+                    Refill
+                </label>
+              </fieldset>
+              <fieldset class="extra-group">
+                <legend>Little extras (optional)</legend>
+                <label><input type="checkbox" name="extra" value="bottom"> 
+                    Bottom lashes · $15</label>
+                    <label><input type="checkbox" name="extra" value="removal"> 
+                    Lash removal · $20</label>
+                    <label><input type="checkbox" name="extra" value="bath"> Lash bath · $20</label>
+              </fieldset>
+              <h3><span>02</span> Pick a sample time</h3>
+              <label for="date">Date</label><input id="date" name="date" type="date" required>
+              <label for="time">Time</label>
+              <select id="time" name="time" required>
+                <option value="">Choose a time</option>
+                <option>10:00 AM</option>
+                <option>12:30 PM</option>
+                <option>3:00 PM</option>
+              </select>
+              <p class="fine-print">
+                These times are examples. They do not reflect Jolly's 
+                real availability.
+              </p>
+              <h3><span>03</span> Your details</h3>
+              <label for="client-name">Name</label>
+              <input id="client-name" name="client-name" type="text" autocomplete="name" placeholder="Your name" required>
+              <label for="client-email">Email</label>
+              <input id="client-email" name="client-email" type="email" autocomplete="email" placeholder="you@example.com" required>
+              <button class="pill pill-pink submit-button" type="submit">Complete demo booking ↗</button>
+              <p class="fine-print">
+                No card fields, payment, email, or real appointment will 
+                be created.
+              </p>
+            </form>
+            <aside class="summary-panel" aria-live="polite">
+                <p class="overline">Review &amp; reserve / demo</p>
+                <h3>Your look</h3>
+                <div class="summary-line">
+                    <span id="summary-service">Classic full set</span>
+                    <strong id="summary-base">$80</strong>
+                </div>
+                <div id="summary-extras"></div>
+                <div class="summary-line summary-total">
+                    <span>Service total</span>
+                    <strong id="summary-total">$80</strong>
+                </div>
+                <div class="summary-line">
+                    <span>Deposit in a live booking</span>
+                    <strong id="summary-deposit">$35</strong>
+                </div>
+                <div class="summary-line">
+                    <span>Remaining at appointment</span>
+                    <strong id="summary-remaining">$45</strong>
+                </div>
+                <p class="summary-note">
+                    The $35 deposit applies to full sets and is credited toward 
+                    the total. This demo charges $0.
+                </p>
+                <div class="demo-stamp">PLAY CHECKOUT<br>
+                    <small>No live reservation</small>
+                </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+        <div class="container footer-row">
+            <a href="#home" class="wordmark">lashed <small>BY JOLLY</small></a>
+            <p>Kissimmee, FL · Portfolio concept</p>
+            <a href="#home">Back to top ↑</a>
+        </div>
+        <div class="container footer-note">
+            Designed as an illustrative site. Service prices and policies come 
+            from the supplied wireframes; confirm current terms with Jolly 
+            before launch.
+        </div>
+    </footer>
+
+    <dialog id="confirmation">
+        <button type="button" class="dialog-close" aria-label="Close confirmation">×</button>
+        <div id="confirmation-content"></div>
+    </dialog>
+  </body>
+</html>

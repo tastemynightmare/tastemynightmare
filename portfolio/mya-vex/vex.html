@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b0e0d">
+    <meta name="description" content="Yatted Wit Static: a tattoo portfolio concept for Mya Vex in Orlando.">
+    <title> Tattoo | Mya Vex</title>
+    <link rel="stylesheet" href="vex.css">
+    <script src="vex.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="wrap nav-row">
+        <a class="logo" href="#top" aria-label="Yatted Wit Static home">MYA <span>VEX</span></a>
+        <button class="menu-toggle" 
+            type="button" aria-controls="nav" 
+            aria-expanded="false">MENU 
+            <span aria-hidden="true">☰</span>
+       </button>
+        <nav id="nav" aria-label="Main navigation">
+          <a href="#work">THE WORK</a>
+          <a href="#artist">MEET MYA</a>
+          <a href="#process">THE PROCESS</a>
+          <a class="button nav-button" href="#inquiry">INQUIRE 
+            <span aria-hidden="true">↗</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero wrap">
+        <div class="hero-copy">
+          <p class="kicker">
+            ORLANDO, FL 
+            <span>/</span> 
+            18+ 
+            <span>/</span> 
+            DEPOSIT REQUIRED AFTER APPROVAL
+          </p>
+          <h1>YOUR IDEA.<br><span>MY INK.</span></h1>
+          <svg class="scribble" viewBox="0 0 360 50" aria-hidden="true">
+            <path d="M2 34 C55 -3 68 54 125 18 S199 14 230 24 S300 -5 357 20"/>
+          </svg>
+          <p class="hero-description">
+            Custom tattoos by 
+            <strong>Mya Vex</strong>: floral details, meaningful symbols, 
+            bold compositions, and art with personality.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#inquiry">
+                START AN INQUIRY 
+                <span aria-hidden="true">↗</span>
+            </a>
+            <a class="link" href="#work">EXPLORE THE WORK ↗</a>
+          </div>
+        </div>
+        <div class="hero-gallery" aria-label="Featured tattoo work">
+          <img src="assets/floral.webp" alt="Floral tattoo composition" loading="eager">
+          <img src="assets/ornamental.webp" alt="Ornamental tattoo detail" loading="eager">
+          <img src="assets/bold.webp" alt="Bold custom tattoo" loading="eager">
+          <span class="gallery-stamp">MYA VEX / 407</span>
+        </div>
+      </section>
+
+      <section class="work wrap" id="work">
+        <div class="section-heading">
+            <div>
+                <p class="kicker">01 / SELECTED WORK</p>
+                <h2>THE WORK</h2>
+            </div>
+            <p>Ink that feels like yours.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Filter portfolio">
+          <button type="button" class="filter active" data-filter="all" aria-pressed="true">ALL</button>
+          <button type="button" class="filter" data-filter="floral" aria-pressed="false">FLORAL</button>
+          <button type="button" class="filter" data-filter="ornamental" aria-pressed="false">ORNAMENTAL</button>
+          <button type="button" class="filter" data-filter="bold" aria-pressed="false">BOLD CUSTOM</button>
+          <button type="button" class="filter" data-filter="street" aria-pressed="false">STREET ART</button>
+        </div>
+        <div class="work-grid">
+          <figure class="work-card" data-category="floral"><img src="assets/floral.webp" alt="Detailed floral tattoo on an arm" loading="lazy"><figcaption>01 / FLORAL</figcaption></figure>
+          <figure class="work-card" data-category="ornamental"><img src="assets/ornamental.webp" alt="Ornamental tattoo design" loading="lazy"><figcaption>02 / ORNAMENTAL</figcaption></figure>
+          <figure class="work-card" data-category="bold"><img src="assets/bold.webp" alt="Bold custom tattoo work" loading="lazy"><figcaption>03 / BOLD CUSTOM</figcaption></figure>
+          <figure class="work-card" data-category="floral"><img src="assets/hand.webp" alt="Floral tattoo across the hand" loading="lazy"><figcaption>04 / FLORAL DETAIL</figcaption></figure>
+          <figure class="work-card" data-category="bold"><img src="assets/sleeve.webp" alt="Large custom tattoo composition" loading="lazy"><figcaption>05 / STATEMENT PIECE</figcaption></figure>
+          <figure class="work-card" data-category="ornamental"><img src="assets/script.webp" alt="Ornamental script tattoo" loading="lazy"><figcaption>06 / SYMBOL &amp; SCRIPT</figcaption></figure>
+          <figure class="work-card" data-category="floral"><img src="assets/fine-line.webp" alt="Fine line floral tattoo" loading="lazy"><figcaption>07 / FINE DETAIL</figcaption></figure>
+          <figure class="work-card" data-category="bold"><img src="assets/statement.webp" alt="Expressive custom tattoo" loading="lazy"><figcaption>08 / CUSTOM</figcaption></figure>
+        </div>
+        <p class="empty-filter" hidden>
+            No street art photos were included in the source concept. 
+            This section is ready for Mya's approved artwork.
+        </p>
+      </section>
+
+      <section class="artist-section" id="artist">
+        <div class="wrap artist-grid">
+          <div class="artist-art">
+            <span class="art-word">VEX</span>
+            <img src="assets/hand.webp" 
+            alt="Close detail of Mya's tattoo work" 
+            loading="lazy">
+          </div>
+          <div>
+            <p class="kicker">02 / THE ARTIST</p>
+            <h2>MEET<br><span>MYA VEX.</span></h2>
+            <p>
+                Mya's work moves between soft floral details and bold custom
+                 pieces. The best tattoo starts with your idea and becomes 
+                 something personal through the artist's eye.
+            </p>
+            <p class="artist-note">
+                Orlando based / custom work / your story in ink
+            </p>
+            <a class="button" href="#inquiry">
+                TELL ME YOUR IDEA 
+                <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="process wrap" id="process">
+        <p class="kicker">03 / HOW IT WORKS</p>
+        <h2>NO DM LOOP.<br><span>A CLEAR NEXT STEP.</span></h2>
+        <div class="steps">
+            <b>01</b>
+            <h3>EXPLORE</h3>
+            <p>Find the styles and details that speak to you.</p>
+        </div>
+        <div>
+            <b>02</b>
+            <h3>INQUIRE</h3>
+            <p>Tell Mya your idea, placement, size, and references.</p>
+        </div>
+        <div>
+            <b>03</b>
+            <h3>ARTIST REVIEW</h3>
+            <p>Mya considers the project before offering a quote or date.</p>
+        </div>
+        <div>
+            <b>04</b>
+            <h3>BOOK</h3>
+            <p>If approved, she sends a separate Square booking or deposit link.</p>
+        </div>
+        <div class="process-notes">
+            <div>
+                <h3>Before you send it</h3>
+                <p>
+                    Clients must be 18 or older. An inquiry is not an 
+                    appointment. A deposit and booking details are provided 
+                    only after artist review.
+                </p>
+            </div>
+            <div>
+                <h3>Bring the references</h3>
+                <p>
+                    Share sketches, photos, mood, meaning, and placement. 
+                    The more context, the stronger the starting point.
+                </p>
+            </div>
+        </div>
+      </section>
+
+      <section class="inquiry-section" id="inquiry">
+        <div class="wrap inquiry-grid">
+          <div class="inquiry-intro">
+            <p class="kicker">04 / NEW PROJECT</p>
+            <h2>YOUR NEXT PIECE<br><span>STARTS HERE.</span></h2>
+            <p>
+                Send the idea, placement, and references together. Mya reviews 
+                the project before offering a date or deposit.
+            </p>
+            <ol>
+                <li>INQUIRE</li>
+                <li>MYA REVIEWS</li>
+                <li>SEPARATE SQUARE HANDOFF</li>
+            </ol>
+          </div>
+          <div class="form-shell">
+            <div class="demo-label">PORTFOLIO DEMO / NO FORM SUBMISSION</div>
+                <form id="inquiry-form">
+                <h3>LET'S TALK TATTOOS.</h3>
+                <p>
+                    Play through an example inquiry. Nothing is sent or saved.
+                </p>
+                <div class="form-grid">
+                    <label>YOUR NAME *<input name="name" type="text" placeholder="First and last name" autocomplete="name" required>
+                    </label>
+                    <label>EMAIL *<input name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+                    </label>
+                    <label>PLACEMENT *<input name="placement" type="text" placeholder="e.g. forearm" required>
+                    </label>
+                    <label>APPROXIMATE SIZE *<input name="size" type="text" placeholder="e.g. palm-sized" required>
+                    </label>
+                </div>
+                <label>YOUR IDEA *<textarea name="idea" rows="4" placeholder="Style, elements, meaning, details..." required></textarea>
+                </label>
+                <label>PREFERRED TIMEFRAME<input name="timeframe" type="text" placeholder="When are you hoping to book?">
+                </label>
+                <label class="upload-label">REFERENCE IMAGES
+                    <small>Local preview only · up to 3 files</small>
+                    <input id="references" name="references" type="file" accept="image/*" multiple>
+                    <span id="file-list" aria-live="polite">
+                        Choose photos or sketches
+                    </span>
+                </label>
+                <label class="consent">
+                    <input name="age" type="checkbox" required>
+                    <span>I'm 18+ and understand this demo does not submit an 
+                        inquiry or book a tattoo.
+                    </span>
+                </label>
+                <button class="button submit" type="submit">PREVIEW INQUIRY 
+                    <span aria-hidden="true">↗</span>
+                </button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+        <div class="wrap footer-row">
+            <a class="logo" href="#top">MYA 
+                <span>VEX</span>
+            </a>
+            <p>MYA VEX / ORLANDO, FL</p>
+            <a href="#top">BACK TO TOP ↑</a>
+        </div>
+        <p class="wrap footer-disclaimer">
+            Portfolio concept based on the supplied hi-fi frames. 
+            Artist name “Mya Vex” is sample branding. Pricing, policies, 
+            submissions, and payment need artist approval and live services 
+            before launch.
+        </p>
+    </footer>
+    <dialog id="inquiry-preview">
+        <button class="dialog-close" type="button" aria-label="Close preview">×
+
+        </button>
+        <div id="preview-content"></div>
+    </dialog>
+  </body>
+</html>

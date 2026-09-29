@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#e4a67e">
+    <title>Market — Foxtail Farms</title>
+    <link rel="stylesheet" href="farms.css">
+    <script src="script.js" defer="defer"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell nav">
+        <a class="brand" href="farms.html" aria-label="Foxtail Farms home">
+          <img src="assets/logo.webp" alt="Foxtail Farms">
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">
+          Menu
+          <span aria-hidden="true">☰</span>
+        </button>
+        <nav id="site-nav" aria-label="Main navigation">
+          <a href="science.html">Science</a>
+          <a href="farms.html#about">About Us</a>
+          <a href="farms.html#recipes">Recipes</a>
+          <a href="market.html" aria-current="page">Market</a>
+          <a href="farms.html#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <main class="shell page">
+      <p class="eyebrow">Fresh ideas</p>
+      <h1>Market</h1>
+      <p class="page-intro">
+            A visual collection of the produce and farm inspiration from the 
+            original design. This is a portfolio showcase; items are not 
+            currently for sale.
+        </p>
+      <div class="filters" aria-label="Filter collection">
+        <button class="filter active" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" data-filter="produce" aria-pressed="false">Produce</button>
+        <button class="filter" data-filter="prepared" aria-pressed="false">Prepared ideas</button>
+        <button class="filter" data-filter="farm" aria-pressed="false">From the farm</button>
+      </div>
+      <div class="market-grid">
+        <article class="product" data-category="produce">
+          <img src="assets/corn.webp" alt="Fresh ears of corn">
+          <h2>Sweet Corn</h2>
+          <p>Golden, fresh, and ready for inspiration.</p>
+        </article>
+        <article class="product" data-category="produce">
+          <img src="assets/carrots.webp" alt="Carrots with green tops">
+          <h2>Garden Carrots</h2>
+          <p>A crisp staple for any table.</p>
+        </article>
+        <article class="product" data-category="produce">
+          <img src="assets/eggplant.webp" alt="Fresh eggplants on display">
+          <h2>Eggplant</h2>
+          <p>Versatile produce with rich color.</p>
+        </article>
+        <article class="product" data-category="produce">
+          <img src="assets/tomatoes.webp" alt="Basket of tomatoes">
+          <h2>Vine Tomatoes</h2>
+          <p>Bright flavor, straight from the garden.</p>
+        </article>
+        <article class="product" data-category="produce">
+          <img src="assets/fruit.webp" alt="Colorful assortment of fruits and vegetables">
+          <h2>Seasonal Selection</h2>
+          <p>A colorful mix to spark new dishes.</p>
+        </article>
+        <article class="product" data-category="prepared">
+          <img src="assets/juice.webp" alt="Colorful bottles of fruit juices">
+          <h2>Fresh Juice Ideas</h2>
+          <p>Refreshing flavors inspired by produce.</p>
+        </article>
+        <article class="product" data-category="prepared">
+          <img src="assets/fruit-bowl.webp" alt="Bowl of sliced fruit">
+          <h2>Fruit Bowl</h2>
+          <p>A bright and simple serving idea.</p>
+        </article>
+        <article class="product" data-category="produce">
+          <img src="assets/blueberries.jpg" alt="Hands holding blueberries">
+          <h2>Blueberries</h2>
+          <p>Small berries with endless possibilities.</p>
+        </article>
+        <article class="product" data-category="farm">
+          <img src="assets/harvest.webp" alt="Person harvesting vegetables">
+          <h2>The Harvest</h2>
+          <p>A look at the hands behind the ingredients.</p>
+        </article>
+      </div>
+    </main>
+    <footer>
+      <div class="shell footer-grid">
+        <div>
+          <a class="brand" href="index.html">
+            <img src="assets/logo.webp" alt="Foxtail Farms">
+          </a>
+          <p>A concept site designed by Ashelic Watson for her portfolio.</p>
+        </div>
+        <div>
+          <h2>Explore more</h2>
+          <a class="footer-link" href="science.html">The science ↗</a>
+          <br>
+          <a class="footer-link" href="farms.html#contact">Contact ↗</a>
+        </div>
+      </div>
+      <div class="shell footer-bottom">
+        <span>
+          ©
+          <span class="year"></span>
+          Foxtail Farms concept
+        </span>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
