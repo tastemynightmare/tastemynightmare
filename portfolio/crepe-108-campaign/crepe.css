@@ -1,0 +1,944 @@
+/* CRÃŠPE â€” a little dessert playground. All fonts are bundled locally. */
+@font-face {
+  font-family: "Fredoka";
+  src: url("assets/fonts/Fredoka.ttf") format("truetype");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("assets/fonts/Nunito.ttf") format("truetype");
+  font-weight: 200 1000;
+  font-display: swap;
+}
+
+:root {
+  --cream: #FFF9BB;
+  --ink: #450800;
+  --gold: #D19745;
+  --brown: #834912;
+  --red: #B41831;
+  --blue: #64B4E3;
+  --pink: #FF9AAE;
+  --lavender: #C9AEFF;
+  --green: #B8E981;
+  --paper: #FFFEEC;
+  --outline: 3px solid var(--ink);
+  --sticker-shadow: 6px 7px 0 var(--ink);
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 30px;
+}
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font: 18px / 1.65 "Nunito", sans-serif;
+  background-image: radial-gradient(#D1974535 2px, transparent 2px);
+  background-size: 24px 24px;
+}
+::selection {
+  background: var(--pink);
+  color: var(--ink);
+}
+a {
+  color: inherit;
+  text-underline-offset: 5px;
+}
+button {
+  font: inherit;
+}
+[hidden] {
+  display: none !important;
+}
+a:focus-visible, button:focus-visible {
+  outline: 4px solid var(--red);
+  outline-offset: 6px;
+}
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+figure {
+  margin: 0;
+}
+p {
+  max-width: 75ch;
+}
+h1, h2, h3 {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 500;
+  margin-top: 0;
+}
+h1 {
+  font-size: clamp(3.8rem, 7.5vw, 7rem);
+  font-weight: 600;
+  line-height: .98;
+  letter-spacing: -.025em;
+  margin: 24px 0 30px;
+}
+h1 em {
+  display: inline-block;
+  color: var(--red);
+  font-style: normal;
+  text-shadow: 3px 4px 0 white;
+  transform: rotate(-3deg);
+  background: var(--pink);
+  border-radius: 50% 45% 40% 40%;
+  padding: 0 12px 13px;
+}
+h2 {
+  font-size: clamp(2.5rem, 4.5vw, 4.3rem);
+  line-height: 1.05;
+  margin-bottom: 28px;
+}
+h3 {
+  font-size: 26px;
+  line-height: 1.2;
+}
+figcaption {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  padding: 14px;
+}
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  z-index: 20;
+  background: var(--paper);
+  padding: 14px;
+  border: var(--outline);
+}
+.skip-link:focus {
+  top: 10px;
+}
+
+/* The cream logo label sits on a bright blue candy-counter header. */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 16px 5vw 24px;
+  background: var(--blue);
+  border-bottom: var(--outline);
+  background-image: radial-gradient(#ffffff50 2px, transparent 2px);
+  background-size: 18px 18px;
+}
+.brand {
+  display: grid;
+  justify-items: center;
+  background: var(--paper);
+  border: var(--outline);
+  border-radius: 45% 45% 22px 22px;
+  padding: 4px 22px 10px;
+  box-shadow: 4px 4px 0 var(--ink);
+  text-decoration: none;
+  transform: rotate(-4deg);
+  flex-shrink: 0;
+}
+.brand img {
+  width: 145px;
+}
+.brand span {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .1em;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+nav a {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 99px;
+  padding: 8px 18px;
+  font-size: 16px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: transform .2s, box-shadow .2s;
+}
+nav a:nth-child(2) {
+  background: var(--pink);
+}
+nav a:nth-child(3) {
+  background: var(--cream);
+}
+nav a:nth-child(4) {
+  background: var(--green);
+}
+nav a:hover {
+  transform: rotate(-4deg) translateY(-3px);
+  box-shadow: 5px 6px 0 var(--ink);
+}
+main {
+  max-width: 1500px;
+  margin: auto;
+}
+
+/* Dessert-counter hero with hand-drawn spoon and sticker-frame artwork. */
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: .95fr 1.1fr;
+  align-items: center;
+  gap: 4vw;
+  padding: 90px 5vw 80px;
+}
+.hero-copy, .hero-art {
+  position: relative;
+  z-index: 1;
+}
+.eyebrow {
+  display: inline-block;
+  border: 2px solid var(--ink);
+  border-radius: 99px;
+  padding: 6px 15px;
+  background: var(--paper);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: .035em;
+  margin: 0 0 20px;
+}
+.hero-label {
+  background: var(--blue);
+  transform: rotate(-2deg);
+}
+.hero-copy > p:not(.eyebrow) {
+  font-size: 20px;
+}
+.hero-actions {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.button, .mood-button {
+  display: inline-block;
+  border: var(--outline);
+  border-radius: 99px;
+  background: var(--red);
+  color: white;
+  padding: 14px 24px;
+  font-weight: 800;
+  line-height: 1.4;
+  text-decoration: none;
+  box-shadow: 5px 6px 0 var(--ink);
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+.button:hover, .mood-button:hover {
+  transform: translateY(-5px) rotate(-2deg);
+  box-shadow: 7px 10px 0 var(--ink);
+}
+.button:active, .mood-button:active {
+  transform: translate(3px, 4px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.text-link {
+  font-size: 16px;
+  font-weight: 800;
+}
+.project-facts {
+  display: grid;
+  gap: 12px;
+  margin: 35px 0 0;
+  font-size: 15px;
+}
+.project-facts div {
+  border-left: 5px solid var(--red);
+  padding-left: 15px;
+}
+dt {
+  font-weight: 900;
+}
+dd {
+  margin: 0;
+}
+.hero-art {
+  padding: 15px 15px 0;
+  background: var(--paper);
+  border: var(--outline);
+  border-radius: 35px;
+  box-shadow: 10px 12px 0 var(--blue), 13px 15px 0 var(--ink);
+  transform: rotate(3deg);
+}
+.hero-art img {
+  border-radius: 20px;
+}
+.hero-art figcaption {
+  text-align: center;
+}
+.sticker-badge {
+  position: absolute;
+  top: -55px;
+  right: -12px;
+  width: 124px;
+  height: 124px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  font: 600 22px / 1.1 "Fredoka", sans-serif;
+  border: var(--outline);
+  border-radius: 45% 55% 47% 53%;
+  background: var(--pink);
+  box-shadow: 4px 5px 0 var(--ink);
+  transform: rotate(12deg);
+}
+.hero-doodles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.doodle {
+  position: absolute;
+  font: 600 72px / 1 "Fredoka", sans-serif;
+}
+.sparkle-one {
+  left: 43%;
+  top: 18px;
+  color: var(--red);
+  animation: twinkle 3s ease-in-out infinite;
+}
+.sparkle-two {
+  right: 30px;
+  bottom: 0;
+  color: var(--red);
+  font-size: 110px;
+}
+.heart-doodle {
+  left: 34%;
+  bottom: 12px;
+  color: var(--red);
+  transform: rotate(20deg);
+}
+.spoon-doodle {
+  position: absolute;
+  left: 1%;
+  top: 48%;
+  width: 45px;
+  transform: rotate(-25deg);
+}
+.sweet-ribbon {
+  overflow: hidden;
+  background: var(--red);
+  color: var(--cream);
+  border-block: var(--outline);
+  padding: 18px 0;
+  transform: rotate(-1.5deg);
+  font: 600 26px / 1.2 "Fredoka", sans-serif;
+  letter-spacing: .055em;
+  margin: 15px 0 70px;
+}
+.sweet-ribbon div {
+  width: max-content;
+  animation: candy-scroll 35s linear infinite;
+}
+.sweet-ribbon:hover div {
+  animation-play-state: paused;
+}
+
+/* Process scrapbook: taped artwork, colorful note cards, clear reading order. */
+.process, .identity, .reflection, .deliverables-intro, .flavors, .deliverable {
+  position: relative;
+  margin: 0 4vw 70px;
+  padding: 55px 4vw;
+  border: var(--outline);
+  border-radius: 45px;
+}
+.process {
+  background: var(--blue);
+  box-shadow: 9px 10px 0 var(--ink);
+}
+.process > .eyebrow {
+  background: var(--cream);
+}
+.intro {
+  font-size: 20px;
+}
+.before-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  margin: 45px 0;
+}
+.before-grid figure {
+  position: relative;
+  padding: 12px;
+  background: var(--paper);
+  border: var(--outline);
+  border-radius: 15px;
+  box-shadow: 4px 6px 0 var(--ink);
+  transform: rotate(-2deg);
+}
+.before-grid figure:nth-child(2) {
+  transform: rotate(2deg);
+}
+.before-grid figure::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: calc(50% - 40px);
+  width: 80px;
+  height: 30px;
+  background: #FF9AAECC;
+  border: 1px dashed var(--red);
+  transform: rotate(-7deg);
+}
+.before-grid img {
+  height: 380px;
+  object-fit: contain;
+  background: white;
+  border-radius: 8px;
+}
+.steps {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.steps li {
+  padding: 25px;
+  background: var(--cream);
+  border: var(--outline);
+  border-radius: 24px;
+  box-shadow: 3px 4px 0 var(--ink);
+}
+.steps li:nth-child(3n + 2) {
+  background: var(--pink);
+}
+.steps li:nth-child(3n) {
+  background: var(--paper);
+}
+.steps h3 {
+  margin-bottom: 12px;
+}
+.steps p {
+  margin-bottom: 0;
+}
+.note {
+  padding: 24px;
+  background: var(--paper);
+  border: 2px dashed var(--ink);
+  border-radius: 22px;
+  margin-top: 30px;
+  font-size: 16px;
+}
+
+/* Color swatches are little ingredient labels. */
+.identity {
+  background: var(--pink);
+  box-shadow: 9px 10px 0 var(--ink);
+}
+.palette {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 0;
+  list-style: none;
+}
+.palette li {
+  display: grid;
+  gap: 5px;
+  padding: 12px 12px 18px;
+  background: var(--paper);
+  border: var(--outline);
+  border-radius: 22px;
+  box-shadow: 4px 5px 0 var(--ink);
+  transition: transform .2s;
+}
+.palette li:hover {
+  transform: rotate(-3deg) translateY(-4px);
+}
+.swatch {
+  height: 95px;
+  border: 2px solid var(--ink);
+  border-radius: 15px;
+}
+code, small {
+  font-size: 14px;
+}
+.rules {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+.rules article {
+  padding: 22px;
+  border: 2px solid var(--ink);
+  border-radius: 22px;
+  background: var(--cream);
+}
+.rules p {
+  font-size: 16px;
+}
+.type-specimen {
+  margin-top: 35px;
+  padding: 30px;
+  background: var(--paper);
+  border: var(--outline);
+  border-radius: 30px;
+  box-shadow: 5px 6px 0 var(--ink);
+}
+.type-heading {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+}
+.type-body {
+  font-size: 18px;
+  line-height: 1.65;
+}
+.table-scroll {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+caption {
+  text-align: left;
+  font-weight: 800;
+  padding: 15px 0;
+}
+th, td {
+  text-align: left;
+  padding: 14px;
+  border-bottom: 2px solid #45080030;
+}
+thead {
+  background: var(--blue);
+}
+.small-note, .font-links {
+  font-size: 14px;
+}
+
+/* The flavor shelf has a scalloped counter and selectable character cards. */
+.flavors {
+  padding-top: 90px;
+  background: var(--cream);
+  background-image: radial-gradient(#D1974560 2px, transparent 2px);
+  background-size: 20px 20px;
+  box-shadow: 9px 10px 0 var(--ink);
+  overflow: visible;
+}
+.flavors::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 25px;
+  right: 25px;
+  height: 42px;
+  background: radial-gradient(ellipse at 50% 0, var(--ink) 68%, transparent 70%) 0 0 / 65px 42px repeat-x;
+  pointer-events: none;
+}
+.flavors > h2 {
+  color: var(--red);
+  text-shadow: 3px 3px 0 white;
+}
+.flavor-invitation {
+  font-size: 22px;
+  font-weight: 700;
+}
+.mood-status {
+  --mood-color: var(--blue);
+  background: var(--paper);
+  border: var(--outline);
+  border-left: 16px solid var(--mood-color);
+  border-radius: 22px;
+  padding: 18px 24px;
+  font-weight: 800;
+  margin: 25px 0 50px;
+  box-shadow: 4px 5px 0 var(--ink);
+}
+.flavor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 38px 25px;
+}
+.flavor-card {
+  --card-color: var(--pink);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 65px 25px 25px;
+  background: var(--card-color);
+  border: var(--outline);
+  border-radius: 38px 38px 28px 28px;
+  box-shadow: 5px 7px 0 var(--ink);
+  transform: rotate(-1.5deg);
+  transition: transform .25s, box-shadow .25s;
+}
+.flavor-card:nth-child(2) {
+  --card-color: var(--blue);
+  transform: rotate(2deg);
+}
+.flavor-card:nth-child(3) {
+  --card-color: var(--lavender);
+}
+.flavor-card:nth-child(4) {
+  --card-color: #F7BB55;
+  transform: rotate(1.5deg);
+}
+.flavor-card:nth-child(5) {
+  --card-color: var(--pink);
+}
+.flavor-card:nth-child(6) {
+  --card-color: var(--green);
+  transform: rotate(2deg);
+}
+.flavor-card:hover {
+  transform: translateY(-7px) rotate(0);
+  box-shadow: 7px 13px 0 var(--ink);
+}
+.flavor-card.is-selected {
+  transform: translateY(-8px) rotate(0);
+  box-shadow: 0 0 0 5px var(--paper), 8px 14px 0 var(--ink);
+}
+.flavor-sticker {
+  position: absolute;
+  top: -25px;
+  right: 25px;
+  width: 78px;
+  height: 78px;
+  display: grid;
+  place-items: center;
+  font-size: 42px;
+  background: var(--paper);
+  border: var(--outline);
+  border-radius: 50%;
+  box-shadow: 3px 4px 0 var(--ink);
+  transform: rotate(12deg);
+}
+.mood-tag {
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 12px;
+}
+.flavor-card h3 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+.flavor-card p {
+  font-size: 17px;
+  margin: 10px 0 24px;
+}
+.mood-button {
+  margin-top: auto;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 15px;
+  padding: 10px 18px;
+}
+.mood-button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--cream);
+}
+.mood-sparkle {
+  position: absolute;
+  pointer-events: none;
+  bottom: 55px;
+  left: 50%;
+  z-index: 5;
+  font-size: 30px;
+  color: var(--red);
+  text-shadow: 1px 1px white;
+  animation: sprinkle-pop 1s ease-out forwards;
+}
+
+/* Final deliverables look like pages in a sticker-covered design scrapbook. */
+.deliverables-intro {
+  background: var(--red);
+  color: var(--cream);
+  box-shadow: 9px 10px 0 var(--ink);
+}
+.deliverables-intro .eyebrow {
+  color: var(--ink);
+  background: var(--green);
+  transform: rotate(-3deg);
+}
+.deliverable {
+  background: var(--paper);
+  box-shadow: 7px 8px 0 var(--ink);
+}
+.deliverable:nth-of-type(even) {
+  background: var(--lavender);
+}
+.deliverable:nth-of-type(odd) {
+  background: var(--green);
+}
+.section-heading p {
+  max-width: 80ch;
+}
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 35px;
+  align-items: start;
+}
+.pair figure {
+  padding: 12px;
+  background: var(--paper);
+  border: var(--outline);
+  border-radius: 25px;
+  box-shadow: 4px 5px 0 var(--ink);
+}
+.pair img {
+  border-radius: 16px;
+}
+.asset-placeholder {
+  min-height: 250px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+  padding: 30px;
+  background: var(--cream);
+  background-image: radial-gradient(#D1974560 2px, transparent 2px);
+  background-size: 18px 18px;
+  border: 2px dashed var(--brown);
+  border-radius: 18px;
+}
+.asset-placeholder span {
+  font: 500 30px / 1.2 "Fredoka", sans-serif;
+}
+.asset-placeholder span::before {
+  content: "âœ¦ ";
+  color: var(--red);
+}
+.asset-placeholder p {
+  font-size: 16px;
+}
+.mockup-slot {
+  background-color: var(--blue);
+}
+.reflection {
+  background: var(--blue);
+  box-shadow: 9px 10px 0 var(--ink);
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 30px 5vw;
+  border-top: var(--outline);
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 14px;
+}
+
+@keyframes twinkle { 50% {
+  transform: rotate(20deg) scale(.8);
+} }
+@keyframes candy-scroll { to {
+  transform: translateX(-50%);
+} }
+@keyframes sprinkle-pop {
+  0% {
+  opacity: 0;
+  transform: translate(0, 0) scale(.3);
+}
+  20% {
+  opacity: 1;
+}
+  100% {
+  opacity: 0;
+  transform: translate(var(--spark-x), var(--spark-y)) rotate(35deg) scale(1.2);
+}
+}
+
+/* Keep the playful shapes inside the screen at every size. */
+@media (max-width: 1050px) {
+  .hero {
+  grid-template-columns: 1fr;
+  padding-top: 60px;
+}
+  .hero-art {
+  max-width: 750px;
+  margin: 30px auto 0;
+}
+  .hero-copy {
+  max-width: 650px;
+}
+  .spoon-doodle {
+  left: auto;
+  right: 8%;
+  top: 12%;
+  width: 55px;
+}
+  .sparkle-one {
+  left: auto;
+  right: 25%;
+}
+  .rules {
+  grid-template-columns: 1fr;
+}
+  .flavor-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+}
+@media (max-width: 700px) {
+  .site-header {
+  flex-direction: column;
+  padding: 16px 15px 25px;
+}
+  nav {
+  gap: 8px;
+  justify-content: center;
+}
+  nav a {
+  padding: 7px 12px;
+  font-size: 14px;
+}
+  h1 {
+  font-size: clamp(3.4rem, 13vw, 5rem);
+}
+  h2 {
+  font-size: clamp(2.3rem, 9vw, 3.2rem);
+}
+  .hero {
+  padding: 40px 7vw 60px;
+  gap: 25px;
+}
+  .hero-label {
+  font-size: 12px;
+}
+  .hero-copy > p:not(.eyebrow) {
+  font-size: 18px;
+}
+  .hero-art {
+  padding: 8px 8px 0;
+  border-radius: 24px;
+  transform: rotate(1deg);
+}
+  .sticker-badge {
+  width: 90px;
+  height: 90px;
+  font-size: 17px;
+  top: -40px;
+  right: -5px;
+}
+  .spoon-doodle, .heart-doodle {
+  display: none;
+}
+  .sparkle-one {
+  top: -5px;
+  right: 15px;
+  font-size: 40px;
+}
+  .sparkle-two {
+  font-size: 65px;
+  bottom: -15px;
+  right: 12px;
+}
+  .process, .identity, .reflection, .deliverables-intro, .flavors, .deliverable {
+  padding: 32px 6vw;
+  margin: 0 5vw 50px;
+  border-radius: 28px;
+  box-shadow: 5px 6px 0 var(--ink);
+}
+  .flavors {
+  padding-top: 65px;
+}
+  .before-grid, .steps, .pair, .flavor-grid {
+  grid-template-columns: 1fr;
+}
+  .before-grid img {
+  height: 300px;
+}
+  .palette {
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+  .palette li {
+  padding: 8px;
+  font-size: 14px;
+}
+  .palette code, .palette small {
+  font-size: 12px;
+}
+  .swatch {
+  height: 70px;
+}
+  .type-specimen {
+  padding: 18px;
+}
+  .flavor-grid {
+  gap: 45px;
+}
+  .mood-status {
+  font-size: 16px;
+  padding: 16px;
+}
+  .sweet-ribbon {
+  font-size: 22px;
+  margin-bottom: 50px;
+}
+  footer {
+  flex-direction: column;
+}
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+  scroll-behavior: auto;
+}
+  *, *::before, *::after {
+  animation: none !important;
+  transition: none !important;
+}
+}
+@media print {
+  .site-header, .hero-doodles, .sweet-ribbon, .sticker-badge, .button, .mood-button, .mood-status, footer {
+  display: none;
+}
+  body {
+  background: white;
+  font-size: 10pt;
+}
+  .hero {
+  grid-template-columns: 1fr 1fr;
+  padding: 15px 0;
+}
+  .hero-art, .before-grid figure, .flavor-card {
+  transform: none;
+  box-shadow: none;
+}
+  h1 {
+  font-size: 32pt;
+}
+  h2 {
+  font-size: 24pt;
+}
+  .process, .identity, .reflection, .deliverables-intro, .flavors, .deliverable {
+  margin: 20px 0;
+  padding: 20px;
+  box-shadow: none;
+}
+  .deliverable {
+  break-before: page;
+}
+  .pair, .steps {
+  grid-template-columns: 1fr 1fr;
+}
+  .pair figure, .flavor-card {
+  break-inside: avoid;
+}
+}
