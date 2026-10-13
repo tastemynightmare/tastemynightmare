@@ -22,7 +22,7 @@
         <a href="#deliverables">Deliverables</a>
       </nav>
     </header>
-    <main id="main">
+    <main id="main" tabindex="-1">
       <section class="hero">
         <div class="hero-doodles" aria-hidden="true">
           <span class="doodle sparkle-one">✦</span>
@@ -62,11 +62,14 @@
           </figcaption>
         </figure>
       </section>
-      <div class="sweet-ribbon" aria-hidden="true">
-        <div>
-          CRÊPE CRUSH ✦ SWEET MOODS ♡ LITTLE JOYS ✦ BIG FLAVOR ♡ CRÊPE CRUSH
-          ✦ SWEET MOODS ♡ LITTLE JOYS ✦ BIG FLAVOR ♡
+      <div class="ribbon-viewport">
+      <div class="sweet-ribbon">
+        <div class="ribbon-track" aria-hidden="true">
+          <div class="ribbon-group"><span>CRÊPE CRUSH ✦ SWEET MOODS ♡ LITTLE JOYS ✦ BIG FLAVOR ♡ CRÊPE CRUSH ✦ SWEET MOODS ♡ LITTLE JOYS ✦ BIG FLAVOR ♡</span></div>
+          <div class="ribbon-group"><span>CRÊPE CRUSH ✦ SWEET MOODS ♡ LITTLE JOYS ✦ BIG FLAVOR ♡ CRÊPE CRUSH ✦ SWEET MOODS ♡ LITTLE JOYS ✦ BIG FLAVOR ♡</span></div>
         </div>
+        <button class="ribbon-control" type="button" aria-pressed="false" aria-label="Pause scrolling ribbon" hidden>Pause</button>
+      </div>
       </div>
       <section id="identity" class="identity">
         <p class="eyebrow">The refreshed brand system</p>
@@ -150,7 +153,7 @@
             carries the details with a softer,
             quieter rhythm. The original script remains the brand signature.
           </p>
-          <div class="table-scroll">
+          <div class="table-scroll" role="region" aria-label="Typography hierarchy table — scroll horizontally for more columns" tabindex="0">
             <table>
               <caption>Typography hierarchy for the website</caption>
               <thead><tr><th scope="col">Role</th><th scope="col">Typeface / weight</th><th scope="col">Size</th><th scope="col">Line height</th></tr></thead>
@@ -172,11 +175,11 @@
           </p>
           <p class="font-links">
             <a href="https://fonts.google.com/specimen/Fredoka"
-            target="_blank" rel="noopener">Get Fredoka for Illustrator
+            target="_blank" rel="noopener noreferrer">Get Fredoka for Illustrator
             </a>
             ·
             <a href="https://fonts.google.com/specimen/Nunito"
-            target="_blank" rel="noopener">Get Nunito for Illustrator
+            target="_blank" rel="noopener noreferrer">Get Nunito for Illustrator
             </a>
           </p>
         </div>
@@ -201,7 +204,7 @@
               vanilla ice cream, and fluffy whipped cream.
               A familiar favorite with a playful little smile.
             </p>
-            <button class="mood-button" type="button" data-mood="0"
+            <button class="mood-button" type="button" data-mood="0" aria-label="Choose Classic Paris as my sweet mood"
             aria-pressed="false" hidden>That’s my mood ♡</button>
           </article>
           <article class="flavor-card" data-flavor="1">
@@ -213,7 +216,7 @@
               cream, and chocolate drizzle. A dreamy treat for your cozy,
               cookie-loving mood.
             </p>
-            <button class="mood-button" type="button" data-mood="1"
+            <button class="mood-button" type="button" data-mood="1" aria-label="Choose Cookies &amp; Dream as my sweet mood"
             aria-pressed="false" hidden>That’s my mood ♡</button>
           </article>
           <article class="flavor-card" data-flavor="2">
@@ -225,7 +228,7 @@
               sweet blueberry drizzle, vanilla ice cream, and whipped cream.
               Bright, bubbly, and bursting with berry goodness.
             </p>
-            <button class="mood-button" type="button" data-mood="2"
+            <button class="mood-button" type="button" data-mood="2" aria-label="Choose Berry Bliss as my sweet mood"
             aria-pressed="false" hidden>That’s my mood ♡</button>
           </article>
           <article class="flavor-card" data-flavor="3">
@@ -237,7 +240,7 @@
               ice cream, and whipped cream.
               A cozy little celebration of comforting flavors.
             </p>
-            <button class="mood-button" type="button" data-mood="3"
+            <button class="mood-button" type="button" data-mood="3" aria-label="Choose Caramel Apple as my sweet mood"
             aria-pressed="false" hidden>That’s my mood ♡</button>
           </article>
           <article class="flavor-card" data-flavor="4">
@@ -249,7 +252,7 @@
               vanilla ice cream, and whipped cream.
               Rich, mischievous, and made for serious chocolate cravings.
             </p>
-            <button class="mood-button" type="button" data-mood="4"
+            <button class="mood-button" type="button" data-mood="4" aria-label="Choose Midnight Chocolate as my sweet mood"
             aria-pressed="false" hidden>That’s my mood ♡</button>
           </article>
           <article class="flavor-card" data-flavor="5">
@@ -261,7 +264,7 @@
               mango syrup, and whipped cream.
               A sunny escape in every sweet bite.
             </p>
-            <button class="mood-button" type="button" data-mood="5"
+            <button class="mood-button" type="button" data-mood="5" aria-label="Choose Tropical Paradise as my sweet mood"
             aria-pressed="false" hidden>That’s my mood ♡</button>
           </article>
         </div>

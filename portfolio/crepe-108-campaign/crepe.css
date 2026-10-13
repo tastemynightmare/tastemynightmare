@@ -375,26 +375,56 @@ dd {
   transform: rotate(20deg);
 }
 
+.ribbon-viewport {
+  overflow: hidden;
+}
+
 .sweet-ribbon {
+  position: relative;
   overflow: hidden;
   background: var(--red);
   color: var(--cream);
   border-block: var(--outline);
-  padding: 18px 30px;
+  padding: 18px 0;
   transform: rotate(-1.5deg);
   font: 600 26px / 1.2 "Fredoka", sans-serif;
   letter-spacing: .055em;
-  margin: 15px -20px 70px;
+  margin: 15px 0 70px;
 }
 
-.sweet-ribbon div {
+.ribbon-track {
+  display: flex;
   width: max-content;
-  padding-inline: 40px;
   animation: candy-scroll 35s linear infinite;
 }
 
-.sweet-ribbon:hover div {
+.ribbon-group {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.ribbon-group span {
+  display: inline-block;
+  padding-inline-end: 40px;
+}
+
+.sweet-ribbon.is-paused .ribbon-track {
   animation-play-state: paused;
+}
+
+.ribbon-control {
+  position: absolute;
+  inset-inline-end: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  min-height: 44px;
+  padding: 6px 12px;
+  border: 2px solid var(--cream);
+  border-radius: 12px;
+  background: var(--red);
+  color: var(--cream);
+  font-size: 14px;
+  cursor: pointer;
 }
 
 /* Process scrapbook: taped artwork, colorful note cards, clear reading order. */
@@ -1019,6 +1049,94 @@ footer {
   *, *::before, *::after {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+
+/* Let grid content shrink instead of widening the viewport. */
+.hero > *, .before-grid > *, .rules > *, .palette > *, .pair > *,
+.flavor-grid > *, .steps > * {
+  min-width: 0;
+}
+
+.type-specimen, .table-scroll {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.type-specimen {
+  width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.table-scroll {
+  width: 100%;
+  overscroll-behavior-inline: contain;
+}
+
+.table-scroll table {
+  min-width: 560px;
+}
+
+.type-specimen .eyebrow {
+  max-width: 100%;
+  white-space: normal;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 7px var(--paper);
+}
+
+@media (max-width: 700px) {
+  .type-specimen {
+    padding: 16px 12px;
+    border-radius: 20px;
+  }
+  .type-heading {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    line-height: 1.2;
+    overflow-wrap: normal;
+  }
+  .type-body, .type-specimen > p:not(.eyebrow) {
+    font-size: 16px;
+  }
+  .type-specimen table {
+    font-size: 14px;
+  }
+  .type-specimen th, .type-specimen td {
+    padding: 10px;
+  }
+  .hero-label {
+    max-width: 100%;
+    white-space: normal;
+  }
+  .project-facts {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 380px) {
+  .palette {
+    grid-template-columns: 1fr;
+  }
+  h1 {
+    font-size: clamp(2.5rem, 12vw, 3.4rem);
+  }
+  .hero-actions .button {
+    max-width: 100%;
+    padding-inline: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ribbon-track {
+    animation: none;
+    transform: none;
+  }
+  .ribbon-control {
+    display: none;
   }
 }
 
