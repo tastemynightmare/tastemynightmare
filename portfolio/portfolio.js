@@ -1,3 +1,5 @@
+"use strict";
+
 const projects = {
   cereal: {
     index: "CASE FILE // 01",
@@ -7,7 +9,7 @@ const projects = {
       "A full cereal-box packaging concept built around playful illustration, character branding, hierarchy and multi-panel composition. It demonstrates how I build a visual system across an entire package instead of treating each panel as a separate design.",
     skills:
       "PACKAGING • TYPOGRAPHY • ILLUSTRATION • LAYOUT • BRAND CONSISTENCY",
-    image: "assets/images/cereal-box.png",
+    image: "assets/cereal-box.jpg",
   },
 
   matte: {
@@ -18,7 +20,7 @@ const projects = {
       "A surreal dark-fantasy environment created through compositing, masking, color work and atmosphere. This project is especially close to my personal visual language because it uses image-making as worldbuilding.",
     skills:
       "PHOTOSHOP • COMPOSITING • MASKING • COLOR • ENVIRONMENTAL STORYTELLING",
-    image: "assets/images/matte-painting.jpg",
+    image: "assets/matte-painting.jpg",
   },
 
   parks: {
@@ -29,7 +31,7 @@ const projects = {
       "A national-park poster study using silhouette, saturated contrast and simplified visual storytelling. It shows how I can work with restraint and strong shape language outside of my more maximal TMN work.",
     skills:
       "POSTER DESIGN • COLOR • SILHOUETTE • VISUAL HIERARCHY • COMPOSITION",
-    image: "assets/images/national-parks.png",
+    image: "assets/national-parks.png",
   },
 
   banner: {
@@ -40,18 +42,18 @@ const projects = {
       "A fantasy-themed banner concept extended into an environmental mockup to test scale, visibility and physical presentation.",
     skills:
       "LARGE FORMAT • MOCKUPS • EVENT DESIGN • TYPOGRAPHY • SCALE",
-    image: "assets/images/banner-mockup.jpg",
+    image: "assets/banner-mockup.jpg",
   },
 
   ocean: {
     index: "CASE FILE // 05",
     type: "MOTION DESIGN",
-    title: "Ocean Utopia",
+    title: "3D Scene",
     description:
       "A motion-design study exploring animated identity, texture, timing and atmospheric presentation. The project is displayed as video because movement is the actual design medium.",
     skills:
       "AFTER EFFECTS • MOTION • TIMING • TEXTURE • ANIMATED IDENTITY",
-    image: "assets/images/ocean-utopia.jpg",
+    image: "assets/3d-scene.png",
   },
 
   stickers: {
@@ -62,18 +64,18 @@ const projects = {
       "A cohesive sticker set built around cute food characters, shape language and color. It shows a softer side of my visual range while still feeling like a fully authored system.",
     skills:
       "ILLUSTRATION • CHARACTER DESIGN • STICKERS • COLOR SYSTEMS • MERCH",
-    image: "assets/images/stickers.png",
+    image: "assets/stickers.png",
   },
 
   ads: {
     index: "CASE FILE // 07",
     type: "PRINT + WEB ADVERTISING",
-    title: "Responsive Ad Campaign",
+    title: "Product + Photography",
     description:
       "A campaign adapted across several advertising dimensions while maintaining hierarchy, CTA visibility and visual consistency.",
     skills:
       "ADVERTISING • RESPONSIVE LAYOUT • HIERARCHY • CTA DESIGN • BRAND CONSISTENCY",
-    image: "assets/images/print-web-ad.png",
+    image: "assets/product.jpg",
   },
 
   scene: {
@@ -84,7 +86,7 @@ const projects = {
       "A 3D environment focused on spatial composition, atmosphere and camera presentation. It extends my design practice into dimensional worldbuilding.",
     skills:
       "3D • ENVIRONMENT DESIGN • CAMERA • COMPOSITION • ATMOSPHERE",
-    image: "assets/images/3d-scene.jpg",
+    image: "assets/3d-scene.png",
   },
 };
 
@@ -166,9 +168,11 @@ filters.forEach((filterButton) => {
 
     filters.forEach((button) => {
       button.classList.remove("active");
+      button.setAttribute("aria-pressed", "false");
     });
 
     filterButton.classList.add("active");
+    filterButton.setAttribute("aria-pressed", "true");
 
     projectCards.forEach((card) => {
       const categories = card.dataset.category.split(" ");
@@ -178,7 +182,9 @@ filters.forEach((filterButton) => {
         categories.includes(filter);
 
       card.classList.toggle("is-hidden", !show);
+      card.hidden = !show;
     });
+    document.querySelector("#archive-status").textContent = `${[...projectCards].filter(card => !card.hidden).length} projects shown.`;
   });
 });
 
@@ -196,6 +202,7 @@ nightmareToggle.addEventListener("click", () => {
   nightmareClicks += 1;
 
   body.classList.toggle("nightmare-awake", nightmareAwake);
+  nightmareToggle.setAttribute("aria-pressed", String(nightmareAwake));
 
   nightmareToggle.textContent =
     nightmareAwake
@@ -221,7 +228,7 @@ nightmareToggle.addEventListener("click", () => {
 
 const randomProject = document.querySelector("#randomProject");
 
-randomProject.addEventListener("click", () => {
+randomProject?.addEventListener("click", () => {
   const keys = Object.keys(projects);
   const randomKey =
     keys[Math.floor(Math.random() * keys.length)];
@@ -247,7 +254,7 @@ const bootLines = [
 
 let booting = false;
 
-bootArcade.addEventListener("click", () => {
+bootArcade?.addEventListener("click", () => {
   if (booting) return;
 
   booting = true;
@@ -304,7 +311,8 @@ const cursorGlow = document.querySelector(".cursor-glow");
 
 if (
   cursorGlow &&
-  window.matchMedia("(pointer: fine)").matches
+  window.matchMedia("(pointer: fine)").matches &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
 ) {
   window.addEventListener("pointermove", (event) => {
     cursorGlow.style.left = `${event.clientX}px`;
@@ -340,7 +348,7 @@ if (
 let typed = "";
 
 window.addEventListener("keydown", (event) => {
-  if (event.key.length !== 1) return;
+  if (event.key.length !== 1 || event.target.closest("input, textarea, select, [contenteditable]")) return;
 
   typed = `${typed}${event.key.toLowerCase()}`.slice(-9);
 
@@ -368,3 +376,11 @@ window.addEventListener("keydown", (event) => {
 document.querySelectorAll("[data-year]").forEach((element) => {
   element.textContent = new Date().getFullYear();
 });
+// Measure the wrapping sticky header so anchors and archive filters clear it.
+const portfolioHeader = document.querySelector(".site-header");
+function measureHeader() {
+  document.documentElement.style.setProperty("--header-height", `${portfolioHeader.getBoundingClientRect().height}px`);
+}
+measureHeader();
+if ("ResizeObserver" in window) new ResizeObserver(measureHeader).observe(portfolioHeader);
+else window.addEventListener("resize", measureHeader);
