@@ -351,27 +351,3 @@ dialog h2 { font-size: 2.3rem; margin-bottom: 12px; }
   .footer-row { align-items: start; flex-direction: column; }
 }
 
-
-/* Supporting-project presentation; existing site rules and breakpoints are retained. */
-.project-showcase { padding-block: 80px; background: var(--cream); border-top: 1px solid var(--line); }
-.project-showcase figure { margin: 0; min-width: 0; }
-.project-showcase figure > a { display: block; }
-.project-showcase img { width: 100%; height: auto; }
-.project-showcase figcaption { padding-block: 14px; font-size: .85rem; }
-.project-showcase-hero { margin-top: 32px !important; }
-.project-story { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; padding-block: 36px; }
-.project-story h3, .project-flat-heading h3 { margin: 0; font-size: 1.7rem; }
-.project-story p { margin: 0; max-width: 70ch; }
-.project-flat-heading { padding-top: 36px; }
-.project-flat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 24px; align-items: start; }
-.project-flat-grid figure { border: 1px solid var(--line); background: white; }
-.project-flat-grid figcaption { padding-inline: 16px; }
-.project-flat-grid figcaption a { display: block; padding-block: 8px; text-underline-offset: 3px; }
-@media (max-width: 900px) {
-  .project-story { grid-template-columns: 1fr; gap: 16px; }
-}
-@media (max-width: 600px) {
-  .project-showcase { padding-block: 48px; }
-  .project-flat-grid { grid-template-columns: 1fr; gap: 20px; }
-  .project-showcase h2 { overflow-wrap: anywhere; }
-}

@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fffbed">
+    <meta name="description" content="Explore Crêpe, a playful dessert restaurant concept. Discover signature crêpes and try a practice pickup order.">
+    <title>Crêpe — Pick your sweet mood</title>
+    <link rel="stylesheet" href="restaurant.css">
+    <script src="restaurant.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="concept-bar">
+      <span>A restaurant concept by Ashelic Rose · Orders are a demo</span>
+      <a href="../crepe-108-campaign/crepe.html">View the campaign ↗</a>
+    </div>
+    <header class="header">
+      <div class="shell nav-row">
+        <a class="brand" href="../crepe-108-campaign/crepe.html" aria-label="Crêpe home">
+          <img src="../crepe-108-campaign/assets/logo.png" alt="Crêpe" width="864" height="355">
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav">
+          Menu <span aria-hidden="true">☰</span>
+        </button>
+        <nav id="nav" aria-label="Restaurant navigation">
+          <a href="#menu">The menu</a>
+          <a href="#story">Our sweet world</a>
+          <a href="#how-it-works">Pickup, playfully</a>
+        </nav>
+        <button class="bag-button" type="button" data-open-bag aria-label="Open your bag, 0 items">
+          Your bag <span class="bag-count" aria-hidden="true">0</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="hero shell" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">A little French. A lot of happy.</p>
+          <h1 id="hero-title">Good days<br>come <em>folded.</em></h1>
+          <p class="hero-description">
+            Golden crêpes. Your favorite fillings. That first-bite kind of joy. 
+            Find the flavor that feels like you.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#menu">
+              Pick your sweet mood 
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="underlink" href="#story">Meet Crêpe</a>
+          </div>
+          <p class="hero-footnote">
+            Strawberries, chocolate, and a very good excuse to linger.
+          </p>
+        </div>
+        <figure class="hero-photo">
+          <img src="assets/strawberry-crepe.png" alt="Golden crêpe in a blue sleeve filled with strawberries, banana, ice cream, and chocolate." width="1536" height="1024" fetchpriority="high">
+          <figcaption>
+            <span>THE ONE TO START WITH</span>
+            <strong>Classic Paris</strong>
+            <span>$12.50 <span aria-hidden="true">✦</span></span>
+          </figcaption>
+        </figure>
+      </section>
+      <div class="flavor-strip" aria-label="Strawberry days, chocolate dreams, little joys">
+        <span>Strawberry days</span>
+        <span aria-hidden="true">✦</span>
+        <span>Chocolate dreams</span>
+        <span aria-hidden="true">✦</span>
+        <span>Little joys, big flavor</span>
+      </div>
+      <section class="menu-section shell" id="menu" aria-labelledby="menu-title">
+        <div class="section-heading"><div>
+          <p class="eyebrow">Something sweet for every mood</p>
+          <h2 id="menu-title">Meet your next<br><em>favorite.</em></h2>
+        </div>
+        <div class="menu-intro">
+          <p>
+            Go all in with a signature. Keep it simple with a folded favorite. 
+            A little extra is always a good idea.
+          </p>
+          <a class="underlink" href="../crepe-108-campaign/assets/menu.png">
+            See the illustrated menu ↗
+          </a>
+        </div>
+      </div>
+      <div class="filters" role="group" aria-label="Filter the menu" hidden>
+        <button type="button" data-category="signature" aria-pressed="true">
+          Signature crêpes
+        </button>
+        <button type="button" data-category="folded" aria-pressed="false">
+          Folded favorites
+        </button>
+        <button type="button" data-category="bites" aria-pressed="false">
+          Little bites
+        </button>
+        <button type="button" data-category="extras" aria-pressed="false">
+          Extra toppings
+        </button>
+      </div>
+      <p class="menu-note">
+        All prices from the Crêpe campaign menu. 
+        This is a practice ordering experience.
+      </p>
+      <div id="menu-grid" class="menu-grid"></div>
+      <noscript>
+        <p>
+          Explore all flavors and prices in the 
+          <a href="../crepe-108-campaign/assets/menu.png">
+            illustrated menu
+          </a>. 
+          The practice bag needs JavaScript.
+        </p>
+      </noscript>
+      <p id="menu-status" class="sr-only" role="status" aria-live="polite"></p>
+      <div class="allergen-note">
+        <strong>A note for your sweet tooth.</strong>
+        <p>
+          Menu ingredients include milk, wheat, and eggs. Cookies, chocolate, and 
+          other toppings may contain additional allergens. This concept does not
+          verify dietary suitability or offer real food service.
+        </p>
+      </div>
+    </section>
+      <section class="story" id="story" aria-labelledby="story-title">
+        <div class="shell story-grid">
+          <figure>
+            <img src="assets/cafe-moment.png" alt="Strawberry and cookies-and-cream crêpes on plates with blue spoons and fresh berries." width="1536" height="1024" loading="lazy" decoding="async">
+          </figure>
+          <div class="story-copy">
+            <p class="eyebrow">Welcome to our sweet little world</p>
+            <h2 id="story-title">A treat.<br>A pause.<br><em>Your moment.</em></h2>
+            <p>
+              Crêpe is a café daydream made of warm golden folds, playful flavors, 
+              and little details that make you smile. Come for the chocolate. 
+              Stay for the mood.
+            </p>
+            <a class="underlink" href="#menu">There’s a crêpe for that ↗</a>
+          </div>
+        </div>
+      </section>
+      <section class="pickup shell" id="how-it-works" aria-labelledby="pickup-title">
+        <div class="section-heading"><div>
+          <p class="eyebrow">Your sweet break, sorted</p>
+          <h2 id="pickup-title">Pick. Add. <em>Daydream.</em></h2>
+        </div>
+        <p class="pickup-intro">
+          Try the pickup experience. No restaurant order, payment, or reservation 
+          is created.
+        </p>
+      </div>
+      <ol class="steps">
+        <li><span aria-hidden="true">01</span>
+          <h3>Find your flavor</h3>
+          <p>
+            Explore the menu and pick whatever mood you’re in.
+          </p>
+        </li>
+        <li>
+          <span aria-hidden="true">02</span>
+          <h3>Make a little bag</h3>
+          <p>Add a signature, a favorite, or a few bites to share.</p>
+        </li>
+        <li>
+          <span aria-hidden="true">03</span>
+          <h3>Try the checkout</h3>
+          <p>Review your sample order. Keep the cravings; skip the charge.</p>
+        </li>
+      </ol>
+    </section>
+    <section class="last-call">
+      <div class="shell">
+        <p class="eyebrow">Life’s sweeter with a little something</p>
+        <h2>Your mood.<br>Your <em>crêpe.</em></h2>
+        <a class="button" href="#menu">Find my favorite ↗</a>
+        <span class="last-heart" aria-hidden="true">♡</span>
+      </div>
+    </section>
+    </main>
+    <footer>
+      <div class="shell footer-grid"><div>
+        <a class="brand footer-brand" href="#top" aria-label="Crêpe home">
+          <img src="../crepe-108-campaign/assets/logo.png" alt="Crêpe" width="864" height="355" loading="lazy">
+        </a>
+        <p>
+          Sweet moments, one crêpe at a time.
+        </p>
+      <div>
+        <nav aria-label="Footer navigation">
+          <a href="#menu">The menu</a>
+          <a href="#story">Our sweet world</a>
+          <a href="../crepe-108-campaign/crepe.html">Behind the campaign ↗</a>
+          <a href="../portfolio.html">Ashelic Rose’s portfolio ↗</a>
+        </nav>
+      </div>
+      <p class="shell footer-note">
+        Crêpe is a fictional restaurant and portfolio concept. 
+        Food images are illustrative. 
+        No physical location, opening hours, 
+        or real ordering service is offered.
+      </p>
+    </footer>
+    <p id="bag-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+    <dialog id="bag-dialog" aria-labelledby="bag-title">
+      <div class="dialog-top">
+        <p class="eyebrow">A little bag of happy</p>
+        <button class="icon-close" type="button" data-close-dialog aria-label="Close your bag">×</button>
+      </div>
+      <h2 id="bag-title">Your sweet picks.</h2>
+      <div id="bag-items"></div>
+      <div class="bag-total">
+        <span>Sample subtotal</span>
+        <strong id="bag-total">$0.00</strong>
+      </div>
+      <p class="checkout-note">
+        Demo only. No taxes, fees, or payment are calculated or collected.
+      </p>
+      <button id="checkout-button" class="button wide" type="button">
+        Try practice checkout ↗
+      </button>
+      <button class="secondary wide" type="button" data-close-dialog>
+        Keep exploring
+      </button>
+    </dialog>
+    <dialog id="checkout-dialog" aria-labelledby="checkout-title">
+      <div class="dialog-top">
+        <p class="eyebrow">Practice pickup</p>
+        <button class="icon-close" type="button" data-close-dialog aria-label="Close practice checkout">×</button>
+      </div>
+      <h2 id="checkout-title">Almost sweet o’clock.</h2>
+      <p>
+        This is a sample order. Nothing will be submitted or saved.
+      </p>
+      <form id="checkout-form">
+        <label for="pickup-name">First name or nickname</label>
+        <input id="pickup-name" name="name" maxlength="50" autocomplete="off" required>
+        <label for="pickup-time">Sample pickup time</label>
+        <select id="pickup-time" name="time" required>
+          <option value="">Choose an example time</option>
+          <option>In 20 minutes</option>
+          <option>In 40 minutes</option>
+          <option>In 60 minutes</option>
+        </select>
+        <p class="checkout-note">
+          These are examples, not actual kitchen availability.
+        </p>
+        <div class="bag-total">
+          <span>Sample subtotal</span>
+          <strong id="checkout-total">$0.00</strong>
+        </div>
+        <button class="button wide" type="submit">Complete the demo ↗</button>
+      </form>
+    </dialog>
+    <dialog id="complete-dialog" aria-labelledby="complete-title">
+      <div class="dialog-top">
+        <p class="eyebrow">Sweet imagination</p>
+        <button class="icon-close" type="button" data-close-dialog aria-label="Close demo confirmation">×</button>
+      </div>
+      <h2 id="complete-title">That was a sweet idea.</h2>
+      <p id="complete-summary"></p>
+      <p>
+        No order was placed, no payment was collected, and no pickup was 
+        scheduled. Your bag is still here if you want to keep playing.
+      </p>
+      <button class="button wide" type="button" data-close-dialog>
+        Back to the good stuff
+      </button>
+    </dialog>
+  </body>
+</html>
