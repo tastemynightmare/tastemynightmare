@@ -151,3 +151,31 @@ confirmation.addEventListener('click', event => {
 });
 
 updateSummary(false);
+
+const ticker = document.querySelector('.ticker');
+const tickerGroups = ticker?.querySelectorAll('.ticker-group');
+
+if (ticker && tickerGroups?.length === 2) {
+  const [firstGroup, secondGroup] = tickerGroups;
+  const originalText = firstGroup.textContent.trim();
+
+  function fillTicker() {
+    firstGroup.textContent = originalText;
+
+    while (
+      firstGroup.getBoundingClientRect().width <
+      ticker.getBoundingClientRect().width
+    ) {
+      firstGroup.textContent += ` ${originalText}`;
+    }
+
+    secondGroup.textContent = firstGroup.textContent;
+  }
+
+  fillTicker();
+
+  const tickerObserver = new ResizeObserver(fillTicker);
+  tickerObserver.observe(ticker);
+
+  document.fonts.ready.then(fillTicker);
+}
