@@ -206,6 +206,10 @@ nav a:nth-child(4) {
   background: var(--green);
 }
 
+nav a:nth-child(5) {
+  background: var(--lavender);
+}
+
 nav a:hover {
   transform: rotate(-4deg) translateY(-3px);
   box-shadow: 5px 6px 0 var(--ink);
