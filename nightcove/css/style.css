@@ -1,1433 +1,1038 @@
 /* =========================================================
    RESET
 ========================================================= */
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
-
 body {
-    background: #050505;
-    color: white;
-    font-family: "Amarante", serif;
-    overflow-x: hidden;
+  background: #050505;
+  color: white;
+  font-family: "Amarante", serif;
+  overflow-x: hidden;
 }
-
 img {
-    max-width: 100%;
-    display: block;
+  max-width: 100%;
+  display: block;
 }
-
 /* =========================================================
    ATMOSPHERE
 ========================================================= */
-
 /* ---------- STARS ---------- */
-
 .stars {
-    position: fixed;
-    inset: 0;
-
-    background-image:
-
-        radial-gradient(
-            circle at 12% 18%,
-            rgba(255,255,255,.7) 0 1px,
-            transparent 1.5px
-        ),
-
-        radial-gradient(
-            circle at 73% 12%,
-            rgba(255,255,255,.5) 0 1px,
-            transparent 1.5px
-        ),
-
-        radial-gradient(
-            circle at 35% 67%,
-            rgba(255,255,255,.6) 0 1px,
-            transparent 1.5px
-        ),
-
-        radial-gradient(
-            circle at 88% 72%,
-            rgba(255,255,255,.5) 0 1px,
-            transparent 1.5px
-        ),
-
-        radial-gradient(
-            circle at 24% 44%,
-            rgba(255,255,255,.8) 0 1.5px,
-            transparent 2px
-        ),
-
-        radial-gradient(
-            circle at 62% 38%,
-            rgba(255,255,255,.7) 0 1.5px,
-            transparent 2px
-        ),
-
-        radial-gradient(
-            circle at 91% 25%,
-            rgba(255,255,255,.6) 0 1.5px,
-            transparent 2px
-        ),
-
-        radial-gradient(
-            circle at 48% 20%,
-            white 0 2px,
-            transparent 3px
-        ),
-
-        radial-gradient(
-            circle at 15% 82%,
-            rgba(255,255,255,.9) 0 2px,
-            transparent 3px
-        );
-
-    background-size:
-        280px 240px,
-        350px 300px,
-        420px 360px,
-        500px 400px,
-        320px 280px,
-        450px 350px,
-        600px 450px,
-        700px 500px,
-        550px 450px;
-
-    background-position:
-        0 0,
-        40px 80px,
-        120px 30px,
-        200px 100px,
-        60px 180px,
-        180px 40px,
-        300px 150px,
-        100px 250px,
-        250px 50px;
-
-    opacity: .35;
-
-    animation: starDrift 60s linear infinite;
-
-    z-index: -3;
-    pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(255, 255, 255, 0.7) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 73% 12%,
+      rgba(255, 255, 255, 0.5) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 35% 67%,
+      rgba(255, 255, 255, 0.6) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 88% 72%,
+      rgba(255, 255, 255, 0.5) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 24% 44%,
+      rgba(255, 255, 255, 0.8) 0 1.5px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 62% 38%,
+      rgba(255, 255, 255, 0.7) 0 1.5px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 91% 25%,
+      rgba(255, 255, 255, 0.6) 0 1.5px,
+      transparent 2px
+    ),
+    radial-gradient(circle at 48% 20%, white 0 2px, transparent 3px),
+    radial-gradient(
+      circle at 15% 82%,
+      rgba(255, 255, 255, 0.9) 0 2px,
+      transparent 3px
+    );
+  background-size:
+    280px 240px,
+    350px 300px,
+    420px 360px,
+    500px 400px,
+    320px 280px,
+    450px 350px,
+    600px 450px,
+    700px 500px,
+    550px 450px;
+  background-position:
+    0 0,
+    40px 80px,
+    120px 30px,
+    200px 100px,
+    60px 180px,
+    180px 40px,
+    300px 150px,
+    100px 250px,
+    250px 50px;
+  opacity: 0.35;
+  animation: starDrift 60s linear infinite;
+  z-index: -3;
+  pointer-events: none;
 }
-
 @keyframes starDrift {
-
-    from {
-        transform: translate3d(0, 0, 0);
-    }
-
-    to {
-        transform: translate3d(-40px, 25px, 0);
-    }
-
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-40px, 25px, 0);
+  }
 }
-
 /* ---------- MOON ---------- */
-
 .moon {
-    position: fixed;
-
-    top: 120px;
-    right: 150px;
-
-    width: 180px;
-    height: 180px;
-
-    background:
-        radial-gradient(
-            circle at 35% 35%,
-            #ffffff,
-            #d8d8d8 45%,
-            #999999 100%
-        );
-
-    border-radius: 50%;
-
-    opacity: .22;
-
-    box-shadow:
-        0 0 30px rgba(255,255,255,.5),
-        0 0 80px rgba(179,0,0,.6),
-        0 0 140px rgba(139,0,0,.3);
-
-    animation: moonFloat 8s ease-in-out infinite;
-
-    z-index: -1;
-    pointer-events: none;
+  position: fixed;
+  top: 120px;
+  right: 150px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(
+    circle at 35% 35%,
+    #ffffff,
+    #d8d8d8 45%,
+    #999999 100%
+  );
+  border-radius: 50%;
+  opacity: 0.22;
+  box-shadow:
+    0 0 30px rgba(255, 255, 255, 0.5),
+    0 0 80px rgba(179, 0, 0, 0.6),
+    0 0 140px rgba(139, 0, 0, 0.3);
+  animation: moonFloat 8s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
 }
-
 @keyframes moonFloat {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(30px);
-    }
-
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(30px);
+  }
 }
-
 /* ---------- FOG ---------- */
-
 .fog {
-    position: fixed;
-
-    bottom: 0;
-    left: 0;
-
-    width: 200%;
-    height: 250px;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(255,255,255,.10),
-            transparent
-        );
-
-    filter: blur(20px);
-
-    animation: fogMove 20s linear infinite;
-
-    z-index: -2;
-    pointer-events: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 250px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.1), transparent);
+  filter: blur(20px);
+  animation: fogMove 20s linear infinite;
+  z-index: -2;
+  pointer-events: none;
 }
-
 @keyframes fogMove {
-
-    from {
-        transform: translateX(-20%);
-    }
-
-    to {
-        transform: translateX(0);
-    }
-
+  from {
+    transform: translateX(-20%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
-
 /* =========================================================
    NAVIGATION
 ========================================================= */
-
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 40px;
-    background: rgba(0,0,0,.88);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #550000;
-    box-shadow:
-        0 5px 30px rgba(100,0,0,.15);
-
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 40px;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #550000;
+  box-shadow: 0 5px 30px rgba(100, 0, 0, 0.15);
+  z-index: 1000;
 }
-
 /* ---------- LOGO ---------- */
-
 .nav-logo {
-    position: absolute;
-    left: 40px;
-    top: 50%;
-    padding: 10px;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    text-decoration: none;
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  padding: 10px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
-
 .nav-logo img {
-    width: 100px;
-    filter:
-        drop-shadow(0 0 20px crimson);
-
-    transition: .4s ease;
+  width: 100px;
+  filter: drop-shadow(0 0 20px crimson);
+  transition: 0.4s ease;
 }
-
 .nav-logo:hover img {
-    transform: scale(1.05);
-
-    filter:
-        drop-shadow(0 0 10px crimson)
-        drop-shadow(0 0 25px red);
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px crimson) drop-shadow(0 0 25px red);
 }
-
-
 /* ---------- NAV LINKS ---------- */
-
 .nav-links {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 25px;
-
-    list-style: none;
-
-    margin: 0;
-    padding: 0;
-
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
 }
-
 .nav-links li {
-    position: relative;
+  position: relative;
 }
-
 .nav-links a {
-    display: block;
-
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 18px;
-
-    white-space: nowrap;
-
-    transition:
-        color .3s ease,
-        transform .3s ease,
-        text-shadow .3s ease;
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  white-space: nowrap;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease,
+    text-shadow 0.3s ease;
 }
-
 .nav-links a:hover {
-    color: #ff1a1a;
-
-    text-shadow:
-        0 0 10px crimson,
-        0 0 20px rgba(220,20,60,.5);
-
-    transform: translateY(-2px);
+  color: #ff1a1a;
+  text-shadow:
+    0 0 10px crimson,
+    0 0 20px rgba(220, 20, 60, 0.5);
+  transform: translateY(-2px);
 }
-
-
 /* =========================================================
    HERO
 ========================================================= */
-
 .hero {
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    position: relative;
-
-    padding: 120px 30px 60px;
-
-    background:
-        linear-gradient(
-            rgba(0,0,0,.45),
-            rgba(0,0,0,.92)
-        ),
-
-        url("../images/night-cove.jpg");
-
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 120px 30px 60px;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.92)),
+    url("../images/night-cove.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
-
 .hero-content {
-    max-width: 1000px;
-
-    margin: 0 auto;
-
-    animation:
-        heroReveal 1.5s ease forwards;
+  max-width: 1000px;
+  margin: 0 auto;
+  animation: heroReveal 1.5s ease forwards;
 }
-
 @keyframes heroReveal {
-
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
-
 /* ---------- HERO LOGO ---------- */
-
 .hero-logo {
-    width: 350px;
-    max-width: 70vw;
-
-    margin: 0 auto 20px;
-
-    filter:
-        drop-shadow(0 0 20px crimson)
-        drop-shadow(0 0 40px rgba(220,20,60,.4));
-
-    animation: logoPulse 5s ease-in-out infinite;
+  width: 350px;
+  max-width: 70vw;
+  margin: 0 auto 20px;
+  filter: drop-shadow(0 0 20px crimson)
+    drop-shadow(0 0 40px rgba(220, 20, 60, 0.4));
+  animation: logoPulse 5s ease-in-out infinite;
 }
-
 @keyframes logoPulse {
-
-    0%,
-    100% {
-        filter:
-            drop-shadow(0 0 20px crimson)
-            drop-shadow(0 0 40px rgba(220,20,60,.4));
-    }
-
-    50% {
-        filter:
-            drop-shadow(0 0 30px crimson)
-            drop-shadow(0 0 65px rgba(220,20,60,.65));
-    }
-
+  0%,
+  100% {
+    filter: drop-shadow(0 0 20px crimson)
+      drop-shadow(0 0 40px rgba(220, 20, 60, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 30px crimson)
+      drop-shadow(0 0 65px rgba(220, 20, 60, 0.65));
+  }
 }
-
-
 /* ---------- HERO TITLE ---------- */
-
 .hero h1 {
-    margin: 10px;
-    padding: 10px; 
-
-    font-size: clamp(2.5rem, 6vw, 5rem);
-
-    letter-spacing: clamp(3px, 1vw, 10px);
-
-    text-shadow:
-        0 0 10px black,
-        0 0 25px rgba(139,0,0,.4);
+  margin: 10px;
+  padding: 10px;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  letter-spacing: clamp(3px, 1vw, 10px);
+  text-shadow:
+    0 0 10px black,
+    0 0 25px rgba(139, 0, 0, 0.4);
 }
-
 .hero h2 {
-    margin: 10px;
-    padding: 10px;
-
-    font-family: "Tangerine", cursive;
-
-    font-size: clamp(3.2rem, 7vw, 6rem);
-
-    color: #b30000;
-
-    text-shadow:
-        0 0 10px crimson,
-        0 0 30px rgba(179,0,0,.6);
+  margin: 10px;
+  padding: 10px;
+  font-family: "Tangerine", cursive;
+  font-size: clamp(3.2rem, 7vw, 6rem);
+  color: #b30000;
+  text-shadow:
+    0 0 10px crimson,
+    0 0 30px rgba(179, 0, 0, 0.6);
 }
-
 .hero p {
-    margin: 15px 10px;
-
-    font-size: clamp(1rem, 2vw, 1.5rem);
-
-    letter-spacing: 2px;
-
-    opacity: .9;
+  margin: 15px 10px;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  letter-spacing: 2px;
+  opacity: 0.9;
 }
-
-
 /* =========================================================
    ENTER BUTTON
 ========================================================= */
-
 .enter-btn {
-    display: inline-block;
-
-    padding: 15px 45px;
-
-    margin-top: 15px;
-
-    border: 1px solid crimson;
-
-    color: white;
-
-    text-decoration: none;
-
-    letter-spacing: 3px;
-
-    background: rgba(80,0,0,.15);
-
-    box-shadow:
-        0 0 10px rgba(220,20,60,.2);
-
-    transition:
-        background .4s ease,
-        box-shadow .4s ease,
-        transform .4s ease;
+  display: inline-block;
+  padding: 15px 45px;
+  margin-top: 15px;
+  border: 1px solid crimson;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 3px;
+  background: rgba(80, 0, 0, 0.15);
+  box-shadow: 0 0 10px rgba(220, 20, 60, 0.2);
+  transition:
+    background 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.4s ease;
 }
-
 .enter-btn:hover {
-    background: crimson;
-
-    box-shadow:
-        0 0 20px crimson,
-        0 0 50px rgba(220,20,60,.5);
-
-    transform: translateY(-3px);
+  background: crimson;
+  box-shadow:
+    0 0 20px crimson,
+    0 0 50px rgba(220, 20, 60, 0.5);
+  transform: translateY(-3px);
 }
-
-
 /* =========================================================
    LORE
 ========================================================= */
-
 .lore {
-    padding: 140px 8%;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #300000,
-            #050505 70%
-        );
+  padding: 140px 8%;
+  text-align: center;
+  background: radial-gradient(circle at center, #300000, #050505 70%);
 }
-
 .lore h2 {
-    font-size: 72px;
-
-    color: #8b0000;
-
-    letter-spacing: clamp(2px, 1vw, 8px);
-
-    text-shadow:
-        0 0 15px rgba(139,0,0,.5);
-
-    margin-bottom: 60px;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  color: #8b0000;
+  letter-spacing: clamp(2px, 1vw, 8px);
+  text-shadow: 0 0 15px rgba(139, 0, 0, 0.5);
+  margin-bottom: 60px;
 }
-
 .lore-text {
-    max-width: 1000px;
-
-    margin: auto;
-
-    font-size: clamp(1rem, 2vw, 1.4rem);
-
-    line-height: 2;
+  max-width: 1000px;
+  margin: auto;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  line-height: 2;
 }
-
 .lore-text p {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
-
 .lore-text span {
-    color: #ff1a1a;
-
-    text-shadow:
-        0 0 8px rgba(220,20,60,.5);
+  color: #ff1a1a;
+  text-shadow: 0 0 8px rgba(220, 20, 60, 0.5);
 }
-
 .lore h3 {
-    margin: 60px 0;
-
-    color: #b30000;
-
-    font-size: clamp(1.5rem, 3vw, 2rem);
-
-    line-height: 1.8;
-
-    text-shadow:
-        0 0 15px rgba(179,0,0,.5);
+  margin: 60px 0;
+  color: #b30000;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.8;
+  text-shadow: 0 0 15px rgba(179, 0, 0, 0.5);
 }
-
 .final-line {
-    font-size: clamp(1.3rem, 3vw, 2rem);
-
-    font-style: italic;
-
-    margin-top: 50px;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  font-style: italic;
+  margin-top: 50px;
 }
-
-
 /* ---------- SHE ---------- */
-
 .she {
-    margin: auto;
-
-    padding: 20px;
-
-    font-size: clamp(4rem, 12vw, 8rem);
-
-    color: red;
-
-    line-height: .8;
-
-    text-shadow:
-        0 0 20px crimson,
-        0 0 50px rgba(220,20,60,.5);
-
-    animation:
-        sheGlow 4s ease-in-out infinite;
+  margin: auto;
+  padding: 20px;
+  line-height: 0.8;
+  animation: sheGlow 4s ease-in-out infinite;
 }
-
 @keyframes sheGlow {
-
-    0%,
-    100% {
-        opacity: .85;
-    }
-
-    50% {
-        opacity: 1;
-
-        text-shadow:
-            0 0 30px crimson,
-            0 0 70px rgba(220,20,60,.7);
-    }
-
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+    text-shadow:
+      0 0 30px crimson,
+      0 0 70px rgba(220, 20, 60, 0.7);
+  }
 }
-
-
 /* =========================================================
    MUSIC PLAYER
 ========================================================= */
-
 .player-section {
-    padding: 100px 20px;
+  padding: 100px 20px;
 }
-
 .player-container {
-    width: 100%;
-    max-width: 1100px;
-
-    margin: 0 auto;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: clamp(30px, 6vw, 60px);
-
-    padding: clamp(25px, 5vw, 50px);
-
-    border: 1px solid #5c0000;
-
-    background:
-        linear-gradient(
-            135deg,
-            #101010,
-            #220000
-        );
-
-    box-shadow:
-        0 0 40px rgba(0,0,0,.8);
-
-    border-radius: 20px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(30px, 6vw, 60px);
+  padding: clamp(25px, 5vw, 50px);
+  border: 1px solid #5c0000;
+  background: linear-gradient(135deg, #101010, #220000);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
 }
-
-
 /* =========================================================
    ALBUM / VINYL
 ========================================================= */
-
 .album-side {
-    flex: 0 1 350px;
-
-    display: flex;
-
-    justify-content: center;
-
-    min-width: 0;
+  flex: 0 1 350px;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
 }
-
 .record-wrapper {
-    position: relative;
-
-    width: min(300px, 75vw);
-
-    aspect-ratio: 1 / 1;
-
-    flex-shrink: 0;
+  position: relative;
+  width: min(300px, 75vw);
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
 }
-
-
 /* ---------- VINYL ---------- */
-
 .vinyl-record {
-    position: absolute;
-
-    width: 83.33%;
-    height: 83.33%;
-
-    top: 8.33%;
-    left: 8.33%;
-
-    border-radius: 50%;
-
-    background:
-        repeating-radial-gradient(
-            circle,
-            #111 0px,
-            #000 5px,
-            #111 8px
-        );
-
-    box-shadow:
-        0 0 30px black;
-
-    z-index: 1;
+  position: absolute;
+  width: 83.33%;
+  height: 83.33%;
+  top: 8.33%;
+  left: 8.33%;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, #111 0px, #000 5px, #111 8px);
+  box-shadow: 0 0 30px black;
+  z-index: 1;
 }
-
-
 /* ---------- VINYL ROTATION ---------- */
-
 .vinyl-record.spinning {
-    animation:
-        spinRecord 5s linear infinite;
+  animation: spinRecord 5s linear infinite;
 }
-
 @keyframes spinRecord {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-
-
 /* ---------- ALBUM COVER ---------- */
-
 .album-cover {
-    position: absolute;
-
-    width: 73.33%;
-    height: 73.33%;
-
-    top: 13.33%;
-    left: 13.33%;
-
-    object-fit: contain;
-
-    border-radius: 10px;
-
-    border: 4px solid #5c0000;
-
-    z-index: 2;
-
-    box-shadow:
-        0 0 25px crimson;
-
-    transition:
-        transform .5s ease,
-        box-shadow .5s ease;
+  position: absolute;
+  width: 73.33%;
+  height: 73.33%;
+  top: 13.33%;
+  left: 13.33%;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 4px solid #5c0000;
+  z-index: 2;
+  box-shadow: 0 0 25px crimson;
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
 }
-
-
 /* =========================================================
    PLAYER INFORMATION
 ========================================================= */
-
 .player-side {
-    flex: 1;
-
-    min-width: 0;
+  flex: 1;
+  min-width: 0;
 }
-
 .player-side h2 {
-    font-size: clamp(1.7rem, 4vw, 2.2rem);
-
-    margin-bottom: 10px;
-
-    overflow-wrap: break-word;
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+  margin-bottom: 10px;
+  overflow-wrap: break-word;
 }
-
 .player-side h3 {
-    color: #b30000;
-
-    font-weight: normal;
-
-    margin-bottom: 40px;
+  color: #b30000;
+  font-weight: normal;
+  margin-bottom: 40px;
 }
-
-
 /* =========================================================
    CONTROLS
 ========================================================= */
-
 .controls {
-    display: flex;
-
-    gap: 20px;
-
-    align-items: center;
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
-
 .controls button {
-    width: 70px;
-    height: 70px;
-
-    flex-shrink: 0;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background: #700000;
-
-    color: white;
-
-    font-size: 28px;
-
-    cursor: pointer;
-
-    transition: .35s;
-
-    box-shadow:
-        0 0 20px rgba(255,0,0,.4);
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  background: #700000;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  transition: 0.35s;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
 }
-
 .controls button:hover {
-    transform: scale(1.08);
-
-    background: #b00000;
-
-    box-shadow:
-        0 0 30px crimson;
+  transform: scale(1.08);
+  background: #b00000;
+  box-shadow: 0 0 30px crimson;
 }
-
-
 /* =========================================================
    PROGRESS BAR
 ========================================================= */
-
 .progress-container {
-    margin-top: 35px;
+  margin-top: 35px;
 }
-
 .progress-bar {
-    width: 100%;
-
-    height: 10px;
-
-    background: #222;
-
-    border-radius: 10px;
-
-    overflow: hidden;
-
-    cursor: pointer;
+  width: 100%;
+  height: 10px;
+  background: #222;
+  border-radius: 10px;
+  overflow: visible;
+  cursor: pointer;
+  position: relative;
+  touch-action: pan-y;
 }
-
 .progress {
-    width: 0%;
-
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            crimson,
-            red
-        );
-
-    transition: width .1s linear;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, crimson, red);
+  transition: width 0.1s linear;
+  border-radius: inherit;
 }
-
-
 /* =========================================================
    TIME
 ========================================================= */
-
 .time {
-    margin-top: 12px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    color: #cccccc;
-
-    font-size: .9rem;
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  color: #cccccc;
+  font-size: 0.9rem;
 }
-
-
 /* =========================================================
    VOLUME
 ========================================================= */
-
 .volume {
-    margin-top: 35px;
+  margin-top: 35px;
 }
-
 .volume label {
-    display: block;
-
-    margin-bottom: 10px;
+  display: block;
+  margin-bottom: 10px;
 }
-
 .volume input {
-    width: 100%;
-
-    accent-color: crimson;
+  width: 100%;
+  accent-color: crimson;
 }
-
-
 /* =========================================================
    GALLERY
 ========================================================= */
-
 .gallery {
-    padding: 120px 40px;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #180000,
-            #050505 70%
-        );
+  padding: 120px 40px;
+  text-align: center;
+  background: radial-gradient(circle at center, #180000, #050505 70%);
 }
-
 .gallery h2 {
-    font-size: clamp(2rem, 5vw, 3rem);
-
-    color: #8b0000;
-
-    letter-spacing: clamp(3px, 1vw, 6px);
-
-    margin-bottom: 50px;
-
-    text-shadow:
-        0 0 15px rgba(139,0,0,.5);
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #8b0000;
+  letter-spacing: clamp(3px, 1vw, 6px);
+  margin-bottom: 50px;
+  text-shadow: 0 0 15px rgba(139, 0, 0, 0.5);
 }
-
-
 /* =========================================================
    GALLERY CARDS
 ========================================================= */
-
 .cards {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 30px;
-
-    max-width: 1100px;
-
-    margin: 50px auto 0;
-
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 50px auto 0;
+  flex-wrap: wrap;
 }
-
 .card {
-    position: relative;
-
-    width: 250px;
-    height: 250px;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            145deg,
-            #111,
-            #300000
-        );
-
-    border: 1px solid #660000;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color: white;
-
-    text-decoration: none;
-
-    transition:
-        transform .5s ease,
-        box-shadow .5s ease,
-        border-color .5s ease;
+  position: relative;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #111, #300000);
+  border: 1px solid #660000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease,
+    border-color 0.5s ease;
 }
-
 .card::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(220,20,60,.2),
-            transparent 65%
-        );
-
-    opacity: 0;
-
-    transition:
-        opacity .5s ease;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(220, 20, 60, 0.2), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
-
 .card h3 {
-    position: relative;
-
-    z-index: 2;
-
-    font-size: 2rem;
-
-    letter-spacing: 3px;
-
-    padding: 10px;
-
-    text-shadow:
-        0 0 10px black;
+  position: relative;
+  z-index: 2;
+  font-size: 2rem;
+  letter-spacing: 3px;
+  padding: 10px;
+  text-shadow: 0 0 10px black;
 }
-
 .card:hover {
-    transform:
-        translateY(-15px)
-        scale(1.04);
-
-    border-color: crimson;
-
-    box-shadow:
-        0 0 25px rgba(220,20,60,.5),
-        0 0 60px rgba(139,0,0,.25);
+  transform: translateY(-15px) scale(1.04);
+  border-color: crimson;
+  box-shadow:
+    0 0 25px rgba(220, 20, 60, 0.5),
+    0 0 60px rgba(139, 0, 0, 0.25);
 }
-
 .card:hover::before {
-    opacity: 1;
+  opacity: 1;
 }
-
 .card-content {
-    position: relative;
-
-    z-index: 2;
-
-    text-align: center;
+  position: relative;
+  z-index: 2;
+  text-align: center;
 }
-
 .card-content h3 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
-
 .card-content p {
-    font-family: "Tangerine", cursive;
-
-    font-size: 1.8rem;
-
-    color: #b30000;
-
-    opacity: 0;
-
-    transform: translateY(10px);
-
-    transition: .4s ease;
+  font-family: "Tangerine", cursive;
+  font-size: 1.8rem;
+  color: #b30000;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.4s ease;
 }
-
 .card:hover .card-content p {
-    opacity: 1;
-
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
-
-
 /* =========================================================
    FOOTER
 ========================================================= */
-
 footer {
-    padding: 40px;
+  padding: 40px;
+  text-align: center;
+  background: black;
+  border-top: 1px solid #300000;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 1px;
+}
+/* Accessible controls; the desktop artwork and layout remain intact. */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 2000;
+  padding: 12px 18px;
+  background: #050505;
+  color: white;
+  border: 1px solid crimson;
+}
 
+.skip-link:focus {
+  top: 12px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+.progress-bar:focus-visible {
+  outline: 2px solid #ff6988;
+  outline-offset: 5px;
+}
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid crimson;
+  border-radius: 4px;
+  background: rgba(80, 0, 0, 0.15);
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+.nav-toggle[hidden],
+.player-status[hidden] {
+  display: none;
+}
+
+.nav-toggle-icon {
+  font-family: Arial, sans-serif;
+  font-size: 23px;
+  line-height: 1;
+}
+
+/* Replace spacer <br> tags with the same three-line desktop rhythm. */
+.lore h2.she {
+  display: grid;
+  gap: 1.6em;
+  font-size: clamp(1.75rem, 6.5vw, 4.5rem);
+}
+
+.she span {
+  display: block;
+  color: inherit;
+  text-shadow: inherit;
+}
+
+/* A larger invisible hit target keeps the visible progress track unchanged. */
+.progress-bar::after {
+  content: "";
+  position: absolute;
+  inset: -16px 0;
+}
+
+.controls button:disabled {
+  cursor: default;
+}
+
+.player-status {
+  max-width: 40ch;
+  margin-top: 20px;
+  color: #ffb2c3;
+  font:
+    0.95rem/1.5 Arial,
+    sans-serif;
+}
+
+.card:focus-visible .card-content p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Compact navigation before the desktop links can collide with the logo. */
+@media (max-width: 1199px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .navbar {
+    position: relative;
+    min-height: 88px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 12px 20px;
+  }
+
+  .nav-logo {
+    position: static;
+    padding: 0;
+    transform: none;
+  }
+
+  .nav-logo img {
+    width: 70px;
+    height: 60px;
+    object-fit: contain;
+  }
+
+  .navbar.is-enhanced .nav-toggle {
+    display: inline-flex;
+  }
+
+  .nav-links {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 8px;
+    font-size: 15px;
     text-align: center;
+    white-space: normal;
+  }
 
-    background: black;
+  .navbar.is-enhanced .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    padding: 12px 20px 18px;
+    border-bottom: 1px solid #550000;
+    background: rgba(0, 0, 0, 0.98);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.35);
+  }
 
-    border-top: 1px solid #300000;
+  .navbar.is-enhanced.nav-open .nav-links {
+    display: grid;
+  }
 
-    color: rgba(255,255,255,.5);
+  .hero {
+    min-height: calc(100svh - 88px);
+    padding-top: 60px;
+    background-attachment: scroll;
+  }
 
-    letter-spacing: 1px;
+  .moon {
+    top: 110px;
+    right: 7vw;
+  }
 }
 
-
-/* =========================================================
-   RESPONSIVE — TABLET
-========================================================= */
-
+/* Stack the player before its fixed-size controls become crowded. */
 @media (max-width: 1000px) {
+  .player-section {
+    padding: 80px 15px;
+  }
 
-    .navbar {
-        padding-left: 160px;
-        padding-right: 20px;
-    }
+  .player-container {
+    flex-direction: column;
+    gap: 40px;
+    padding: 35px 20px;
+    border-radius: 16px;
+    text-align: center;
+  }
 
-    .nav-logo {
-        left: 20px;
-    }
+  .album-side {
+    flex: none;
+    width: 100%;
+  }
 
-    .nav-logo img {
-        width: 100px;
-    }
+  .record-wrapper {
+    width: min(280px, 100%);
+    margin: 0 auto;
+  }
 
-    .nav-links {
-        gap: 15px;
-    }
+  .player-side {
+    width: 100%;
+  }
 
-    .nav-links a {
-        font-size: 15px;
-    }
+  .player-side h2 {
+    font-size: clamp(1.5rem, 7vw, 1.8rem);
+  }
 
+  .player-side h3 {
+    margin-bottom: 30px;
+  }
 
-    /* PLAYER */
+  .controls {
+    justify-content: center;
+    gap: 15px;
+  }
 
-    .player-container {
-        gap: 35px;
-    }
+  .controls button {
+    width: 58px;
+    height: 58px;
+    font-size: 23px;
+  }
 
-    .record-wrapper {
-        width: min(280px, 35vw);
-    }
+  .progress-container,
+  .volume {
+    margin-top: 30px;
+  }
 
+  .volume input {
+    min-height: 32px;
+  }
+
+  .player-status {
+    margin-inline: auto;
+  }
 }
 
-
-/* =========================================================
-   RESPONSIVE — MOBILE
-========================================================= */
-
-@media (max-width: 200px) {
-
-
-    /* ---------- NAVIGATION ---------- */
-
-    .navbar {
-        position: fixed;
-
-        height: 20px;
-
-        padding: 15px 15px 18px;
-
-        display: flex;
-
-        flex-direction: column;
-
-        justify-content: center;
-
-        gap: 8px;
-    }
-
-
-    .nav-logo {
-        position: static;
-
-        transform: none;
-    }
-
-    .nav-logo img {
-        width: 20px;
-    }
-
-
-    .nav-links {
-        width: 100%;
-
-        display: flex;
-
-        justify-content: center;
-        align-items: center;
-
-        flex-wrap: wrap;
-
-        gap: 8px 16px;
-
-        margin: 0;
-
-        padding: 0;
-    }
-
-    .nav-links a {
-        font-size: 14px;
-
-        text-align: center;
-    }
-
-
-    /* ---------- HERO ---------- */
-
-    .hero {
-        min-height: 100svh;
-
-        padding:
-            190px 20px 70px;
-
-        background-attachment: scroll;
-    }
-
-    .hero-logo {
-        width: min(220px, 65vw);
-    }
-
-    .hero h1 {
-        font-size: 2.4rem;
-
-        letter-spacing: 3px;
-    }
-
-    .hero h2 {
-        font-size: 3.5rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-
-        letter-spacing: 1px;
-    }
-
-    .enter-btn {
-        padding: 13px 25px;
-
-        font-size: .85rem;
-    }
-
-
-    /* ---------- MOON ---------- */
-
-    .moon {
-        width: 90px;
-        height: 90px;
-
-        top: 180px;
-        right: 20px;
-    }
-
-
-    /* ---------- LORE ---------- */
-
-    .lore {
-        padding:
-            90px 7%;
-    }
-
-    .lore h2 {
-        font-size: 2rem;
-
-        letter-spacing: 2px;
-    }
-
-    .lore-text {
-        font-size: 1rem;
-
-        line-height: 1.8;
-    }
-
-    .lore-text p {
-        margin-bottom: 25px;
-    }
-
-    .lore h3 {
-        margin: 45px 0;
-
-        font-size: 1.5rem;
-    }
-
-    .final-line {
-        font-size: 1.4rem;
-    }
-
-    .she {
-        font-size: 4.5rem;
-
-        padding: 10px;
-    }
-
-
-    /* =====================================================
-       MOBILE MUSIC PLAYER
-    ===================================================== */
-
-    .player-section {
-        padding:
-            80px 15px;
-    }
-
-    .player-container {
-        width: 100%;
-
-        flex-direction: column;
-
-        gap: 40px;
-
-        padding:
-            35px 20px;
-
-        text-align: center;
-
-        border-radius: 16px;
-    }
-
-
-    /* ---------- VINYL ---------- */
-
-    .album-side {
-        width: 100%;
-
-        flex: none;
-    }
-
-    .record-wrapper {
-        width: min(280px, 72vw);
-
-        margin: 0 auto;
-    }
-
-
-    /* ---------- PLAYER ---------- */
-
-    .player-side {
-        width: 100%;
-    }
-
-    .player-side h2 {
-        font-size: 1.8rem;
-    }
-
-    .player-side h3 {
-        margin-bottom: 30px;
-    }
-
-
-    /* ---------- CONTROLS ---------- */
-
-    .controls {
-        justify-content: center;
-
-        gap: 15px;
-    }
-
-    .controls button {
-        width: 58px;
-        height: 58px;
-
-        font-size: 23px;
-    }
-
-
-    /* ---------- PROGRESS ---------- */
-
-    .progress-container {
-        margin-top: 30px;
-    }
-
-
-    /* ---------- VOLUME ---------- */
-
-    .volume {
-        margin-top: 30px;
-    }
-
-
-    /* ---------- GALLERY ---------- */
-
-    .gallery {
-        padding:
-            80px 20px;
-    }
-
-    .gallery h2 {
-        font-size: 2rem;
-
-        letter-spacing: 3px;
-    }
-
-    .cards {
-        flex-direction: column;
-
-        align-items: center;
-
-        gap: 25px;
-    }
-
-    .card {
-        width: min(90vw, 300px);
-
-        height: 220px;
-    }
-
+/* Phone and small-tablet content, without fixed-width player overflow. */
+@media (max-width: 760px) {
+  .hero {
+    padding: 50px 20px 70px;
+  }
+
+  .hero-content {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-logo {
+    width: min(220px, 65vw);
+  }
+
+  .hero h1 {
+    margin: 10px 0;
+    padding: 10px 0;
+    font-size: clamp(1.7rem, 7vw, 2.4rem);
+    letter-spacing: clamp(1px, 0.65vw, 3px);
+  }
+
+  .hero h2 {
+    margin: 10px 0;
+    padding: 10px 0;
+    font-size: clamp(3rem, 11vw, 3.8rem);
+  }
+
+  .hero p {
+    margin-inline: 0;
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
+  .enter-btn {
+    max-width: 100%;
+    padding: 13px 25px;
+    font-size: 0.85rem;
+  }
+
+  .moon {
+    width: 90px;
+    height: 90px;
+    right: 20px;
+  }
+
+  .lore {
+    padding: 90px 7%;
+  }
+
+  .lore h2 {
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+  }
+
+  .lore-text {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .lore-text p {
+    margin-bottom: 25px;
+  }
+
+  .lore h3 {
+    margin: 45px 0;
+    font-size: 1.5rem;
+  }
+
+  .final-line {
+    font-size: 1.4rem;
+  }
+
+  .lore h2.she {
+    padding: 10px 0;
+    letter-spacing: 1px;
+  }
+
+  .gallery {
+    padding: 80px 20px;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .card {
+    width: min(100%, 300px);
+    height: 220px;
+  }
+
+  footer {
+    padding: 30px 20px;
+  }
 }
 
+@media (max-width: 599px) {
+  .nav-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
+  .nav-links a {
+    font-size: 14px;
+  }
+}
 
 @media (max-width: 400px) {
+  .navbar {
+    padding-inline: 16px;
+  }
 
-    .nav-links {
-        gap: 7px 12px;
-    }
+  .hero-logo {
+    width: 170px;
+  }
 
-    .nav-links a {
-        font-size: 12px;
-    }
+  .hero h1 {
+    font-size: clamp(1.7rem, 8vw, 2rem);
+  }
 
-    .hero {
-        padding-top: 205px;
-    }
+  .hero h2 {
+    font-size: 3rem;
+  }
 
-    .hero h1 {
-        font-size: 2rem;
-    }
+  .player-container {
+    padding: 30px 15px;
+  }
 
-    .hero h2 {
-        font-size: 3rem;
-    }
+  .controls button {
+    width: 52px;
+    height: 52px;
+    font-size: 20px;
+  }
+}
 
-    .hero-logo {
-        width: 170px;
-    }
+/* Touch users can read card descriptions without needing a hover. */
+@media (hover: none) {
+  .card-content p {
+    opacity: 1;
+    transform: none;
+  }
+}
 
-    .record-wrapper {
-        width: 70vw;
-    }
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-    .player-container {
-        padding:
-            30px 15px;
-    }
-
-    .controls button {
-        width: 52px;
-        height: 52px;
-
-        font-size: 20px;
-    }
-
-    .she {
-        font-size: 3.5rem;
-    }
-
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
