@@ -11,11 +11,11 @@ window.SHADOW_CONTENT = {
     firstName: "ASHELIC",
     lastName: "Rose",
     brand: "Taste My Nightmare",
-    tagline: "Every nightmare deserves a soundtrack.",
+    tagline: "Every Nightmare Deserves a Soundtrack.",
     description:
       "Horror-infused rap. Alter egos. A world of her own.\nStep into the sound and stories of Taste My Nightmare.",
   },
-  contactEmail: "tastemynightmare@gmail.com",
+  contactEmail: "ashelicrosebookings@gmail.com",
   images: {
     logo: "assets/tmn-logo.png",
     hero: "assets/after-the-club.jpg",
@@ -35,7 +35,7 @@ window.SHADOW_CONTENT = {
     portfolio: "https://tastemynightmare.com/portfolio/portfolio.html",
   },
   bio: {
-    lead: "A rose grown in the dark.",
+    lead: "A Rose Grown in the Dark.",
     short:
       "Ashelic Rose is an independent rapper and multidisciplinary creator behind Taste My Nightmare, a horror-infused universe of music, film, design and interactive storytelling. Through Ashelic Rose, Aceyy Shinigami and Tsukuyomi da Reaper, the Unholy Trinity explores feminine power, angst, grief and transformation. Together, they are Shee. Welcome to the Night Cove.",
     extended: [
@@ -53,13 +53,13 @@ window.SHADOW_CONTENT = {
     status: "IN DEVELOPMENT",
     title: "Another Shattered Heart Set Ablaze",
     description:
-      "The next chapter reaches toward alternative rock, metal and shoegaze. Follow the unfolding nightmare.",
+      "The next chapter reaches toward alternative rock, metal and shoegaze - while standing strong in her Hip-Hop roots. Follow the unfolding nightmare.",
   },
   tracks: [
     {
       id: 0,
       title: "After the Club",
-      credit: "feat. Acey Shinigami",
+      credit: "feat. Aceyy Shinigami",
       src: "assets/after-the-club.mp3",
       cover: "assets/after-the-club.jpg",
       kind: "Full track",
@@ -166,7 +166,7 @@ window.SHADOW_CONTENT = {
       label: "THE FEMME FATALE",
       sigil: "♥",
       accent: "#db443d",
-      copy: "The vampire, siren and succubus. Ashelic channels feminine power and seduction through the crimson heart of the nightmare.",
+      copy: "The Vampire, Siren and Succubus. Ashelic channels feminine power and seduction through the crimson heart of the nightmare.",
       tags: ["CRIMSON", "POWER", "DESIRE"],
     },
     aceyy: {
@@ -174,7 +174,7 @@ window.SHADOW_CONTENT = {
       label: "THE REBEL",
       sigil: "♠",
       accent: "#79cfa0",
-      copy: "The rockstar in the static. Aceyy carries the queer, alternative, rebellious voice of Shee: electric forest green, guitar energy and a glitch in the expected.",
+      copy: "The Rockstar in the static. Aceyy carries the queer, alternative, rebellious voice of Shee: electric forest green, guitar energy and a glitch in the expected.",
       tags: ["FOREST GREEN", "ANGST", "REBELLION"],
     },
     tsukuyomi: {
@@ -182,7 +182,7 @@ window.SHADOW_CONTENT = {
       label: "THE SIREN REAPER",
       sigil: "☾",
       accent: "#b0bbeb",
-      copy: "The silver-haired siren at the edge of the tide. Tsukuyomi gives grief and inner darkness a voice through haunting stories and cautionary tales.",
+      copy: "The silver-haired Siren at the edge of the tide. Tsukuyomi gives grief and inner darkness a voice through haunting stories and cautionary tales.",
       tags: ["NAVY + SILVER", "GRIEF", "STORYTELLING"],
     },
   },
@@ -201,7 +201,7 @@ window.SHADOW_CONTENT = {
       filename: "Taste-My-Nightmare-Logo.png",
       category: "brand",
       caption: "TMN original logo / PNG",
-      displayTitle: "The burning heart",
+      displayTitle: "The Sigil",
     },
     {
       title: "Taste My Nightmare — vampire mark",
@@ -209,7 +209,7 @@ window.SHADOW_CONTENT = {
       filename: "Taste-My-Nightmare-Vampire-Mark.png",
       category: "brand",
       caption: "TMN original mark / PNG",
-      displayTitle: "The vampire mark",
+      displayTitle: "The Vampire mark",
     },
     {
       title: "Ashelic Rose — character artwork",
