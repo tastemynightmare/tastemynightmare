@@ -1,260 +1,708 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#100708" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <meta
+      name="description"
+      content="Step inside Shadow Stage. Music, moving images, artist identity and press assets from Ashelic Rose's Taste My Nightmare universe."
+    />
+    <title>Shadow Stage — Ashelic Rose | Taste My Nightmare</title>
+    <link rel="icon" href="assets/tmn-logo.png" type="image/png" />
+    <link rel="stylesheet" href="stage.css" />
+    <script src="content.js" defer></script>
+    <script src="vendor/pdf-lib.min.js" defer></script>
+    <script src="vendor/fontkit.umd.min.js" defer></script>
+    <script src="vendor/jszip.min.js" defer></script>
+    <script src="content-render.js" defer></script>
+    <script src="downloads.js" defer></script>
+    <script src="stage.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to the artist press kit</a>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="masthead">
+      <a class="brand" href="../home.html" aria-label="Return to the Night Cove"
+        ><img src="assets/tmn-logo.png" alt="" /><span
+          >TASTE MY<br /><strong>NIGHTMARE</strong></span
+        ></a
+      >
+      <a class="masthead-center" href="../home.html"
+        >← RETURN TO THE NIGHT COVE</a
+      >
+      <div class="head-actions">
+        <button id="lights" class="text-button" aria-pressed="false">
+          ◐ <span>House lights</span></button
+        ><a class="small-cta" href="#booking"
+          >Booking desk <span aria-hidden="true">↗</span></a
+        >
+      </div>
+    </header>
+    <nav class="stage-nav" aria-label="Explore Shadow Stage">
+      <span class="nav-label">EXPLORE THE STAGE</span>
+      <a href="#curtain" aria-current="location"><span>01</span>Curtain call</a>
+      <a href="#music"><span>02</span>The setlist</a>
+      <a href="#visuals"><span>03</span>Hollow Screen</a>
+      <a href="#identity"><span>04</span>Backstage</a>
+      <a href="#press"><span>05</span>Press vault</a>
+      <a href="#booking"><span>06</span>Booking desk</a>
+      <span class="nav-tail"
+        >ENTER AT YOUR OWN RISK<br /><span aria-hidden="true">✦</span></span
+      >
+    </nav>
+    <main id="main">
+      <section class="hero" id="curtain" aria-labelledby="artist-name">
+        <div class="hero-photo">
+          <img
+            src="assets/after-the-club.jpg"
+            alt="Ashelic Rose in the crimson, candlelit artwork for After the Club"
+            fetchpriority="high"
+          /><span class="photo-caption">AFTER THE CLUB / RELEASE ARTWORK</span>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="live-dot"></span>THE SHADOW STAGE IS OPEN
+          </p>
+          <p class="stage-title">SHADOW <i>STAGE</i></p>
+          <h1 id="artist-name">ASHELIC<br /><em>Rose</em></h1>
+          <p class="hero-tagline">
+            Every nightmare deserves<br />a soundtrack.
+          </p>
+          <p class="hero-description">
+            Horror-infused rap. Alter egos. A world of her own.<br />Step into
+            the sound and stories of Taste My Nightmare.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#music"
+              >Enter the sound <span aria-hidden="true">↗</span></a
+            ><a
+              class="button outline"
+              href="documents/press-sheet.html"
+              data-download="epk"
+              >Download EPK <span aria-hidden="true">↓</span></a
+            >
+          </div>
+        </div>
+        <div class="hero-foot">
+          <span>ONE ARTIST. AN ENTIRE NIGHTMARE.</span
+          ><a href="#music">TAKE YOUR SEAT <span aria-hidden="true">↓</span></a>
+        </div>
+      </section>
 
-    <head>
+      <div class="interlude" aria-hidden="true">
+        <span>ASHELIC ROSE</span><b>✦</b><span>ACEYY SHINIGAMI</span><b>✦</b
+        ><span>TSUKUYOMI DA REAPER</span><b>✦</b><span>WE ARE SHEE</span>
+      </div>
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <title>Shadow Stage | Taste My Nightmare</title>
-
-        <link rel="stylesheet" href="css/style.css">
-
-    </head>
-
-    <body>
-        
-        <!-- HERO -->
-
-        <section class="stage-hero">
-
-            <div class="stage-overlay">
-
-                <h1>SHADOW STAGE</h1>
-
-                <h2>The Sounds That Haunt The Night Cove</h2>
-
-                <p>
-                    Every song is another nightmare waiting to consume you.
+      <section
+        class="room music-room"
+        id="music"
+        aria-labelledby="music-heading"
+      >
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">02 / THE LISTENING ROOM</p>
+            <h2 id="music-heading">Choose your <em>poison.</em></h2>
+          </div>
+          <p>
+            Select a record. Meet another side of Shee.<br />Explicit lyrics.
+            Playback starts only when you press play.
+          </p>
+        </header>
+        <div class="music-grid">
+          <div class="record-player">
+            <div class="record-art">
+              <div class="vinyl" aria-hidden="true"></div>
+              <img
+                id="record-cover"
+                src="assets/after-the-club.jpg"
+                alt="After the Club release artwork"
+                width="400"
+                height="400"
+              /><span class="record-corner" aria-hidden="true">✦</span>
+            </div>
+            <div class="record-information">
+              <p class="eyebrow" id="record-kind">FULL TRACK / EXPLICIT</p>
+              <h3 id="record-title">After the Club</h3>
+              <p id="record-credit">feat. Acey Shinigami</p>
+            </div>
+            <div class="play-row">
+              <button
+                id="play"
+                class="play-button"
+                aria-label="Play After the Club"
+              >
+                ▶
+              </button>
+              <div>
+                <p id="record-description">
+                  A blood-red invitation into the Night Cove.
                 </p>
-
+                <p class="micro" id="audio-status" role="status">
+                  Ready when you are.
+                </p>
+              </div>
             </div>
-
-        </section>
-
-        <!-- PLAYER -->
-
-        <section class="player-section">
-
-            <div class="player-container">
-
-                <!-- Album -->
-
-                <div class="album-side">
-
-                    <div class="record-wrapper">
-
-                        <div class="vinyl-record"></div>
-
-                        <img
-                            src="images/cover.jpg"
-                            alt="Album Cover"
-                            id="album-cover"
-                            class="album-cover">
-
-                    </div>
-
-                </div>
-
-                <!-- Player -->
-
-                <div class="player-side">
-
-                    <h2 id="song-title">
-                        Another Shattered Heart Set Ablaze
-                    </h2>
-
-                    <h3 id="artist-name">
-                        Ashelic Rose
-                    </h3>
-
-                    <audio id="audio">
-
-                        <source src="music/song.mp3" type="audio/mpeg">
-
-                        Your browser does not support audio.
-
-                    </audio>
-
-                    <div class="controls">
-
-                        <button id="previous-btn">
-                            ⏮
-                        </button>
-
-                        <button id="play-btn">
-                            ▶
-                        </button>
-
-                        <button id="next-btn">
-                            ⏭
-                        </button>
-
-                    </div>
-
-                    <div class="progress-container">
-
-                        <div class="progress-bar">
-
-                            <div class="progress"></div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="time">
-
-                        <span id="current-time">0:00</span>
-
-                        <span id="duration">0:00</span>
-
-                    </div>
-
-                    <div class="volume">
-
-                        <label for="volume-slider">
-                            Volume
-                        </label>
-
-                        <input
-                            type="range"
-                            id="volume-slider"
-                            min="0"
-                            max="100"
-                            value="100">
-
-                    </div>
-
-                </div>
-
+            <audio
+              id="audio"
+              src="assets/after-the-club.mp3"
+              controls
+              preload="metadata"
+              aria-label="Ashelic Rose music player"
+            ></audio>
+            <div class="stream-links">
+              <a
+                id="record-link"
+                href="https://music.apple.com/us/album/after-the-club-feat-acey-shinigami/1767206194?i=1767206196"
+                target="_blank"
+                rel="noopener noreferrer"
+                >This release on Apple Music ↗</a
+              ><a
+                href="https://open.spotify.com/artist/3ztJFOdQ2mptebJdUI81kj"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Spotify ↗</a
+              >
             </div>
-
-        </section>
-
-        <!-- TRACK LIST -->
-
-        <section class="track-list">
-
-            <h2>THE HAUNTED RECORDS</h2>
-
-            <div class="tracks">
-
-                <div class="song active-song">
-
-                    <span>01</span>
-
-                    <div>
-
-                        <h3>Another Shattered Heart Set Ablaze</h3>
-
-                        <p>Ashelic Rose</p>
-
-                    </div>
-
-                </div>
-
-                <div class="song">
-
-                    <span>02</span>
-
-                    <div>
-
-                        <h3>Coming Soon...</h3>
-
-                        <p>Ashelic Rose</p>
-
-                    </div>
-
-                </div>
-
-                <div class="song">
-
-                    <span>03</span>
-
-                    <div>
-
-                        <h3>Coming Soon...</h3>
-
-                        <p>Ashelic Rose</p>
-
-                    </div>
-
-                </div>
-
-                <div class="song">
-
-                    <span>04</span>
-
-                    <div>
-
-                        <h3>Coming Soon...</h3>
-
-                        <p>Ashelic Rose</p>
-
-                    </div>
-
-                </div>
-
+          </div>
+          <div class="setlist">
+            <div class="setlist-head">
+              <span>THE HAUNTED RECORDS</span><span>SELECT TO LOAD</span>
             </div>
-
-        </section>
-
-        <!-- FEATURED RELEASE -->
-
-        <section class="featured-release">
-
-            <div class="release-card">
-
-                <img
-                    src="images/cover.jpg"
-                    alt="Featured Album">
-
-                <div class="release-info">
-
-                    <h2>Latest Nightmare</h2>
-
-                    <h3>Another Shattered Heart Set Ablaze</h3>
-
-                    <p>
-
-                        Descend into a sonic nightmare where grief, rage,
-                        temptation, and rebirth collide beneath the moonlight.
-                        Every lyric is another step deeper into the Night Cove.
-
-                    </p>
-
-                </div>
-
+            <div id="tracks"></div>
+            <div class="next-era">
+              <span class="eyebrow">IN DEVELOPMENT</span>
+              <h3>Another Shattered Heart<br />Set Ablaze</h3>
+              <p>
+                The next chapter reaches toward a sonic blend of alternative 
+                rock, metal and shoegaze - while still standing strong in her 
+                hip-hop roots. Follow the unfolding nightmare.
+              </p>
+              <a
+                href="https://www.instagram.com/tastemynightmare/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Follow the next era ↗</a
+              >
             </div>
+          </div>
+        </div>
+      </section>
 
-        </section>
-
-        <!-- QUOTE -->
-
-        <section class="quote-section">
-
-            <blockquote>
-
-                "Every nightmare deserves a soundtrack."
-
-            </blockquote>
-
-        </section>
-
-        <!-- FOOTER -->
-
-        <footer>
-
-            <p>
-
-                © Ashelic Rose • Taste My Nightmare
-
+      <section
+        class="room cinema-room"
+        id="visuals"
+        aria-labelledby="visual-heading"
+      >
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">03 / HOLLOW SCREEN</p>
+            <h2 id="visual-heading">
+              Now screening<br /><em>my nightmare.</em>
+            </h2>
+          </div>
+          <p>
+            The sound has a face.<br />Choose a film from the projection desk.
+          </p>
+        </header>
+        <div class="cinema-grid">
+          <div>
+            <div id="screen" class="screen">
+              <img
+                src="assets/video-atc.jpg"
+                alt="After the Club release artwork, used as the film poster"
+              /><button
+                id="screen-play"
+                class="screen-play"
+                aria-label="Play After the Club official music video"
+              >
+                <span aria-hidden="true">▶</span><span>ROLL THE FILM</span>
+              </button>
+            </div>
+            <div class="screen-caption">
+              <span id="screen-title">After the Club</span
+              ><a
+                id="youtube-link"
+                href="https://www.youtube.com/watch?v=sMt-cuBaRqw"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Watch on YouTube ↗</a
+              >
+            </div>
+            <p class="micro">
+              The film loads from YouTube when selected. If the player is
+              restricted, use the YouTube link.
             </p>
+          </div>
+          <div class="projection-desk">
+            <p class="eyebrow">THE PROJECTION DESK</p>
+            <button class="film active" data-film="0" aria-pressed="true">
+              <span>01 / OFFICIAL MUSIC VIDEO</span
+              ><strong>After the Club</strong
+              ><span>3:39 <b aria-hidden="true">↗</b></span></button
+            ><button class="film" data-film="1" aria-pressed="false">
+              <span>02 / WORLD INTRODUCTION</span
+              ><strong>Welcome to the<br />Night Cove</strong
+              ><span>0:52 <b aria-hidden="true">↗</b></span></button
+            ><button class="film" data-film="2" aria-pressed="false">
+              <span>03 / TEASER</span><strong>ATC Teaser 1</strong
+              ><span>0:33 <b aria-hidden="true">↗</b></span></button
+            ><a
+              class="channel-link"
+              href="https://www.youtube.com/@AshelicRoseVlogs"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Go behind the scenes<br /><span>ASHELIC ROSE VLOGS ↗</span></a
+            >
+          </div>
+        </div>
+      </section>
 
-        </footer>
+      <section
+        class="room identity-room"
+        id="identity"
+        aria-labelledby="identity-heading"
+      >
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">04 / BACKSTAGE</p>
+            <h2 id="identity-heading">
+              One artist.<br /><em>Three shadows.</em>
+            </h2>
+          </div>
+          <p>
+            Ashelic Rose is the artist.<br />Taste My Nightmare is the world.
+          </p>
+        </header>
+        <div class="identity-grid">
+          <div class="bio-column">
+            <p class="lead">A rose grown in the dark.</p>
+            <p>
+              Ashelic Rose is an independent rapper and multidisciplinary
+              creator building Taste My Nightmare: a horror-infused universe
+              where music, moving images, design and interactive storytelling
+              meet.
+            </p>
+            <p>
+              Her work moves through feminine power, angst, grief and
+              transformation. The Unholy Trinity gives those feelings three
+              voices: Ashelic Rose, Aceyy Shinigami and Tsukuyomi da Reaper.
+              Together, they are Shee.
+            </p>
+            <p>
+              The Night Cove is home. The Nightshades are the community. The 
+              Shadow Stage is your invitation into the music while the larger 
+              immersive world takes shape.
+            </p>
+            <div class="bio-actions">
+              <button class="text-button" id="copy-bio">
+                Copy short bio <span aria-hidden="true">↗</span></button
+              ><a href="documents/bios.html" data-download="bios"
+                >Download bios ↓</a
+              >
+            </div>
+          </div>
+          <div class="persona-panel">
+            <div
+              class="persona-tabs"
+              role="tablist"
+              aria-label="The Unholy Trinity"
+            >
+              <button
+                role="tab"
+                id="tab-ashelic"
+                aria-controls="persona"
+                aria-selected="true"
+                data-persona="ashelic"
+              >
+                ASHELIC</button
+              ><button
+                role="tab"
+                id="tab-aceyy"
+                aria-controls="persona"
+                aria-selected="false"
+                tabindex="-1"
+                data-persona="aceyy"
+              >
+                ACEYY</button
+              ><button
+                role="tab"
+                id="tab-tsukuyomi"
+                aria-controls="persona"
+                aria-selected="false"
+                tabindex="-1"
+                data-persona="tsukuyomi"
+              >
+                TSUKUYOMI
+              </button>
+            </div>
+            <div
+              id="persona"
+              class="persona"
+              role="tabpanel"
+              aria-labelledby="tab-ashelic"
+              tabindex="0"
+            >
+              <div class="persona-sigil" aria-hidden="true">♥</div>
+              <p class="eyebrow" id="persona-label">THE FEMME FATALE</p>
+              <h3 id="persona-name">Ashelic Rose</h3>
+              <p id="persona-copy">
+                The vampire, siren and succubus. Ashelic channels feminine power
+                and seduction through the crimson heart of the nightmare.
+              </p>
+              <div class="persona-tags" id="persona-tags">
+                <span>CRIMSON</span><span>POWER</span><span>DESIRE</span>
+              </div>
+            </div>
+            <p class="persona-foot">THE UNHOLY TRINITY / WE ARE SHEE</p>
+          </div>
+        </div>
+      </section>
 
-        <script src="js/player.js"></script>
+      <section
+        class="room press-room"
+        id="press"
+        aria-labelledby="press-heading"
+      >
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">05 / THE PRESS VAULT</p>
+            <h2 id="press-heading">
+              Take a piece<br />of the <em>nightmare.</em>
+            </h2>
+          </div>
+          <div class="press-head-action">
+            <p>
+              For editors, promoters and collaborators.<br />Preview artwork.
+              Download original files.
+            </p>
+            <a
+              class="button primary"
+              href="documents/press-sheet.html"
+              data-download="bundle"
+              >Get the press bundle ↓</a
+            >
+          </div>
+        </header>
+        <div class="vault-tools">
+          <div
+            class="filter-group"
+            role="group"
+            aria-label="Filter press assets"
+          >
+            <button data-filter="all" aria-pressed="true">All assets</button
+            ><button data-filter="artwork" aria-pressed="false">
+              Release artwork</button
+            ><button data-filter="brand" aria-pressed="false">
+              Brand assets
+            </button>
+          </div>
+          <span id="asset-count" class="micro">4 ORIGINAL ASSETS</span>
+        </div>
+        <div class="asset-grid">
+          <article class="asset" data-category="artwork">
+            <button
+              class="asset-preview"
+              data-asset="0"
+              aria-label="Preview After the Club release artwork"
+            >
+              <img
+                src="assets/after-the-club.jpg"
+                alt="After the Club release artwork"
+                loading="lazy"
+              /><span>VIEW FULL SIZE ↗</span>
+            </button>
+            <div class="asset-details">
+              <div>
+                <h3>After the Club</h3>
+                <p>Release artwork / JPG</p>
+              </div>
+              <a
+                href="assets/after-the-club.jpg"
+                download="Ashelic-Rose-After-the-Club.jpg"
+                aria-label="Download After the Club release artwork"
+                >↓</a
+              >
+            </div>
+          </article>
+          <article class="asset" data-category="brand">
+            <button
+              class="asset-preview"
+              data-asset="1"
+              aria-label="Preview Taste My Nightmare heart logo"
+            >
+              <img
+                class="contain"
+                src="assets/tmn-logo.png"
+                alt="Taste My Nightmare heart, scythe and guitar logo"
+                loading="lazy"
+              /><span>VIEW FULL SIZE ↗</span>
+            </button>
+            <div class="asset-details">
+              <div>
+                <h3>The Girls</h3>
+                <p>TMN original logo / PNG</p>
+              </div>
+              <a
+                href="assets/tmn-logo.png"
+                download="Taste-My-Nightmare-Logo.png"
+                aria-label="Download Taste My Nightmare logo"
+                >↓</a
+              >
+            </div>
+          </article>
+          <article class="asset" data-category="brand">
+            <button
+              class="asset-preview"
+              data-asset="2"
+              aria-label="Preview Taste My Nightmare vampire mark"
+            >
+              <img
+                class="contain"
+                src="assets/tmn-mark.png"
+                alt="Taste My Nightmare crimson vampire mouth mark"
+                loading="lazy"
+              /><span>VIEW FULL SIZE ↗</span>
+            </button>
+            <div class="asset-details">
+              <div>
+                <h3>The vampire mark</h3>
+                <p>TMN original mark / PNG</p>
+              </div>
+              <a
+                href="assets/tmn-mark.png"
+                download="Taste-My-Nightmare-Vampire-Mark.png"
+                aria-label="Download vampire mark"
+                >↓</a
+              >
+            </div>
+          </article>
+          <article class="asset" data-category="brand">
+            <button
+              class="asset-preview"
+              data-asset="3"
+              aria-label="Preview Ashelic Rose character artwork"
+            >
+              <img
+                class="contain character"
+                src="assets/artist.jpg"
+                alt="Ashelic Rose illustrated character with red hair and a microphone"
+                loading="lazy"
+              /><span>VIEW FULL SIZE ↗</span>
+            </button>
+            <div class="asset-details">
+              <div>
+                <h3>Ashelic, illustrated</h3>
+                <p>Character artwork / JPG</p>
+              </div>
+              <a
+                href="assets/artist.jpg"
+                download="Ashelic-Rose-Character.jpg"
+                aria-label="Download Ashelic Rose character artwork"
+                >↓</a
+              >
+            </div>
+          </article>
+        </div>
+        <div class="press-documents">
+          <a href="documents/press-sheet.html" data-download="epk"
+            ><span>01 / PRESS SHEET</span><strong>The artist at a glance</strong
+            ><span>PDF ↓</span></a
+          ><a href="documents/bios.html" data-download="bios"
+            ><span>02 / EDITORIAL COPY</span
+            ><strong>Short + extended bios</strong><span>TXT ↓</span></a
+          ><a href="documents/links.html" data-download="links"
+            ><span>03 / OFFICIAL CHANNELS</span
+            ><strong>Keep the right links</strong><span>TXT ↓</span></a
+          >
+        </div>
+        <p class="micro">
+          Artwork and logos are original files from Taste My Nightmare. The
+          bundle is generated from the current content and includes a press
+          sheet, bios, official links and the selected original assets. For
+          editorial use connected to Ashelic Rose; confirm additional usage and
+          credits with the artist.
+        </p>
+      </section>
 
-    </body>
-
+      <section
+        class="room booking-room"
+        id="booking"
+        aria-labelledby="booking-heading"
+      >
+        <div class="booking-intro">
+          <p class="eyebrow">06 / THE BOOKING DESK</p>
+          <h2 id="booking-heading">Let’s make<br />a little <em>chaos.</em></h2>
+          <p>
+            Shows. Features. Interviews. Creative worlds.<br />Bring your idea
+            to the Night Cove.
+          </p>
+          <a class="contact-email" href="mailto:ashelicrosebookings@gmail.com"
+            >ashelicrosebookings@gmail.com ↗</a
+          ><button class="text-button" id="copy-email">
+            Copy email address
+          </button>
+          <div class="socials">
+            <a
+              href="https://www.instagram.com/tastemynightmare/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Instagram ↗</a
+            ><a
+              href="https://www.tiktok.com/@tastemy.nightmare"
+              target="_blank"
+              rel="noopener noreferrer"
+              >TikTok ↗</a
+            ><a
+              href="https://www.youtube.com/@AshelicRose"
+              target="_blank"
+              rel="noopener noreferrer"
+              >YouTube ↗</a
+            ><a
+              href="https://tastemynightmare.com/portfolio/portfolio.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Creative portfolio ↗</a
+            >
+          </div>
+        </div>
+        <form id="inquiry" class="inquiry">
+          <p class="eyebrow">MAKE AN INTRODUCTION</p>
+          <div class="field-row">
+            <label
+              >Your name<input
+                name="name"
+                autocomplete="name"
+                required
+                maxlength="120"
+                placeholder="Name" /></label
+            ><label
+              >Your email<input
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                maxlength="180"
+                placeholder="you@example.com"
+            /></label>
+          </div>
+          <label
+            >Organization / project<input
+              name="organization"
+              autocomplete="organization"
+              maxlength="180"
+              placeholder="Venue, publication, or project"
+          /></label>
+          <div class="field-row">
+            <label
+              >What brings you here?<select name="type">
+                <option>Live booking</option>
+                <option>Press / interview</option>
+                <option>Music collaboration</option>
+                <option>Visual / creative project</option>
+              </select></label
+            ><label
+              >Event date, if known<input name="date" type="date"
+            /></label>
+          </div>
+          <label
+            >Tell me about it<textarea
+              name="message"
+              rows="4"
+              required
+              maxlength="4000"
+              placeholder="Location, concept, timing, budget, and what you have in mind…"
+            ></textarea></label
+          ><button type="submit" class="button primary">
+            Prepare inquiry <span aria-hidden="true">↗</span>
+          </button>
+          <p class="micro">
+            Prepares an email for you to review and send. Nothing is submitted
+            by this page.
+          </p>
+          <div id="email-draft" class="email-draft" hidden>
+            <p class="eyebrow">YOUR INQUIRY IS READY</p>
+            <textarea
+              id="draft-text"
+              rows="7"
+              readonly
+              aria-label="Prepared email inquiry"
+            ></textarea>
+            <div class="draft-actions">
+              <a
+                id="draft-mailto"
+                class="button outline"
+                href="mailto:ashelicrosebookings@gmail.com"
+                >Open email app ↗</a
+              ><button type="button" id="copy-draft" class="text-button">
+                Copy inquiry
+              </button>
+            </div>
+            <p class="micro">
+              Review and send from your email app. If no app opens, copy the
+              inquiry and email it directly.
+            </p>
+          </div>
+        </form>
+      </section>
+      <footer class="footer">
+        <div>
+          <img src="assets/tmn-logo.png" alt="Taste My Nightmare" />
+          <p>
+            THE WORLD IS STILL GROWING.<br /><em
+              >The stage is already yours.</em
+            >
+          </p>
+        </div>
+        <span>© 2026 ASHELIC ROSE / TASTE MY NIGHTMARE</span
+        ><a href="#curtain">BACK TO THE CURTAIN ↑</a>
+      </footer>
+    </main>
+    <aside
+      class="now-playing"
+      id="now-playing"
+      hidden
+      aria-label="Current music playback"
+    >
+      <img id="mini-cover" src="assets/after-the-club.jpg" alt="" />
+      <div>
+        <span class="micro">NOW HAUNTING</span
+        ><strong id="mini-title">After the Club</strong>
+      </div>
+      <button id="mini-play" aria-label="Pause playback">Ⅱ</button
+      ><a href="#music" aria-label="Go to music player">↗</a>
+    </aside>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <dialog id="asset-dialog" aria-labelledby="dialog-title">
+      <div class="dialog-head">
+        <h2 id="dialog-title">Release artwork</h2>
+        <button id="dialog-close" aria-label="Close artwork preview">✕</button>
+      </div>
+      <div class="dialog-image">
+        <img
+          id="dialog-image"
+          src="assets/after-the-club.jpg"
+          alt="After the Club release artwork"
+        />
+      </div>
+      <div class="dialog-foot">
+        <button id="asset-prev" aria-label="Previous asset">←</button
+        ><span id="dialog-position">01 / 04</span
+        ><button id="asset-next" aria-label="Next asset">→</button
+        ><a id="dialog-download" href="assets/after-the-club.jpg" download
+          >Download original ↓</a
+        >
+      </div>
+    </dialog>
+    <noscript
+      ><p class="noscript-note">
+        This editable edition requires JavaScript to generate the current press
+        downloads. JavaScript is needed for record selection, film playback and
+        artwork previews. Audio controls, downloads, navigation and contact
+        links remain available.
+      </p></noscript
+    >
+  </body>
 </html>

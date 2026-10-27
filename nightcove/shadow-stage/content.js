@@ -1,0 +1,253 @@
+/* SHADOW STAGE CONTENT
+   Edit the values below in VS Code. Use double quotes for text.
+   Keep commas between entries. Save, preview, then commit/push when ready.
+   This file drives the page AND generated press downloads.
+   All biographies are editable draft copy for your review.
+   Your rider is a DRAFT and excluded from the visitor press bundle by default.
+*/
+window.SHADOW_CONTENT = {
+  artist: {
+    name: "Ashelic Rose",
+    firstName: "ASHELIC",
+    lastName: "Rose",
+    brand: "Taste My Nightmare",
+    tagline: "Every nightmare deserves a soundtrack.",
+    description:
+      "Horror-infused rap. Alter egos. A world of her own.\nStep into the sound and stories of Taste My Nightmare.",
+  },
+  contactEmail: "tastemynightmare@gmail.com",
+  images: {
+    logo: "assets/tmn-logo.png",
+    hero: "assets/after-the-club.jpg",
+    heroAlt:
+      "Ashelic Rose in the crimson, candlelit artwork for After the Club",
+    heroCaption: "AFTER THE CLUB / RELEASE ARTWORK",
+  },
+  links: {
+    home: "../home.html",
+    website: "https://tastemynightmare.com/",
+    spotify: "https://open.spotify.com/artist/3ztJFOdQ2mptebJdUI81kj",
+    apple: "https://music.apple.com/us/artist/ashelic-rose/1726124320",
+    youtube: "https://www.youtube.com/@AshelicRose",
+    vlogs: "https://www.youtube.com/@AshelicRoseVlogs",
+    instagram: "https://www.instagram.com/tastemynightmare/",
+    tiktok: "https://www.tiktok.com/@tastemy.nightmare",
+    portfolio: "https://tastemynightmare.com/portfolio/portfolio.html",
+  },
+  bio: {
+    lead: "A rose grown in the dark.",
+    short:
+      "Ashelic Rose is an independent rapper and multidisciplinary creator behind Taste My Nightmare, a horror-infused universe of music, film, design and interactive storytelling. Through Ashelic Rose, Aceyy Shinigami and Tsukuyomi da Reaper, the Unholy Trinity explores feminine power, angst, grief and transformation. Together, they are Shee. Welcome to the Night Cove.",
+    extended: [
+      "Ashelic Rose is an independent rapper and multidisciplinary creator building Taste My Nightmare: a horror-infused universe where music, moving images, design and interactive storytelling meet. Created as a personal world of expression, Taste My Nightmare brings a distinct visual language of crimson, black, roses, burning hearts and theatrical horror to her work.",
+      "The Unholy Trinity gives that world three voices. Ashelic Rose channels feminine power and seduction; Aceyy Shinigami carries its queer, rebellious and alternative energy; Tsukuyomi da Reaper explores grief and inner darkness through haunting stories and cautionary tales. Together, they are Shee. Her released rap catalog includes After the Club, Bey Blade and Choose Your Poison, while her developing work reaches toward alternative rock, metal and shoegaze.",
+      "The Night Cove is home. The Nightshades are the community. Shadow Stage introduces the music and visual storytelling while a larger immersive experience takes shape.",
+    ],
+    pageParagraphs: [
+      "Ashelic Rose is an independent rapper and multidisciplinary creator building Taste My Nightmare: a horror-infused universe where music, moving images, design and interactive storytelling meet.",
+      "Her work moves through feminine power, angst, grief and transformation. The Unholy Trinity gives those feelings three voices: Ashelic Rose, Aceyy Shinigami and Tsukuyomi da Reaper. Together, they are Shee.",
+      "The Night Cove is home. The Nightshades are the community. Shadow Stage is your invitation into the music while the larger immersive world takes shape.",
+    ],
+  },
+  nextRelease: {
+    status: "IN DEVELOPMENT",
+    title: "Another Shattered Heart Set Ablaze",
+    description:
+      "The next chapter reaches toward alternative rock, metal and shoegaze. Follow the unfolding nightmare.",
+  },
+  tracks: [
+    {
+      id: 0,
+      title: "After the Club",
+      credit: "feat. Acey Shinigami",
+      src: "assets/after-the-club.mp3",
+      cover: "assets/after-the-club.jpg",
+      kind: "Full track",
+      link: "https://music.apple.com/us/album/after-the-club-feat-acey-shinigami/1767206194?i=1767206196&uo=4",
+      duration: 109.688,
+      description: "A blood-red invitation into the Night Cove.",
+    },
+    {
+      id: 1,
+      title: "Bey Blade",
+      credit: "Ashelic Rose",
+      src: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/5c/66/e2/5c66e251-3b24-4d7c-4417-616ce519b203/mzaf_15602690026038719606.plus.aac.p.m4a",
+      cover: "assets/track-1.jpg",
+      kind: "Apple Music preview",
+      link: "https://music.apple.com/us/album/bey-blade/1767071871?i=1767071872&uo=4",
+      duration: 115.383,
+      description: "Explore another side of the Ashelic Rose catalog.",
+    },
+    {
+      id: 2,
+      title: "Choose Your Poison",
+      credit: "Ashelic Rose",
+      src: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/9d/b2/27/9db2271b-b0ff-642e-02ac-5f579714b2a8/mzaf_739097560314459662.plus.aac.p.m4a",
+      cover: "assets/track-2.jpg",
+      kind: "Apple Music preview",
+      link: "https://music.apple.com/us/album/choose-your-poison/1767079961?i=1767079962&uo=4",
+      duration: 116.715,
+      description: "Explore another side of the Ashelic Rose catalog.",
+    },
+    {
+      id: 3,
+      title: "Hit the Stage",
+      credit: "Ashelic Rose",
+      src: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/fe/27/15/fe2715ab-1937-aca4-5b8b-3cfaea0e3f4a/mzaf_689567161425435093.plus.aac.p.m4a",
+      cover: "assets/track-3.jpg",
+      kind: "Apple Music preview",
+      link: "https://music.apple.com/us/album/hit-the-stage/1726589745?i=1726589746&uo=4",
+      duration: 158.825,
+      description: "Explore another side of the Ashelic Rose catalog.",
+    },
+    {
+      id: 4,
+      title: "B.L.E.B / Fiend For Me",
+      credit: "Ashelic Rose",
+      src: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/e9/9d/40/e99d40ab-e35e-5ee5-51f5-e0d4108bbc93/mzaf_14968361892355986142.plus.aac.p.m4a",
+      cover: "assets/track-4.jpg",
+      kind: "Apple Music preview",
+      link: "https://music.apple.com/us/album/b-l-e-b-fiend-for-me/1730598333?i=1730598334&uo=4",
+      duration: 234.711,
+      description: "Explore another side of the Ashelic Rose catalog.",
+    },
+    {
+      id: 5,
+      title: "Money Talk (feat. 100BandJo)",
+      credit: "Ashelic Rose",
+      src: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ea/fa/46/eafa46cb-0bdd-e2c5-07f8-d878351a9b1c/mzaf_164066524010216542.plus.aac.p.m4a",
+      cover: "assets/track-5.jpg",
+      kind: "Apple Music preview",
+      link: "https://music.apple.com/us/album/money-talk-feat-100bandjo/1767206648?i=1767206649&uo=4",
+      duration: 173.27,
+      description: "Explore another side of the Ashelic Rose catalog.",
+    },
+    {
+      id: 6,
+      title: "Alien $eduction",
+      credit: "Ashelic Rose",
+      src: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/3b/50/bd/3b50bdf8-972d-eae1-49a7-60f414b3691d/mzaf_10861599645125148650.plus.aac.p.m4a",
+      cover: "assets/track-6.jpg",
+      kind: "Apple Music preview",
+      link: "https://music.apple.com/us/album/alien-%24eduction/1827308519?i=1827308520&uo=4",
+      duration: 209.502,
+      description: "Explore another side of the Ashelic Rose catalog.",
+    },
+  ],
+  films: [
+    {
+      title: "After the Club",
+      label: "After the Club official music video",
+      id: "sMt-cuBaRqw",
+      image: "assets/video-atc.jpg",
+      category: "OFFICIAL MUSIC VIDEO",
+      duration: "3:39",
+    },
+    {
+      title: "Welcome to the Night Cove",
+      label: "Welcome to the Night Cove",
+      id: "zwUpHq4g6dg",
+      image: "assets/video-cove.png",
+      category: "WORLD INTRODUCTION",
+      duration: "0:52",
+    },
+    {
+      title: "ATC Teaser 1",
+      label: "ATC Teaser 1",
+      id: "vNI6_JL0sMQ",
+      image: "assets/video-teaser.jpg",
+      category: "TEASER",
+      duration: "0:33",
+    },
+  ],
+  personas: {
+    ashelic: {
+      name: "Ashelic Rose",
+      label: "THE FEMME FATALE",
+      sigil: "♥",
+      accent: "#db443d",
+      copy: "The vampire, siren and succubus. Ashelic channels feminine power and seduction through the crimson heart of the nightmare.",
+      tags: ["CRIMSON", "POWER", "DESIRE"],
+    },
+    aceyy: {
+      name: "Aceyy Shinigami",
+      label: "THE REBEL",
+      sigil: "♠",
+      accent: "#79cfa0",
+      copy: "The rockstar in the static. Aceyy carries the queer, alternative, rebellious voice of Shee: electric forest green, guitar energy and a glitch in the expected.",
+      tags: ["FOREST GREEN", "ANGST", "REBELLION"],
+    },
+    tsukuyomi: {
+      name: "Tsukuyomi da Reaper",
+      label: "THE SIREN REAPER",
+      sigil: "☾",
+      accent: "#b0bbeb",
+      copy: "The silver-haired siren at the edge of the tide. Tsukuyomi gives grief and inner darkness a voice through haunting stories and cautionary tales.",
+      tags: ["NAVY + SILVER", "GRIEF", "STORYTELLING"],
+    },
+  },
+  assets: [
+    {
+      title: "After the Club — release artwork",
+      src: "assets/after-the-club.jpg",
+      filename: "Ashelic-Rose-After-the-Club.jpg",
+      category: "artwork",
+      caption: "Release artwork / JPG",
+      displayTitle: "After the Club",
+    },
+    {
+      title: "Taste My Nightmare — original logo",
+      src: "assets/tmn-logo.png",
+      filename: "Taste-My-Nightmare-Logo.png",
+      category: "brand",
+      caption: "TMN original logo / PNG",
+      displayTitle: "The burning heart",
+    },
+    {
+      title: "Taste My Nightmare — vampire mark",
+      src: "assets/tmn-mark.png",
+      filename: "Taste-My-Nightmare-Vampire-Mark.png",
+      category: "brand",
+      caption: "TMN original mark / PNG",
+      displayTitle: "The vampire mark",
+    },
+    {
+      title: "Ashelic Rose — character artwork",
+      src: "assets/artist.jpg",
+      filename: "Ashelic-Rose-Character.jpg",
+      category: "brand",
+      caption: "Character artwork / JPG",
+      displayTitle: "Ashelic, illustrated",
+    },
+  ],
+  press: {
+    updated: "October 2026",
+    summary: "Horror-infused rap. Alter egos. A world of her own.",
+    creditNote:
+      "Artwork and logos are supplied for editorial coverage connected to Ashelic Rose. Confirm additional usage and photography credits with the artist. The After the Club image contains embedded copyright metadata: gigi.1mg.",
+    includeRiderInBundle: false,
+  },
+  rider: {
+    status: "DRAFT - FOR ARTIST REVIEW",
+    intro:
+      "Starting hospitality preferences, subject to advance confirmation with the venue. This is not a finalized technical rider.",
+    hospitality: [
+      "A fan, with placement agreed in advance.",
+      "Tissues available in the performance or backstage area.",
+      "Zephyrhills bottled water; quantity and temperature to be confirmed.",
+    ],
+    technicalToConfirm: [
+      "Microphone: wired or wireless, and whether a stand is needed.",
+      "Playback: who runs the tracks, file format, and connection to the venue system.",
+      "Monitoring: venue monitor or in-ear setup, if needed.",
+      "Set length, soundcheck time, and stage space.",
+      "Day-of-show artist and venue contacts.",
+    ],
+    optionalIdeas: [
+      "A clean hand towel.",
+      "A private place to change and keep belongings.",
+      "A light snack, if needed, with dietary preferences confirmed.",
+    ],
+  },
+};
+window.SHADOW_CATALOG = window.SHADOW_CONTENT.tracks;
