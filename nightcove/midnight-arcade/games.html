@@ -9,112 +9,79 @@
         <link rel="stylesheet" href="arcade.css">
         <link rel="stylesheet" href="arcade-accessibility-mobile.css">
     </head>
-
     <body>
-
         <div class="page-noise" aria-hidden="true"></div>
         <div class="scanlines" aria-hidden="true"></div>
-
         <header class="site-header">
-
             <a class="brand-lockup" href="../../index.html">
                 <span class="brand-kicker">TASTE MY NIGHTMARE</span>
                 <span class="brand-name">NIGHT COVE</span>
             </a>
-
             <nav class="header-nav" aria-label="Primary">
                 <button id="soundToggle" class="sound-toggle" type="button">
                 SOUND: ON
                 </button>
             </nav>
-
         </header>
-
         <main>
-
             <!-- =========================================================
                 HERO
             ========================================================== -->
-
             <section class="arcade-hero" id="top">
-
                 <div class="hero-grid" aria-hidden="true"></div>
-
                     <div class="hero-copy">
-
                         <p class="eyebrow">
                             NIGHT COVE SYSTEM // SECTOR 04
                         </p>
-
                         <h1>
                             <span>MIDNIGHT</span>
                             <span>ARCADE</span>
                         </h1>
-
                         <p class="hero-tagline">
                             INSERT YOUR SOUL TO PLAY.
                         </p>
-
                         <p class="hero-description">
                             Story cartridges, corrupted files, strange machines,
                             and whatever else survived after midnight.
                         </p>
-
                         <a class="arcade-button arcade-button--primary" href="#now-playing">
                             ENTER ARCADE
                             <span aria-hidden="true">&gt;</span>
                         </a>
-
                     </div>
-
                     <div class="hero-machine" aria-hidden="true">
-
                     <div class="machine-shell">
-
                         <div class="machine-marquee">
                             MIDNIGHT ARCADE
                         </div>
-
                         <div class="machine-screen">
-
                             <div class="boot-screen">
                                 <span class="boot-heart">♥</span>
                                 <span>TMN SYSTEM</span>
                                 <span class="boot-status">ONLINE</span>
                             </div>
-
                         </div>
-
                         <div class="machine-controls">
                             <div class="joystick">
                                 <span></span>
                             </div>
-
                             <div class="machine-buttons">
                                 <span></span>
                                 <span></span>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
-
                 <a class="scroll-indicator" href="#now-playing">
                     SCROLL TO SELECT
                     <span>↓</span>
                 </a>
-
             </section>
-
             <!-- =========================================================
                 NOW PLAYING — ONE GAME
             ========================================================== -->
-
             <section class="section now-playing" id="now-playing">
-
                 <div class="section-heading">
-
                     <div>
                         <p class="eyebrow">
                             CURRENTLY LOADED
@@ -122,117 +89,86 @@
 
                         <h2>NOW PLAYING</h2>
                     </div>
-
                     <span class="section-code">
                         CARTRIDGE // 001
                     </span>
-
                 </div>
-
                 <article class="featured-game">
-
                     <div class="featured-game__art">
-
                         <div class="featured-game__image">
-
                         <img
                             src="assets/images/and-then-shee-rose.webp"
                             alt="And Then Shee Rose game artwork"
                             onerror="this.classList.add('asset-missing')"
                         />
-
                         <div class="art-fallback">
                             <span>BUBBLES</span>
                             <strong>AND</strong>
                             <span>FLOW</span>
                         </div>
-
                         </div>
-
                         <div class="featured-game__badge">
                             FEATURED STORY GAME
                         </div>
-
                     </div>
-
                     <div class="featured-game__info">
-
                         <p class="game-series">
                             MIDNIGHT ARCADE ORIGINAL
                         </p>
-
                         <h3>BUBBLES AND FLOW</h3>
-
                         <p class="game-copy">
                             Six transmissions are bleeding into the same 
                             frequency. Enter each nightmare, recover what was 
                             lost, and find  out why every signal keeps pointing 
                             toward the same name.
                         </p>
-
                         <div class="game-stats">
-
                             <div>
                                 <span class="stat-label">ROUTES</span>
                                 <strong>06</strong>
                             </div>
-
                             <div>
                                 <span class="stat-label">FRAGMENTS</span>
                                 <strong>06</strong>
                             </div>
-
                             <div>
                                 <span class="stat-label">STATUS</span>
                                 <strong>LIVE</strong>
                             </div>
-
                         </div>
-
                         <div class="fragment-strip" aria-label="Game fragments">
-
                             <span title="Heart">
                                 <b>♥</b>
                                 HEART
                             </span>
-
                             <span title="Word">
                                 <b>✦</b>
                                 WORD
                             </span>
-
                             <span title="Choice">
                                 <b>◇</b>
                                 CHOICE
                             </span>
-
                             <span title="Will">
                                 <b>⚡</b>
                                 WILL
                             </span>
-
                             <span title="Memory">
                                 <b>▣</b>
                                 MEMORY
                             </span>
-
                             <span title="Self">
                                 <b>♛</b>
                                 SELF
                             </span>
-
                         </div>
-
                         <div class="featured-actions">
-
                             <!-- This is your existing artist-route selection page. -->
-
                             <a class="arcade-button arcade-button--primary" 
                             href="bubbles-and-flow/index.html"> 
                             ENTER GAME
                             <span>&gt;</span>
                             </a>
-
                             <button
                                 class="arcade-button arcade-button--secondary"
                                 id="aboutGameButton"
@@ -240,15 +176,10 @@
                             >
                                 VIEW FILE
                             </button>
-
                         </div>
-
                     </div>
-
                 </article>
-
             </section>
-
             <!-- =========================================================
                 ARCADE FLOOR
             ========================================================== -->
@@ -307,7 +238,7 @@
 
                         <a
                         class="cabinet-link"
-                        href="../../index.html"
+                        href="nc-files/night-cove-files/index.html"
                         >
                         ACCESS FILES
                         <span>&gt;</span>
