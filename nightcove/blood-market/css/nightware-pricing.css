@@ -1,0 +1,419 @@
+/* Rendering Room pricing. Shared Nightware tokens live in nightware.css. */
+
+.nightware-skip {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 14px 18px;
+  transform: translateY(-160%);
+  color: var(--nw-black);
+  background: var(--nw-green);
+  font-family: "DM Mono", monospace;
+}
+
+.nightware-skip:focus {
+  transform: none;
+}
+
+.nightware-page :is(a, button, summary):focus-visible {
+  outline: 2px solid var(--nw-green);
+  outline-offset: 5px;
+}
+
+.nightware-page :is(main, section[id]) {
+  scroll-margin-top: 100px;
+}
+
+.pricing-section {
+  position: relative;
+  color: var(--nw-white);
+}
+
+.pricing-intro,
+.pricing-group-heading > p:last-child,
+.pricing-closing {
+  max-width: 800px;
+  color: var(--nw-gray);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.pricing-note {
+  max-width: 100%;
+  margin: 20px 0;
+  color: #aeb7a8;
+  font-size: 0.84rem;
+  line-height: 1.75;
+}
+
+.pricing-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 30px 0 0;
+  padding: 18px 0;
+  border-block: 1px solid var(--nw-line);
+}
+
+.pricing-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--nw-line);
+  color: var(--nw-green);
+  background: var(--nw-panel);
+  font: 500 0.68rem/1.5 "DM Mono", monospace;
+  letter-spacing: 0.05em;
+}
+
+.pricing-nav a:hover {
+  border-color: var(--nw-green);
+  color: var(--nw-black);
+  background: var(--nw-green);
+}
+
+.pricing-group {
+  padding-top: clamp(44px, 6vw, 76px);
+}
+
+.pricing-group-heading {
+  margin-bottom: 24px;
+}
+
+.pricing-group-heading h3 {
+  margin-bottom: 14px;
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(1.7rem, 3.5vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  overflow-wrap: anywhere;
+}
+
+.pricing-group-heading > p:last-child {
+  margin-bottom: 0;
+}
+
+.pricing-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.pricing-grid-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: clamp(22px, 3vw, 34px);
+  border: 1px solid var(--nw-line);
+  background:
+    linear-gradient(140deg, rgba(134, 255, 0, 0.055), transparent 60%),
+    var(--nw-panel);
+}
+
+.pricing-code {
+  margin: 0 0 24px;
+  color: var(--nw-green);
+  font: 400 0.65rem/1.6 "DM Mono", monospace;
+  letter-spacing: 0.08em;
+}
+
+.pricing-card h4 {
+  margin: 0 0 16px;
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(1.35rem, 2.3vw, 2rem);
+  line-height: 1.1;
+}
+
+.pricing-price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 20px;
+  color: var(--nw-green);
+  font: 400 clamp(2.5rem, 5vw, 4rem)/1.1 "DM Mono", monospace;
+  letter-spacing: -0.07em;
+}
+
+.pricing-price span {
+  color: var(--nw-gray);
+  font-size: 0.68rem;
+  letter-spacing: 0;
+}
+
+.pricing-description {
+  margin: 0 0 14px;
+  color: var(--nw-gray);
+  line-height: 1.7;
+}
+
+.pricing-features {
+  margin: 0 0 26px;
+  padding-left: 1.15rem;
+  line-height: 1.75;
+  font-size: 0.9rem;
+}
+
+.pricing-features li {
+  margin-bottom: 9px;
+  padding-left: 4px;
+}
+
+.pricing-features li::marker {
+  color: var(--nw-green);
+}
+
+.pricing-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 50px;
+  margin-top: auto;
+  padding: 15px;
+  border: 1px solid var(--nw-green);
+  color: var(--nw-green);
+  font: 500 0.68rem/1.6 "DM Mono", monospace;
+  letter-spacing: 0.045em;
+}
+
+.pricing-cta:hover {
+  color: var(--nw-black);
+  background: var(--nw-green);
+}
+
+.pricing-cta-inline {
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 24px;
+}
+
+.pricing-platform-heading {
+  margin-top: 48px;
+}
+
+.pricing-platform,
+.pricing-disclosure {
+  margin-top: 12px;
+  border: 1px solid var(--nw-line);
+  background: rgba(3, 6, 3, 0.92);
+}
+
+.pricing-platform > summary,
+.pricing-disclosure > summary {
+  min-height: 58px;
+  padding: 20px 24px;
+  color: var(--nw-white);
+  cursor: pointer;
+  font-family: "DM Mono", monospace;
+  line-height: 1.6;
+}
+
+.pricing-platform > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  list-style: none;
+}
+
+.pricing-platform > summary::-webkit-details-marker {
+  display: none;
+}
+
+.pricing-platform > summary:hover,
+.pricing-disclosure > summary:hover {
+  background: rgba(134, 255, 0, 0.045);
+}
+
+.pricing-platform[open] > summary,
+.pricing-disclosure[open] > summary {
+  border-bottom: 1px solid var(--nw-line);
+  color: var(--nw-green);
+}
+
+.pricing-platform-name {
+  font-size: 1.1rem;
+}
+
+.pricing-platform-name small {
+  display: block;
+  margin-top: 5px;
+  color: var(--nw-gray);
+  font: 400 0.83rem/1.6 "Inter", sans-serif;
+}
+
+.pricing-platform-rate {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
+  color: var(--nw-green);
+  font-size: 1rem;
+}
+
+.pricing-platform-rate > span {
+  display: inline-block;
+  font-size: 1.6rem;
+}
+
+.pricing-platform[open] .pricing-platform-rate > span {
+  transform: rotate(45deg);
+}
+
+.pricing-platform-body,
+.pricing-disclosure-body {
+  padding: clamp(18px, 3vw, 28px);
+}
+
+.pricing-platform-body > .pricing-note:last-child,
+.pricing-disclosure-body > :last-child {
+  margin-bottom: 0;
+}
+
+.pricing-disclosure > summary {
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+}
+
+.pricing-rates {
+  margin: 0;
+}
+
+.pricing-rate {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: start;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--nw-line);
+}
+
+.pricing-rate:first-child {
+  border-top: 1px solid var(--nw-line);
+}
+
+.pricing-rate dt {
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.pricing-rate dt > span {
+  display: block;
+  max-width: 780px;
+  margin-top: 5px;
+  color: var(--nw-gray);
+  font-size: 0.87rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.pricing-rate dd {
+  margin: 0;
+  color: var(--nw-green);
+  font: 500 1rem/1.6 "DM Mono", monospace;
+  text-align: right;
+}
+
+.pricing-terms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 40px;
+  padding: 26px 0;
+  border-block: 1px solid var(--nw-line);
+}
+
+.pricing-terms h4 {
+  margin: 0 0 12px;
+  color: var(--nw-green);
+  font: 500 0.76rem/1.5 "DM Mono", monospace;
+}
+
+.pricing-terms p {
+  margin: 0;
+  color: var(--nw-gray);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.pricing-closing {
+  margin-top: 30px;
+}
+
+@media (max-width: 720px) {
+  .pricing-grid-two,
+  .pricing-terms {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-platform > summary {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+  }
+
+  .pricing-platform-rate {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 620px) {
+  .nightware-header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .nightware-header .header-nav {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .nightware-header .header-nav a:nth-child(n + 2) {
+    display: inline-flex;
+  }
+
+  .nightware-header :is(.header-nav a, .sound-toggle) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 4px 0;
+  }
+
+  .nightware-hero {
+    padding-top: 165px;
+  }
+
+  .nightware-page :is(main, section[id]) {
+    scroll-margin-top: 150px;
+  }
+
+  .pricing-rate {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .pricing-rate dd {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .nightware-page :is(.choice, .module, .execute-button, .sound-toggle, .header-nav a) {
+    transition: none;
+  }
+
+  .nightware-page :is(.choice, .module):hover {
+    transform: none;
+  }
+}
