@@ -23,3 +23,9 @@ Report:
 - Does this feel like Taste My Nightmare?
 
 Aim near an hour through reading and reasoning. Do not add waiting screens or arbitrary passwords to increase duration. First-time results determine the next editorial pass.
+
+## Edition 2 mystery checks
+
+Do the opening biographies let you form your own suspicions? When you discover who made the altered invitation, do you assume that person staged everything else? Which later record makes you reconsider? Does the final explanation account for the legitimate tickets, altered invitations, journey, window figure, and murder separately?
+
+Ask a reader who does not know the creator solution. Record whether a reveal feels earned rather than simply unexpected.

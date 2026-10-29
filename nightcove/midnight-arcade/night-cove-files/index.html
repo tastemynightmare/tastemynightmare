@@ -1,13 +1,16 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="#0c090d">
-    <meta name="description" content="Enter the Night Cove Files. Investigate a missing child, a murdered caretaker, and the circus behind the wall in a Taste My Nightmare cold-case mystery.">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0c090d" />
+    <meta
+      name="description"
+      content="Enter the Night Cove Files. Investigate a missing child, a murdered caretaker, and the circus behind the wall in a Taste My Nightmare cold-case mystery."
+    />
     <title>Night Cove Files · Nightmare Circus</title>
-    <link rel="stylesheet" href="css/game.css">
-    <link rel="preload" as="image" href="assets/archive-room.png">
+    <link rel="stylesheet" href="css/game.css" />
+    <link rel="preload" as="image" href="assets/archive-room.png" />
     <script defer src="cases/nightmare-circus.js"></script>
     <script defer src="js/rules.js"></script>
     <script defer src="js/app.js"></script>
@@ -16,7 +19,10 @@
     <a class="skip" href="#archive">Skip to the case cabinet</a>
     <header class="masthead">
       <a class="wordmark" href="https://tastemynightmare.com/nightcove/midnight-arcade/games.html">
-        TASTE MY<br><strong>NIGHTMARE.</strong><span>← Midnight Arcade</span>
+        TASTE MY
+        <br />
+        <strong>NIGHTMARE.</strong>
+        <span>← Midnight Arcade</span>
       </a>
       <div class="hanging-sign">
         <span class="eyebrow">Department of unfinished business</span>
@@ -29,23 +35,39 @@
       </div>
     </header>
     <main id="archive" tabindex="-1">
-      <section class="archive-room" aria-label="The haunted archive. Six case drawers and investigation tools.">
+      <section
+        class="archive-room"
+        aria-label="The haunted archive. Six case drawers and investigation tools."
+      >
         <div class="room-shade" aria-hidden="true"></div>
         <nav class="cabinet" aria-label="Case drawers"></nav>
         <div class="crt">
           <span class="eyebrow">INCOMING / A.</span>
-          <p id="operator">Six drawers.<br>One loose thread.<br>Pull gently.</p>
+          <p id="operator">
+            Six drawers.
+            <br />
+            One loose thread.
+            <br />
+            Pull gently.
+          </p>
         </div>
         <button class="prop prop-board" data-open="board" type="button">
-          THE EVIDENCE WALL<span>Make a supported finding</span>
+          THE EVIDENCE WALL
+          <span>Make a supported finding</span>
         </button>
         <button class="prop prop-desk" data-open="briefing" type="button">
-          OPEN THE CASE FILE<span>The Girl Behind the Wall</span>
+          OPEN THE CASE FILE
+          <span>The Girl Behind the Wall</span>
         </button>
         <button class="prop prop-tape" data-source="E08" type="button">
-          THE EVENING COUNT<span>Read the care recording</span>
+          THE EVENING COUNT
+          <span>Read the care recording</span>
         </button>
-        <span class="night-stamp" aria-hidden="true">NIGHT SHIFT<br>AUTHORIZED</span>
+        <span class="night-stamp" aria-hidden="true">
+          NIGHT SHIFT
+          <br />
+          AUTHORIZED
+        </span>
       </section>
       <p class="mobile-operator" id="mobile-operator">
         A. / Six drawers. One loose thread. Pull gently.
@@ -57,12 +79,10 @@
         <button data-open="board" type="button">Evidence wall</button>
         <button data-open="timeline" type="button">Chronology</button>
         <button data-open="notebook" type="button">Your notebook</button>
-        <span id="room-progress">0 / 6 findings</span>
+        <span id="room-progress">0 / 8 findings</span>
       </nav>
       <footer class="archive-footer">
-        <p>
-          One playable investigation · Five files awaiting intake
-        </p>
+        <p>One playable investigation · Five files awaiting intake</p>
         <p id="save-status">Progress saves on this browser.</p>
       </footer>
       <p class="fan-note">
@@ -76,11 +96,13 @@
           <span class="eyebrow" id="case-kicker">FILE 01 / NIGHTMARE CIRCUS</span>
           <h2 id="case-title">The Girl Behind the Wall</h2>
         </div>
-        <button id="close-file" type="button" aria-label="Close file and return to archive">×</button>
+        <button id="close-file" type="button" aria-label="Close file and return to archive">
+          ×
+        </button>
       </header>
       <nav id="file-nav" class="file-nav" aria-label="Case sections"></nav>
       <div class="case-meta">
-        <span id="case-progress">0 of 6 findings supported</span>
+        <span id="case-progress">0 of 8 findings supported</span>
         <span id="next-lead">Start with the case file</span>
       </div>
       <div id="file-content"></div>
@@ -93,20 +115,22 @@
           Export your progress first if you want to keep a copy.
         </p>
         <div class="actions">
-          <button id="cancel-reset" type="button" class="button secondary">
-            Keep my progress
-          </button>
-          <button id="confirm-reset" type="button" class="button">
-            Clear and restart
-          </button>
+          <button id="cancel-reset" type="button" class="button secondary">Keep my progress</button>
+          <button id="confirm-reset" type="button" class="button">Clear and restart</button>
         </div>
       </div>
     </dialog>
-    <div id="announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+    <div
+      id="announcement"
+      class="sr-only"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
     <noscript>
       <p class="noscript">
-        This investigation needs JavaScript enabled to inspect evidence and save 
-        findings. No account or installation is required.
+        This investigation needs JavaScript enabled to inspect evidence and 
+        save findings. No account or installation is required.
       </p>
     </noscript>
   </body>
