@@ -1,0 +1,13 @@
+/* Add lani-vex-card to the existing outer Vex card; load this after its current styles. */
+.lani-vex-card {
+  background: linear-gradient(135deg, #0c2238 0%, #124539 100%);
+  border: 1px solid #4c8971;
+  color: #eff8fc;
+}
+.lani-vex-card h2,
+.lani-vex-card h3 { color: #69b7ff; }
+.lani-vex-card p { color: #c8dce5; }
+.lani-vex-card .lani-vex-label { color: #b6ed63; }
+.lani-vex-card a { color: #b6ed63; border-color: #4c8971; }
+.lani-vex-card:focus-visible,
+.lani-vex-card a:focus-visible { outline: 3px solid #b6ed63; outline-offset: 4px; }

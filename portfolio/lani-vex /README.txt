@@ -7,3 +7,7 @@ This package replaces the uploaded concept only; it does not change the live web
 All 13 supplied photos are included as third-party references. Add the artists’ names/handles and permission details before publicly featuring their work. No artist credits have been guessed. No old mockups are included because they were not supplied and would depict the previous concept.
 
 The inquiry is a browser-only demo with no submission endpoint.
+
+BLUE/GREEN UPDATE
+Navy #07131F, electric blue #69B7FF, acid green #B6ED63.
+For the separate portfolio overview, add class lani-vex-card to the existing outer Vex card element, retaining all existing classes. Add lani-vex-label to its numbered supporting-project label. Paste portfolio-card.css at the end of that page’s stylesheet. Update the card heading and description to Lani Vex. The overview page was not supplied, so this is an optional integration snippet, not an edit to the overview itself.
