@@ -91,7 +91,7 @@ form.addEventListener('submit', event => {
   note.textContent = 'This is a portfolio demo. No inquiry or files were sent, no booking was made, and no deposit was charged.';
 
   const followup = document.createElement('p');
-  followup.textContent = 'For the real site, Mya would review a Tally submission and then send an approved Square link separately.';
+  followup.textContent = 'This concept demonstrates an artist-review workflow before a separate booking step. Lani Vex is fictional; there is no live booking service.';
 
   const close = document.createElement('button');
   close.type = 'button';

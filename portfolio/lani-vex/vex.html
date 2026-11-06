@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b0e0d">
+    <meta name="description" content="Lani Vex: a tattoo portfolio concept in Orlando.">
+    <title>Tattoo Portfolio | Lani Vex</title>
+    <link rel="stylesheet" href="vex.css">
+
+    <script src="vex.js" defer></script>
+  </head>
+  <body>
+    <div class="portfolio-bar">
+      <a href="project.html">← ASHELIC ROSE / DESIGN PORTFOLIO</a>
+      <span>LANI VEX · FICTIONAL BRAND CONCEPT</span>
+    </div>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" id="top">
+      <div class="wrap nav-row">
+        <a class="logo" href="#top" aria-label="Lani Vex home">LANI <span>VEX</span></a>
+        <button class="menu-toggle" type="button" aria-controls="nav" aria-expanded="false">
+          MENU <span aria-hidden="true">☰</span>
+        </button>
+        <nav id="nav" aria-label="Main navigation">
+          <a href="#work">THE WORK</a>
+          <a href="#artist">THE CONCEPT</a>
+          <a href="#process">THE PROCESS</a>
+          <a class="button nav-button" href="#inquiry">INQUIRE <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1">
+      <section class="hero wrap">
+        <div class="hero-copy">
+          <p class="kicker">
+            ORLANDO INSPIRED <span>/</span> TATTOO WEBSITE CONCEPT 
+          </p>
+          <h1>YOUR STORY.<br><span>IN FULL INK.</span></h1>
+          <svg class="scribble" viewbox="0 0 360 50" aria-hidden="true">
+            <path d="M2 34 C55 -3 68 54 125 18 S199 14 230 24 S300 -5 357 20"></path>
+          </svg>
+          <p class="hero-description">
+            <strong>Lani Vex</strong> 
+            is a fictional tattoo brand with a bold point of view: expressive 
+            florals, striking black-and-grey, and color that refuses to blend 
+            in. 
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#inquiry">START AN INQUIRY 
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="link" href="#work">EXPLORE THE WORK ↗</a>
+          </div>
+        </div>
+        <div class="hero-gallery" aria-label="Tattoo reference selection">
+          <img src="assets/IMG_6497.jpg" alt="Pagoda and pink cherry blossom tattoo on a shoulder" loading="eager">
+          <img src="assets/IMG_6503.jpg" alt="Black-and-grey portrait with a red eye panel" loading="eager">
+          <img src="assets/IMG_6516.jpg" alt="Colorful horror clown tattoo composition" loading="eager">
+          <span class="gallery-stamp">Lani VEX / 407</span>
+        </div>
+      </section>
+      <section class="work wrap" id="work">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">01 / CURATED REFERENCES</p>
+            <h2>THE WORK</h2>
+          </div>
+          <p>Local artistry. A bold visual direction.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Filter portfolio">
+          <button type="button" class="filter active" data-filter="all" aria-pressed="true" aria-controls="portfolio-grid">ALL</button>
+          <button type="button" class="filter" data-filter="floral" aria-pressed="false" aria-controls="portfolio-grid">FLORAL</button>
+          <button type="button" class="filter" data-filter="ornamental" aria-pressed="false" aria-controls="portfolio-grid">ORNAMENTAL</button>
+          <button type="button" class="filter" data-filter="blackwork" aria-pressed="false" aria-controls="portfolio-grid">BLACK &amp; GREY</button>
+          <button type="button" class="filter" data-filter="anime" aria-pressed="false" aria-controls="portfolio-grid">ANIME &amp; COLOR</button>
+        </div>
+        <p id="filter-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+        <div class="work-grid" id="portfolio-grid">
+          <figure class="work-card" data-category="floral">
+            <a href="assets/IMG_6497.jpg" target="_blank" rel="noopener" aria-label="View pagoda & cherry blossoms reference full size (new tab)">
+              <img src="assets/IMG_6497.jpg" alt="Pagoda and pink cherry blossom tattoo on a shoulder" loading="lazy" decoding="async">
+            </a>
+            <figcaption>01 / PAGODA & CHERRY BLOSSOMS</figcaption>
+          </figure>
+          <figure class="work-card" data-category="floral">
+            <a href="assets/IMG_6498.jpg" target="_blank" rel="noopener" aria-label="View tiger & orchids reference full size (new tab)">
+              <img src="assets/IMG_6498.jpg" alt="Tiger surrounded by pink orchids and butterflies on an upper arm" loading="lazy" decoding="async">
+            </a>
+            <figcaption>02 / TIGER & ORCHIDS</figcaption>
+          </figure>
+          <figure class="work-card" data-category="floral">
+            <a href="assets/IMG_6500.jpg" target="_blank" rel="noopener" aria-label="View flow & florals reference full size (new tab)">
+              <img src="assets/IMG_6500.jpg" alt="Flowing fish with red flowers on an upper arm" loading="lazy" decoding="async">
+            </a>
+            <figcaption>03 / FLOW & FLORALS</figcaption>
+          </figure>
+          <figure class="work-card" data-category="ornamental">
+            <a href="assets/IMG_6501.jpg" target="_blank" rel="noopener" aria-label="View celestial sun reference full size (new tab)">
+              <img src="assets/IMG_6501.jpg" alt="Ornamental sun face tattoo with stippled shading" loading="lazy" decoding="async">
+            </a>
+            <figcaption>04 / CELESTIAL SUN</figcaption>
+          </figure>
+          <figure class="work-card" data-category="blackwork">
+            <a href="assets/IMG_6503.jpg" target="_blank" rel="noopener" aria-label="View portrait in red reference full size (new tab)">
+              <img src="assets/IMG_6503.jpg" alt="Black-and-grey portrait with a red eye panel" loading="lazy" decoding="async">
+            </a>
+            <figcaption>05 / PORTRAIT IN RED</figcaption>
+          </figure>
+          <figure class="work-card" data-category="anime">
+            <a href="assets/IMG_6504.jpg" target="_blank" rel="noopener" aria-label="View anime symbol reference full size (new tab)">
+              <img src="assets/IMG_6504.jpg" alt="Black anime-inspired symbol on a shoulder blade" loading="lazy" decoding="async">
+            </a>
+            <figcaption>06 / ANIME SYMBOL</figcaption>
+          </figure>
+          <figure class="work-card" data-category="floral">
+            <a href="assets/IMG_6507.jpg" target="_blank" rel="noopener" aria-label="View spider lilies reference full size (new tab)">
+              <img src="assets/IMG_6507.jpg" alt="Red spider lilies and black centipede shoulder tattoo" loading="lazy" decoding="async">
+            </a>
+            <figcaption>07 / SPIDER LILIES</figcaption>
+          </figure>
+          <figure class="work-card" data-category="anime">
+            <a href="assets/IMG_6509.jpg" target="_blank" rel="noopener" aria-label="View wanted reference full size (new tab)">
+              <img src="assets/IMG_6509.jpg" alt="Anime character and wanted poster tattoo with red accents" loading="lazy" decoding="async">
+            </a>
+            <figcaption>08 / WANTED</figcaption>
+          </figure>
+          <figure class="work-card" data-category="blackwork">
+            <a href="assets/IMG_6512.jpg" target="_blank" rel="noopener" aria-label="View heart & sting reference full size (new tab)">
+              <img src="assets/IMG_6512.jpg" alt="Black scorpion with a red heart tattoo" loading="lazy" decoding="async">
+            </a>
+            <figcaption>09 / HEART & STING</figcaption>
+          </figure>
+          <figure class="work-card" data-category="floral">
+            <a href="assets/IMG_6513.jpg" target="_blank" rel="noopener" aria-label="View dragon in bloom reference full size (new tab)">
+              <img src="assets/IMG_6513.jpg" alt="Dragon and red flowers extending along the side and hip" loading="lazy" decoding="async">
+            </a>
+            <figcaption>10 / DRAGON IN BLOOM</figcaption>
+          </figure>
+          <figure class="work-card" data-category="blackwork">
+            <a href="assets/IMG_6514.jpg" target="_blank" rel="noopener" aria-label="View wings & light reference full size (new tab)">
+              <img src="assets/IMG_6514.jpg" alt="Black-and-grey chest tattoo of wings and a cross" loading="lazy" decoding="async">
+            </a>
+            <figcaption>11 / WINGS & LIGHT</figcaption>
+          </figure>
+          <figure class="work-card" data-category="ornamental">
+            <a href="assets/IMG_6515.jpg" target="_blank" rel="noopener" aria-label="View ornamental blade reference full size (new tab)">
+              <img src="assets/IMG_6515.jpg" alt="Long ornamental sword tattoo on a leg" loading="lazy" decoding="async">
+            </a>
+            <figcaption>12 / ORNAMENTAL BLADE</figcaption>
+          </figure>
+          <figure class="work-card" data-category="anime">
+            <a href="assets/IMG_6516.jpg" target="_blank" rel="noopener" aria-label="View killer color reference full size (new tab)">
+              <img src="assets/IMG_6516.jpg" alt="Colorful horror clown tattoo composition" loading="lazy" decoding="async">
+            </a>
+            <figcaption>13 / KILLER COLOR</figcaption>
+          </figure>
+        </div>
+        <p class="empty-filter" hidden>
+          No references in this category.
+        </p>
+        <p class="reference-note">
+          Tattoo reference photography by independent artists; not work by 
+          the fictional Lani Vex brand or by Ashelic Rose.
+        </p>
+      </section>
+      <section class="artist-section" id="artist">
+        <div class="wrap artist-grid">
+          <div class="artist-art">
+            <span class="art-word">VEX</span>
+            <img src="assets/lani-vex.avif" alt="Stock tattoo artist" loading="lazy">
+          </div>
+          <div>
+            <p class="kicker">02 / THE CONCEPT</p>
+            <h2>THIS IS<br><span>LANI VEX.</span></h2>
+            <p>
+              A fictional identity rooted in the energy of local tattoo culture. 
+              Lani Vex pairs expressive typography with cherry-red and 
+              orchid-pink accents, letting intricate florals, graphic symbols, 
+              and saturated color set the mood. This is a web design study—not 
+              a working tattoo business.
+            </p>
+            <p class="artist-note">
+              Orlando inspired / independent concept / expressive by design
+            </p>
+            <a class="button" href="#inquiry">TELL ME YOUR IDEA 
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="process wrap" id="process">
+        <p class="kicker">03 / PROPOSED BOOKING FLOW</p>
+        <h2>NO DM LOOP.<br><span>A CLEAR NEXT STEP.</span></h2>
+        <div class="steps">
+          <div>
+            <b>01</b>
+            <h3>EXPLORE</h3>
+            <p>Find the styles and details that speak to you.</p>
+          </div>
+          <div>
+            <b>02</b>
+            <h3>INQUIRE</h3>
+            <p>Tell Lani your idea, placement, size, and references.</p>
+          </div>
+          <div>
+            <b>03</b>
+            <h3>ARTIST REVIEW</h3>
+            <p>Lani considers the project before offering a quote or date.</p>
+          </div>
+          <div>
+            <b>04</b>
+            <h3>BOOK</h3>
+            <p>
+              If approved, she sends a separate Square booking or deposit link.
+            </p>
+          </div>
+        </div>
+        <div class="process-notes">
+          <div>
+            <h3>Before you send it</h3>
+            <p>
+              Clients must be 18 or older. An inquiry is not an appointment. 
+              A deposit and booking details are provided only after artist 
+              review.
+            </p>
+          </div>
+          <div>
+            <h3>Bring the references</h3>
+            <p>
+              Share sketches, photos, mood, meaning, and placement. 
+              The more context, the stronger the starting point.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="inquiry-section" id="inquiry">
+        <div class="wrap inquiry-grid">
+          <div class="inquiry-intro">
+            <p class="kicker">04 / INQUIRY DEMO</p>
+            <h2>YOUR NEXT PIECE<br><span>STARTS HERE.</span></h2>
+            <p>
+              Send the idea, placement, and references together. 
+              Lani reviews the project before offering a date or deposit.
+            </p>
+            <ol>
+              <li>
+                INQUIRE
+              </li>
+              <li>
+                LANI REVIEWS
+              </li>
+              <li>
+                SEPARATE SQUARE HANDOFF
+              </li>
+            </ol>
+          </div>
+          <div class="form-shell">
+            <div class="demo-label">
+              PORTFOLIO DEMO / NO FORM SUBMISSION
+            </div>
+            <form id="inquiry-form">
+              <h3>LET&#x27;S TALK TATTOOS.</h3>
+              <p>Play through an example inquiry. Nothing is sent or saved.</p>
+              <div class="form-grid">
+                <label>YOUR NAME *<input name="name" type="text" placeholder="First and last name" autocomplete="name" required></label>
+                <label>EMAIL *<input name="email" type="email" placeholder="you@example.com" autocomplete="email" required></label>
+                <label>PLACEMENT *<input name="placement" type="text" placeholder="e.g. forearm" required></label>
+                <label>APPROXIMATE SIZE *<input name="size" type="text" placeholder="e.g. palm-sized" required></label>
+              </div>
+              <label>YOUR IDEA *<textarea name="idea" rows="4" placeholder="Style, elements, meaning, details..." required></textarea></label>
+              <label>PREFERRED TIMEFRAME<input name="timeframe" type="text" placeholder="When are you hoping to book?"></label>
+              <label class="upload-label">REFERENCE IMAGES 
+                <small id="reference-help">
+                  Local preview only · up to 3 files
+                </small>
+                <input id="references" name="references" type="file" 
+                accept="image/*" multiple aria-label="Reference images" 
+                aria-describedby="reference-help file-list">
+                <span id="file-list" aria-live="polite" role="status">
+                  Choose photos or sketches</span>
+              </label>
+              <label class="consent">
+                <input name="age" type="checkbox" required>
+                <span>I&#x27;m 18+ and understand this demo does not submit an 
+                  inquiry or book a tattoo.</span>
+              </label>
+              <button class="button submit" type="submit">
+                PREVIEW INQUIRY <span aria-hidden="true">↗</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="wrap footer-row">
+        <a class="logo" href="#top">LANI <span>VEX</span></a>
+        <p>LANI VEX / ORLANDO, FL</p>
+        <a href="#top">BACK TO TOP ↑</a>
+      </div>
+      <p class="wrap footer-disclaimer">
+        Lani Vex is a fictional brand concept. Website design and development 
+        by Ashelic Rose / Taste My Nightmare. Tattoo images are third-party 
+        visual references; no artist affiliation is implied. Inquiry and 
+        booking interactions are demonstrations only.
+      </p>
+    </footer>
+    <dialog id="inquiry-preview" aria-labelledby="preview-title">
+      <button class="dialog-close" type="button" aria-label="Close preview" autofocus>×</button>
+      <div id="preview-content">
+      </div>
+    </dialog>
+  </body>
+</html>
