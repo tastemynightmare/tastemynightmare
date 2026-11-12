@@ -17,7 +17,7 @@ window.SHADOW_CONTENT = {
   },
   contactEmail: "ashelicrosebookings@gmail.com",
   images: {
-    logo: "assets/tmn-logo.png",
+    logo: "assets/tmn_logo.png",
     hero: "assets/after-the-club.jpg",
     heroAlt:
       "Ashelic Rose in the crimson, candlelit artwork for After the Club",
@@ -197,7 +197,7 @@ window.SHADOW_CONTENT = {
     },
     {
       title: "Taste My Nightmare — original logo",
-      src: "assets/tmn-logo.png",
+      src: "assets/tmn_logo.png",
       filename: "Taste-My-Nightmare-Logo.png",
       category: "brand",
       caption: "TMN original logo / PNG",
